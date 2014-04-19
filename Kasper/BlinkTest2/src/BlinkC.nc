@@ -49,6 +49,8 @@ module BlinkC @safe() {
 	uses interface Notify<button_state_t>;
 }
 implementation {
+	
+	// Now using git
 	bool m_started;
 	bool waveMode = RISING;
 	uint32_t ticks = 9;

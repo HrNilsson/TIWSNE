@@ -42,6 +42,7 @@ configuration BlinkAppC
 }
 implementation
 {
+	
 	components MainC, BlinkC, LedsC;
 	components new TimerMilliC() as Timer0;
 	components new TimerMilliC() as Timer1;
