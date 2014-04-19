@@ -42,7 +42,7 @@ configuration BlinkAppC
 }
 implementation
 {
-	
+	// Now with git
 	components MainC, BlinkC, LedsC;
 	components new TimerMilliC() as Timer0;
 	components new TimerMilliC() as Timer1;
