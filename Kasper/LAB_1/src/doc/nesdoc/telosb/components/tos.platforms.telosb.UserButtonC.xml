@@ -1,0 +1,280 @@
+<?xml version="1.0" ?><component loc="47:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonC.nc" nicename="tos.platforms.telosb.UserButtonC" qname="UserButtonC">
+      <documentation loc="32:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButton.h">
+        <short>
+ Implementation of the user button for the telosb platform
+
+ </short>
+        <long>
+ Implementation of the user button for the telosb platform
+
+ @author Gilman Tolle &lt;gtolle@archrock.com&gt;
+ @version $Revision: 1.1 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="59:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonC.nc">
+          <from><interface-ref name="Notify" ref="0x4091f490" scoped=""/></from>
+          <to><interface-ref name="Notify" ref="0x409ce9f8" scoped=""/></to>
+        </wire>
+        <wire loc="58:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonC.nc">
+          <from><interface-ref name="Get" ref="0x4091daa0" scoped=""/></from>
+          <to><interface-ref name="Get" ref="0x409ce040" scoped=""/></to>
+        </wire>
+        <wire loc="54:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonC.nc">
+          <from><interface-ref name="GpioInterrupt" ref="0x409b0258" scoped=""/></from>
+          <to><interface-ref name="GpioInterrupt" ref="0x40916918" scoped=""/></to>
+        </wire>
+        <wire loc="55:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonC.nc">
+          <from><interface-ref name="GeneralIO" ref="0x409b28e8" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x4091e848" scoped=""/></to>
+        </wire>
+        <wire loc="61:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonC.nc">
+          <from><interface-ref name="GetLower" ref="0x409cd8a8" scoped=""/></from>
+          <to><interface-ref name="Get" ref="0x409bd1f0" scoped=""/></to>
+        </wire>
+        <wire loc="62:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonC.nc">
+          <from><interface-ref name="NotifyLower" ref="0x409cc2b8" scoped=""/></from>
+          <to><interface-ref name="Notify" ref="0x409bdad8" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="49:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonC.nc" name="Notify" provided="1" ref="0x4091f490">
+      <component-ref nicename="tos.platforms.telosb.UserButtonC" qname="UserButtonC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Notify" ref="0x4091f490" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="tos.interfaces.Notify" qname="Notify"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><enum-ref ref="0x405d3c58"/>
+            <typename><typedef-ref name="button_state_t" ref="0x406cf220"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="disable" ref="0x4091fd10" scoped=""/>
+        <function-ref name="enable" ref="0x4091fab8" scoped=""/>
+        <function-ref name="notify" ref="0x4091e010" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonC.nc" name="Get" provided="1" ref="0x4091daa0">
+      <component-ref nicename="tos.platforms.telosb.UserButtonC" qname="UserButtonC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Get" ref="0x4091daa0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="tos.interfaces.Get" qname="Get"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><enum-ref ref="0x405d3c58"/>
+            <typename><typedef-ref name="button_state_t" ref="0x406cf220"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x4091f100" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="41:/opt/tinyos-2.1.1/tos/platforms/telosb/HplUserButtonC.nc" name="GpioInterrupt" provided="1" ref="0x40916918">
+      <component-ref nicename="tos.platforms.telosb.HplUserButtonC" qname="HplUserButtonC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="GpioInterrupt" ref="0x40916918" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="tos.interfaces.GpioInterrupt" qname="GpioInterrupt"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="fired" ref="0x40916af0" scoped=""/>
+        <function-ref name="disable" ref="0x40916bd0" scoped=""/>
+        <function-ref name="enableFallingEdge" ref="0x40916cb0" scoped=""/>
+        <function-ref name="enableRisingEdge" ref="0x40916d90" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/opt/tinyos-2.1.1/tos/platforms/telosb/SwitchToggleC.nc" name="GpioInterrupt" provided="0" ref="0x409b0258">
+      <component-ref nicename="tos.platforms.telosb.SwitchToggleC" qname="UserButtonC.SwitchToggleC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="GpioInterrupt" ref="0x409b0258" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="tos.interfaces.GpioInterrupt" qname="GpioInterrupt"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="fired" ref="0x409b0430" scoped=""/>
+        <function-ref name="disable" ref="0x409b0510" scoped=""/>
+        <function-ref name="enableFallingEdge" ref="0x409b05f0" scoped=""/>
+        <function-ref name="enableRisingEdge" ref="0x409b06d0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="40:/opt/tinyos-2.1.1/tos/platforms/telosb/HplUserButtonC.nc" name="GeneralIO" provided="1" ref="0x4091e848">
+      <component-ref nicename="tos.platforms.telosb.HplUserButtonC" qname="HplUserButtonC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="GeneralIO" ref="0x4091e848" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="tos.interfaces.GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x4091ea20" scoped=""/>
+        <function-ref name="isInput" ref="0x4091eb00" scoped=""/>
+        <function-ref name="toggle" ref="0x4091ebe0" scoped=""/>
+        <function-ref name="isOutput" ref="0x4091ecc0" scoped=""/>
+        <function-ref name="get" ref="0x4091eda0" scoped=""/>
+        <function-ref name="makeOutput" ref="0x4091ee80" scoped=""/>
+        <function-ref name="set" ref="0x40919010" scoped=""/>
+        <function-ref name="clr" ref="0x409190f0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/opt/tinyos-2.1.1/tos/platforms/telosb/SwitchToggleC.nc" name="Notify" provided="1" ref="0x409bdad8">
+      <component-ref nicename="tos.platforms.telosb.SwitchToggleC" qname="UserButtonC.SwitchToggleC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Notify" ref="0x409bdad8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="tos.interfaces.Notify" qname="Notify"/>
+        <arguments>
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x403169a0"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="disable" ref="0x409b2438" scoped=""/>
+        <function-ref name="enable" ref="0x409b21e0" scoped=""/>
+        <function-ref name="notify" ref="0x409b2690" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonP.nc" name="GetLower" provided="0" ref="0x409cd8a8">
+      <component-ref nicename="tos.platforms.telosb.UserButtonP" qname="UserButtonP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="GetLower" ref="0x409cd8a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="tos.interfaces.Get" qname="Get"/>
+        <arguments>
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x403169a0"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x409cded0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonP.nc" name="Notify" provided="1" ref="0x409ce9f8">
+      <component-ref nicename="tos.platforms.telosb.UserButtonP" qname="UserButtonP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Notify" ref="0x409ce9f8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="tos.interfaces.Notify" qname="Notify"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><enum-ref ref="0x405d3c58"/>
+            <typename><typedef-ref name="button_state_t" ref="0x406cf220"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="disable" ref="0x409cd2a0" scoped=""/>
+        <function-ref name="enable" ref="0x409cd048" scoped=""/>
+        <function-ref name="notify" ref="0x409cd4f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/opt/tinyos-2.1.1/tos/platforms/telosb/SwitchToggleC.nc" name="GeneralIO" provided="0" ref="0x409b28e8">
+      <component-ref nicename="tos.platforms.telosb.SwitchToggleC" qname="UserButtonC.SwitchToggleC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="GeneralIO" ref="0x409b28e8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="tos.interfaces.GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x409b2ac0" scoped=""/>
+        <function-ref name="isInput" ref="0x409b2ba0" scoped=""/>
+        <function-ref name="toggle" ref="0x409b2c80" scoped=""/>
+        <function-ref name="isOutput" ref="0x409b2d60" scoped=""/>
+        <function-ref name="get" ref="0x409b2e40" scoped=""/>
+        <function-ref name="makeOutput" ref="0x409b2f20" scoped=""/>
+        <function-ref name="set" ref="0x409b0018" scoped=""/>
+        <function-ref name="clr" ref="0x409b00f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="42:/opt/tinyos-2.1.1/tos/platforms/telosb/SwitchToggleC.nc" name="Get" provided="1" ref="0x409bd1f0">
+      <component-ref nicename="tos.platforms.telosb.SwitchToggleC" qname="UserButtonC.SwitchToggleC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Get" ref="0x409bd1f0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="tos.interfaces.Get" qname="Get"/>
+        <arguments>
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x403169a0"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x409bd818" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonP.nc" name="NotifyLower" provided="0" ref="0x409cc2b8">
+      <component-ref nicename="tos.platforms.telosb.UserButtonP" qname="UserButtonP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="NotifyLower" ref="0x409cc2b8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="tos.interfaces.Notify" qname="Notify"/>
+        <arguments>
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x403169a0"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="disable" ref="0x409ccb38" scoped=""/>
+        <function-ref name="enable" ref="0x409cc8e0" scoped=""/>
+        <function-ref name="notify" ref="0x409ccd90" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="42:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonP.nc" name="Get" provided="1" ref="0x409ce040">
+      <component-ref nicename="tos.platforms.telosb.UserButtonP" qname="UserButtonP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Get" ref="0x409ce040" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="tos.interfaces.Get" qname="Get"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><enum-ref ref="0x405d3c58"/>
+            <typename><typedef-ref name="button_state_t" ref="0x406cf220"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x409ce668" scoped=""/>
+      </interface-functions>
+    </interface><component loc="41(UserButtonC.SwitchToggleC):/opt/tinyos-2.1.1/tos/platforms/telosb/SwitchToggleC.nc" nicename="tos.platforms.telosb.SwitchToggleC" qname="UserButtonC.SwitchToggleC">
+      <documentation loc="32:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButton.h">
+        <short>
+ Implementation of the user button for the telosb platform
+
+ </short>
+        <long>
+ Implementation of the user button for the telosb platform
+
+ @author Gilman Tolle &lt;gtolle@archrock.com&gt;
+ @version $Revision: 1.1 $
+</long>
+      </documentation>
+      <instance number="0">
+        <component-ref nicename="tos.platforms.telosb.SwitchToggleC" qname="SwitchToggleC"/>
+      </instance>
+      <module/>
+    </component><component loc="41:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButtonP.nc" nicename="tos.platforms.telosb.UserButtonP" qname="UserButtonP">
+      <documentation loc="32:/opt/tinyos-2.1.1/tos/platforms/telosb/UserButton.h">
+        <short>
+ Implementation of the user button for the telosb platform
+
+ </short>
+        <long>
+ Implementation of the user button for the telosb platform
+
+ @author Gilman Tolle &lt;gtolle@archrock.com&gt;
+ @version $Revision: 1.1 $
+</long>
+      </documentation>
+      <module/>
+    </component><component loc="39:/opt/tinyos-2.1.1/tos/platforms/telosb/HplUserButtonC.nc" nicename="tos.platforms.telosb.HplUserButtonC" qname="HplUserButtonC">
+      <documentation loc="32:/opt/tinyos-2.1.1/tos/platforms/telosb/HplUserButtonC.nc">
+        <short>
+ Implementation of the user button for the telos platform
+
+ </short>
+        <long>
+ Implementation of the user button for the telos platform
+
+ @author Gilman Tolle &lt;gtolle@archrock.com&gt;
+ @version $Revision: 1.1 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="53:/opt/tinyos-2.1.1/tos/platforms/telosb/HplUserButtonC.nc">
+          <from><interface-ref name="GpioInterrupt" ref="0x40916918" scoped=""/></from>
+          <to><interface-ref name="Interrupt" ref="0x409a6080" scoped=""/></to>
+        </wire>
+        <wire loc="49:/opt/tinyos-2.1.1/tos/platforms/telosb/HplUserButtonC.nc">
+          <from><interface-ref name="GeneralIO" ref="0x4091e848" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x409a9518" scoped=""/></to>
+        </wire>
+        <wire loc="48:/opt/tinyos-2.1.1/tos/platforms/telosb/HplUserButtonC.nc">
+          <from><interface-ref name="HplGeneralIO" ref="0x409a9e90" scoped=""/></from>
+          <to><interface-ref name="Port27" ref="0x40716010" scoped=""/></to>
+        </wire>
+        <wire loc="52:/opt/tinyos-2.1.1/tos/platforms/telosb/HplUserButtonC.nc">
+          <from><interface-ref name="HplInterrupt" ref="0x409a6678" scoped=""/></from>
+          <to><interface-ref name="Port27" ref="0x40928eb8" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component></referenced></component>
