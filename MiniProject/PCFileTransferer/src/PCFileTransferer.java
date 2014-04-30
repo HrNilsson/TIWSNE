@@ -9,42 +9,33 @@ import net.tinyos.util.PrintStreamMessenger;
 
 
 public class PCFileTransferer implements MessageListener {
-
-
 	
 	private MoteIF moteIF;
 
 	public PCFileTransferer(MoteIF moteIF) {
 		this.moteIF = moteIF;
-		this.moteIF.registerListener(new ReliableTestSerialMsg(), this);
+		this.moteIF.registerListener(new SerialDataMsg(), this);
 	}
-
-	public void sendPackets() {
-		int counter = 0;
-		ReliableTestSerialMsg payload = new ReliableTestSerialMsg();
-
-		try {
-			while (true) {
-				System.out.println("Sending packet " + counter);
-				payload.set_counter(counter);
-				moteIF.send(0, payload);
-				counter++;
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException exception) {
-				}
-			}
-		} catch (IOException exception) {
-			System.err
-					.println("Exception thrown when sending packets. Exiting.");
-			System.err.println(exception);
-		}
+	
+	public void sendFile(String infilename, int moteId)
+	{
+		SerialDataMsg payload = new SerialDataMsg();
+		//læs fil
+		
+		//while(!done)
+		//	copy data to payload.get_data()
+		//	moteIF.send(moteId, payload);		
 	}
-
+	
+	public void receiveFile(String outFilename, int moteId)
+	{
+		
+	}
+	
 	public void messageReceived(int to, Message message) {
 		SerialDataMsg msg = (SerialDataMsg) message;
 		System.out.println("Received serialdata packet");
-	}
+	}	
 
 	private static void usage() {
 		System.err.println("usage: PCFileTransferer [-comm <source>]");
@@ -73,7 +64,8 @@ public class PCFileTransferer implements MessageListener {
 
 		MoteIF mif = new ReliableMoteIF(phoenix);
 		PCFileTransferer serial = new PCFileTransferer(mif);
-		serial.sendPackets();
+		
+		//serial.sendPackets();
 	}
 
 }

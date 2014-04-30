@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/opt/tinyos-2.1.1/support/sdk/java/tinyos.jar"/>
+	<classpathentry kind="lib" path="/opt/tinyos-2.1.1/support/sdk/java/tinyos.jar" sourcepath="/opt/tinyos-2.1.1/support/sdk/java/"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
