@@ -62,13 +62,19 @@ module HistogramC @safe()
  
  
 }
+
 implementation
 {
 	uint16_t pixelCount = 0;
  
 	uint16_t histogram[256];
  
-
+	
+	void sortByProb(int * hist, int * histSorted){
+		// Sort pixel intensities by probability
+	}
+	
+	
 	event void Boot.booted() {
 		// Do nothing.
 	}
@@ -80,6 +86,9 @@ implementation
 		if(pixelCount >= NUMPIXELS) {
 			signal Histogram.done();
 		}
+		
+	
+	
 	}
 }
 
