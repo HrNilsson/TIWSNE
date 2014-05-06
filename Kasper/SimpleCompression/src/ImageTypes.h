@@ -8,12 +8,12 @@
 typedef struct imageVectors {
 	
 	// Six pixels in one structure
+	uint8_t px0 : 6;
 	uint8_t px1 : 6;
 	uint8_t px2 : 6;
 	uint8_t px3 : 6;
 	uint8_t px4 : 6;
 	uint8_t px5 : 6;
-	uint8_t px6 : 6;
 	
 	// Fill to 32 bits
 	uint8_t fill: 2;

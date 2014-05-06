@@ -55,7 +55,7 @@ implementation {
   components MainC, SimpleCompressionC, QuantCompressC;
   
   MainC.Boot <- SimpleCompressionC;
-  SimpleCompressionC <- QuantCompressC;
+  QuantCompressC.QuantCompress <- SimpleCompressionC;
   
 }
 
