@@ -64,7 +64,7 @@
 *.orig
 *.txss
 *.tks
-/*/MiniProject/Report/home.tex # File specifying the home(default) include/input location.
+/**/MiniProject/Report/home.tex # File specifying the home(default) include/input location.
 
 /**/Report/*.pdf
 /**/Report/**/*.pdf
