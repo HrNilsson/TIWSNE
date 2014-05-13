@@ -49,13 +49,17 @@
  * @author Cory Sharp <cssharp@eecs.berkeley.edu>
  * @date February 4, 2006
  */
+ 
+ #include "printf.h"
 
 configuration SimpleCompressionAppC{}
 implementation {
-  components MainC, SimpleCompressionC, QuantCompressC;
+  components MainC, SimpleCompressionC, QuantCompressC, LedsC;
+  components PrintfC;
   
   MainC.Boot <- SimpleCompressionC;
   QuantCompressC.QuantCompress <- SimpleCompressionC;
-  
+  LedsC <- SimpleCompressionC.Leds;
+ 
 }
 

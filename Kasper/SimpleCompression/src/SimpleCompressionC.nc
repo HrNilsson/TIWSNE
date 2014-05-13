@@ -51,21 +51,72 @@
  */
  
 #include "ImageTypes.h"
+#include "printf.h"
 
-uint8_t pixelVector[6] = {54, 74, 125, 125, 255, 230};
+uint8_t pixelVector[6] = {54, 74, 125, 125, 255};
 
 module SimpleCompressionC @safe()
 {
-  uses interface Boot;
-  uses interface QuantCompress as QC;
-  
+	uses interface Boot;
+	uses interface QuantCompress as QC;
+	uses interface Leds;
+ 
 }
 implementation
 {
-  imageVector test;
-  
-  event void Boot.booted() {
-    test = call QC.compressVector(pixelVector); 
-  }
+	
+	imageVector test;
+	uint8_t testResult[5];
+	uint8_t i; // Loop counter
+	uint8_t errorFlag = 0; //
+	uint8_t test1, test2, diff; 
+	bool temp;
+	
+	event void Boot.booted() {	
+	
+		call Leds.set(0); // turn all LEDS off
+		test = call QC.compressVector(pixelVector);
+		
+		//test.px3 = 0x00;
+		
+		call QC.deCompressVector(test, testResult);
+	
+		for (i=0; i<5 ; i++) {
+			
+			test1 = pixelVector[i]>>2;
+			test2 = testResult[i]>>2;
+			
+			diff = test1-test2;
+	
+//			temp = ((pixelVector[i]>>2)  == (testResult[i]>>2)); // Compare input and output
+	
+			if (~temp) {
+				errorFlag++;
+				
+				call Leds.set(errorFlag); // Debug
+			}
+ 
+		}
+	
+		if (errorFlag == 0) {
+			//call Leds.set(7);
+		}
+	
+		else {
+//			call Leds.led0On();
+		}
+	
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
 
