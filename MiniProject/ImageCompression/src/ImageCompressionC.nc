@@ -1,4 +1,5 @@
 #include "ImageCompression.h"
+#include "UserButton.h"
 
 module ImageCompressionC{
 	uses interface Boot;
@@ -8,23 +9,24 @@ module ImageCompressionC{
   	uses interface AMSend;
   	uses interface SplitControl as AMControl;
   	uses interface Receive;
-  	uses interface PacketLink;
+  	uses interface Get<button_state_t> as GetButton;
+    uses interface Notify<button_state_t> as NotifyButton;
 }
 
 implementation{
 	uint8_t state = IDLE;
 	message_t msg;
 
-
 	event void Boot.booted(){
-		// Wait for picture from PC
+		call NotifyButton.enable(); // Enable key press
+		
 	}
 
 
 	event void AMControl.startDone(error_t error){
+		
 		// Prepare msg for retransmission
-		call PacketLink.setRetries(&msg, 50);
-		call PacketLink.setRetryDelay(&msg, 100);
+		
 		
 		// Send msg
 		
@@ -47,4 +49,11 @@ implementation{
 	}
 
 
+
+	event void NotifyButton.notify(button_state_t btnState){
+		if ( btnState == BUTTON_PRESSED ) {
+      		state = ++state % NUMBER_OF_STATES;
+      		call Leds.set(state);
+    	} 
+	}
 }
