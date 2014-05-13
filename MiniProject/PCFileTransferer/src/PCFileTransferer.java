@@ -34,6 +34,8 @@ public class PCFileTransferer implements MessageListener {
 		try {
 			inFile = new FileInputStream(inFilename);
 			
+			short counter = 1;
+			
 			while(bytesSent < fileSize)
 			{
 				long bytesLeft = fileSize - bytesSent;
@@ -51,6 +53,9 @@ public class PCFileTransferer implements MessageListener {
 				{
 					payload.setElement_data(i, bFileChunk[i]);
 				}
+				
+				payload.setElement_data(0, counter);
+				counter = (short) (++counter % 7);
 				
 				moteIF.send(moteId, payload);
 				
@@ -168,13 +173,13 @@ public class PCFileTransferer implements MessageListener {
 		PCFileTransferer serial = new PCFileTransferer(mif);
 		
 		if(sendFilePath != null)
+		{
 			serial.sendFile(sendFilePath, moteId);
+		}
 		else if(receiveFilePath != null)
 		{
 			serial.receiveFile(receiveFilePath, moteId);
 		}
-		
-		//serial.sendPackets();
 	}
 
 }
