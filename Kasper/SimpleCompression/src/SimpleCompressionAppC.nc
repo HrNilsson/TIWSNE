@@ -49,13 +49,22 @@
  * @author Cory Sharp <cssharp@eecs.berkeley.edu>
  * @date February 4, 2006
  */
+ 
+#define NEW_PRINTF_SEMANTICS
+#include "printf.h"
 
 configuration SimpleCompressionAppC{}
 implementation {
-  components MainC, SimpleCompressionC, QuantCompressC;
+  components MainC, SimpleCompressionC, QuantCompressC, LedsC;
+  components PrintfC;
+  components SerialStartC;  
+  components new TimerMilliC();
+  
   
   MainC.Boot <- SimpleCompressionC;
   QuantCompressC.QuantCompress <- SimpleCompressionC;
-  
+  LedsC <- SimpleCompressionC.Leds;
+  TimerMilliC <- SimpleCompressionC.Timer;
+ 
 }
 
