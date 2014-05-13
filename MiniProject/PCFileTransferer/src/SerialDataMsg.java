@@ -7,12 +7,12 @@
 public class SerialDataMsg extends net.tinyos.message.Message {
 
     /** The default size of this message type in bytes. */
-    public static final int DEFAULT_MESSAGE_SIZE = 0;
+    public static final int DEFAULT_MESSAGE_SIZE = 112;
 
     /** The Active Message type associated with this message. */
     public static final int AM_TYPE = 99;
 
-    /** Create a new SerialDataMsg of size 0. */
+    /** Create a new SerialDataMsg of size 112. */
     public SerialDataMsg() {
         super(DEFAULT_MESSAGE_SIZE);
         amTypeSet(AM_TYPE);
@@ -85,6 +85,11 @@ public class SerialDataMsg extends net.tinyos.message.Message {
     public String toString() {
       String s = "Message <SerialDataMsg> \n";
       try {
+        s += "  [data=";
+        for (int i = 0; i < 112; i++) {
+          s += "0x"+Long.toHexString(getElement_data(i) & 0xff)+" ";
+        }
+        s += "]\n";
       } catch (ArrayIndexOutOfBoundsException aioobe) { /* Skip field */ }
       return s;
     }
@@ -117,7 +122,7 @@ public class SerialDataMsg extends net.tinyos.message.Message {
      */
     public static int offset_data(int index1) {
         int offset = 0;
-        if (index1 < 0) throw new ArrayIndexOutOfBoundsException();
+        if (index1 < 0 || index1 >= 112) throw new ArrayIndexOutOfBoundsException();
         offset += 0 + index1 * 8;
         return (offset / 8);
     }
@@ -127,7 +132,7 @@ public class SerialDataMsg extends net.tinyos.message.Message {
      */
     public static int offsetBits_data(int index1) {
         int offset = 0;
-        if (index1 < 0) throw new ArrayIndexOutOfBoundsException();
+        if (index1 < 0 || index1 >= 112) throw new ArrayIndexOutOfBoundsException();
         offset += 0 + index1 * 8;
         return offset;
     }
@@ -136,7 +141,11 @@ public class SerialDataMsg extends net.tinyos.message.Message {
      * Return the entire array 'data' as a short[]
      */
     public short[] get_data() {
-        throw new IllegalArgumentException("Cannot get field as array - unknown size");
+        short[] tmp = new short[112];
+        for (int index0 = 0; index0 < numElements_data(0); index0++) {
+            tmp[index0] = getElement_data(index0);
+        }
+        return tmp;
     }
 
     /**
@@ -163,6 +172,20 @@ public class SerialDataMsg extends net.tinyos.message.Message {
     }
 
     /**
+     * Return the total size, in bytes, of the array 'data'
+     */
+    public static int totalSize_data() {
+        return (896 / 8);
+    }
+
+    /**
+     * Return the total size, in bits, of the array 'data'
+     */
+    public static int totalSizeBits_data() {
+        return 896;
+    }
+
+    /**
      * Return the size, in bytes, of each element of the array 'data'
      */
     public static int elementSize_data() {
@@ -185,10 +208,17 @@ public class SerialDataMsg extends net.tinyos.message.Message {
 
     /**
      * Return the number of elements in the array 'data'
+     */
+    public static int numElements_data() {
+        return 112;
+    }
+
+    /**
+     * Return the number of elements in the array 'data'
      * for the given dimension.
      */
     public static int numElements_data(int dimension) {
-      int array_dims[] = { 0,  };
+      int array_dims[] = { 112,  };
         if (dimension < 0 || dimension >= 1) throw new ArrayIndexOutOfBoundsException();
         if (array_dims[dimension] == 0) throw new IllegalArgumentException("Array dimension "+dimension+" has unknown size");
         return array_dims[dimension];
@@ -210,7 +240,7 @@ public class SerialDataMsg extends net.tinyos.message.Message {
      * Read the array 'data' as a String
      */
     public String getString_data() { 
-         char carr[] = new char[net.tinyos.message.Message.MAX_CONVERTED_STRING_LENGTH];
+         char carr[] = new char[Math.min(net.tinyos.message.Message.MAX_CONVERTED_STRING_LENGTH,112)];
          int i;
          for (i = 0; i < carr.length; i++) {
              if ((char)getElement_data(i) == (char)0) break;

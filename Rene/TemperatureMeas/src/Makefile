@@ -1,0 +1,3 @@
+COMPONENT=TemperatureMeasAppC
+include $(MAKERULES)
+

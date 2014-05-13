@@ -64,6 +64,8 @@
 *.orig
 *.txss
 *.tks
+# File specifying the home(default) include/input location.
+*/*/home.tex
 
 /**/Report/*.pdf
 /**/Report/**/*.pdf
