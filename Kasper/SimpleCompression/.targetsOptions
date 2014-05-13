@@ -9,7 +9,9 @@
 <parameter ask="false" name="Mote Id">1</parameter>
 </extra>
 </make-extras>
-<includes/>
+<includes>
+<include global="false" include="system" ncc="true" recursive="false">/home/kasper/tinyos-main/tos/lib/printf</include>
+</includes>
 <excludes>
 <exclude>.*\.svn.*</exclude>
 </excludes>
