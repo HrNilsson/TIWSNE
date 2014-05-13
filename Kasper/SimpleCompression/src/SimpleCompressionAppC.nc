@@ -50,16 +50,21 @@
  * @date February 4, 2006
  */
  
- #include "printf.h"
+#define NEW_PRINTF_SEMANTICS
+#include "printf.h"
 
 configuration SimpleCompressionAppC{}
 implementation {
   components MainC, SimpleCompressionC, QuantCompressC, LedsC;
   components PrintfC;
+  components SerialStartC;  
+  components new TimerMilliC();
+  
   
   MainC.Boot <- SimpleCompressionC;
   QuantCompressC.QuantCompress <- SimpleCompressionC;
   LedsC <- SimpleCompressionC.Leds;
+  TimerMilliC <- SimpleCompressionC.Timer;
  
 }
 

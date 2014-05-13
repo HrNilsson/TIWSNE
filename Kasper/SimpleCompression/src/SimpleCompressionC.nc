@@ -50,7 +50,9 @@
  * @date February 4, 2006
  */
  
+ 
 #include "ImageTypes.h"
+#define NEW_PRINTF_SEMANTICS
 #include "printf.h"
 
 uint8_t pixelVector[6] = {54, 74, 125, 125, 255};
@@ -60,6 +62,7 @@ module SimpleCompressionC @safe()
 	uses interface Boot;
 	uses interface QuantCompress as QC;
 	uses interface Leds;
+	uses interface Timer<TMilli>;
  
 }
 implementation
@@ -70,42 +73,38 @@ implementation
 	uint8_t i; // Loop counter
 	uint8_t errorFlag = 0; //
 	uint8_t test1, test2, diff; 
-	bool temp;
+	bool temp = 0;
 	
-	event void Boot.booted() {	
+	event void Boot.booted() {
+		call Timer.startOneShot(1000);
+	}
 	
-		call Leds.set(0); // turn all LEDS off
+	event void Timer.fired() {		
+	
 		test = call QC.compressVector(pixelVector);
-		
+	
 		//test.px3 = 0x00;
-		
+	
 		call QC.deCompressVector(test, testResult);
 	
 		for (i=0; i<5 ; i++) {
-			
-			test1 = pixelVector[i]>>2;
-			test2 = testResult[i]>>2;
-			
-			diff = test1-test2;
 	
-//			temp = ((pixelVector[i]>>2)  == (testResult[i]>>2)); // Compare input and output
+			printf("pixelVector[%u]: %u\n",i, (pixelVector[i]>>2)<<2);
+			printf("testResult[%u]:  %u\n\n",i, testResult[i]);
+			printfflush();
 	
-			if (~temp) {
-				errorFlag++;
-				
-				call Leds.set(errorFlag); // Debug
-			}
+			//			temp = ((pixelVector[i]>>2)  == (testResult[i]>>2)); // Compare input and output
+	
+			//			if (~temp) {
+			//				errorFlag++;
+			//				
+			//				call Leds.set(errorFlag); // Debug
+			//			}
  
 		}
-	
-		if (errorFlag == 0) {
-			//call Leds.set(7);
-		}
-	
-		else {
-//			call Leds.led0On();
-		}
-	
+		
+		call Leds.led2Toggle();
+
 	}
 }
 

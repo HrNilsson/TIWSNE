@@ -28,17 +28,17 @@ implementation {
 
 	command void QuantCompress.deCompressVector(imageVector imVec, uint8_t *outputVec){
 	
-		outputVec[1] = imVec.px0<<2;
-		outputVec[2] = imVec.px1<<2;
+		outputVec[0] = imVec.px0<<2;
+		outputVec[1] = imVec.px1<<2;
 	
 		if (imVec.notFull < 3) {
-			outputVec[3] = imVec.px2<<2;
+			outputVec[2] = imVec.px2<<2;
 	
 			if (imVec.notFull < 2) {
-				outputVec[4] = imVec.px3<<2;
+				outputVec[3] = imVec.px3<<2;
 	
 				if (imVec.notFull < 1) {
-					outputVec[5] = imVec.px4<<2;
+					outputVec[4] = imVec.px4<<2;
 				}
 			}
 		}
