@@ -19,8 +19,8 @@ implementation {
 	components new AMSenderC(AM_UNCOMPRESSED_IMAGE) as UncompressedSender;
 	components new AMReceiverC(AM_UNCOMPRESSED_IMAGE) as UncompressedReceiver;
 
-	components new BlockStorageC(VOLUME_PICTURERAW) as PictureRaw;
-	components new BlockStorageC(VOLUME_PICTURECOMPRESSED) as PictureCompressed;
+	components new BlockStorageC(VOLUME_PICTURERAW) as UncompressedFlashVolume;
+	components new BlockStorageC(VOLUME_PICTURECOMPRESSED) as CompressedFlashVolume;
 	
 	App.Boot->MainC;
 	App.Leds->LedsC;
@@ -40,5 +40,12 @@ implementation {
 	App.UncompressedReceive->UncompressedReceiver;
 	App.UncompressedPacket->UncompressedSender;
 	App.UncompressedAMPacket->UncompressedSender;
+	
+	App.UncompressedStore->UncompressedFlashVolume.BlockWrite;
+	App.UncompressedRestore->UncompressedFlashVolume.BlockRead;
+	
+	App.CompressedStore->CompressedFlashVolume.BlockWrite;
+	App.CompressedRestore->CompressedFlashVolume.BlockRead;
+		
 
 }
