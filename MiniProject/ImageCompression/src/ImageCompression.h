@@ -32,6 +32,14 @@ enum AM_ID_TYPES {
  	AM_RECEIVER_ID = 37
  };
 
+typedef enum TaskFlag {
+	INIT,
+	READ_FLASH,
+	SEND_PACKET,
+	RETRANSMIT_PACKET,
+	START_TIMER,
+	POST_TASK,
+}TaskFlag;
 
 typedef nx_struct imageVectors {
 	
@@ -58,7 +66,7 @@ typedef nx_struct CompressedPictureMsg {
 } CompressedPictureMsg;
 
 typedef nx_struct AckMsg {
-	nx_uint8_t ack;  
+	nx_uint16_t seqNo;  
 } AckMsg;
 
 

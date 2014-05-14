@@ -35,30 +35,71 @@ module ImageCompressionC{
 }
 
 implementation{
-	uint8_t state = IDLE;
+	//--------------------------VARIABLE DECLARATION----------------------------//
+	nx_uint8_t state = IDLE;
 	message_t msg;
-	uint8_t packetId = 0;
-	bool waitingForAck = FALSE;
-	bool busySending = FALSE;
+	nx_uint8_t transSeqNo = 0;
+	
+	TaskFlag taskFlag = INIT;
 	
 	nx_uint8_t flashDataUncompressed[NO_OF_UNCOMPRESSED_PIXELS];
 	nx_uint8_t flashDataCompressed[NO_OF_COMPRESSED_PIXELS];
 	
-	// Helper Function Prototypes
-	void UncompressedSendingFunction(void);
-	void MainLoop(void);
+	//--------------------------TASK PROTOTYPES----------------------------------//
+	task void ReceivingFromPcTask();
+	task void SendUncompressedToMoteTask();
+	task void SendCompressedToMoteTask();
+	task void ReceivingFromMoteTask();
+	task void SendUncompressedToPcTask();
+	task void SendCompressedToPcTask();
 	
-	
-	
+	//---------------------------EVENTS------------------------------------------//
 	event void Boot.booted(){
 			call NotifyButton.enable(); // Enable key press
+	}
 	
-		MainLoop(); // Start main loop	
+	event void NotifyButton.notify(button_state_t btnState){
+			if ( btnState == BUTTON_PRESSED ) {
+			state = ++state % NUMBER_OF_STATES;
+			call Leds.set(state); //This should be turned of when battery consumption is compared. 
+			
+			switch(state) {
+				case IDLE:
+					//Make sure to shot down radio.
+					call AMControl.stop(); 
+					break;
+	
+				case RECEIVING_FROM_PC:
+					
+					break;
+	
+				case SENDING_UNCOMPRESSED_TO_MOTE:
+					call AMControl.start();
+					post SendUncompressedToMoteTask();
+					break;
+	
+				case SENDING_COMPRESSED_TO_MOTE:
+					break;
+	
+				case RECEIVING_FROM_MOTE:
+					break;
+	
+				case SENDING_UNCOMPRESSED_TO_PC:
+					break;
+	
+				case SENDING_COMPRESSED_TO_PC:
+					break;
+	
+				default:
+					break;	
+	
+			}
+		}
 	}
 
-	event void AMControl.startDone(error_t error){
-			// Just entered RECEIVE_FROM_PC state:
+//---------------------------EVENTS - WIRELESS TRANMISSION------------------------------------------//
 	
+	event void AMControl.startDone(error_t error){
 	
 	}
 	
@@ -75,23 +116,22 @@ implementation{
 	}
 	
 	event void UncompressedSend.sendDone(message_t *pMsg, error_t error){
-	
+		call Timer.startOneShot(TIMEOUT_WAIT_FOR_ACK);
 	}
 
 	event message_t * UncompressedReceive.receive(message_t *pMsg, void *payload, uint8_t len){
 	
-		if (len == sizeof(AckMsg)) {
-			if(call Timer.isRunning() == TRUE) 
-			{
-				call Timer.stop();
-			}
-	
+		if (len == sizeof(AckMsg)) {	
 			AckMsg* ackMsg = (AckMsg*)payload;
-			if(ackMsg->ack == TRUE) 
-			{
-				waitingForAck = FALSE;
+			if(ackMsg->seqNo == transSeqNo) 
+			{				
+				taskFlag = POST_TASK;
+				call Timer.stop();
+				
+				post SendUncompressedToMoteTask();
+				
 			} else {
-				//
+				// Wrong packet
 			}
 	
 		}
@@ -101,18 +141,13 @@ implementation{
 	}
 
 	event void Timer.fired(){
-	
+		taskFlag = RETRANSMIT_PACKET;
+		post SendUncompressedToMoteTask();
 	}
 
-	event void NotifyButton.notify(button_state_t btnState){
-			if ( btnState == BUTTON_PRESSED ) {
-			state = ++state % NUMBER_OF_STATES;
-			call Leds.set(state); //This should be turned of when battery consumption is compared. 
-		} 
 	
-	
-	}
-	
+//---------------------------EVENTS - FLASH HANDLING------------------------------------------//
+
 	event void UncompressedStore.writeDone(storage_addr_t addr, void * buf, storage_len_t len, error_t error)
 	{
 	}
@@ -134,6 +169,8 @@ implementation{
  
 	event void UncompressedRestore.readDone(storage_addr_t addr,void * buf, storage_len_t len, error_t error)
 	{
+		taskFlag = SEND_PACKET;
+		post SendUncompressedToMoteTask();
 	}
  
 	event void CompressedStore.writeDone(storage_addr_t addr, void * buf, storage_len_t len, error_t error)
@@ -167,6 +204,8 @@ implementation{
 	{
 	}
 
+//---------------------------EVENTS - SERIAL TRANSMISSION------------------------------------------//
+
 	event message_t * SerialReceive.receive(message_t *msg, void *payload, uint8_t len)
 	{
 		return msg;
@@ -176,71 +215,76 @@ implementation{
 	{
 	}
 
-	void UncompressedSendingFunction(void) {
 
-		bool sendingImage = TRUE;
+
+//-----------------------------------TASKS--------------------------------------//
+
+	task void ReceivingFromPcTask() {
+		
+	}
 	
-		while(sendingImage) 
+	task void SendUncompressedToMoteTask() {
+
+	storage_addr_t addr = 0;
+	
+		if(state == SENDING_UNCOMPRESSED_TO_MOTE)
 		{
-			// Read from flash
-	
-			//flashDataUncompressed = restore(); 
-	
-			// increment packetId
-			packetId++;
-			UncompressedMsg* msgPl = (UncompressedMsg*)(call UncompressedPacket.getPayload(&msg, sizeof (UncompressedMsg)));
-			msgPl->seqNo = packetId;
-			msgPl->pixels = flashDataUncompressed;
-	
-			// Transmit
-			call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(flashDataUncompressed)); 
-			// Start timer
-			call Timer.startOneShot(TIMEOUT_WAIT_FOR_ACK);
-			// wait for ack
-	
-	
-			if(packetId == TOTAL_UNCOMPRESSED_PACKETS)
-			{
-				sendingImage = FALSE;
-			}	
+			switch(taskFlag) {
+				case INIT:
+					// Read from flash
+					call UncompressedRestore.read(addr, &flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS); // CHECK THIS!?
+					break;
+			
+				case SEND_PACKET: 
+					// increment transaction sequence number
+					transSeqNo++;
+					//Update payload
+					UncompressedMsg* msgPl = (UncompressedMsg*)(call UncompressedPacket.getPayload(&msg, sizeof (UncompressedMsg)));
+					msgPl->seqNo = transSeqNo;
+					msgPl->pixels = flashDataUncompressed;
+			
+					// Transmit
+					call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(flashDataUncompressed));
+					break; 
+					
+				// Start timer - this is done in sendDone() for faster handling.
+				
+				// wait for received ack or timeout.
+					
+				case RETRANSMIT_PACKET:
+					// Transmit
+					call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(flashDataUncompressed));
+					break; 
+		
+				case POST_TASK:
+					if(transSeqNo != TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						post SendUncompressedToMoteTask();	
+					}
+					break;
+					
+				default:
+					break;	
+			}
 		}
 	}
 	
-	void MainLoop(void) {
-	
-		while(1) {
-	
-			switch(state) {
-				case IDLE:
-				call AMControl.stop();
-				break;
-	
-				case RECEIVING_FROM_PC:
-				call AMControl.start();
-				break;
-	
-				case SENDING_UNCOMPRESSED_TO_MOTE:
-	
-				UncompressedSendingFunction();
-	
-				break;
-	
-				case SENDING_COMPRESSED_TO_MOTE:
-				break;
-	
-				case RECEIVING_FROM_MOTE:
-				break;
-	
-				case SENDING_UNCOMPRESSED_TO_PC:
-				break;
-	
-				case SENDING_COMPRESSED_TO_PC:
-				break;
-	
-				default:
-				break;	
-	
-			}
-		}	
+	task void SendCompressedToMoteTask() {
+		
 	}
+	
+	task void ReceivingFromMoteTask() {
+		
+	}
+	
+	task void SendUncompressedToPcTask() {
+		
+	}
+	
+	task void SendCompressedToPcTask() {
+		
+	}
+
+
+
 }
