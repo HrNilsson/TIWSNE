@@ -47,7 +47,7 @@ public class PCFileTransferer implements MessageListener {
 				else
 					bytesToSend = (int) bytesLeft;
 				
-				inFile.read(bFileChunk, (int)bytesSent, bytesToSend);
+				inFile.read(bFileChunk, 0, bytesToSend);
 				
 				for(int i = 0; i < bytesToSend; i++)
 				{
@@ -55,6 +55,7 @@ public class PCFileTransferer implements MessageListener {
 				}
 				
 				payload.setElement_data(0, counter);
+				payload.setElement_data(111, counter);
 				counter = (short) (++counter % 7);
 				
 				moteIF.send(moteId, payload);

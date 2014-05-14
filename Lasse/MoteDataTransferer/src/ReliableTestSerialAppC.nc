@@ -46,12 +46,16 @@
  *  @date   Aug 12 2005
  *
  **/
+ 
+ #define NEW_PRINTF_SEMANTICS
+ #include "printf.h"
 
 configuration ReliableTestSerialAppC {}
 implementation {
   components DataTransfererC as App, LedsC, MainC, ReliableSerialC;
   components SerialActiveMessageC as AM;
   components new TimerMilliC();
+  components PrintfC;
 
   App.Boot -> MainC.Boot;
   App.Control -> AM;

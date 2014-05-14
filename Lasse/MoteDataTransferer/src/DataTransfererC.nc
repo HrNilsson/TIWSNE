@@ -27,7 +27,7 @@
  * file. If you do not find these files, copies can be found by writing to
  * Intel Research Berkeley, 2150 Shattuck Avenue, Suite 1300, Berkeley, CA, 
  * 94704.  Attention:  Intel License Inquiry.
- */
+ */ 
 
 /**
  * Application to test that the TinyOS java toolchain can communicate
@@ -38,66 +38,83 @@
  *  
  *  @date   Aug 12 2005
  *
- **/
+ **/ 
 
 #include "Timer.h"
 #include "serialdata.h"
 
+#define NEW_PRINTF_SEMANTICS
+#include "printf.h"
+
 module DataTransfererC {
-  uses {
-    interface SplitControl as Control;
-    interface Leds;
-    interface Boot;
-    interface Receive;
-    interface AMSend;
-    interface Timer<TMilli> as MilliTimer;
-  }
+	uses {
+		interface SplitControl as Control;
+		interface Leds;
+		interface Boot;
+		interface Receive;
+		interface AMSend;
+		interface Timer<TMilli> as MilliTimer;
+	}
 }
 implementation {
-  message_t packet;
-  bool locked = FALSE;
-  uint16_t counter = 0;
-  
-  event void Boot.booted() {
-    call Control.start();
-  }
-  
-  event void Control.startDone(error_t err) {
-    if (err == SUCCESS)
-      call MilliTimer.startPeriodic(1000);
-  }
+	message_t packet;
+	bool locked = FALSE;
+	uint16_t counter = 0;
 
-  event void Control.stopDone(error_t err) {}
+	event void Boot.booted() {
+		printf("len: %u\n", sizeof(serialdata_msg_t));
+		printfflush();
+		call Control.start();
+	}
 
-  event void MilliTimer.fired() {
-    serialdata_msg_t* rcm = call AMSend.getPayload(&packet, sizeof(serialdata_msg_t));
+	event void Control.startDone(error_t err) {
+		if(err == SUCCESS) 
+			call MilliTimer.startPeriodic(1000);
+	}
 
-    counter++;
+	event void Control.stopDone(error_t err) {
+	}
 
-    if (!rcm || locked)
-      return;
+	event void MilliTimer.fired() {
+		serialdata_msg_t * rcm = call AMSend.getPayload(&packet,
+				sizeof(serialdata_msg_t));
 
-    //rcm->counter = counter;
-    if (call AMSend.send(AM_BROADCAST_ADDR, &packet, sizeof(serialdata_msg_t)) == SUCCESS)
-      locked = TRUE;
-  }
+		counter++;
 
-  event message_t* Receive.receive(message_t* bufPtr, 
-				   void* payload, uint8_t len) {
-    if (len == sizeof(serialdata_msg_t)) 
-      {
-		serialdata_msg_t* rcm = (serialdata_msg_t*)payload;
+		if( ! rcm || locked) 
+			return;
+
+		//rcm->counter = counter;
+		//if(call AMSend.send(AM_BROADCAST_ADDR, &packet, sizeof(serialdata_msg_t)) == SUCCESS) 
+			//locked = TRUE;
 		
-		call Leds.set(rcm->data[0]);
-      }
-    return bufPtr;
-  }
+	}
 
-  event void AMSend.sendDone(message_t* bufPtr, error_t error) {
-    locked = FALSE;
-  }
+	event message_t * Receive.receive(message_t * bufPtr, void * payload,
+			uint8_t len) 
+	{
+		serialdata_msg_t * rcm;
+		//printf("len: %u\n", len);
+		//printfflush();
+		
+		if(len == sizeof(serialdata_msg_t)) 
+		{
+			rcm = (serialdata_msg_t * ) payload;
+			call Leds.set(rcm->data[0]);
+			
+			//printf("data[111]]: %u\n", rcm->data[111]);
+			//printfflush();
+		}
+		else
+		{ 
+			call Leds.set(1);
+			//printf("fail.");
+		}
+
+		return bufPtr;
+	}
+
+	event void AMSend.sendDone(message_t * bufPtr, error_t error) {
+		locked = FALSE;
+	}
 }
-
-
-
-
