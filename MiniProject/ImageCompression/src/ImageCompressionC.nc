@@ -20,6 +20,14 @@ module ImageCompressionC{
   	uses interface Receive as UncompressedReceive;
   	uses interface Packet as UncompressedPacket;
   	uses interface AMPacket as UncompressedAMPacket;
+  	
+  	
+    uses interface BlockWrite as UncompressedStore;
+    uses interface BlockRead as UncompressedRestore;
+    
+    uses interface BlockWrite as CompressedStore;
+    uses interface BlockRead as CompressedRestore;
+    
 }
 
 implementation{
@@ -119,4 +127,50 @@ implementation{
 	event void Timer.fired(){
 		
 	}
+	
+  event void UncompressedStore.writeDone(storage_addr_t addr, void * buf, storage_len_t len, error_t error)
+  {
+  }
+  
+  event void UncompressedStore.eraseDone(error_t error)
+  {
+  	
+  }
+  
+  event void UncompressedStore.syncDone(error_t error)
+  {
+  	
+  }
+  
+  event void UncompressedRestore.computeCrcDone(storage_addr_t addr, storage_len_t len, uint16_t cnt, error_t error)
+  {
+  	
+  }
+  
+  event void UncompressedRestore.readDone(storage_addr_t addr,void * buf, storage_len_t len, error_t error)
+  {
+  }
+  
+  event void CompressedStore.writeDone(storage_addr_t addr, void * buf, storage_len_t len, error_t error)
+  {
+  }
+  
+  event void CompressedStore.eraseDone(error_t error)
+  {
+  	
+  }
+  
+  event void CompressedStore.syncDone(error_t error)
+  {
+  	
+  }
+  
+  event void CompressedRestore.computeCrcDone(storage_addr_t addr, storage_len_t len, uint16_t cnt, error_t error)
+  {
+  	
+  }
+  
+  event void CompressedRestore.readDone(storage_addr_t addr,void * buf, storage_len_t len, error_t error)
+  {
+  }
 }
