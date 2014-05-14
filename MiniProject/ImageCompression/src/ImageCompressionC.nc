@@ -43,62 +43,65 @@ implementation{
 	
 	void MainLoop(void) {
 	
-		switch(state) {
-			case IDLE:
-			call AMControl.stop();
-			break;
+		while(1) {
 	
-			case RECEIVING_FROM_PC:
-			call AMControl.start();
-			break;
+			switch(state) {
+				case IDLE:
+				call AMControl.stop();
+				break;
 	
-			case SENDING_UNCOMPRESSED_TO_MOTE:
-			sendingImage = TRUE;
+				case RECEIVING_FROM_PC:
+				call AMControl.start();
+				break;
 	
-			while(sendingImage) 
-			{
-				// Read from flash
+				case SENDING_UNCOMPRESSED_TO_MOTE:
+				sendingImage = TRUE;
 	
-				//flashDataUncompressed = restore(); 
-	
-				// increment packetId
-				packetId++;
-				UncompressedMsg* msgPl = (UncompressedMsg*)(call UncompressedPacket.getPayload(&msg, sizeof (UncompressedMsg)));
-				msgPl->seqNo = packetId;
-				msgPl->pixels = flashDataUncompressed;
-	
-				// Transmit
-				call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(flashDataUncompressed)); 
-				// Start timer
-				call Timer.startOneShot(TIMEOUT_WAIT_FOR_ACK);
-				// wait for ack
-	
-	
-				if(packetId == TOTAL_UNCOMPRESSED_PACKETS)
+				while(sendingImage) 
 				{
-					sendingImage = FALSE;
-				}	
+					// Read from flash
+	
+					//flashDataUncompressed = restore(); 
+	
+					// increment packetId
+					packetId++;
+					UncompressedMsg* msgPl = (UncompressedMsg*)(call UncompressedPacket.getPayload(&msg, sizeof (UncompressedMsg)));
+					msgPl->seqNo = packetId;
+					msgPl->pixels = flashDataUncompressed;
+	
+					// Transmit
+					call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(flashDataUncompressed)); 
+					// Start timer
+					call Timer.startOneShot(TIMEOUT_WAIT_FOR_ACK);
+					// wait for ack
+	
+	
+					if(packetId == TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						sendingImage = FALSE;
+					}	
+				}
+				break;
+	
+				case SENDING_COMPRESSED_TO_MOTE:
+				break;
+	
+				case RECEIVING_FROM_MOTE:
+				break;
+	
+				case SENDING_UNCOMPRESSED_TO_PC:
+				break;
+	
+				case SENDING_COMPRESSED_TO_PC:
+				break;
+	
+				default:
+				break;	
+	
 			}
-			break;
+		}	
+	}
 	
-			case SENDING_COMPRESSED_TO_MOTE:
-			break;
-	
-			case RECEIVING_FROM_MOTE:
-			break;
-	
-			case SENDING_UNCOMPRESSED_TO_PC:
-			break;
-	
-			case SENDING_COMPRESSED_TO_PC:
-			break;
-	
-			default:
-			break;	
-	
-		}
-	}	
-
 	event void Boot.booted(){
 		call NotifyButton.enable(); // Enable key press
 	
