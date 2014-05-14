@@ -1,8 +1,9 @@
 #ifndef IMAGE_COMPRESSION_H
 #define IMAGE_COMPRESSION_H
 
-enum {
-   AM_IMAGECOMPRESSION = 6
+enum AM_ID_TYPES {
+   AM_COMPRESSED_IMAGE = 6,
+   AM_UNCOMPRESSED_IMAGE = 7
  };
  
  enum STATE {
@@ -34,7 +35,7 @@ typedef nx_struct imageVectors {
 } imageVector;
 
 typedef nx_struct PictureMsg {
-  nx_uint8_t pixels[113];
+  nx_uint8_t pixels[112];
 } PictureMsg;
 
 typedef nx_struct CompressedPictureMsg {
