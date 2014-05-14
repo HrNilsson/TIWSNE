@@ -18,11 +18,24 @@ enum AM_ID_TYPES {
  	SENDING_COMPRESSED_TO_PC,
  	NUMBER_OF_STATES 	
  } STATE;
+ 
+ enum WIRELESS_DEFINES {
+ 	TOTAL_UNCOMPRESSED_PACKETS = 586, // 256*256/(122 bytes pr. packet) 
+ 	TOTAL_COMPRESSED_PACKETS = 469, //Uncompressed*4/5 Assuming compression of << 2
+ 	NO_OF_UNCOMPRESSED_PIXELS = 110,
+ 	NO_OF_COMPRESSED_PIXELS = 27,
+ 	TIMEOUT_WAIT_FOR_ACK = 100,
+ };
+ 
+ enum MOTE_IDS {
+ 	AM_SENDER_ID = 49,  
+ 	AM_RECEIVER_ID = 37
+ };
 
 
 typedef nx_struct imageVectors {
 	
-	// Six pixels in one structure
+	// Five pixels in one structure
 	nx_uint8_t px0 : 6;
 	nx_uint8_t px1 : 6;
 	nx_uint8_t px2 : 6;
@@ -34,12 +47,18 @@ typedef nx_struct imageVectors {
 	
 } imageVector;
 
-typedef nx_struct PictureMsg {
-  nx_uint8_t pixels[112];
-} PictureMsg;
+typedef nx_struct UncompressedMsg {
+  nx_uint8_t pixels[NO_OF_UNCOMPRESSED_PIXELS];
+  nx_uint16_t seqNo;
+} UncompressedMsg;
 
 typedef nx_struct CompressedPictureMsg {
-	imageVector pixelVectors[28]; // 112 bytes  
+	imageVector pixelVectors[NO_OF_COMPRESSED_PIXELS]; // 108 bytes
+	nx_uint16_t seqNo;  
 } CompressedPictureMsg;
+
+typedef nx_struct AckMsg {
+	nx_uint8_t ack;  
+} AckMsg;
 
 #endif /* IMAGE_COMPRESSION_H */

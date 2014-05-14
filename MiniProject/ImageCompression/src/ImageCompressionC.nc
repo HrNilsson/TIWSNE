@@ -26,7 +26,12 @@ implementation{
 	uint8_t state = IDLE;
 	message_t msg;
 	uint8_t packetId = 0;
+	bool waitingForAck = FALSE;
 	bool sendingImage = FALSE;
+	bool busySending = FALSE;
+	
+	nx_uint8_t flashDataUncompressed[NO_OF_UNCOMPRESSED_PIXELS];
+	nx_uint8_t flashDataCompressed[NO_OF_COMPRESSED_PIXELS];
 
 	event void Boot.booted(){
 		call NotifyButton.enable(); // Enable key press
@@ -64,9 +69,30 @@ implementation{
 	
 
 	event message_t * UncompressedReceive.receive(message_t *pMsg, void *payload, uint8_t len){
+		
+		if (len == sizeof(AckMsg)) {
+      		if(call Timer.isRunning() == TRUE) 
+			{
+				call Timer.stop();
+			}
+			
+      		AckMsg* ackMsg = (AckMsg*)payload;
+      		if(ackMsg->ack == TRUE) 
+      		{
+      			waitingForAck = FALSE;
+      		} else {
+      			//
+      		}
+			
+		}
+		
+		
 		return pMsg;
 	}
 
+	event void Timer.fired(){
+		
+	}
 
 
 	event void NotifyButton.notify(button_state_t btnState){
@@ -87,14 +113,29 @@ implementation{
 		case SENDING_UNCOMPRESSED_TO_MOTE:
 			sendingImage = TRUE;
 			
-			while(sendingImage) {
-				// Read from flash
+			while(sendingImage) 
+			{
+			    // Read from flash
 				
-				// Transmit
+				//flashDataUncompressed = restore(); 
+			
+				// increment packetId
+				packetId++;
+				UncompressedMsg* msgPl = (UncompressedMsg*)(call UncompressedPacket.getPayload(&msg, sizeof (UncompressedMsg)));
+		      	msgPl->seqNo = packetId;
+		      	msgPl->pixels = flashDataUncompressed;
+		      	
+		      	// Transmit
+		      	call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(flashDataUncompressed)); 
 				// Start timer
-					
+				call Timer.startOneShot(TIMEOUT_WAIT_FOR_ACK);
 				// wait for ack
-				// increment packetId	
+				
+				
+				if(packetId == TOTAL_UNCOMPRESSED_PACKETS)
+				{
+					sendingImage = FALSE;
+				}	
 			}
 			break;
 			
@@ -114,9 +155,5 @@ implementation{
 			break;	
     		
 		}
-	}
-
-	event void Timer.fired(){
-		
 	}
 }
