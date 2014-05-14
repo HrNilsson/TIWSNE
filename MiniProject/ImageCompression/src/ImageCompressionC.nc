@@ -36,9 +36,9 @@ module ImageCompressionC{
 
 implementation{
 	//--------------------------VARIABLE DECLARATION----------------------------//
-	nx_uint8_t state = IDLE;
+	nx_uint8_t state;
 	message_t msg;
-	nx_uint8_t transSeqNo = 0;
+	nx_uint8_t transSeqNo;
 	
 	TaskFlag taskFlag = INIT;
 	
@@ -56,6 +56,8 @@ implementation{
 	//---------------------------EVENTS------------------------------------------//
 	event void Boot.booted(){
 			call NotifyButton.enable(); // Enable key press
+			state = IDLE;
+			transSeqNo = 0;
 	}
 	
 	event void NotifyButton.notify(button_state_t btnState){
@@ -206,12 +208,12 @@ implementation{
 
 //---------------------------EVENTS - SERIAL TRANSMISSION------------------------------------------//
 
-	event message_t * SerialReceive.receive(message_t *msg, void *payload, uint8_t len)
+	event message_t * SerialReceive.receive(message_t *pMsg, void *payload, uint8_t len)
 	{
-		return msg;
+		return pMsg;
 	}
 
-	event void SerialAMSend.sendDone(message_t *msg, error_t error)
+	event void SerialAMSend.sendDone(message_t *pMsg, error_t error)
 	{
 	}
 
@@ -231,40 +233,47 @@ implementation{
 		{
 			switch(taskFlag) {
 				case INIT:
+				{
 					// Read from flash
 					call UncompressedRestore.read(addr, &flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS); // CHECK THIS!?
 					break;
+				}
 			
-				case SEND_PACKET: 
-					// increment transaction sequence number
-					transSeqNo++;
-					//Update payload
+				case SEND_PACKET:
+				{ 
+					// Update payload
 					UncompressedMsg* msgPl = (UncompressedMsg*)(call UncompressedPacket.getPayload(&msg, sizeof (UncompressedMsg)));
-					msgPl->seqNo = transSeqNo;
-					msgPl->pixels = flashDataUncompressed;
+					msgPl->seqNo = ++transSeqNo;
+					memcpy(&(msgPl->pixels), &flashDataUncompressed, sizeof(flashDataUncompressed));
 			
 					// Transmit
-					call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(flashDataUncompressed));
+					call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(UncompressedMsg));
 					break; 
-					
+				}		
 				// Start timer - this is done in sendDone() for faster handling.
 				
 				// wait for received ack or timeout.
 					
 				case RETRANSMIT_PACKET:
+				{
 					// Transmit
-					call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(flashDataUncompressed));
-					break; 
+					call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(UncompressedMsg));
+					break;
+				} 
 		
 				case POST_TASK:
+				{
 					if(transSeqNo != TOTAL_UNCOMPRESSED_PACKETS)
 					{
 						post SendUncompressedToMoteTask();	
 					}
 					break;
-					
+				}
+							
 				default:
-					break;	
+				{
+					break;
+				}	
 			}
 		}
 	}

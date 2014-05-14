@@ -62,7 +62,7 @@ implementation {
 	  	
 	ReliableSerialC.SubSend -> DataSender;
 	ReliableSerialC.AckSend -> AckSender;
-	ReliableSerialC.SubReceive -> AM.Receive[AM_RELIABLE_MSG];
-	ReliableSerialC.AckReceive -> AM.Receive[AM_ACK_MSG];
+	//ReliableSerialC.SubReceive -> AM.Receive[AM_RELIABLE_MSG];
+	//ReliableSerialC.AckReceive -> AM.Receive[AM_ACK_MSG];
 	ReliableSerialC.Timer -> AckTimer;
 }
