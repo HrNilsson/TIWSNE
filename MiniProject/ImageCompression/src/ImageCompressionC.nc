@@ -30,87 +30,31 @@ module ImageCompressionC{
  
 }
 
+
 implementation{
 	uint8_t state = IDLE;
 	message_t msg;
 	uint8_t packetId = 0;
 	bool waitingForAck = FALSE;
-	bool sendingImage = FALSE;
 	bool busySending = FALSE;
 	
 	nx_uint8_t flashDataUncompressed[NO_OF_UNCOMPRESSED_PIXELS];
 	nx_uint8_t flashDataCompressed[NO_OF_COMPRESSED_PIXELS];
 	
-	void MainLoop(void) {
-	
-		while(1) {
-	
-			switch(state) {
-				case IDLE:
-				call AMControl.stop();
-				break;
-	
-				case RECEIVING_FROM_PC:
-				call AMControl.start();
-				break;
-	
-				case SENDING_UNCOMPRESSED_TO_MOTE:
-				sendingImage = TRUE;
-	
-				while(sendingImage) 
-				{
-					// Read from flash
-	
-					//flashDataUncompressed = restore(); 
-	
-					// increment packetId
-					packetId++;
-					UncompressedMsg* msgPl = (UncompressedMsg*)(call UncompressedPacket.getPayload(&msg, sizeof (UncompressedMsg)));
-					msgPl->seqNo = packetId;
-					msgPl->pixels = flashDataUncompressed;
-	
-					// Transmit
-					call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(flashDataUncompressed)); 
-					// Start timer
-					call Timer.startOneShot(TIMEOUT_WAIT_FOR_ACK);
-					// wait for ack
+	// Helper Function Prototypes
+	void UncompressedSendingFunction(void);
+	void MainLoop(void);
 	
 	
-					if(packetId == TOTAL_UNCOMPRESSED_PACKETS)
-					{
-						sendingImage = FALSE;
-					}	
-				}
-				break;
-	
-				case SENDING_COMPRESSED_TO_MOTE:
-				break;
-	
-				case RECEIVING_FROM_MOTE:
-				break;
-	
-				case SENDING_UNCOMPRESSED_TO_PC:
-				break;
-	
-				case SENDING_COMPRESSED_TO_PC:
-				break;
-	
-				default:
-				break;	
-	
-			}
-		}	
-	}
 	
 	event void Boot.booted(){
-		call NotifyButton.enable(); // Enable key press
+			call NotifyButton.enable(); // Enable key press
 	
 		MainLoop(); // Start main loop	
 	}
 
-
 	event void AMControl.startDone(error_t error){
-		// Just entered RECEIVE_FROM_PC state:
+			// Just entered RECEIVE_FROM_PC state:
 	
 	
 	}
@@ -119,24 +63,17 @@ implementation{
 	
 	}
 
-
-
 	event void CompressedSend.sendDone(message_t *pMsg, error_t error){
 	
-	}
-
-	
+	}	
 
 	event message_t * CompressedReceive.receive(message_t *pMsg, void *payload, uint8_t len){
-		return pMsg;
+			return pMsg;
 	}
-	
 	
 	event void UncompressedSend.sendDone(message_t *pMsg, error_t error){
 	
 	}
-
-	
 
 	event message_t * UncompressedReceive.receive(message_t *pMsg, void *payload, uint8_t len){
 	
@@ -164,9 +101,8 @@ implementation{
 	
 	}
 
-
 	event void NotifyButton.notify(button_state_t btnState){
-		if ( btnState == BUTTON_PRESSED ) {
+			if ( btnState == BUTTON_PRESSED ) {
 			state = ++state % NUMBER_OF_STATES;
 			call Leds.set(state); //This should be turned of when battery consumption is compared. 
 		} 
@@ -219,4 +155,109 @@ implementation{
 	event void CompressedRestore.readDone(storage_addr_t addr,void * buf, storage_len_t len, error_t error)
 	{
 	}
+	
+	void UncompressedSendingFunction(void) {
+
+		bool sendingImage = TRUE;
+	
+		while(sendingImage) 
+		{
+			// Read from flash
+	
+			//flashDataUncompressed = restore(); 
+	
+			// increment packetId
+			packetId++;
+			UncompressedMsg* msgPl = (UncompressedMsg*)(call UncompressedPacket.getPayload(&msg, sizeof (UncompressedMsg)));
+			msgPl->seqNo = packetId;
+			msgPl->pixels = flashDataUncompressed;
+	
+			// Transmit
+			call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(flashDataUncompressed)); 
+			// Start timer
+			call Timer.startOneShot(TIMEOUT_WAIT_FOR_ACK);
+			// wait for ack
+	
+	
+			if(packetId == TOTAL_UNCOMPRESSED_PACKETS)
+			{
+				sendingImage = FALSE;
+			}	
+		}
+	}
+	
+	void MainLoop(void) {
+	
+		while(1) {
+	
+			switch(state) {
+				case IDLE:
+				call AMControl.stop();
+				break;
+	
+				case RECEIVING_FROM_PC:
+				call AMControl.start();
+				break;
+	
+				case SENDING_UNCOMPRESSED_TO_MOTE:
+	
+				UncompressedSendingFunction();
+	
+				break;
+	
+				case SENDING_COMPRESSED_TO_MOTE:
+				break;
+	
+				case RECEIVING_FROM_MOTE:
+				break;
+	
+				case SENDING_UNCOMPRESSED_TO_PC:
+				break;
+	
+				case SENDING_COMPRESSED_TO_PC:
+				break;
+	
+				default:
+				break;	
+	
+			}
+		}	
+	}
+	
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
