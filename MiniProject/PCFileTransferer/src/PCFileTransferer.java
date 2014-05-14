@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import net.tinyos.message.Message;
@@ -34,7 +33,7 @@ public class PCFileTransferer implements MessageListener {
 		try {
 			inFile = new FileInputStream(inFilename);
 			
-			short counter = 1;
+			//short counter = 1;
 			
 			while(bytesSent < fileSize)
 			{
@@ -54,9 +53,10 @@ public class PCFileTransferer implements MessageListener {
 					payload.setElement_data(i, bFileChunk[i]);
 				}
 				
-				payload.setElement_data(0, counter);
-				payload.setElement_data(111, counter);
-				counter = (short) (++counter % 7);
+				//testing
+				//payload.setElement_data(0, counter);
+				//payload.setElement_data(111, counter);
+				//counter = (short) (++counter % 7);
 				
 				moteIF.send(moteId, payload);
 				
@@ -112,7 +112,7 @@ public class PCFileTransferer implements MessageListener {
 			e.printStackTrace();
 		}
 		
-		System.out.println("Received serialdata packet");
+		//System.out.println("Received serialdata packet");
 	}	
 
 	private static void usage() {
@@ -181,6 +181,8 @@ public class PCFileTransferer implements MessageListener {
 		{
 			serial.receiveFile(receiveFilePath, moteId);
 		}
+		
+		phoenix.shutdown(); //close connection to mote source
 	}
 
 }

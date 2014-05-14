@@ -58,36 +58,38 @@ module DataTransfererC {
 }
 implementation {
 	message_t packet;
-	bool locked = FALSE;
-	uint16_t counter = 0;
+	uint8_t counter = 0;
 
 	event void Boot.booted() {
-		printf("len: %u\n", sizeof(serialdata_msg_t));
-		printfflush();
 		call Control.start();
+	}
+	
+	void sendNextTestPacket()
+	{
+		serialdata_msg_t * rcm = call AMSend.getPayload(&packet, sizeof(serialdata_msg_t));
+		
+		rcm->data[0] = counter;
+		rcm->data[111] = counter;
+		counter++;
+				
+		if(call AMSend.send(AM_BROADCAST_ADDR, &packet, sizeof(serialdata_msg_t)) != SUCCESS)
+			printf("send success\n");
+		else
+			printf("send error\n");
+			
+		printfflush();
 	}
 
 	event void Control.startDone(error_t err) {
-		if(err == SUCCESS) 
-			call MilliTimer.startPeriodic(1000);
+		sendNextTestPacket();
+		printf("startDone\n");
+		printfflush();
 	}
 
 	event void Control.stopDone(error_t err) {
 	}
 
-	event void MilliTimer.fired() {
-		serialdata_msg_t * rcm = call AMSend.getPayload(&packet,
-				sizeof(serialdata_msg_t));
-
-		counter++;
-
-		if( ! rcm || locked) 
-			return;
-
-		//rcm->counter = counter;
-		//if(call AMSend.send(AM_BROADCAST_ADDR, &packet, sizeof(serialdata_msg_t)) == SUCCESS) 
-			//locked = TRUE;
-		
+	event void MilliTimer.fired() {		
 	}
 
 	event message_t * Receive.receive(message_t * bufPtr, void * payload,
@@ -115,6 +117,6 @@ implementation {
 	}
 
 	event void AMSend.sendDone(message_t * bufPtr, error_t error) {
-		locked = FALSE;
+		sendNextTestPacket();
 	}
 }
