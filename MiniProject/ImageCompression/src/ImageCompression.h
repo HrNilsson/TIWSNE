@@ -13,7 +13,8 @@ enum AM_ID_TYPES {
  	SENDING_UNCOMPRESSED_TO_MOTE,
  	SENDING_COMPRESSED_TO_MOTE,
  	
- 	RECEIVING_FROM_MOTE,
+ 	RECEIVING_UNCOMPRESSED_FROM_MOTE,
+ 	RECEIVING_COMPRESSED_FROM_MOTE,
  	SENDING_UNCOMPRESSED_TO_PC,
  	SENDING_COMPRESSED_TO_PC,
  	NUMBER_OF_STATES 	
@@ -35,6 +36,8 @@ enum AM_ID_TYPES {
 typedef enum TaskFlag {
 	INIT,
 	READ_FLASH,
+	SAVE_FLASH,
+	COMPRESS,
 	SEND_PACKET,
 	RETRANSMIT_PACKET,
 	START_TIMER,
@@ -60,10 +63,10 @@ typedef nx_struct UncompressedMsg {
   nx_uint16_t seqNo;
 } UncompressedMsg;
 
-typedef nx_struct CompressedPictureMsg {
+typedef nx_struct CompressedMsg {
 	imageVector pixelVectors[NO_OF_COMPRESSED_PIXELS]; // 108 bytes
 	nx_uint16_t seqNo;  
-} CompressedPictureMsg;
+} CompressedMsg;
 
 typedef nx_struct AckMsg {
 	nx_uint16_t seqNo;  
