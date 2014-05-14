@@ -9,12 +9,16 @@
 <parameter ask="false" name="Mote Id"/>
 </extra>
 </make-extras>
-<includes/>
+<includes>
+<include global="false" include="source" ncc="true" recursive="false">/opt/tinyos-2.1.1/tos/lib/printf</include>
+</includes>
 <excludes>
 <exclude>.*\.svn.*</exclude>
 </excludes>
 <typedefs/>
-<macros/>
+<macros>
+<macro content="113" name="TOSH_DATA_LENGTH" ncc="true" yeti="true"/>
+</macros>
 <boards/>
 <no-std-incl>false</no-std-incl>
 <component/>
