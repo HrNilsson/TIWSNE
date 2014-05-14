@@ -1,5 +1,6 @@
 #include "ImageCompression.h"
 #include "UserButton.h"
+#include "serialdata.h"
 
 module ImageCompressionC{
 	uses interface Boot;
@@ -28,6 +29,9 @@ module ImageCompressionC{
 	uses interface BlockWrite as CompressedStore;
 	uses interface BlockRead as CompressedRestore;
  
+ 	uses interface SplitControl as SerialControl;
+	uses interface Receive as SerialReceive;
+	uses interface AMSend as SerialAMSend;
 }
 
 implementation{
@@ -217,6 +221,23 @@ implementation{
 	}
  
 	event void CompressedRestore.readDone(storage_addr_t addr,void * buf, storage_len_t len, error_t error)
+	{
+	}
+
+	event void SerialControl.startDone(error_t error)
+	{
+	}
+
+	event void SerialControl.stopDone(error_t error)
+	{
+	}
+
+	event message_t * SerialReceive.receive(message_t *msg, void *payload, uint8_t len)
+	{
+		return msg;
+	}
+
+	event void SerialAMSend.sendDone(message_t *msg, error_t error)
 	{
 	}
 }
