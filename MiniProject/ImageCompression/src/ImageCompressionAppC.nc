@@ -22,7 +22,7 @@ implementation {
 	// Transceiver for uncompressed data format 
 	components new AMSenderC(AM_UNCOMPRESSED_IMAGE) as UncompressedSender;
 	components new AMReceiverC(AM_UNCOMPRESSED_IMAGE) as UncompressedReceiver;
-
+	
 	components new BlockStorageC(VOLUME_PICTURERAW) as UncompressedFlashVolume;
 	components new BlockStorageC(VOLUME_PICTURECOMPRESSED) as CompressedFlashVolume;	
 	

@@ -22,7 +22,6 @@ module ImageCompressionC{
 	uses interface Packet as UncompressedPacket;
 	uses interface AMPacket as UncompressedAMPacket;
 	
-	
 	uses interface BlockWrite as UncompressedStore;
 	uses interface BlockRead as UncompressedRestore;
  
@@ -75,11 +74,13 @@ implementation{
 	
 				case RECEIVING_FROM_PC:
 					taskFlag = INIT;
+					//storageAddr = 0;
 					break;
 	
 				case SENDING_UNCOMPRESSED_TO_MOTE:
 					taskFlag = INIT;
 					transSeqNo = 0;
+					//storageAddr = 0;
 					
 					call AMControl.start();
 					post SendUncompressedToMoteTask();
@@ -88,24 +89,30 @@ implementation{
 				case SENDING_COMPRESSED_TO_MOTE:
 					taskFlag = INIT;
 					transSeqNo = 0;
+					//storageAddr = 0;
+					post SendCompressedToMoteTask();
 					break;
 	
 				case RECEIVING_UNCOMPRESSED_FROM_MOTE:
 					taskFlag = INIT;
 					transSeqNo = 0;
+					//storageAddr = 0;
 					break;
 	
 				case RECEIVING_COMPRESSED_FROM_MOTE:
 					taskFlag = INIT;
 					transSeqNo = 0;
+					//storageAddr = 0;
 					break;
 	
 				case SENDING_UNCOMPRESSED_TO_PC:
 					taskFlag = INIT;
+					//storageAddr = 0;
 					break;
 	
 				case SENDING_COMPRESSED_TO_PC:
 					taskFlag = INIT;
+					//storageAddr = 0;
 					break;
 	
 				default:
@@ -126,7 +133,9 @@ implementation{
 	}
 
 	event void CompressedSend.sendDone(message_t *pMsg, error_t error){
-		call Timer.startOneShot(TIMEOUT_WAIT_FOR_ACK);
+		if (state == SENDING_COMPRESSED_TO_MOTE) { 
+			call Timer.startOneShot(TIMEOUT_WAIT_FOR_ACK);
+		}
 	}	
 
 	event message_t * CompressedReceive.receive(message_t *pMsg, void *payload, uint8_t len){
@@ -148,10 +157,16 @@ implementation{
 				if(compressedMsg->seqNo == transSeqNo) 
 				{
 					memcpy(&flashDataCompressed, &(compressedMsg->pixelVectors), sizeof(flashDataCompressed));
-					transSeqNo++;
 					
+					taskFlag = SAVE_FLASH;
 					post ReceivingCompressedFromMoteTask();
-				}	
+				} 
+				else if (compressedMsg->seqNo == transSeqNo-1) 
+				{
+					taskFlag = RETRANSMIT_PACKET;
+					post ReceivingCompressedFromMoteTask();
+				}
+					
 			}
 		}
 	
@@ -159,7 +174,9 @@ implementation{
 	}
 	
 	event void UncompressedSend.sendDone(message_t *pMsg, error_t error){
-		call Timer.startOneShot(TIMEOUT_WAIT_FOR_ACK);
+		if (state == SENDING_UNCOMPRESSED_TO_MOTE) { 
+			call Timer.startOneShot(TIMEOUT_WAIT_FOR_ACK);
+		}
 	}
 
 	event message_t * UncompressedReceive.receive(message_t *pMsg, void *payload, uint8_t len){
@@ -181,10 +198,16 @@ implementation{
 				if(uncompressedMsg->seqNo == transSeqNo) 
 				{
 					memcpy(&flashDataUncompressed, &(uncompressedMsg->pixels), sizeof(flashDataUncompressed));
-					transSeqNo++;
 					
+					taskFlag = SAVE_FLASH;
 					post ReceivingUncompressedFromMoteTask();
 				}	
+				else if (uncompressedMsg->seqNo == transSeqNo-1) 
+				{
+					taskFlag = RETRANSMIT_PACKET;
+					post ReceivingUncompressedFromMoteTask();
+					
+				}
 			}
 		}
 	
@@ -210,6 +233,10 @@ implementation{
 
 	event void UncompressedStore.writeDone(storage_addr_t addr, void * buf, storage_len_t len, error_t error)
 	{
+		if(state == RECEIVING_UNCOMPRESSED_FROM_MOTE) {
+			taskFlag = SEND_PACKET;
+			post ReceivingUncompressedFromMoteTask();
+		}
 	}
  
 	event void UncompressedStore.eraseDone(error_t error)
@@ -428,17 +455,24 @@ implementation{
 				case SEND_PACKET:
 				{
 					// Update payload
-					AckMsg* msgPl = (AckMsg*)(call CompressedPacket.getPayload(&msg, sizeof (AckMsg)));
-					msgPl->seqNo = ++transSeqNo;
+					AckMsg* msgPl = (AckMsg*)(call UncompressedPacket.getPayload(&msg, sizeof (AckMsg)));
+					msgPl->seqNo = transSeqNo;
 			
 					// Transmit
-					call CompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(CompressedMsg));
+					call UncompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));
+					transSeqNo++;
 					break; 			
 				}
 				
 				case RETRANSMIT_PACKET:
 				{
-						
+					// Update payload
+					AckMsg* msgPl = (AckMsg*)(call UncompressedPacket.getPayload(&msg, sizeof (AckMsg)));
+					msgPl->seqNo = transSeqNo - 1;
+			
+					// Transmit
+					call UncompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));	
+					break;
 				}
 				
 				default:
@@ -448,9 +482,45 @@ implementation{
 	}
 	
 	task void ReceivingCompressedFromMoteTask() {
-		
-		// save flashDataCompressed in flash
-		// Send ack
+		if(state == RECEIVING_COMPRESSED_FROM_MOTE)
+		{
+			switch(taskFlag) {
+				case SAVE_FLASH:
+				{
+					// save flashDataCompressed in flash
+					
+					//update storage address:
+					// storageAddr += over nine thousand!
+					break;
+				}
+				
+				case SEND_PACKET:
+				{
+					// Update payload
+					AckMsg* msgPl = (AckMsg*)(call CompressedPacket.getPayload(&msg, sizeof (AckMsg)));
+					msgPl->seqNo = transSeqNo;
+			
+					// Transmit
+					call CompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));
+					transSeqNo++;
+					break; 			
+				}
+				
+				case RETRANSMIT_PACKET:
+				{
+					// Update payload
+					AckMsg* msgPl = (AckMsg*)(call CompressedPacket.getPayload(&msg, sizeof (AckMsg)));
+					msgPl->seqNo = transSeqNo - 1;
+			
+					// Transmit
+					call CompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));	
+					break;
+				}
+				
+				default:
+					break;
+			}
+		}
 	}
 	
 	task void SendUncompressedToPcTask() {
@@ -460,7 +530,4 @@ implementation{
 	task void SendCompressedToPcTask() {
 		
 	}
-
-
-
 }
