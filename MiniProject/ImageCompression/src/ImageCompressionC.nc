@@ -278,6 +278,10 @@ implementation{
  
 	event void CompressedStore.writeDone(storage_addr_t addr, void * buf, storage_len_t len, error_t error)
 	{
+		if(state == RECEIVING_COMPRESSED_FROM_MOTE) {
+			taskFlag = SEND_PACKET;
+			post ReceivingCompressedFromMoteTask();
+		}
 	}
  
 	event void CompressedStore.eraseDone(error_t error)
@@ -397,6 +401,8 @@ implementation{
 				case COMPRESS:
 				{
 					//Compress this shiiiiiit to flashDataCompressed
+					taskFlag = SEND_PACKET;
+					post SendCompressedToMoteTask();
 					break;
 				}
 				
@@ -446,7 +452,7 @@ implementation{
 				case SAVE_FLASH:
 				{
 					// save flashDataUncompressed in flash
-					
+					call UncompressedStore.write(storageAddr, &flashDataUncompressed, sizeof(flashDataUncompressed));
 					//update storage address:
 					// storageAddr += over nine thousand!
 					break;
@@ -488,7 +494,7 @@ implementation{
 				case SAVE_FLASH:
 				{
 					// save flashDataCompressed in flash
-					
+					call CompressedStore.write(storageAddr, &flashDataCompressed, sizeof(flashDataCompressed));
 					//update storage address:
 					// storageAddr += over nine thousand!
 					break;
