@@ -21,7 +21,7 @@ enum AM_ID_TYPES {
  } STATE;
  
  enum WIRELESS_DEFINES {
- 	TOTAL_UNCOMPRESSED_PACKETS = 586, // 256*256/(122 bytes pr. packet) 
+ 	TOTAL_UNCOMPRESSED_PACKETS = 586, // 256*256/(112 bytes pr. packet) 
  	TOTAL_COMPRESSED_PACKETS = 469, //Uncompressed*4/5 Assuming compression of << 2
  	NO_OF_UNCOMPRESSED_PIXELS = 110,
  	NO_OF_COMPRESSED_PIXELS = 27,

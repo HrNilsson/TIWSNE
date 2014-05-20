@@ -45,6 +45,9 @@ implementation{
 	nx_uint8_t flashDataUncompressed[NO_OF_UNCOMPRESSED_PIXELS];
 	nx_uint8_t flashDataCompressed[NO_OF_COMPRESSED_PIXELS];
 	
+	//-------------------------HELPER PROTOTYPES---------------------------------//
+	void StartReceiveFromPcTask();
+	
 	//--------------------------TASK PROTOTYPES----------------------------------//
 	task void ReceivingFromPcTask();
 	task void SendUncompressedToMoteTask();
@@ -73,6 +76,7 @@ implementation{
 					break;
 	
 				case RECEIVING_FROM_PC:
+					StartReceiveFromPcTask();
 					taskFlag = INIT;
 					//storageAddr = 0;
 					break;
@@ -83,7 +87,7 @@ implementation{
 					//storageAddr = 0;
 					
 					call AMControl.start();
-					post SendUncompressedToMoteTask();
+					//post SendUncompressedToMoteTask();
 					break;
 	
 				case SENDING_COMPRESSED_TO_MOTE:
@@ -125,7 +129,7 @@ implementation{
 //---------------------------EVENTS - WIRELESS TRANMISSION------------------------------------------//
 	
 	event void AMControl.startDone(error_t error){
-	
+		post SendUncompressedToMoteTask();
 	}
 	
 	event void AMControl.stopDone(error_t error){
@@ -323,7 +327,12 @@ implementation{
 	{
 	}
 
+//----------------------------------HELPERS-------------------------------------//
 
+	void StartReceiveFromPcTask()
+	{
+		call SerialControl.start();
+	}
 
 //-----------------------------------TASKS--------------------------------------//
 
