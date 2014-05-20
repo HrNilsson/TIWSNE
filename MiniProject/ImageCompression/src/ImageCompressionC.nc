@@ -78,7 +78,7 @@ implementation{
 					break;
 	
 				case SENDING_UNCOMPRESSED_TO_MOTE:
-					taskFlag = INIT;
+					taskFlag = READ_FLASH;
 					transSeqNo = 0;
 					//storageAddr = 0;
 					
@@ -87,7 +87,7 @@ implementation{
 					break;
 	
 				case SENDING_COMPRESSED_TO_MOTE:
-					taskFlag = INIT;
+					taskFlag = taskFlag;
 					transSeqNo = 0;
 					//storageAddr = 0;
 					post SendCompressedToMoteTask();
@@ -336,7 +336,7 @@ implementation{
 		if(state == SENDING_UNCOMPRESSED_TO_MOTE)
 		{
 			switch(taskFlag) {
-				case INIT:
+				case READ_FLASH:
 				{
 					// Read from flash
 					call UncompressedRestore.read(storageAddr, &flashDataUncompressed, sizeof(flashDataUncompressed)); // CHECK THIS!?
@@ -371,6 +371,7 @@ implementation{
 				{
 					if(transSeqNo != TOTAL_UNCOMPRESSED_PACKETS)
 					{
+						taskFlag = READ_FLASH;
 						post SendUncompressedToMoteTask();	
 					}
 					break;
@@ -389,7 +390,7 @@ implementation{
 		if(state == SENDING_COMPRESSED_TO_MOTE)
 		{
 			switch(taskFlag) {
-				case INIT:
+				case READ_FLASH:
 				{
 					// Read from flash
 					call UncompressedRestore.read(storageAddr, &flashDataUncompressed, sizeof(flashDataUncompressed)); // CHECK THIS!?
@@ -432,6 +433,7 @@ implementation{
 				{
 					if(transSeqNo != TOTAL_COMPRESSED_PACKETS)
 					{
+						taskFlag = READ_FLASH;
 						post SendCompressedToMoteTask();	
 					}
 					break;
