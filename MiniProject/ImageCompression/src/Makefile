@@ -1,3 +1,4 @@
 COMPONENT=ImageCompressionAppC
+
 include $(MAKERULES)
 
