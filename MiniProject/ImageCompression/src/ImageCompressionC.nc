@@ -31,8 +31,10 @@ module ImageCompressionC{
  	uses interface SplitControl as SerialControl;
 	uses interface Receive as SerialReceive;
 	uses interface AMSend as SerialAMSend;
+	uses interface Set<bool> as SerialFlow;
 	
 	uses interface QuantCompress;
+
 }
 
 implementation{
@@ -45,6 +47,7 @@ implementation{
 	
 	TaskFlag taskFlag = INIT;
 	
+	nx_uint8_t receiveFromPCBuffer[MAX_SERIALDATA_LENGTH];
 	nx_uint8_t flashDataUncompressed[NO_OF_UNCOMPRESSED_PIXELS];
 	nx_uint32_t flashDataCompressed[NO_OF_COMPRESSED_PIXELS];
 	
@@ -96,7 +99,7 @@ implementation{
 					break;
 	
 				case SENDING_COMPRESSED_TO_MOTE:
-					taskFlag = taskFlag;
+					taskFlag = READ_FLASH;
 					transSeqNo = 0;
 					flashCnt = 0;
 					post SendCompressedToMoteTask();
@@ -209,8 +212,6 @@ implementation{
 					memcpy(&flashDataUncompressed, &(uncompressedMsg->pixels), sizeof(flashDataUncompressed));
 					
 					taskFlag = SAVE_FLASH;
- 					
- 					BlinkLeds();
 					post ReceivingUncompressedFromMoteTask();
 				}	
 				else if (uncompressedMsg->seqNo == transSeqNo-1) 
@@ -488,8 +489,11 @@ implementation{
 				{
 					if(transSeqNo != TOTAL_COMPRESSED_PACKETS)
 					{
+						BlinkLeds();
 						taskFlag = READ_FLASH;
 						post SendCompressedToMoteTask();	
+					} else {
+						call Leds.set(0);
 					}
 					break;
 				}
@@ -508,6 +512,8 @@ implementation{
 			switch(taskFlag) {
 				case SAVE_FLASH:
 				{
+					BlinkLeds();
+					
 					if (flashCnt < TOTAL_UNCOMPRESSED_PACKETS)
 					{
 						call UncompressedStore.write(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
@@ -573,6 +579,8 @@ implementation{
 			switch(taskFlag) {
 				case SAVE_FLASH:
 				{
+					BlinkLeds();
+					
 					if (flashCnt < TOTAL_COMPRESSED_PACKETS)
 					{
 						call CompressedStore.write(flashCnt*NO_OF_COMPRESSED_PIXELS*4, &flashDataCompressed, NO_OF_COMPRESSED_PIXELS*4);
@@ -594,6 +602,12 @@ implementation{
 					// Transmit
 					call CompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));
 					transSeqNo++;
+					
+					if(transSeqNo == TOTAL_COMPRESSED_PACKETS + 1)  
+ 					{
+ 						taskFlag = POST_TASK;
+ 						post ReceivingCompressedFromMoteTask();
+ 					}
 					break; 			
 				}
 				
@@ -604,9 +618,21 @@ implementation{
 					msgPl->seqNo = transSeqNo - 1;
 			
 					// Transmit
-					call CompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));	
+					call CompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));
+					
+					if(transSeqNo == TOTAL_COMPRESSED_PACKETS + 1)  
+ 					{
+ 						taskFlag = POST_TASK;
+ 						post ReceivingCompressedFromMoteTask();
+ 					}	
 					break;
 				}
+				
+				case POST_TASK:
+				{
+					call Leds.set(0);
+					break;
+				} 
 				
 				default:
 					break;

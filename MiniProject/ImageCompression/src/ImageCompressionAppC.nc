@@ -57,6 +57,7 @@ implementation {
 	App.SerialControl -> SerialActiveMessageC;
   	App.SerialReceive -> ReliableSerialC;
   	App.SerialAMSend -> ReliableSerialC;
+  	App.SerialFlow -> ReliableSerialC;
   	
   	App.QuantCompress -> Comp;
   	
