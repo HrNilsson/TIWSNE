@@ -32,6 +32,9 @@ module ImageCompressionC{
 	uses interface Receive as SerialReceive;
 	uses interface AMSend as SerialAMSend;
 	uses interface Set<bool> as SerialFlow;
+	
+	uses interface QuantCompress as Comp;
+
 }
 
 implementation{
@@ -41,19 +44,19 @@ implementation{
 	bool toggleLeds;
 	nx_uint16_t transSeqNo;
 	nx_uint16_t flashCnt;
+	message_t serialPacket;
 	
 	TaskFlag taskFlag = INIT;
 	
-	nx_uint8_t receiveFromPCBuffer[MAX_SERIALDATA_LENGTH];
+	nx_uint8_t PCSerialBuffer[MAX_SERIALDATA_LENGTH];
 	nx_uint8_t flashDataUncompressed[NO_OF_UNCOMPRESSED_PIXELS];
-	nx_uint32_t flashDataCompressed[NO_OF_COMPRESSED_PIXELS];
+	imageVector flashDataCompressed[NO_OF_COMPRESSED_PIXELS];
 	
 	//-------------------------HELPER PROTOTYPES---------------------------------//
 	void StartReceiveFromPcTask();
 	void BlinkLeds();
 	
 	//--------------------------TASK PROTOTYPES----------------------------------//
-	task void ReceivingFromPcTask();
 	task void SendUncompressedToMoteTask();
 	task void SendCompressedToMoteTask();
 	task void ReceivingUncompressedFromMoteTask();
@@ -82,9 +85,9 @@ implementation{
 					break;
 	
 				case RECEIVING_FROM_PC:
+					flashCnt = 0;
 					StartReceiveFromPcTask();
 					taskFlag = INIT;
-					flashCnt = 0;
 					break;
 	
 				case SENDING_UNCOMPRESSED_TO_MOTE:
@@ -96,14 +99,14 @@ implementation{
 					break;
 	
 				case SENDING_COMPRESSED_TO_MOTE:
-					taskFlag = taskFlag;
+					taskFlag = READ_FLASH;
 					transSeqNo = 0;
 					flashCnt = 0;
 					post SendCompressedToMoteTask();
 					break;
 	
 				case RECEIVING_UNCOMPRESSED_FROM_MOTE:
-					taskFlag = INIT;
+					taskFlag = READ_FLASH;
 					transSeqNo = 1;
 					flashCnt = 0;
 					break;
@@ -116,12 +119,13 @@ implementation{
 	
 				case SENDING_UNCOMPRESSED_TO_PC:
 					taskFlag = INIT;
-					//storageAddr = 0;
+					flashCnt = 0;
+					call SerialControl.start();
 					break;
 	
 				case SENDING_COMPRESSED_TO_PC:
 					taskFlag = INIT;
-					//storageAddr = 0;
+					flashCnt = 0;
 					break;
 	
 				default:
@@ -209,8 +213,6 @@ implementation{
 					memcpy(&flashDataUncompressed, &(uncompressedMsg->pixels), sizeof(flashDataUncompressed));
 					
 					taskFlag = SAVE_FLASH;
- 					
- 					BlinkLeds();
 					post ReceivingUncompressedFromMoteTask();
 				}	
 				else if (uncompressedMsg->seqNo == transSeqNo-1) 
@@ -249,6 +251,11 @@ implementation{
 			taskFlag = SEND_PACKET;
 			post ReceivingUncompressedFromMoteTask();
 		}
+		else if(state == RECEIVING_FROM_PC)
+		{
+			flashCnt ++;
+			call SerialFlow.set(TRUE);
+		}
 	}
  
 	event void UncompressedStore.eraseDone(error_t error)
@@ -282,6 +289,13 @@ implementation{
 				taskFlag = COMPRESS;
 				post SendCompressedToMoteTask();
 				break;
+			}
+			
+			case SENDING_UNCOMPRESSED_TO_PC:
+			{
+				flashCnt++;
+				taskFlag = SEND_TO_PC;
+				post SendUncompressedToPcTask();	
 			}
 			
 			default:
@@ -320,6 +334,10 @@ implementation{
 
 	event void SerialControl.startDone(error_t error)
 	{
+		if(state == SENDING_UNCOMPRESSED_TO_PC)
+		{
+			post SendUncompressedToPcTask();
+		}
 	}
 
 	event void SerialControl.stopDone(error_t error)
@@ -330,11 +348,38 @@ implementation{
 
 	event message_t * SerialReceive.receive(message_t *pMsg, void *payload, uint8_t len)
 	{
+		call SerialFlow.set(FALSE);
+		
+		memcpy(PCSerialBuffer,payload,MAX_SERIALDATA_LENGTH);
+		
+		if(flashCnt < SERIAL_DATA_NUMBER_OF_PACKETS)
+		{
+			call UncompressedStore.write(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
+		}
+		else if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS)
+		{
+			call UncompressedStore.write(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,SERIAL_DATA_REST);	
+			call SerialControl.stop(); 	
+		}
+		else
+		{
+			//Error to many packets received from PC
+		}
+		
 		return pMsg;
 	}
 
 	event void SerialAMSend.sendDone(message_t *pMsg, error_t error)
 	{
+		switch(state)
+		{
+			case SENDING_UNCOMPRESSED_TO_PC:
+			{
+				taskFlag = READ_FLASH;
+				post SendUncompressedToPcTask();
+				break;
+			}
+		}
 	}
 
 //----------------------------------HELPERS-------------------------------------//
@@ -359,9 +404,6 @@ implementation{
 
 //-----------------------------------TASKS--------------------------------------//
 
-	task void ReceivingFromPcTask() {
-		// Save everything uncompressed
-	}
 	
 	task void SendUncompressedToMoteTask() {
 
@@ -377,7 +419,7 @@ implementation{
 					}
 					else if (flashCnt >= TOTAL_UNCOMPRESSED_PACKETS)
 					{
-						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, UNCOMPRESSED_IMAGE_REST); 	
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, UNCOMPRESSED_IMAGE_REST);
 					}
 
 					break;
@@ -428,6 +470,8 @@ implementation{
 	
 	task void SendCompressedToMoteTask() {
 		
+		
+		
 		if(state == SENDING_COMPRESSED_TO_MOTE)
 		{
 			switch(taskFlag) {
@@ -446,7 +490,14 @@ implementation{
 			
 				case COMPRESS:
 				{
+					uint8_t i = 0; 
 					//Compress this shiiiiiit to flashDataCompressed
+					for(i=0 ; i <= NO_OF_UNCOMPRESSED_PIXELS ; i+5) {
+						
+						flashDataCompressed[i/5] = call Comp.compressVector(flashDataUncompressed+i);
+						
+					}
+					
 					taskFlag = SEND_PACKET;
 					post SendCompressedToMoteTask();
 					break;
@@ -478,8 +529,11 @@ implementation{
 				{
 					if(transSeqNo != TOTAL_COMPRESSED_PACKETS)
 					{
+						BlinkLeds();
 						taskFlag = READ_FLASH;
 						post SendCompressedToMoteTask();	
+					} else {
+						call Leds.set(0);
 					}
 					break;
 				}
@@ -498,6 +552,8 @@ implementation{
 			switch(taskFlag) {
 				case SAVE_FLASH:
 				{
+					BlinkLeds();
+					
 					if (flashCnt < TOTAL_UNCOMPRESSED_PACKETS)
 					{
 						call UncompressedStore.write(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
@@ -563,6 +619,8 @@ implementation{
 			switch(taskFlag) {
 				case SAVE_FLASH:
 				{
+					BlinkLeds();
+					
 					if (flashCnt < TOTAL_COMPRESSED_PACKETS)
 					{
 						call CompressedStore.write(flashCnt*NO_OF_COMPRESSED_PIXELS*4, &flashDataCompressed, NO_OF_COMPRESSED_PIXELS*4);
@@ -584,6 +642,12 @@ implementation{
 					// Transmit
 					call CompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));
 					transSeqNo++;
+					
+					if(transSeqNo == TOTAL_COMPRESSED_PACKETS + 1)  
+ 					{
+ 						taskFlag = POST_TASK;
+ 						post ReceivingCompressedFromMoteTask();
+ 					}
 					break; 			
 				}
 				
@@ -594,9 +658,21 @@ implementation{
 					msgPl->seqNo = transSeqNo - 1;
 			
 					// Transmit
-					call CompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));	
+					call CompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));
+					
+					if(transSeqNo == TOTAL_COMPRESSED_PACKETS + 1)  
+ 					{
+ 						taskFlag = POST_TASK;
+ 						post ReceivingCompressedFromMoteTask();
+ 					}	
 					break;
 				}
+				
+				case POST_TASK:
+				{
+					call Leds.set(0);
+					break;
+				} 
 				
 				default:
 					break;
@@ -604,11 +680,66 @@ implementation{
 		}
 	}
 	
-	task void SendUncompressedToPcTask() {
+	task void SendUncompressedToPcTask() 
+	{
+		switch(taskFlag)
+		{
+			case READ_FLASH:
+			{
+				if(flashCnt < SERIAL_DATA_NUMBER_OF_PACKETS)
+				{
+					call UncompressedRestore.read(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
+				}
+				else if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS)
+				{
+					call UncompressedRestore.read(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,SERIAL_DATA_REST);
+				} 
+				break;
+			}
+			case SEND_TO_PC:
+			{
+				void * payload = call SerialAMSend.getPayload(&serialPacket, MAX_SERIALDATA_LENGTH);
+				
+				memcpy(payload,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
+				
+				call SerialAMSend.send(AM_BROADCAST_ADDR, &serialPacket, MAX_SERIALDATA_LENGTH);
+			
+				
+				break;
+			}
+		}
+		
 		
 	}
 	
-	task void SendCompressedToPcTask() {
+	task void SendCompressedToPcTask() 
+	{
+		switch(taskFlag)
+		{
+			case READ_FLASH:
+			{
+				if(flashCnt < TOTAL_COMPRESSED_PACKETS)
+				{
+					call CompressedRestore.read(flashCnt*NO_OF_COMPRESSED_PIXELS*4, &flashDataCompressed, NO_OF_COMPRESSED_PIXELS*4);
+				}
+				else if(flashCnt == TOTAL_COMPRESSED_PACKETS)
+				{
+					call CompressedRestore.read(flashCnt*NO_OF_COMPRESSED_PIXELS*4, &flashDataCompressed, COMPRESSED_IMAGE_REST);
+				} 
+				break;
+			}
+			case SEND_TO_PC:
+			{
+				void * payload = call SerialAMSend.getPayload(&serialPacket, MAX_SERIALDATA_LENGTH);
+				
+				memcpy(payload,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
+				
+				call SerialAMSend.send(AM_BROADCAST_ADDR, &serialPacket, MAX_SERIALDATA_LENGTH);
+			
+				
+				break;
+			}
+		}		
 		
 	}
 }
