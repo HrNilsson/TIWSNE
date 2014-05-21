@@ -494,12 +494,30 @@ implementation{
 				{
 					uint8_t i = 0; 
 					//Compress this shiiiiiit to flashDataCompressed
-					for(i=0 ; i <= NO_OF_UNCOMPRESSED_PIXELS ; i+5) {
-						
-						flashDataCompressed[i/5] = call Comp.compressVector(flashDataUncompressed+i);
-						
+					
+					if (flashCnt < TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						for(i=0 ; i <= NO_OF_UNCOMPRESSED_PIXELS ; i+5) {
+	
+							flashDataCompressed[i/5] = call Comp.compressVector(flashDataUncompressed+i);
+	
+						}
 					}
 					
+					else if (flashCnt >= TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, flashDataUncompressed, UNCOMPRESSED_IMAGE_REST); 
+						
+						for(i=0 ; i <= UNCOMPRESSED_IMAGE_REST ; i+5) {
+						
+							flashDataCompressed[i/5] = call Comp.compressVector(flashDataUncompressed+i);
+						
+						}	
+						
+						flashDataCompressed[i/5+1] = call Comp.compressVector(flashDataUncompressed+i);
+						flashDataCompressed[i/5+1].notFull = 0x11; // Signal imageVector with only one pixel						
+					}
+										
 					taskFlag = SEND_PACKET;
 					post SendCompressedToMoteTask();
 					break;
