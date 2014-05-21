@@ -45,6 +45,7 @@ implementation{
 	nx_uint16_t transSeqNo;
 	nx_uint16_t flashCnt;
 	message_t serialPacket;
+	uint8_t deCompressCnt = 0;
 	
 	TaskFlag taskFlag = INIT;
 	
@@ -417,11 +418,11 @@ implementation{
 					// Read from flash
 					if (flashCnt < TOTAL_UNCOMPRESSED_PACKETS)
 					{
-						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
 					}
 					else if (flashCnt >= TOTAL_UNCOMPRESSED_PACKETS)
 					{
-						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, UNCOMPRESSED_IMAGE_REST);
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, flashDataUncompressed, UNCOMPRESSED_IMAGE_REST);
 					}
 
 					break;
@@ -576,11 +577,11 @@ implementation{
 					
 					if (flashCnt < TOTAL_UNCOMPRESSED_PACKETS)
 					{
-						call UncompressedStore.write(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
+						call UncompressedStore.write(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
 					}
 					else if (flashCnt >= TOTAL_UNCOMPRESSED_PACKETS)
 					{
-						call UncompressedStore.write(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, UNCOMPRESSED_IMAGE_REST); 	
+						call UncompressedStore.write(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, flashDataUncompressed, UNCOMPRESSED_IMAGE_REST); 	
 					}
 					
 					break;
@@ -643,11 +644,11 @@ implementation{
 					
 					if (flashCnt < TOTAL_COMPRESSED_PACKETS)
 					{
-						call CompressedStore.write(flashCnt*NO_OF_COMPRESSED_PIXELS*4, &flashDataCompressed, NO_OF_COMPRESSED_PIXELS*4);
+						call CompressedStore.write(flashCnt*NO_OF_COMPRESSED_PIXELS*4, flashDataCompressed, NO_OF_COMPRESSED_PIXELS*4);
 					}
 					else if (flashCnt >= TOTAL_COMPRESSED_PACKETS)
 					{
-						call CompressedStore.write(flashCnt*NO_OF_COMPRESSED_PIXELS*4, &flashDataCompressed, COMPRESSED_IMAGE_REST); 	
+						call CompressedStore.write(flashCnt*NO_OF_COMPRESSED_PIXELS*4, flashDataCompressed, COMPRESSED_IMAGE_REST); 	
 					}
 										
 					break;
@@ -740,11 +741,11 @@ implementation{
 			{
 				if(flashCnt < TOTAL_COMPRESSED_PACKETS)
 				{
-					call CompressedRestore.read(flashCnt*88, &flashDataCompressed, 110);
+					call CompressedRestore.read(flashCnt*88, flashDataCompressed, 110);
 				}
 				else if(flashCnt == TOTAL_COMPRESSED_PACKETS)
 				{
-					call CompressedRestore.read(flashCnt*88, &flashDataCompressed, 46);
+					call CompressedRestore.read(flashCnt*88, flashDataCompressed, 46);
 				} 
 				break;
 			}
@@ -752,9 +753,12 @@ implementation{
 			{
 				void * payload = call SerialAMSend.getPayload(&serialPacket, MAX_SERIALDATA_LENGTH);
 				
-				memcpy(payload,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
+				memcpy(payload,flashDataCompressed,MAX_SERIALDATA_LENGTH);
 				
-				
+				for (deCompressCnt; deCompressCnt < NO_OF_COMPRESSED_PIXELS; deCompressCnt++)
+				{
+					call Comp.deCompressVector(flashDataCompressed[deCompressCnt], PCSerielBuffer+deCompressCnt*5;
+				}
 				
 				call SerialAMSend.send(AM_BROADCAST_ADDR, &serialPacket, MAX_SERIALDATA_LENGTH);
 			
