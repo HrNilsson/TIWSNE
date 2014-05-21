@@ -21,11 +21,13 @@ enum AM_ID_TYPES {
  } STATE;
  
  enum WIRELESS_DEFINES {
- 	TOTAL_UNCOMPRESSED_PACKETS = 586, // 256*256/(112 bytes pr. packet) 
- 	TOTAL_COMPRESSED_PACKETS = 469, //Uncompressed*4/5 Assuming compression of << 2
+ 	TOTAL_UNCOMPRESSED_PACKETS = 656, // 256*256/(110 bytes pr. packet) 
+ 	TOTAL_COMPRESSED_PACKETS = 486, //Uncompressed*4/5 Assuming compression of << 2
  	NO_OF_UNCOMPRESSED_PIXELS = 110,
  	NO_OF_COMPRESSED_PIXELS = 27,
  	TIMEOUT_WAIT_FOR_ACK = 100,
+ 	UNCOMPRESSED_IMAGE_REST = 86,
+ 	COMPRESSED_IMAGE_REST = 52,
  };
  
  enum MOTE_IDS {

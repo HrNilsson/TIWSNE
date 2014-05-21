@@ -38,17 +38,19 @@ implementation{
 	//--------------------------VARIABLE DECLARATION----------------------------//
 	nx_uint8_t state;
 	message_t msg;
-	nx_uint8_t transSeqNo;
-	storage_addr_t storageAddr = 0;
+	bool toggleLeds;
+	nx_uint16_t transSeqNo;
+	nx_uint16_t flashCnt;
 	
 	TaskFlag taskFlag = INIT;
 	
 	nx_uint8_t receiveFromPCBuffer[MAX_SERIALDATA_LENGTH];
 	nx_uint8_t flashDataUncompressed[NO_OF_UNCOMPRESSED_PIXELS];
-	nx_uint8_t flashDataCompressed[NO_OF_COMPRESSED_PIXELS];
+	nx_uint32_t flashDataCompressed[NO_OF_COMPRESSED_PIXELS];
 	
 	//-------------------------HELPER PROTOTYPES---------------------------------//
 	void StartReceiveFromPcTask();
+	void BlinkLeds();
 	
 	//--------------------------TASK PROTOTYPES----------------------------------//
 	task void ReceivingFromPcTask();
@@ -61,9 +63,11 @@ implementation{
 	
 	//---------------------------EVENTS------------------------------------------//
 	event void Boot.booted(){
-			call NotifyButton.enable(); // Enable key press
-			state = IDLE;
-			transSeqNo = 0;
+		call NotifyButton.enable(); // Enable key press
+		state = IDLE;
+		transSeqNo = 0;
+		toggleLeds = FALSE;
+		flashCnt = 0;
 	}
 	
 	event void NotifyButton.notify(button_state_t btnState){
@@ -80,35 +84,34 @@ implementation{
 				case RECEIVING_FROM_PC:
 					StartReceiveFromPcTask();
 					taskFlag = INIT;
-					//storageAddr = 0;
+					flashCnt = 0;
 					break;
 	
 				case SENDING_UNCOMPRESSED_TO_MOTE:
-					taskFlag = INIT;
+					taskFlag = READ_FLASH;
 					transSeqNo = 0;
-					//storageAddr = 0;
+					flashCnt = 0;
 					
 					call AMControl.start();
-					//post SendUncompressedToMoteTask();
 					break;
 	
 				case SENDING_COMPRESSED_TO_MOTE:
-					taskFlag = INIT;
+					taskFlag = taskFlag;
 					transSeqNo = 0;
-					//storageAddr = 0;
+					flashCnt = 0;
 					post SendCompressedToMoteTask();
 					break;
 	
 				case RECEIVING_UNCOMPRESSED_FROM_MOTE:
 					taskFlag = INIT;
-					transSeqNo = 0;
-					//storageAddr = 0;
+					transSeqNo = 1;
+					flashCnt = 0;
 					break;
 	
 				case RECEIVING_COMPRESSED_FROM_MOTE:
 					taskFlag = INIT;
-					transSeqNo = 0;
-					//storageAddr = 0;
+					transSeqNo = 1;
+					flashCnt = 0;
 					break;
 	
 				case SENDING_UNCOMPRESSED_TO_PC:
@@ -206,6 +209,8 @@ implementation{
 					memcpy(&flashDataUncompressed, &(uncompressedMsg->pixels), sizeof(flashDataUncompressed));
 					
 					taskFlag = SAVE_FLASH;
+ 					
+ 					BlinkLeds();
 					post ReceivingUncompressedFromMoteTask();
 				}	
 				else if (uncompressedMsg->seqNo == transSeqNo-1) 
@@ -240,6 +245,7 @@ implementation{
 	event void UncompressedStore.writeDone(storage_addr_t addr, void * buf, storage_len_t len, error_t error)
 	{
 		if(state == RECEIVING_UNCOMPRESSED_FROM_MOTE) {
+			flashCnt ++;
 			taskFlag = SEND_PACKET;
 			post ReceivingUncompressedFromMoteTask();
 		}
@@ -265,6 +271,7 @@ implementation{
 		switch(state) {
 			case SENDING_UNCOMPRESSED_TO_MOTE:
 			{
+				flashCnt ++;
 				taskFlag = SEND_PACKET;
 				post SendUncompressedToMoteTask();
 				break;
@@ -285,6 +292,7 @@ implementation{
 	event void CompressedStore.writeDone(storage_addr_t addr, void * buf, storage_len_t len, error_t error)
 	{
 		if(state == RECEIVING_COMPRESSED_FROM_MOTE) {
+			flashCnt ++;
 			taskFlag = SEND_PACKET;
 			post ReceivingCompressedFromMoteTask();
 		}
@@ -335,6 +343,19 @@ implementation{
 	{
 		call SerialControl.start();
 	}
+	
+	void BlinkLeds()
+	{
+		#ifdef BLINK_LEDS
+		if(toggleLeds) {
+			call Leds.set(0);
+			toggleLeds = FALSE;
+		} else {
+			call Leds.set(state);
+			toggleLeds = TRUE;
+		}
+		#endif
+	}
 
 //-----------------------------------TASKS--------------------------------------//
 
@@ -347,12 +368,18 @@ implementation{
 		if(state == SENDING_UNCOMPRESSED_TO_MOTE)
 		{
 			switch(taskFlag) {
-				case INIT:
+				case READ_FLASH:
 				{
 					// Read from flash
-					call UncompressedRestore.read(storageAddr, &flashDataUncompressed, sizeof(flashDataUncompressed)); // CHECK THIS!?
-					//update storage address:
-					// storageAddr += over nine thousand!
+					if (flashCnt < TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
+					}
+					else if (flashCnt >= TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, UNCOMPRESSED_IMAGE_REST); 	
+					}
+
 					break;
 				}
 				
@@ -362,7 +389,7 @@ implementation{
 					UncompressedMsg* msgPl = (UncompressedMsg*)(call UncompressedPacket.getPayload(&msg, sizeof (UncompressedMsg)));
 					msgPl->seqNo = ++transSeqNo;
 					memcpy(&(msgPl->pixels), &flashDataUncompressed, sizeof(flashDataUncompressed));
-			
+				
 					// Transmit
 					call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(UncompressedMsg));
 					break; 
@@ -382,7 +409,11 @@ implementation{
 				{
 					if(transSeqNo != TOTAL_UNCOMPRESSED_PACKETS)
 					{
+						BlinkLeds();
+						taskFlag = READ_FLASH;
 						post SendUncompressedToMoteTask();	
+					} else {
+						call Leds.set(0);
 					}
 					break;
 				}
@@ -400,12 +431,16 @@ implementation{
 		if(state == SENDING_COMPRESSED_TO_MOTE)
 		{
 			switch(taskFlag) {
-				case INIT:
+				case READ_FLASH:
 				{
-					// Read from flash
-					call UncompressedRestore.read(storageAddr, &flashDataUncompressed, sizeof(flashDataUncompressed)); // CHECK THIS!?
-					//update storage address:
-					// storageAddr += over nine thousand!
+					if (flashCnt < TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
+					}
+					else if (flashCnt >= TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, UNCOMPRESSED_IMAGE_REST); 	
+					}
 					break;
 				}
 			
@@ -443,6 +478,7 @@ implementation{
 				{
 					if(transSeqNo != TOTAL_COMPRESSED_PACKETS)
 					{
+						taskFlag = READ_FLASH;
 						post SendCompressedToMoteTask();	
 					}
 					break;
@@ -462,10 +498,15 @@ implementation{
 			switch(taskFlag) {
 				case SAVE_FLASH:
 				{
-					// save flashDataUncompressed in flash
-					call UncompressedStore.write(storageAddr, &flashDataUncompressed, sizeof(flashDataUncompressed));
-					//update storage address:
-					// storageAddr += over nine thousand!
+					if (flashCnt < TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						call UncompressedStore.write(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
+					}
+					else if (flashCnt >= TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						call UncompressedStore.write(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, UNCOMPRESSED_IMAGE_REST); 	
+					}
+					
 					break;
 				}
 				
@@ -478,6 +519,12 @@ implementation{
 					// Transmit
 					call UncompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));
 					transSeqNo++;
+					
+					if(transSeqNo == TOTAL_UNCOMPRESSED_PACKETS + 1)  
+ 					{
+ 						taskFlag = POST_TASK;
+ 						post ReceivingUncompressedFromMoteTask();
+ 					}
 					break; 			
 				}
 				
@@ -488,9 +535,21 @@ implementation{
 					msgPl->seqNo = transSeqNo - 1;
 			
 					// Transmit
-					call UncompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));	
+					call UncompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));
+					
+					if(transSeqNo == TOTAL_UNCOMPRESSED_PACKETS + 1)  
+ 					{
+ 						taskFlag = POST_TASK;
+ 						post ReceivingUncompressedFromMoteTask();
+ 					}	
 					break;
 				}
+				
+				case POST_TASK:
+				{
+					call Leds.set(0);
+					break;
+				} 
 				
 				default:
 					break;
@@ -504,10 +563,15 @@ implementation{
 			switch(taskFlag) {
 				case SAVE_FLASH:
 				{
-					// save flashDataCompressed in flash
-					call CompressedStore.write(storageAddr, &flashDataCompressed, sizeof(flashDataCompressed));
-					//update storage address:
-					// storageAddr += over nine thousand!
+					if (flashCnt < TOTAL_COMPRESSED_PACKETS)
+					{
+						call CompressedStore.write(flashCnt*NO_OF_COMPRESSED_PIXELS*4, &flashDataCompressed, NO_OF_COMPRESSED_PIXELS*4);
+					}
+					else if (flashCnt >= TOTAL_COMPRESSED_PACKETS)
+					{
+						call CompressedStore.write(flashCnt*NO_OF_COMPRESSED_PIXELS*4, &flashDataCompressed, COMPRESSED_IMAGE_REST); 	
+					}
+										
 					break;
 				}
 				
