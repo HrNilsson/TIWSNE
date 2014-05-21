@@ -3,6 +3,8 @@
 
 enum { 	AM_SERIALDATA_MSG = 99,
 	MAX_SERIALDATA_LENGTH = 112, //when TOSH_DATA_LENGTH is defined as 113(max) and reliable_msg(uses 1 byte for cookie field) is used.
+	SERIAL_DATA_NUMBER_OF_PACKETS = 586,
+	SERIAL_DATA_REST = 16,
 	};
 
 typedef nx_struct serialdata_msg {
