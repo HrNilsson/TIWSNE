@@ -13,7 +13,7 @@ import net.tinyos.util.PrintStreamMessenger;
 
 public class PCFileTransferer implements MessageListener {
 	
-	static final int IMAGELENGTH = 256*256;
+	static final int IMAGELENGTH = 256*256; //FIXME: Hardcoded!
 	
 	private MoteIF moteIF;
 	private LinkedBlockingQueue<short[]> dataQueue = new LinkedBlockingQueue<short[]>();
@@ -73,20 +73,20 @@ public class PCFileTransferer implements MessageListener {
 		}
 	}
 	
-	public void receiveFile(String outFilename, int moteId)
+	public void receiveFile(String outFilename, int moteId, int receiveBlockSize)
 	{
 		FileOutputStream outFile = null;
 		try {
 			outFile = new FileOutputStream(outFilename);
 			long bytesReceived = 0;
 			
-			while(bytesReceived < IMAGELENGTH) //FIXME: Hardcoded!
+			while(bytesReceived < IMAGELENGTH)
 			{
 				byte[] bData = null;
 				short[] sData = dataQueue.take();
 				
-				int bytesToCopy = sData.length;
-				if((bytesReceived + bytesToCopy) > IMAGELENGTH)
+				int bytesToCopy = receiveBlockSize;
+				if((bytesReceived + sData.length) > IMAGELENGTH)
 					bytesToCopy = (int) (IMAGELENGTH - bytesReceived);
 					
 				bData = new byte[bytesToCopy];
@@ -129,6 +129,7 @@ public class PCFileTransferer implements MessageListener {
 		String source = null;
 		String sendFilePath = null;
 		String receiveFilePath = null;
+		int receiveBlockSize = 112;
 		int moteId = 0;
 		
 		//parse args
@@ -142,7 +143,8 @@ public class PCFileTransferer implements MessageListener {
 			else if(args[i].equals("-r"))
 			{
 				receiveFilePath = args[i+1];
-				i++;
+				receiveBlockSize = Integer.parseInt(args[i+2]);
+				i += 2;
 			}
 			else if(args[i].equals("-comm"))
 			{
@@ -185,7 +187,7 @@ public class PCFileTransferer implements MessageListener {
 		}
 		else if(receiveFilePath != null)
 		{
-			serial.receiveFile(receiveFilePath, moteId);
+			serial.receiveFile(receiveFilePath, moteId, receiveBlockSize);
 		}
 		
 		phoenix.shutdown(); //close connection to mote source
