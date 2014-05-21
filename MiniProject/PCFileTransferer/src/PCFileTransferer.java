@@ -13,6 +13,8 @@ import net.tinyos.util.PrintStreamMessenger;
 
 public class PCFileTransferer implements MessageListener {
 	
+	static final int IMAGELENGTH = 256*256;
+	
 	private MoteIF moteIF;
 	private LinkedBlockingQueue<short[]> dataQueue = new LinkedBlockingQueue<short[]>();
 
@@ -78,20 +80,24 @@ public class PCFileTransferer implements MessageListener {
 			outFile = new FileOutputStream(outFilename);
 			long bytesReceived = 0;
 			
-			while(bytesReceived < 256*256) //FIXME: Hardcoded!
+			while(bytesReceived < IMAGELENGTH) //FIXME: Hardcoded!
 			{
 				byte[] bData = null;
-				short[] sData = dataQueue.take();			
-					
-				bData = new byte[sData.length];
+				short[] sData = dataQueue.take();
 				
-				for(int i = 0; i < sData.length; i++)
+				int bytesToCopy = sData.length;
+				if((bytesReceived + bytesToCopy) > IMAGELENGTH)
+					bytesToCopy = (int) (IMAGELENGTH - bytesReceived);
+					
+				bData = new byte[bytesToCopy];
+				
+				for(int i = 0; i < bytesToCopy; i++)
 				{
 					bData[i] = (byte) sData[i];
 				}
 	
 				outFile.write(bData);
-				bytesReceived += bData.length;
+				bytesReceived += bytesToCopy;
 			}
 			
 			outFile.flush();

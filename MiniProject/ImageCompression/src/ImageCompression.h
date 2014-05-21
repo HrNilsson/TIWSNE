@@ -42,7 +42,7 @@ typedef enum TaskFlag {
 	COMPRESS,
 	SEND_PACKET,
 	RETRANSMIT_PACKET,
-	START_TIMER,
+	SEND_TO_PC,
 	POST_TASK,
 }TaskFlag;
 
