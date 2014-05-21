@@ -39,6 +39,7 @@ implementation{
 	message_t msg;
 	nx_uint8_t transSeqNo;
 	storage_addr_t storageAddr = 0;
+	nx_uint16_t flashCnt = 0;
 	
 	TaskFlag taskFlag = INIT;
 	
@@ -78,13 +79,13 @@ implementation{
 				case RECEIVING_FROM_PC:
 					StartReceiveFromPcTask();
 					taskFlag = INIT;
-					//storageAddr = 0;
+					flashCnt = 0;
 					break;
 	
 				case SENDING_UNCOMPRESSED_TO_MOTE:
 					taskFlag = READ_FLASH;
 					transSeqNo = 0;
-					//storageAddr = 0;
+					flashCnt = 0;
 					
 					call AMControl.start();
 					//post SendUncompressedToMoteTask();
@@ -93,20 +94,20 @@ implementation{
 				case SENDING_COMPRESSED_TO_MOTE:
 					taskFlag = taskFlag;
 					transSeqNo = 0;
-					//storageAddr = 0;
+					flashCnt = 0;
 					post SendCompressedToMoteTask();
 					break;
 	
 				case RECEIVING_UNCOMPRESSED_FROM_MOTE:
 					taskFlag = INIT;
 					transSeqNo = 0;
-					//storageAddr = 0;
+					flashCnt = 0;
 					break;
 	
 				case RECEIVING_COMPRESSED_FROM_MOTE:
 					taskFlag = INIT;
 					transSeqNo = 0;
-					//storageAddr = 0;
+					flashCnt = 0;
 					break;
 	
 				case SENDING_UNCOMPRESSED_TO_PC:
@@ -238,6 +239,7 @@ implementation{
 	event void UncompressedStore.writeDone(storage_addr_t addr, void * buf, storage_len_t len, error_t error)
 	{
 		if(state == RECEIVING_UNCOMPRESSED_FROM_MOTE) {
+			flashCnt ++;
 			taskFlag = SEND_PACKET;
 			post ReceivingUncompressedFromMoteTask();
 		}
@@ -263,6 +265,7 @@ implementation{
 		switch(state) {
 			case SENDING_UNCOMPRESSED_TO_MOTE:
 			{
+				flashCnt ++;
 				taskFlag = SEND_PACKET;
 				post SendUncompressedToMoteTask();
 				break;
@@ -283,6 +286,7 @@ implementation{
 	event void CompressedStore.writeDone(storage_addr_t addr, void * buf, storage_len_t len, error_t error)
 	{
 		if(state == RECEIVING_COMPRESSED_FROM_MOTE) {
+			flashCnt ++;
 			taskFlag = SEND_PACKET;
 			post ReceivingCompressedFromMoteTask();
 		}
@@ -348,9 +352,15 @@ implementation{
 				case READ_FLASH:
 				{
 					// Read from flash
-					call UncompressedRestore.read(storageAddr, &flashDataUncompressed, sizeof(flashDataUncompressed)); // CHECK THIS!?
-					//update storage address:
-					// storageAddr += over nine thousand!
+					if (flashCnt < TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
+					}
+					else if (flashCnt >= TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, UNCOMPRESSED_IMAGE_REST); 	
+					}
+
 					break;
 				}
 				
@@ -401,10 +411,14 @@ implementation{
 			switch(taskFlag) {
 				case READ_FLASH:
 				{
-					// Read from flash
-					call UncompressedRestore.read(storageAddr, &flashDataUncompressed, sizeof(flashDataUncompressed)); // CHECK THIS!?
-					//update storage address:
-					// storageAddr += over nine thousand!
+					if (flashCnt < TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
+					}
+					else if (flashCnt >= TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, UNCOMPRESSED_IMAGE_REST); 	
+					}
 					break;
 				}
 			
@@ -462,10 +476,15 @@ implementation{
 			switch(taskFlag) {
 				case SAVE_FLASH:
 				{
-					// save flashDataUncompressed in flash
-					call UncompressedStore.write(storageAddr, &flashDataUncompressed, sizeof(flashDataUncompressed));
-					//update storage address:
-					// storageAddr += over nine thousand!
+					if (flashCnt < TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						call UncompressedStore.write(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
+					}
+					else if (flashCnt >= TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						call UncompressedStore.write(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, UNCOMPRESSED_IMAGE_REST); 	
+					}
+					
 					break;
 				}
 				
@@ -504,10 +523,15 @@ implementation{
 			switch(taskFlag) {
 				case SAVE_FLASH:
 				{
-					// save flashDataCompressed in flash
-					call CompressedStore.write(storageAddr, &flashDataCompressed, sizeof(flashDataCompressed));
-					//update storage address:
-					// storageAddr += over nine thousand!
+					if (flashCnt < TOTAL_COMPRESSED_PACKETS)
+					{
+						call CompressedStore.write(flashCnt*NO_OF_COMPRESSED_PIXELS*4, &flashDataCompressed, NO_OF_COMPRESSED_PIXELS*4);
+					}
+					else if (flashCnt >= TOTAL_COMPRESSED_PACKETS)
+					{
+						call CompressedStore.write(flashCnt*NO_OF_COMPRESSED_PIXELS*4, &flashDataCompressed, COMPRESSED_IMAGE_REST); 	
+					}
+										
 					break;
 				}
 				
