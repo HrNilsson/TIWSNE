@@ -56,7 +56,7 @@ typedef nx_struct imageVectors {
 	nx_uint8_t px4 : 6;
 	
 	// Fill to 32 bits
-	nx_uint8_t fill: 2;
+	nx_uint8_t notFull: 2;
 	
 } imageVector;
 

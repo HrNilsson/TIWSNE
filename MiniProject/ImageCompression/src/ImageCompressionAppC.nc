@@ -15,6 +15,7 @@ implementation {
 	components ActiveMessageC;
 	components ReliableSerialC;
   	components SerialActiveMessageC;
+  	components QuantCompressC as Comp;
 
 	// Transceiver for compressed data format
 	components new AMSenderC(AM_COMPRESSED_IMAGE) as CompressedSender;
@@ -56,6 +57,8 @@ implementation {
 	App.SerialControl -> SerialActiveMessageC;
   	App.SerialReceive -> ReliableSerialC;
   	App.SerialAMSend -> ReliableSerialC;
+  	
+  	App.QuantCompress -> Comp;
   	
   	components new TimerMilliC() as AckTimer;
 	components new SerialAMSenderC(AM_RELIABLE_MSG) as DataSender;

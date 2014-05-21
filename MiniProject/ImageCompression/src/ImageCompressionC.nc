@@ -31,6 +31,8 @@ module ImageCompressionC{
  	uses interface SplitControl as SerialControl;
 	uses interface Receive as SerialReceive;
 	uses interface AMSend as SerialAMSend;
+	
+	uses interface QuantCompress;
 }
 
 implementation{
@@ -426,6 +428,8 @@ implementation{
 	
 	task void SendCompressedToMoteTask() {
 		
+		
+		
 		if(state == SENDING_COMPRESSED_TO_MOTE)
 		{
 			switch(taskFlag) {
@@ -444,7 +448,15 @@ implementation{
 			
 				case COMPRESS:
 				{
+					uint8_t i = 0; 
 					//Compress this shiiiiiit to flashDataCompressed
+					for(i=0 ; i <= NO_OF_UNCOMPRESSED_PIXELS ; i+5) {
+						
+						
+						
+					}
+					
+					
 					taskFlag = SEND_PACKET;
 					post SendCompressedToMoteTask();
 					break;
