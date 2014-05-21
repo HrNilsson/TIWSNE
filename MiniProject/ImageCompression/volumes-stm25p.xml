@@ -1,0 +1,4 @@
+<volume_table>
+	<volume name="PICTURERAW" size="65536"/>
+	<volume name="PICTURECOMPRESSED" size="65536"/>
+</volume_table>
