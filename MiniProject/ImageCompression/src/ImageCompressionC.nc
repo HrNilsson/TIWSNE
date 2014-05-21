@@ -37,9 +37,9 @@ implementation{
 	//--------------------------VARIABLE DECLARATION----------------------------//
 	nx_uint8_t state;
 	message_t msg;
-	nx_uint8_t transSeqNo;
-	storage_addr_t storageAddr = 0;
-	nx_uint16_t flashCnt = 0;
+	bool toggleLeds;
+	nx_uint16_t transSeqNo;
+	nx_uint16_t flashCnt;
 	
 	TaskFlag taskFlag = INIT;
 	
@@ -48,6 +48,7 @@ implementation{
 	
 	//-------------------------HELPER PROTOTYPES---------------------------------//
 	void StartReceiveFromPcTask();
+	void BlinkLeds();
 	
 	//--------------------------TASK PROTOTYPES----------------------------------//
 	task void ReceivingFromPcTask();
@@ -60,9 +61,11 @@ implementation{
 	
 	//---------------------------EVENTS------------------------------------------//
 	event void Boot.booted(){
-			call NotifyButton.enable(); // Enable key press
-			state = IDLE;
-			transSeqNo = 0;
+		call NotifyButton.enable(); // Enable key press
+		state = IDLE;
+		transSeqNo = 0;
+		toggleLeds = FALSE;
+		flashCnt = 0;
 	}
 	
 	event void NotifyButton.notify(button_state_t btnState){
@@ -88,7 +91,6 @@ implementation{
 					flashCnt = 0;
 					
 					call AMControl.start();
-					//post SendUncompressedToMoteTask();
 					break;
 	
 				case SENDING_COMPRESSED_TO_MOTE:
@@ -100,13 +102,13 @@ implementation{
 	
 				case RECEIVING_UNCOMPRESSED_FROM_MOTE:
 					taskFlag = INIT;
-					transSeqNo = 0;
+					transSeqNo = 1;
 					flashCnt = 0;
 					break;
 	
 				case RECEIVING_COMPRESSED_FROM_MOTE:
 					taskFlag = INIT;
-					transSeqNo = 0;
+					transSeqNo = 1;
 					flashCnt = 0;
 					break;
 	
@@ -205,6 +207,12 @@ implementation{
 					memcpy(&flashDataUncompressed, &(uncompressedMsg->pixels), sizeof(flashDataUncompressed));
 					
 					taskFlag = SAVE_FLASH;
+					if(transSeqNo == TOTAL_UNCOMPRESSED_PACKETS)
+ 					{
+ 						taskFlag = POST_TASK;	
+ 					}
+ 					
+ 					BlinkLeds();
 					post ReceivingUncompressedFromMoteTask();
 				}	
 				else if (uncompressedMsg->seqNo == transSeqNo-1) 
@@ -337,6 +345,19 @@ implementation{
 	{
 		call SerialControl.start();
 	}
+	
+	void BlinkLeds()
+	{
+		#ifdef BLINK_LEDS
+		if(toggleLeds) {
+			call Leds.set(0);
+			toggleLeds = FALSE;
+		} else {
+			call Leds.set(state);
+			toggleLeds = TRUE;
+		}
+		#endif
+	}
 
 //-----------------------------------TASKS--------------------------------------//
 
@@ -390,8 +411,11 @@ implementation{
 				{
 					if(transSeqNo != TOTAL_UNCOMPRESSED_PACKETS)
 					{
+						BlinkLeds();
 						taskFlag = READ_FLASH;
 						post SendUncompressedToMoteTask();	
+					} else {
+						call Leds.set(0);
 					}
 					break;
 				}
@@ -510,6 +534,12 @@ implementation{
 					call UncompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));	
 					break;
 				}
+				
+				case POST_TASK:
+				{
+					call Leds.set(0);
+					break;
+				} 
 				
 				default:
 					break;

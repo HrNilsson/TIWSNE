@@ -2,6 +2,7 @@
 #include "StorageVolumes.h"
 
 #define TOSH_DATA_LENGTH 113
+#define BLINK_LEDS
 
 configuration ImageCompressionAppC {
 }
