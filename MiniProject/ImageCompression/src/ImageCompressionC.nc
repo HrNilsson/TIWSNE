@@ -207,10 +207,6 @@ implementation{
 					memcpy(&flashDataUncompressed, &(uncompressedMsg->pixels), sizeof(flashDataUncompressed));
 					
 					taskFlag = SAVE_FLASH;
-					if(transSeqNo == TOTAL_UNCOMPRESSED_PACKETS)
- 					{
- 						taskFlag = POST_TASK;	
- 					}
  					
  					BlinkLeds();
 					post ReceivingUncompressedFromMoteTask();
@@ -391,7 +387,7 @@ implementation{
 					UncompressedMsg* msgPl = (UncompressedMsg*)(call UncompressedPacket.getPayload(&msg, sizeof (UncompressedMsg)));
 					msgPl->seqNo = ++transSeqNo;
 					memcpy(&(msgPl->pixels), &flashDataUncompressed, sizeof(flashDataUncompressed));
-			
+				
 					// Transmit
 					call UncompressedSend.send(AM_RECEIVER_ID, &msg, sizeof(UncompressedMsg));
 					break; 
@@ -521,6 +517,12 @@ implementation{
 					// Transmit
 					call UncompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));
 					transSeqNo++;
+					
+					if(transSeqNo == TOTAL_UNCOMPRESSED_PACKETS + 1)  
+ 					{
+ 						taskFlag = POST_TASK;
+ 						post ReceivingUncompressedFromMoteTask();
+ 					}
 					break; 			
 				}
 				
@@ -531,7 +533,13 @@ implementation{
 					msgPl->seqNo = transSeqNo - 1;
 			
 					// Transmit
-					call UncompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));	
+					call UncompressedSend.send(AM_SENDER_ID, &msg, sizeof(AckMsg));
+					
+					if(transSeqNo == TOTAL_UNCOMPRESSED_PACKETS + 1)  
+ 					{
+ 						taskFlag = POST_TASK;
+ 						post ReceivingUncompressedFromMoteTask();
+ 					}	
 					break;
 				}
 				
