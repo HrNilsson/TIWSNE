@@ -1,0 +1,245 @@
+<?xml version="1.0" ?><component loc="45:/home/kasper/tinyos-main//tos/system/LedsC.nc" nicename="LedsC" qname="LedsC">
+      <documentation loc="34:/home/kasper/tinyos-main//tos/system/LedsC.nc">
+        <short>
+
+ The basic TinyOS LEDs abstraction.</short>
+        <long>
+
+ The basic TinyOS LEDs abstraction.
+
+ @author Phil Buonadonna
+ @author David Gay
+ @author Philip Levis
+ @author Joe Polastre
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="51:/home/kasper/tinyos-main//tos/system/LedsC.nc">
+          <from><interface-ref name="Leds" ref="0x2ac2c3039c38" scoped=""/></from>
+          <to><interface-ref name="Leds" ref="0x2ac2c30365e8" scoped=""/></to>
+        </wire>
+        <wire loc="53:/home/kasper/tinyos-main//tos/system/LedsC.nc">
+          <from><interface-ref name="Init" ref="0x2ac2c3058460" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c3036020" scoped=""/></to>
+        </wire>
+        <wire loc="54:/home/kasper/tinyos-main//tos/system/LedsC.nc">
+          <from><interface-ref name="Led0" ref="0x2ac2c30527c8" scoped=""/></from>
+          <to><interface-ref name="Led0" ref="0x2ac2c305b020" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/system/LedsC.nc">
+          <from><interface-ref name="Led1" ref="0x2ac2c3034958" scoped=""/></from>
+          <to><interface-ref name="Led1" ref="0x2ac2c305a1b0" scoped=""/></to>
+        </wire>
+        <wire loc="56:/home/kasper/tinyos-main//tos/system/LedsC.nc">
+          <from><interface-ref name="Led2" ref="0x2ac2c3051ae0" scoped=""/></from>
+          <to><interface-ref name="Led2" ref="0x2ac2c3059378" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="46:/home/kasper/tinyos-main//tos/system/LedsC.nc" name="Leds" provided="1" ref="0x2ac2c3039c38">
+      <component-ref nicename="LedsC" qname="LedsC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Leds" ref="0x2ac2c3039c38" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Leds" qname="Leds"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="led0Off" ref="0x2ac2c3043020" scoped=""/>
+        <function-ref name="led0Toggle" ref="0x2ac2c30431a8" scoped=""/>
+        <function-ref name="led1On" ref="0x2ac2c3043330" scoped=""/>
+        <function-ref name="led1Toggle" ref="0x2ac2c30434b8" scoped=""/>
+        <function-ref name="led2Toggle" ref="0x2ac2c3043640" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c30437c8" scoped=""/>
+        <function-ref name="led1Off" ref="0x2ac2c3043950" scoped=""/>
+        <function-ref name="led2Off" ref="0x2ac2c3042020" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c3043ad8" scoped=""/>
+        <function-ref name="led0On" ref="0x2ac2c3043c60" scoped=""/>
+        <function-ref name="led2On" ref="0x2ac2c3043de8" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="42:/home/kasper/tinyos-main//tos/platforms/telosa/PlatformLedsC.nc" name="Led1" provided="1" ref="0x2ac2c305a1b0">
+      <component-ref nicename="PlatformLedsC" qname="PlatformLedsC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Led1" ref="0x2ac2c305a1b0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c305a500" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c305a688" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c305a810" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c305a998" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c305ab20" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c305aca8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c305ae30" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c3059020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="44:/home/kasper/tinyos-main//tos/platforms/telosa/PlatformLedsC.nc" name="Init" provided="0" ref="0x2ac2c3058460">
+      <component-ref nicename="PlatformLedsC" qname="PlatformLedsC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Init" ref="0x2ac2c3058460" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c30587b0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="51:/home/kasper/tinyos-main//tos/system/LedsP.nc" name="Led1" provided="0" ref="0x2ac2c3034958">
+      <component-ref nicename="LedsP" qname="LedsP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Led1" ref="0x2ac2c3034958" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c3034ca8" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c3034e30" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c3051020" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c30511a8" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c3051330" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c30514b8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c3051640" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c30517c8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="41:/home/kasper/tinyos-main//tos/platforms/telosa/PlatformLedsC.nc" name="Led0" provided="1" ref="0x2ac2c305b020">
+      <component-ref nicename="PlatformLedsC" qname="PlatformLedsC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Led0" ref="0x2ac2c305b020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c305b370" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c305b4f8" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c305b680" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c305b808" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c305b990" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c305bb18" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c305bca0" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c305be28" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="52:/home/kasper/tinyos-main//tos/system/LedsP.nc" name="Led2" provided="0" ref="0x2ac2c3051ae0">
+      <component-ref nicename="LedsP" qname="LedsP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Led2" ref="0x2ac2c3051ae0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c3051e30" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c3050020" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c30501a8" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c3050330" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c30504b8" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c3050640" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c30507c8" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c3050950" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="50:/home/kasper/tinyos-main//tos/system/LedsP.nc" name="Led0" provided="0" ref="0x2ac2c30527c8">
+      <component-ref nicename="LedsP" qname="LedsP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Led0" ref="0x2ac2c30527c8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c3052b18" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c3052ca0" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c3052e28" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c3034020" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c30341a8" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c3034330" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c30344b8" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c3034640" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/platforms/telosa/PlatformLedsC.nc" name="Led2" provided="1" ref="0x2ac2c3059378">
+      <component-ref nicename="PlatformLedsC" qname="PlatformLedsC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Led2" ref="0x2ac2c3059378" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c30596c8" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c3059850" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c30599d8" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c3059b60" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c3059ce8" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c3059e70" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c3058020" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c30581a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/system/LedsP.nc" name="Init" provided="1" ref="0x2ac2c3036020">
+      <component-ref nicename="LedsP" qname="LedsP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Init" ref="0x2ac2c3036020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c3036370" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/system/LedsP.nc" name="Leds" provided="1" ref="0x2ac2c30365e8">
+      <component-ref nicename="LedsP" qname="LedsP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Leds" ref="0x2ac2c30365e8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Leds" qname="Leds"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="led0Off" ref="0x2ac2c3036938" scoped=""/>
+        <function-ref name="led0Toggle" ref="0x2ac2c3036ac0" scoped=""/>
+        <function-ref name="led1On" ref="0x2ac2c3036c48" scoped=""/>
+        <function-ref name="led1Toggle" ref="0x2ac2c3036dd0" scoped=""/>
+        <function-ref name="led2Toggle" ref="0x2ac2c3035020" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c30351a8" scoped=""/>
+        <function-ref name="led1Off" ref="0x2ac2c3035330" scoped=""/>
+        <function-ref name="led2Off" ref="0x2ac2c3035950" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c30354b8" scoped=""/>
+        <function-ref name="led0On" ref="0x2ac2c3035640" scoped=""/>
+        <function-ref name="led2On" ref="0x2ac2c30357c8" scoped=""/>
+      </interface-functions>
+    </interface><component loc="40:/home/kasper/tinyos-main//tos/platforms/telosa/PlatformLedsC.nc" nicename="PlatformLedsC" qname="PlatformLedsC">
+      <documentation loc="34:/home/kasper/tinyos-main//tos/platforms/telosa/PlatformLedsC.nc">
+        <short>
+ </short>
+        <long>
+ @author Joe Polastre
+ @version $Revision: 1.5 $ $Date: 2010-06-29 22:07:55 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="58:/home/kasper/tinyos-main//tos/platforms/telosa/PlatformLedsC.nc">
+          <from><interface-ref name="Led0" ref="0x2ac2c305b020" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x2ac2c3281c30" scoped=""/></to>
+        </wire>
+        <wire loc="61:/home/kasper/tinyos-main//tos/platforms/telosa/PlatformLedsC.nc">
+          <from><interface-ref name="Led1" ref="0x2ac2c305a1b0" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x2ac2c3299448" scoped=""/></to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/platforms/telosa/PlatformLedsC.nc">
+          <from><interface-ref name="Led2" ref="0x2ac2c3059378" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x2ac2c3295cd0" scoped=""/></to>
+        </wire>
+        <wire loc="56:/home/kasper/tinyos-main//tos/platforms/telosa/PlatformLedsC.nc">
+          <from><interface-ref name="LedsInit" ref="0x2ac2c2e7b4c0" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c3058460" scoped=""/></to>
+        </wire>
+        <wire loc="59:/home/kasper/tinyos-main//tos/platforms/telosa/PlatformLedsC.nc">
+          <from><interface-ref name="HplGeneralIO" ref="0x2ac2c327fda0" scoped=""/></from>
+          <to><interface-ref name="Port54" ref="0x2ac2c30c0568" scoped=""/></to>
+        </wire>
+        <wire loc="62:/home/kasper/tinyos-main//tos/platforms/telosa/PlatformLedsC.nc">
+          <from><interface-ref name="HplGeneralIO" ref="0x2ac2c32985f8" scoped=""/></from>
+          <to><interface-ref name="Port55" ref="0x2ac2c30be568" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/platforms/telosa/PlatformLedsC.nc">
+          <from><interface-ref name="HplGeneralIO" ref="0x2ac2c3294e20" scoped=""/></from>
+          <to><interface-ref name="Port56" ref="0x2ac2c30bc568" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="44:/home/kasper/tinyos-main//tos/system/LedsP.nc" nicename="LedsP" qname="LedsP" safe="">
+      <documentation loc="35:/home/kasper/tinyos-main//tos/system/LedsP.nc">
+        <short>
+ The implementation of the standard 3 LED mote abstraction.</short>
+        <long>
+ The implementation of the standard 3 LED mote abstraction.
+
+ @author Joe Polastre
+ @author Philip Levis
+
+ @date   March 21, 2005
+</long>
+      </documentation>
+      <module/>
+    </component></referenced></component>

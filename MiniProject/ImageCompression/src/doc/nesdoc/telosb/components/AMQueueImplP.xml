@@ -1,0 +1,112 @@
+<?xml version="1.0" ?><component abstract="" loc="45:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc" nicename="AMQueueImplP" qname="AMQueueImplP" safe="">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc">
+        <short>
+ An AM send queue that provides a Service Instance pattern for
+ formatted packets and calls an underlying AMSend in a round-robin
+ fashion.</short>
+        <long>
+ An AM send queue that provides a Service Instance pattern for
+ formatted packets and calls an underlying AMSend in a round-robin
+ fashion. Used to share L2 bandwidth between different communication
+ clients.
+
+ @author Philip Levis
+ @date   Jan 16 2006
+</long>
+      </documentation>
+      <parameters>
+        <constant loc="45:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc" name="numClients" ref="0x2ac2c460b738">
+          <component-ref nicename="AMQueueImplP" qname="AMQueueImplP"/>
+          <type-int alignment="I:2" cname="int" size="I:2"/>
+        </constant>
+      </parameters>
+      <module/>
+    <specification><interface loc="48:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc" name="AMSend" provided="0" ref="0x2ac2c4607630">
+      <component-ref nicename="AMQueueImplP" qname="AMQueueImplP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c4607630" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c4607980" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c4607b08" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4607c90" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c4607e18" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c4606020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc" name="Send" provided="1" ref="0x2ac2c46084c0">
+      <component-ref nicename="AMQueueImplP" qname="AMQueueImplP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Send" ref="0x2ac2c46084c0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c4608810" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c4608998" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4608b20" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c4608ca8" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c4608e30" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="50:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc" name="Packet" provided="0" ref="0x2ac2c46058c8">
+      <component-ref nicename="AMQueueImplP" qname="AMQueueImplP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Packet" ref="0x2ac2c46058c8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c4605c18" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c4605da0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c4604020" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c46041a8" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c4604330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="169:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc" name="errorTask" provided="0" ref="0x2ac2c45dfdf0">
+      <component-ref nicename="AMQueueImplP" qname="AMQueueImplP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="errorTask" ref="0x2ac2c45dfdf0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c45de170" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c45de2f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="126:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc" name="CancelTask" provided="0" ref="0x2ac2c45f1908">
+      <component-ref nicename="AMQueueImplP" qname="AMQueueImplP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CancelTask" ref="0x2ac2c45f1908" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c45f1c58" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c45f1de0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="49:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc" name="AMPacket" provided="0" ref="0x2ac2c46062c0">
+      <component-ref nicename="AMQueueImplP" qname="AMQueueImplP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMPacket" ref="0x2ac2c46062c0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c4606610" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c4606798" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c4606920" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c4606aa8" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c4606c30" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c4606db8" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c4605020" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c46051a8" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c4605330" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c46054b8" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c4605640" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

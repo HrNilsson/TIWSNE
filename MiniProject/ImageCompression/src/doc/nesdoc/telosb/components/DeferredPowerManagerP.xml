@@ -1,0 +1,137 @@
+<?xml version="1.0" ?><component abstract="" loc="62:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" nicename="DeferredPowerManagerP" qname="DeferredPowerManagerP">
+      <documentation loc="41:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc">
+        <short>
+ Please refer to TEP 115 for more information about this component and its
+ intended use.&lt;br&gt;&lt;br&gt;
+
+ This is the internal implementation of the deffered power management
+ policy for managing the power states of non-virtualized devices.</short>
+        <long>
+ Please refer to TEP 115 for more information about this component and its
+ intended use.&lt;br&gt;&lt;br&gt;
+
+ This is the internal implementation of the deffered power management
+ policy for managing the power states of non-virtualized devices.
+ Non-virtualized devices are shared using a parameterized Resource
+ interface, and are powered down according to some policy whenever there
+ are no more pending requests to that Resource.  The policy implemented
+ by this component is to delay the power down of a device by some contant
+ factor.  Such a policy is useful whenever a device has a long wake-up
+ latency.  The cost of waiting for the device to power up can be
+ avoided if the device is requested again before some predetermined
+ amount of time.
+
+ @param &lt;b&gt;delay&lt;/b&gt; -- The amount of time the power manager should wait
+                        before shutting down the device once it is free.
+ 
+ @author Kevin Klues (klueska@cs.wustl.edu)
+</long>
+      </documentation>
+      <parameters>
+        <constant loc="62:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="delay" ref="0x2ac2c476e788">
+          <component-ref nicename="DeferredPowerManagerP" qname="DeferredPowerManagerP"/>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </constant>
+      </parameters>
+      <module/>
+    <specification><interface loc="65:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="SplitControl" provided="0" ref="0x2ac2c476d470">
+      <component-ref nicename="DeferredPowerManagerP" qname="DeferredPowerManagerP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SplitControl" ref="0x2ac2c476d470" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c476d7c0" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c476d948" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c476dad0" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c476dc58" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="70:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="TimerMilli" provided="0" ref="0x2ac2c476bc20">
+      <component-ref nicename="DeferredPowerManagerP" qname="DeferredPowerManagerP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="TimerMilli" ref="0x2ac2c476bc20" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Timer" qname="Timer"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df020"/>
+            <typename><typedef-ref name="TMilli" ref="0x2ac2c33df378"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c4767e78" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c47695a8" scoped=""/>
+        <function-ref name="startPeriodicAt" ref="0x2ac2c47672d8" scoped=""/>
+        <function-ref name="isOneShot" ref="0x2ac2c4769e48" scoped=""/>
+        <function-ref name="getdt" ref="0x2ac2c4766748" scoped=""/>
+        <function-ref name="gett0" ref="0x2ac2c47662f8" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c47699f8" scoped=""/>
+        <function-ref name="startPeriodic" ref="0x2ac2c476a7e8" scoped=""/>
+        <function-ref name="startOneShotAt" ref="0x2ac2c47678a8" scoped=""/>
+        <function-ref name="startOneShot" ref="0x2ac2c476ac88" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c4769158" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="67:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="PowerDownCleanup" provided="0" ref="0x2ac2c476c020">
+      <component-ref nicename="DeferredPowerManagerP" qname="DeferredPowerManagerP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PowerDownCleanup" ref="0x2ac2c476c020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PowerDownCleanup" qname="PowerDownCleanup"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="cleanup" ref="0x2ac2c476c370" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="87:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="timerTask" provided="0" ref="0x2ac2c4760020">
+      <component-ref nicename="DeferredPowerManagerP" qname="DeferredPowerManagerP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="timerTask" ref="0x2ac2c4760020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c4760370" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c47604f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="68:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="ResourceDefaultOwner" provided="0" ref="0x2ac2c476c688">
+      <component-ref nicename="DeferredPowerManagerP" qname="DeferredPowerManagerP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ResourceDefaultOwner" ref="0x2ac2c476c688" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ResourceDefaultOwner" qname="ResourceDefaultOwner"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c476c9d8" scoped=""/>
+        <function-ref name="requested" ref="0x2ac2c476cb60" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c476cce8" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c476ce70" scoped=""/>
+        <function-ref name="immediateRequested" ref="0x2ac2c476b020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="79:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="startTask" provided="0" ref="0x2ac2c47645c8">
+      <component-ref nicename="DeferredPowerManagerP" qname="DeferredPowerManagerP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="startTask" ref="0x2ac2c47645c8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c4764918" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c4764aa0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="64:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="StdControl" provided="0" ref="0x2ac2c476ec20">
+      <component-ref nicename="DeferredPowerManagerP" qname="DeferredPowerManagerP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="StdControl" ref="0x2ac2c476ec20" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="StdControl" qname="StdControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="start" ref="0x2ac2c476d020" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c476d1a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="69:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="ArbiterInfo" provided="0" ref="0x2ac2c476b2d8">
+      <component-ref nicename="DeferredPowerManagerP" qname="DeferredPowerManagerP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ArbiterInfo" ref="0x2ac2c476b2d8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ArbiterInfo" qname="ArbiterInfo"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="inUse" ref="0x2ac2c476b628" scoped=""/>
+        <function-ref name="userId" ref="0x2ac2c476b7b0" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

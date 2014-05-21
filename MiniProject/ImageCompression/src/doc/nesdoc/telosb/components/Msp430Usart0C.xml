@@ -1,0 +1,574 @@
+<?xml version="1.0" ?><component abstract="" loc="39:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc" nicename="Msp430Usart0C" qname="Msp430Usart0C">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc">
+        <short>
+ Provides an interface for USART0 on the MSP430.</short>
+        <long>
+ Provides an interface for USART0 on the MSP430.
+
+ @author Jonathan Hui &lt;jhui@archedrock.com&gt;
+ @version $Revision: 1.5 $ $Date: 2008-05-21 22:11:57 $
+</long>
+      </documentation>
+      <parameters>
+      </parameters>
+      <configuration/>
+      <wiring>
+        <wire loc="64:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc">
+          <from><interface-ref name="ResourceRequested" ref="0x2ac2c3bcdcc8" scoped=""/></from>
+          <to><interface-ref name="ResourceRequested" ref="0x2ac2c3bb5660" scoped=""/>
+          <arguments>
+            <value cst="U:">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="68:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc">
+          <from><interface-ref name="HplMsp430I2CInterrupts" ref="0x2ac2c3bc4590" scoped=""/></from>
+          <to><interface-ref name="I2CInterrupts" ref="0x2ac2c3bb8940" scoped=""/>
+          <arguments>
+            <value cst="U:">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="75:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc">
+          <from><interface-ref name="HplMsp430I2C" ref="0x2ac2c3bc4be8" scoped=""/></from>
+          <to><interface-ref name="HplMsp430I2C" ref="0x2ac2c3c72298" scoped=""/></to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc">
+          <from><interface-ref name="HplMsp430UsartInterrupts" ref="0x2ac2c3bc5cd0" scoped=""/></from>
+          <to><interface-ref name="Interrupts" ref="0x2ac2c3bbba48" scoped=""/>
+          <arguments>
+            <value cst="U:">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="63:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc">
+          <from><interface-ref name="Resource" ref="0x2ac2c3bcd020" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c3bb7498" scoped=""/>
+          <arguments>
+            <value cst="U:">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="71:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc">
+          <from><interface-ref name="HplMsp430Usart" ref="0x2ac2c3bcb4c0" scoped=""/></from>
+          <to><interface-ref name="HplMsp430Usart" ref="0x2ac2c3afe820" scoped=""/></to>
+        </wire>
+        <wire loc="66:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc">
+          <from><interface-ref name="ArbiterInfo" ref="0x2ac2c3bc9c40" scoped=""/></from>
+          <to><interface-ref name="ArbiterInfo" ref="0x2ac2c3bb5e30" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc">
+          <from><interface-ref name="ResourceConfigure" ref="0x2ac2c3bb4b58" scoped=""/>
+          <arguments>
+            <value cst="U:">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </from>
+          <to><interface-ref name="ResourceConfigure" ref="0x2ac2c3bbd7f0" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="42:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc" name="ResourceRequested" provided="1" ref="0x2ac2c3bcdcc8">
+      <component-ref nicename="Msp430Usart0C" qname="Msp430Usart0C"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ResourceRequested" ref="0x2ac2c3bcdcc8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ResourceRequested" qname="ResourceRequested"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="requested" ref="0x2ac2c3bcc0a0" scoped=""/>
+        <function-ref name="immediateRequested" ref="0x2ac2c3bcc228" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc" name="HplMsp430I2CInterrupts" provided="1" ref="0x2ac2c3bc4590">
+      <component-ref nicename="Msp430Usart0C" qname="Msp430Usart0C"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="HplMsp430I2CInterrupts" ref="0x2ac2c3bc4590" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430I2CInterrupts" qname="HplMsp430I2CInterrupts"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="fired" ref="0x2ac2c3bc48e0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="51:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc" name="ResourceConfigure" provided="0" ref="0x2ac2c3bbd7f0">
+      <component-ref nicename="Msp430Usart0C" qname="Msp430Usart0C"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ResourceConfigure" ref="0x2ac2c3bbd7f0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ResourceConfigure" qname="ResourceConfigure"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="unconfigure" ref="0x2ac2c3bbdb40" scoped=""/>
+        <function-ref name="configure" ref="0x2ac2c3bbdcc8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc" name="HplMsp430I2C" provided="1" ref="0x2ac2c3bc4be8">
+      <component-ref nicename="Msp430Usart0C" qname="Msp430Usart0C"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="HplMsp430I2C" ref="0x2ac2c3bc4be8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430I2C" qname="HplMsp430I2C"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="disableOwnAddress" ref="0x2ac2c3bc3020" scoped=""/>
+        <function-ref name="getStartByte" ref="0x2ac2c3bc31a8" scoped=""/>
+        <function-ref name="setSlaveAddress" ref="0x2ac2c3bc3330" scoped=""/>
+        <function-ref name="setMasterMode" ref="0x2ac2c3bc34b8" scoped=""/>
+        <function-ref name="disableTransmitReady" ref="0x2ac2c3bc3640" scoped=""/>
+        <function-ref name="getClockPrescaler" ref="0x2ac2c3bc37c8" scoped=""/>
+        <function-ref name="setTransmitMode" ref="0x2ac2c3bc3950" scoped=""/>
+        <function-ref name="getStopBit" ref="0x2ac2c3bc3ad8" scoped=""/>
+        <function-ref name="setClockSource" ref="0x2ac2c3bc3c60" scoped=""/>
+        <function-ref name="getRepeatMode" ref="0x2ac2c3bc3de8" scoped=""/>
+        <function-ref name="getData" ref="0x2ac2c3bc2020" scoped=""/>
+        <function-ref name="enableStartDetect" ref="0x2ac2c3bc21a8" scoped=""/>
+        <function-ref name="enableAccessReady" ref="0x2ac2c3bc2330" scoped=""/>
+        <function-ref name="getSlaveAddress" ref="0x2ac2c3bc25b8" scoped=""/>
+        <function-ref name="isGeneralCallPending" ref="0x2ac2c3bc2740" scoped=""/>
+        <function-ref name="getIV" ref="0x2ac2c3bc28c8" scoped=""/>
+        <function-ref name="enableI2C" ref="0x2ac2c3bc2a50" scoped=""/>
+        <function-ref name="setStartBit" ref="0x2ac2c3bc2bd8" scoped=""/>
+        <function-ref name="getTransferByteCount" ref="0x2ac2c3bc2d60" scoped=""/>
+        <function-ref name="getTransmitReceiveMode" ref="0x2ac2c3bc1020" scoped=""/>
+        <function-ref name="clearModeI2C" ref="0x2ac2c3bc11a8" scoped=""/>
+        <function-ref name="setOwnAddress" ref="0x2ac2c3bc1330" scoped=""/>
+        <function-ref name="isI2C" ref="0x2ac2c3bc14b8" scoped=""/>
+        <function-ref name="enableGeneralCall" ref="0x2ac2c3bc1640" scoped=""/>
+        <function-ref name="enableOwnAddress" ref="0x2ac2c3bc17c8" scoped=""/>
+        <function-ref name="isAccessReadyPending" ref="0x2ac2c3bc1b50" scoped=""/>
+        <function-ref name="isArbitrationLostPending" ref="0x2ac2c3bc1cd8" scoped=""/>
+        <function-ref name="disableReceiveReady" ref="0x2ac2c3bc1e60" scoped=""/>
+        <function-ref name="disableNoAck" ref="0x2ac2c3bc0020" scoped=""/>
+        <function-ref name="disableStartDetect" ref="0x2ac2c3bc01a8" scoped=""/>
+        <function-ref name="enableArbitrationLost" ref="0x2ac2c3bc0330" scoped=""/>
+        <function-ref name="disableI2C" ref="0x2ac2c3bc04b8" scoped=""/>
+        <function-ref name="getShiftClock" ref="0x2ac2c3bc0640" scoped=""/>
+        <function-ref name="disableArbitrationLost" ref="0x2ac2c3bc07c8" scoped=""/>
+        <function-ref name="disableAccessReady" ref="0x2ac2c3bc0950" scoped=""/>
+        <function-ref name="setTransferByteCount" ref="0x2ac2c3bc0ad8" scoped=""/>
+        <function-ref name="isOwnAddressPending" ref="0x2ac2c3bc0c60" scoped=""/>
+        <function-ref name="getOwnAddress" ref="0x2ac2c3bc0de8" scoped=""/>
+        <function-ref name="enableTransmitReady" ref="0x2ac2c3bbf020" scoped=""/>
+        <function-ref name="setModeI2C" ref="0x2ac2c3bbf1a8" scoped=""/>
+        <function-ref name="getStartBit" ref="0x2ac2c3bbf330" scoped=""/>
+        <function-ref name="setWordMode" ref="0x2ac2c3bbf4b8" scoped=""/>
+        <function-ref name="setData" ref="0x2ac2c3bbf640" scoped=""/>
+        <function-ref name="isStartDetectPending" ref="0x2ac2c3bbf7c8" scoped=""/>
+        <function-ref name="getClockSource" ref="0x2ac2c3bbf950" scoped=""/>
+        <function-ref name="getWordMode" ref="0x2ac2c3bbfad8" scoped=""/>
+        <function-ref name="setShiftClock" ref="0x2ac2c3bbfc60" scoped=""/>
+        <function-ref name="setSlaveMode" ref="0x2ac2c3bbfde8" scoped=""/>
+        <function-ref name="enableNoAck" ref="0x2ac2c3bbe020" scoped=""/>
+        <function-ref name="enableReceiveReady" ref="0x2ac2c3bbe5a8" scoped=""/>
+        <function-ref name="disableGeneralCall" ref="0x2ac2c3bbe730" scoped=""/>
+        <function-ref name="setClockPrescaler" ref="0x2ac2c3bbe8b8" scoped=""/>
+        <function-ref name="setStopBit" ref="0x2ac2c3bbea40" scoped=""/>
+        <function-ref name="setReceiveMode" ref="0x2ac2c3bbebc8" scoped=""/>
+        <function-ref name="isNoAckPending" ref="0x2ac2c3bbed50" scoped=""/>
+        <function-ref name="setRepeatMode" ref="0x2ac2c3bbd020" scoped=""/>
+        <function-ref name="isTransmitReadyPending" ref="0x2ac2c3bbd1a8" scoped=""/>
+        <function-ref name="setStartByte" ref="0x2ac2c3bbd330" scoped=""/>
+        <function-ref name="isReceiveReadyPending" ref="0x2ac2c3bbd4b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc" name="HplMsp430UsartInterrupts" provided="1" ref="0x2ac2c3bc5cd0">
+      <component-ref nicename="Msp430Usart0C" qname="Msp430Usart0C"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="HplMsp430UsartInterrupts" ref="0x2ac2c3bc5cd0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430UsartInterrupts" qname="HplMsp430UsartInterrupts"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="rxDone" ref="0x2ac2c3bc40a0" scoped=""/>
+        <function-ref name="txDone" ref="0x2ac2c3bc4228" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="41:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc" name="Resource" provided="1" ref="0x2ac2c3bcd020">
+      <component-ref nicename="Msp430Usart0C" qname="Msp430Usart0C"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Resource" ref="0x2ac2c3bcd020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c3bcd370" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c3bcd4f8" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c3bcd680" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c3bcd808" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c3bcd990" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="44:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc" name="HplMsp430Usart" provided="1" ref="0x2ac2c3bcb4c0">
+      <component-ref nicename="Msp430Usart0C" qname="Msp430Usart0C"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="HplMsp430Usart" ref="0x2ac2c3bcb4c0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="isTxEmpty" ref="0x2ac2c3bcb810" scoped=""/>
+        <function-ref name="enableUartRx" ref="0x2ac2c3bcb998" scoped=""/>
+        <function-ref name="setUctl" ref="0x2ac2c3bcbb20" scoped=""/>
+        <function-ref name="enableUart" ref="0x2ac2c3bcbca8" scoped=""/>
+        <function-ref name="setUrctl" ref="0x2ac2c3bcbe30" scoped=""/>
+        <function-ref name="enableRxIntr" ref="0x2ac2c3bca020" scoped=""/>
+        <function-ref name="clrRxIntr" ref="0x2ac2c3bca1a8" scoped=""/>
+        <function-ref name="getUtctl" ref="0x2ac2c3bca330" scoped=""/>
+        <function-ref name="getUrctl" ref="0x2ac2c3bca4b8" scoped=""/>
+        <function-ref name="resetUsart" ref="0x2ac2c3bca640" scoped=""/>
+        <function-ref name="getUmctl" ref="0x2ac2c3bca7c8" scoped=""/>
+        <function-ref name="disableIntr" ref="0x2ac2c3bca950" scoped=""/>
+        <function-ref name="setUtctl" ref="0x2ac2c3bcaad8" scoped=""/>
+        <function-ref name="getUbr" ref="0x2ac2c3bcad60" scoped=""/>
+        <function-ref name="enableTxIntr" ref="0x2ac2c3bc7020" scoped=""/>
+        <function-ref name="setUmctl" ref="0x2ac2c3bc71a8" scoped=""/>
+        <function-ref name="isUartRx" ref="0x2ac2c3bc7330" scoped=""/>
+        <function-ref name="isUart" ref="0x2ac2c3bc74b8" scoped=""/>
+        <function-ref name="disableRxIntr" ref="0x2ac2c3bc7640" scoped=""/>
+        <function-ref name="isSpi" ref="0x2ac2c3bc77c8" scoped=""/>
+        <function-ref name="enableUartTx" ref="0x2ac2c3bc7950" scoped=""/>
+        <function-ref name="disableTxIntr" ref="0x2ac2c3bc7ad8" scoped=""/>
+        <function-ref name="disableUartRx" ref="0x2ac2c3bc7c60" scoped=""/>
+        <function-ref name="enableIntr" ref="0x2ac2c3bc7de8" scoped=""/>
+        <function-ref name="getMode" ref="0x2ac2c3bc6020" scoped=""/>
+        <function-ref name="isTxIntrPending" ref="0x2ac2c3bc63a8" scoped=""/>
+        <function-ref name="clrIntr" ref="0x2ac2c3bc6530" scoped=""/>
+        <function-ref name="setUbr" ref="0x2ac2c3bc66b8" scoped=""/>
+        <function-ref name="tx" ref="0x2ac2c3bc6840" scoped=""/>
+        <function-ref name="getUctl" ref="0x2ac2c3bc69c8" scoped=""/>
+        <function-ref name="disableUart" ref="0x2ac2c3bc6b50" scoped=""/>
+        <function-ref name="enableSpi" ref="0x2ac2c3bc6cd8" scoped=""/>
+        <function-ref name="setModeUart" ref="0x2ac2c3bc6e60" scoped=""/>
+        <function-ref name="setModeSpi" ref="0x2ac2c3bc5020" scoped=""/>
+        <function-ref name="rx" ref="0x2ac2c3bc51a8" scoped=""/>
+        <function-ref name="isRxIntrPending" ref="0x2ac2c3bc5330" scoped=""/>
+        <function-ref name="isUartTx" ref="0x2ac2c3bc54b8" scoped=""/>
+        <function-ref name="clrTxIntr" ref="0x2ac2c3bc5640" scoped=""/>
+        <function-ref name="disableSpi" ref="0x2ac2c3bc57c8" scoped=""/>
+        <function-ref name="disableUartTx" ref="0x2ac2c3bc5950" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Usart0C.nc" name="ArbiterInfo" provided="1" ref="0x2ac2c3bc9c40">
+      <component-ref nicename="Msp430Usart0C" qname="Msp430Usart0C"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ArbiterInfo" ref="0x2ac2c3bc9c40" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ArbiterInfo" qname="ArbiterInfo"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="inUse" ref="0x2ac2c3bcb020" scoped=""/>
+        <function-ref name="userId" ref="0x2ac2c3bcb1a8" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="45:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" name="ResourceConfigure" provided="0" ref="0x2ac2c3bb4b58">
+      <component-ref nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ResourceConfigure" ref="0x2ac2c3bb4b58" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ResourceConfigure" qname="ResourceConfigure"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="unconfigure" ref="0x2ac2c3bb3020" scoped=""/>
+        <function-ref name="configure" ref="0x2ac2c3bb31a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="41:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" name="Resource" provided="1" ref="0x2ac2c3bb7498">
+      <component-ref nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Resource" ref="0x2ac2c3bb7498" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c3bb77e8" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c3bb7970" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c3bb7af8" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c3bb7c80" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c3bb7e08" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="39:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" name="Interrupts" provided="1" ref="0x2ac2c3bbba48">
+      <component-ref nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Interrupts" ref="0x2ac2c3bbba48" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430UsartInterrupts" qname="HplMsp430UsartInterrupts"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="rxDone" ref="0x2ac2c3bbbd98" scoped=""/>
+        <function-ref name="txDone" ref="0x2ac2c3bb8020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" name="ArbiterInfo" provided="1" ref="0x2ac2c3bb5e30">
+      <component-ref nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ArbiterInfo" ref="0x2ac2c3bb5e30" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ArbiterInfo" qname="ArbiterInfo"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="inUse" ref="0x2ac2c3bb41a8" scoped=""/>
+        <function-ref name="userId" ref="0x2ac2c3bb4330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="4:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430I2C0C.nc" name="HplMsp430I2C" provided="1" ref="0x2ac2c3c72298">
+      <component-ref nicename="HplMsp430I2C0C" qname="HplMsp430I2C0C"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="HplMsp430I2C" ref="0x2ac2c3c72298" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430I2C" qname="HplMsp430I2C"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="disableOwnAddress" ref="0x2ac2c3c725e8" scoped=""/>
+        <function-ref name="getStartByte" ref="0x2ac2c3c72770" scoped=""/>
+        <function-ref name="setSlaveAddress" ref="0x2ac2c3c728f8" scoped=""/>
+        <function-ref name="setMasterMode" ref="0x2ac2c3c72a80" scoped=""/>
+        <function-ref name="disableTransmitReady" ref="0x2ac2c3c72c08" scoped=""/>
+        <function-ref name="getClockPrescaler" ref="0x2ac2c3c72d90" scoped=""/>
+        <function-ref name="setTransmitMode" ref="0x2ac2c3c6f020" scoped=""/>
+        <function-ref name="getStopBit" ref="0x2ac2c3c6f1a8" scoped=""/>
+        <function-ref name="setClockSource" ref="0x2ac2c3c6f330" scoped=""/>
+        <function-ref name="getRepeatMode" ref="0x2ac2c3c6f4b8" scoped=""/>
+        <function-ref name="getData" ref="0x2ac2c3c6f640" scoped=""/>
+        <function-ref name="enableStartDetect" ref="0x2ac2c3c6f7c8" scoped=""/>
+        <function-ref name="enableAccessReady" ref="0x2ac2c3c6f950" scoped=""/>
+        <function-ref name="getSlaveAddress" ref="0x2ac2c3c6fbd8" scoped=""/>
+        <function-ref name="isGeneralCallPending" ref="0x2ac2c3c6fd60" scoped=""/>
+        <function-ref name="getIV" ref="0x2ac2c3c6e020" scoped=""/>
+        <function-ref name="enableI2C" ref="0x2ac2c3c6e1a8" scoped=""/>
+        <function-ref name="setStartBit" ref="0x2ac2c3c6e330" scoped=""/>
+        <function-ref name="getTransferByteCount" ref="0x2ac2c3c6e4b8" scoped=""/>
+        <function-ref name="getTransmitReceiveMode" ref="0x2ac2c3c6e640" scoped=""/>
+        <function-ref name="clearModeI2C" ref="0x2ac2c3c6e7c8" scoped=""/>
+        <function-ref name="setOwnAddress" ref="0x2ac2c3c6e950" scoped=""/>
+        <function-ref name="isI2C" ref="0x2ac2c3c6ead8" scoped=""/>
+        <function-ref name="enableGeneralCall" ref="0x2ac2c3c6ec60" scoped=""/>
+        <function-ref name="enableOwnAddress" ref="0x2ac2c3c6ede8" scoped=""/>
+        <function-ref name="isAccessReadyPending" ref="0x2ac2c3c6d220" scoped=""/>
+        <function-ref name="isArbitrationLostPending" ref="0x2ac2c3c6d3a8" scoped=""/>
+        <function-ref name="disableReceiveReady" ref="0x2ac2c3c6d530" scoped=""/>
+        <function-ref name="disableNoAck" ref="0x2ac2c3c6d6b8" scoped=""/>
+        <function-ref name="disableStartDetect" ref="0x2ac2c3c6d840" scoped=""/>
+        <function-ref name="enableArbitrationLost" ref="0x2ac2c3c6d9c8" scoped=""/>
+        <function-ref name="disableI2C" ref="0x2ac2c3c6db50" scoped=""/>
+        <function-ref name="getShiftClock" ref="0x2ac2c3c6dcd8" scoped=""/>
+        <function-ref name="disableArbitrationLost" ref="0x2ac2c3c6de60" scoped=""/>
+        <function-ref name="disableAccessReady" ref="0x2ac2c3c6c020" scoped=""/>
+        <function-ref name="setTransferByteCount" ref="0x2ac2c3c6c1a8" scoped=""/>
+        <function-ref name="isOwnAddressPending" ref="0x2ac2c3c6c330" scoped=""/>
+        <function-ref name="getOwnAddress" ref="0x2ac2c3c6c4b8" scoped=""/>
+        <function-ref name="enableTransmitReady" ref="0x2ac2c3c6c640" scoped=""/>
+        <function-ref name="setModeI2C" ref="0x2ac2c3c6c7c8" scoped=""/>
+        <function-ref name="getStartBit" ref="0x2ac2c3c6c950" scoped=""/>
+        <function-ref name="setWordMode" ref="0x2ac2c3c6cad8" scoped=""/>
+        <function-ref name="setData" ref="0x2ac2c3c6cc60" scoped=""/>
+        <function-ref name="isStartDetectPending" ref="0x2ac2c3c6cde8" scoped=""/>
+        <function-ref name="getClockSource" ref="0x2ac2c3c6b020" scoped=""/>
+        <function-ref name="getWordMode" ref="0x2ac2c3c6b1a8" scoped=""/>
+        <function-ref name="setShiftClock" ref="0x2ac2c3c6b330" scoped=""/>
+        <function-ref name="setSlaveMode" ref="0x2ac2c3c6b4b8" scoped=""/>
+        <function-ref name="enableNoAck" ref="0x2ac2c3c6b640" scoped=""/>
+        <function-ref name="enableReceiveReady" ref="0x2ac2c3c6bbc8" scoped=""/>
+        <function-ref name="disableGeneralCall" ref="0x2ac2c3c6bd50" scoped=""/>
+        <function-ref name="setClockPrescaler" ref="0x2ac2c3c6a020" scoped=""/>
+        <function-ref name="setStopBit" ref="0x2ac2c3c6a1a8" scoped=""/>
+        <function-ref name="setReceiveMode" ref="0x2ac2c3c6a330" scoped=""/>
+        <function-ref name="isNoAckPending" ref="0x2ac2c3c6a4b8" scoped=""/>
+        <function-ref name="setRepeatMode" ref="0x2ac2c3c6a640" scoped=""/>
+        <function-ref name="isTransmitReadyPending" ref="0x2ac2c3c6a7c8" scoped=""/>
+        <function-ref name="setStartByte" ref="0x2ac2c3c6a950" scoped=""/>
+        <function-ref name="isReceiveReadyPending" ref="0x2ac2c3c6aad8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="40:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" name="I2CInterrupts" provided="1" ref="0x2ac2c3bb8940">
+      <component-ref nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="I2CInterrupts" ref="0x2ac2c3bb8940" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430I2CInterrupts" qname="HplMsp430I2CInterrupts"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="fired" ref="0x2ac2c3bb8c90" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="42:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" name="ResourceRequested" provided="1" ref="0x2ac2c3bb5660">
+      <component-ref nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ResourceRequested" ref="0x2ac2c3bb5660" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ResourceRequested" qname="ResourceRequested"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="requested" ref="0x2ac2c3bb59b0" scoped=""/>
+        <function-ref name="immediateRequested" ref="0x2ac2c3bb5b38" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="76:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc" name="HplMsp430Usart" provided="1" ref="0x2ac2c3afe820">
+      <component-ref nicename="HplMsp430Usart0C" qname="HplMsp430Usart0C"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="HplMsp430Usart" ref="0x2ac2c3afe820" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="isTxEmpty" ref="0x2ac2c3afeb70" scoped=""/>
+        <function-ref name="enableUartRx" ref="0x2ac2c3afecf8" scoped=""/>
+        <function-ref name="setUctl" ref="0x2ac2c3afee80" scoped=""/>
+        <function-ref name="enableUart" ref="0x2ac2c3afb030" scoped=""/>
+        <function-ref name="setUrctl" ref="0x2ac2c3afb1b8" scoped=""/>
+        <function-ref name="enableRxIntr" ref="0x2ac2c3afb340" scoped=""/>
+        <function-ref name="clrRxIntr" ref="0x2ac2c3afb4c8" scoped=""/>
+        <function-ref name="getUtctl" ref="0x2ac2c3afb650" scoped=""/>
+        <function-ref name="getUrctl" ref="0x2ac2c3afb7d8" scoped=""/>
+        <function-ref name="resetUsart" ref="0x2ac2c3afb960" scoped=""/>
+        <function-ref name="getUmctl" ref="0x2ac2c3afbae8" scoped=""/>
+        <function-ref name="disableIntr" ref="0x2ac2c3afbc70" scoped=""/>
+        <function-ref name="setUtctl" ref="0x2ac2c3afbdf8" scoped=""/>
+        <function-ref name="getUbr" ref="0x2ac2c3afa120" scoped=""/>
+        <function-ref name="enableTxIntr" ref="0x2ac2c3afa2a8" scoped=""/>
+        <function-ref name="setUmctl" ref="0x2ac2c3afa430" scoped=""/>
+        <function-ref name="isUartRx" ref="0x2ac2c3afa5b8" scoped=""/>
+        <function-ref name="isUart" ref="0x2ac2c3afa740" scoped=""/>
+        <function-ref name="disableRxIntr" ref="0x2ac2c3afa8c8" scoped=""/>
+        <function-ref name="isSpi" ref="0x2ac2c3afaa50" scoped=""/>
+        <function-ref name="enableUartTx" ref="0x2ac2c3afabd8" scoped=""/>
+        <function-ref name="disableTxIntr" ref="0x2ac2c3afad60" scoped=""/>
+        <function-ref name="disableUartRx" ref="0x2ac2c3af9020" scoped=""/>
+        <function-ref name="enableIntr" ref="0x2ac2c3af91a8" scoped=""/>
+        <function-ref name="getMode" ref="0x2ac2c3af9330" scoped=""/>
+        <function-ref name="isTxIntrPending" ref="0x2ac2c3af96b8" scoped=""/>
+        <function-ref name="clrIntr" ref="0x2ac2c3af9840" scoped=""/>
+        <function-ref name="setUbr" ref="0x2ac2c3af99c8" scoped=""/>
+        <function-ref name="tx" ref="0x2ac2c3af9b50" scoped=""/>
+        <function-ref name="getUctl" ref="0x2ac2c3af9cd8" scoped=""/>
+        <function-ref name="disableUart" ref="0x2ac2c3af9e60" scoped=""/>
+        <function-ref name="enableSpi" ref="0x2ac2c3af8020" scoped=""/>
+        <function-ref name="setModeUart" ref="0x2ac2c3af81a8" scoped=""/>
+        <function-ref name="setModeSpi" ref="0x2ac2c3af8330" scoped=""/>
+        <function-ref name="rx" ref="0x2ac2c3af84b8" scoped=""/>
+        <function-ref name="isRxIntrPending" ref="0x2ac2c3af8640" scoped=""/>
+        <function-ref name="isUartTx" ref="0x2ac2c3af87c8" scoped=""/>
+        <function-ref name="clrTxIntr" ref="0x2ac2c3af8950" scoped=""/>
+        <function-ref name="disableSpi" ref="0x2ac2c3af8ad8" scoped=""/>
+        <function-ref name="disableUartTx" ref="0x2ac2c3af8c60" scoped=""/>
+      </interface-functions>
+    </interface><component loc="37:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+        <short>
+ </short>
+        <long>
+ @author Jonathan Hui &lt;jhui@archedrock.com&gt;
+ @version $Revision: 1.5 $ $Date: 2008-05-21 22:11:57 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="56:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="ResourceRequested" ref="0x2ac2c3bb5660" scoped=""/></from>
+          <to><interface-ref name="ResourceRequested" ref="0x2ac2c3c7bd18" scoped=""/></to>
+        </wire>
+        <wire loc="51:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="Interrupts" ref="0x2ac2c3bbba48" scoped=""/></from>
+          <to><interface-ref name="Interrupts" ref="0x2ac2c3bb1480" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="Resource" ref="0x2ac2c3bb7498" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c3c7b020" scoped=""/></to>
+        </wire>
+        <wire loc="52:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="I2CInterrupts" ref="0x2ac2c3bb8940" scoped=""/></from>
+          <to><interface-ref name="I2CInterrupts" ref="0x2ac2c3bb1d60" scoped=""/></to>
+        </wire>
+        <wire loc="58:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="ArbiterInfo" ref="0x2ac2c3bb5e30" scoped=""/></from>
+          <to><interface-ref name="ArbiterInfo" ref="0x2ac2c3c790e0" scoped=""/></to>
+        </wire>
+        <wire loc="57:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="ResourceConfigure" ref="0x2ac2c3c79960" scoped=""/></from>
+          <to><interface-ref name="ResourceConfigure" ref="0x2ac2c3bb4b58" scoped=""/></to>
+        </wire>
+        <wire loc="59:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="ArbiterInfo" ref="0x2ac2c3bf22a8" scoped=""/></from>
+          <to><interface-ref name="ArbiterInfo" ref="0x2ac2c3c790e0" scoped=""/></to>
+        </wire>
+        <wire loc="62:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="RawInterrupts" ref="0x2ac2c3bf4438" scoped=""/></from>
+          <to><interface-ref name="HplMsp430UsartInterrupts" ref="0x2ac2c3af7020" scoped=""/></to>
+        </wire>
+        <wire loc="63:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="RawI2CInterrupts" ref="0x2ac2c3bf4bd8" scoped=""/></from>
+          <to><interface-ref name="HplMsp430I2CInterrupts" ref="0x2ac2c3af4470" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="2:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430I2C0C.nc" nicename="HplMsp430I2C0C" qname="HplMsp430I2C0C">
+      <configuration/>
+      <wiring>
+        <wire loc="11:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430I2C0C.nc">
+          <from><interface-ref name="HplMsp430I2C" ref="0x2ac2c3c72298" scoped=""/></from>
+          <to><interface-ref name="HplI2C" ref="0x2ac2c3c68b30" scoped=""/></to>
+        </wire>
+        <wire loc="14:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430I2C0C.nc">
+          <from><interface-ref name="HplI2C" ref="0x2ac2c3b15358" scoped=""/></from>
+          <to><interface-ref name="HplI2C" ref="0x2ac2c3c68b30" scoped=""/></to>
+        </wire>
+        <wire loc="15:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430I2C0C.nc">
+          <from><interface-ref name="HplUsart" ref="0x2ac2c3c5f6e0" scoped=""/></from>
+          <to><interface-ref name="Usart" ref="0x2ac2c3af6a00" scoped=""/></to>
+        </wire>
+        <wire loc="18:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430I2C0C.nc">
+          <from><interface-ref name="SIMO" ref="0x2ac2c3c5a060" scoped=""/></from>
+          <to><interface-ref name="SIMO0" ref="0x2ac2c30cd970" scoped=""/></to>
+        </wire>
+        <wire loc="19:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430I2C0C.nc">
+          <from><interface-ref name="UCLK" ref="0x2ac2c3c59e00" scoped=""/></from>
+          <to><interface-ref name="UCLK0" ref="0x2ac2c30ee560" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="74:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc" nicename="HplMsp430Usart0C" qname="HplMsp430Usart0C">
+      <documentation loc="31:/home/kasper/tinyos-main//tos/chips/msp430/usart/msp430usart.h">
+        <short>
+ </short>
+        <long>
+ @author Vlado Handziski &lt;handzisk@tkn.tu-berlin.de&gt;
+ @author Philipp Huppertz &lt;huppertz@tkn.tu-berlin.de&gt;
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="87:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="HplMsp430I2CInterrupts" ref="0x2ac2c3af4470" scoped=""/></from>
+          <to><interface-ref name="I2CInterrupts" ref="0x2ac2c3aedd50" scoped=""/></to>
+        </wire>
+        <wire loc="86:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="HplMsp430UsartInterrupts" ref="0x2ac2c3af7020" scoped=""/></from>
+          <to><interface-ref name="Interrupts" ref="0x2ac2c3aed448" scoped=""/></to>
+        </wire>
+        <wire loc="85:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="HplMsp430Usart" ref="0x2ac2c3afe820" scoped=""/></from>
+          <to><interface-ref name="Usart" ref="0x2ac2c3af6a00" scoped=""/></to>
+        </wire>
+        <wire loc="90:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="SIMO" ref="0x2ac2c3b10020" scoped=""/></from>
+          <to><interface-ref name="SIMO0" ref="0x2ac2c30cd970" scoped=""/></to>
+        </wire>
+        <wire loc="91:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="SOMI" ref="0x2ac2c3b0fe00" scoped=""/></from>
+          <to><interface-ref name="SOMI0" ref="0x2ac2c30f0660" scoped=""/></to>
+        </wire>
+        <wire loc="92:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="UCLK" ref="0x2ac2c3b0dc78" scoped=""/></from>
+          <to><interface-ref name="UCLK0" ref="0x2ac2c30ee560" scoped=""/></to>
+        </wire>
+        <wire loc="93:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="URXD" ref="0x2ac2c3b0baf0" scoped=""/></from>
+          <to><interface-ref name="URXD0" ref="0x2ac2c30e8560" scoped=""/></to>
+        </wire>
+        <wire loc="94:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="UTXD" ref="0x2ac2c3b09968" scoped=""/></from>
+          <to><interface-ref name="UTXD0" ref="0x2ac2c30ea560" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component></referenced></component>

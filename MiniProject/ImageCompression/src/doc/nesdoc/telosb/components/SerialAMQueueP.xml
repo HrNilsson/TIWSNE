@@ -1,0 +1,270 @@
+<?xml version="1.0" ?><component loc="43:/home/kasper/tinyos-main//tos/lib/serial/SerialAMQueueP.nc" nicename="SerialAMQueueP" qname="SerialAMQueueP">
+      <documentation loc="71:/home/kasper/tinyos-main//tos/lib/serial/Serial.h">
+        <short>
+ </short>
+        <long>
+ @author Phil Buonadonna
+ @author Lewis Girod
+ @author Ben Greenstein
+ @author Philip Levis
+ @date   August 7 2005
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="54:/home/kasper/tinyos-main//tos/lib/serial/SerialAMQueueP.nc">
+          <from><interface-ref name="Send" ref="0x2ac2c4818020" scoped=""/></from>
+          <to><interface-ref name="Send" ref="0x2ac2c48158a8" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/lib/serial/SerialAMQueueP.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c48146f8" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c4262920" scoped=""/></to>
+        </wire>
+        <wire loc="56:/home/kasper/tinyos-main//tos/lib/serial/SerialAMQueueP.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c48133f0" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c425fcd0" scoped=""/></to>
+        </wire>
+        <wire loc="57:/home/kasper/tinyos-main//tos/lib/serial/SerialAMQueueP.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c4812a10" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c425f0c0" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="44:/home/kasper/tinyos-main//tos/lib/serial/SerialAMQueueP.nc" name="Send" provided="1" ref="0x2ac2c4818020">
+      <component-ref nicename="SerialAMQueueP" qname="SerialAMQueueP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Send" ref="0x2ac2c4818020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c4818370" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c48184f8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4818680" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c4818808" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c4818990" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="49:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" name="Packet" provided="1" ref="0x2ac2c425f0c0">
+      <component-ref nicename="SerialActiveMessageC" qname="SerialActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Packet" ref="0x2ac2c425f0c0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c425f410" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c425f598" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c425f720" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c425f8a8" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c425fa30" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="49:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc" name="AMPacket" provided="0" ref="0x2ac2c48133f0">
+      <component-ref nicename="SerialAMQueueP.AMQueueImplP" qname="SerialAMQueueP.AMQueueImplP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMPacket" ref="0x2ac2c48133f0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c4813740" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c48138c8" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c4813a50" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c4813bd8" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c4813d60" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c4812020" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c48121a8" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c4812330" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c48124b8" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c4812640" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c48127c8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc" name="Send" provided="1" ref="0x2ac2c48158a8">
+      <component-ref nicename="SerialAMQueueP.AMQueueImplP" qname="SerialAMQueueP.AMQueueImplP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Send" ref="0x2ac2c48158a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c4815c18" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c4815da0" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4814020" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c48141a8" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c4814330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc" name="AMSend" provided="0" ref="0x2ac2c48146f8">
+      <component-ref nicename="SerialAMQueueP.AMQueueImplP" qname="SerialAMQueueP.AMQueueImplP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c48146f8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c4814a68" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c4814bf0" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4814d78" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c4813020" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c48131a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="50:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc" name="Packet" provided="0" ref="0x2ac2c4812a10">
+      <component-ref nicename="SerialAMQueueP.AMQueueImplP" qname="SerialAMQueueP.AMQueueImplP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Packet" ref="0x2ac2c4812a10" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c4812d60" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c4811020" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c48111a8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4811330" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c48114b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="50:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" name="AMPacket" provided="1" ref="0x2ac2c425fcd0">
+      <component-ref nicename="SerialActiveMessageC" qname="SerialActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMPacket" ref="0x2ac2c425fcd0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c425e0a0" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c425e228" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c425e3b0" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c425e538" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c425e6c0" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c425e848" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c425e9d0" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c425eb58" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c425ece0" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c425ee68" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c425d020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" name="AMSend" provided="1" ref="0x2ac2c4262920">
+      <component-ref nicename="SerialActiveMessageC" qname="SerialActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c4262920" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c4262c70" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c4262df8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4260020" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c42601a8" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c4260330" scoped=""/>
+      </interface-functions>
+    </interface><component loc="44:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" nicename="SerialActiveMessageC" qname="SerialActiveMessageC">
+      <documentation loc="71:/home/kasper/tinyos-main//tos/lib/serial/Serial.h">
+        <short>
+ </short>
+        <long>
+ @author Phil Buonadonna
+ @author Lewis Girod
+ @author Ben Greenstein
+ @author Philip Levis
+ @date   August 7 2005
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="61:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SplitControl" ref="0x2ac2c41c6848" scoped=""/></from>
+          <to><interface-ref name="SplitControl" ref="0x2ac2c426b728" scoped=""/></to>
+        </wire>
+        <wire loc="63:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c4262920" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c4259460" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c425f0c0" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c4273d20" scoped=""/></to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="Receive" ref="0x2ac2c4260ab0" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c4274180" scoped=""/></to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="PacketAcknowledgements" ref="0x2ac2c425d348" scoped=""/></from>
+          <to><interface-ref name="PacketAcknowledgements" ref="0x2ac2c4272908" scoped=""/></to>
+        </wire>
+        <wire loc="66:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c425fcd0" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c4274738" scoped=""/></to>
+        </wire>
+        <wire loc="59:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c426b110" scoped=""/></to>
+        </wire>
+        <wire loc="60:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="Leds" ref="0x2ac2c42d78f8" scoped=""/></from>
+          <to><interface-ref name="Leds" ref="0x2ac2c425dc80" scoped=""/></to>
+        </wire>
+        <wire loc="69:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SubSend" ref="0x2ac2c4271308" scoped=""/></from>
+          <to><interface-ref name="Send" ref="0x2ac2c4269208" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="70:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SubReceive" ref="0x2ac2c426f020" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c426a760" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="72:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SerialPacketInfo" ref="0x2ac2c42d7020" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </from>
+          <to><interface-ref name="Info" ref="0x2ac2c4558020" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="45(SerialAMQueueP.AMQueueImplP):/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc" nicename="SerialAMQueueP.AMQueueImplP" qname="SerialAMQueueP.AMQueueImplP">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/system/AMQueueImplP.nc">
+        <short>
+ An AM send queue that provides a Service Instance pattern for
+ formatted packets and calls an underlying AMSend in a round-robin
+ fashion.</short>
+        <long>
+ An AM send queue that provides a Service Instance pattern for
+ formatted packets and calls an underlying AMSend in a round-robin
+ fashion. Used to share L2 bandwidth between different communication
+ clients.
+
+ @author Philip Levis
+ @date   Jan 16 2006
+</long>
+      </documentation>
+      <instance number="1">
+        <component-ref nicename="AMQueueImplP" qname="AMQueueImplP"/>
+        <arguments>
+          <value cst="I:2">
+            <type-int alignment="I:2" cname="int" size="I:2"/>
+          </value>
+        </arguments>
+      </instance>
+      <module/>
+    </component></referenced></component>

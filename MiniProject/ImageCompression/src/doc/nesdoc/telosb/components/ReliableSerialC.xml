@@ -1,0 +1,107 @@
+<?xml version="1.0" ?><component loc="12:ReliableSerialC.nc" nicename="ReliableSerialC" qname="ReliableSerialC">
+      <module/>
+    <specification><interface loc="19:ReliableSerialC.nc" name="SubSend" provided="0" ref="0x2ac2c422ecd8">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SubSend" ref="0x2ac2c422ecd8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c422d0a0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c422d228" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c422d3b0" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c422d538" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c422d6c0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="21:ReliableSerialC.nc" name="SubReceive" provided="0" ref="0x2ac2c422c7f0">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SubReceive" ref="0x2ac2c422c7f0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c422cb40" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="14:ReliableSerialC.nc" name="AMSend" provided="1" ref="0x2ac2c42306a8">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c42306a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c42309f8" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c4230b80" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4230d08" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c422f020" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c422f1a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="20:ReliableSerialC.nc" name="AckSend" provided="0" ref="0x2ac2c422d9d0">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AckSend" ref="0x2ac2c422d9d0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c422dd20" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c422c020" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c422c1a8" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c422c330" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c422c4b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="16:ReliableSerialC.nc" name="FlowControl" provided="1" ref="0x2ac2c422fbd8">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="FlowControl" ref="0x2ac2c422fbd8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Set" qname="Set"/>
+        <arguments>
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="set" ref="0x2ac2c422e768" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="22:ReliableSerialC.nc" name="AckReceive" provided="0" ref="0x2ac2c422ce78">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AckReceive" ref="0x2ac2c422ce78" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c422b1f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="15:ReliableSerialC.nc" name="Receive" provided="1" ref="0x2ac2c422f438">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Receive" ref="0x2ac2c422f438" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c422f788" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="23:ReliableSerialC.nc" name="Timer" provided="0" ref="0x2ac2c422b5c0">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Timer" ref="0x2ac2c422b5c0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Timer" qname="Timer"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df020"/>
+            <typename><typedef-ref name="TMilli" ref="0x2ac2c33df378"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c42278f0" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c4228020" scoped=""/>
+        <function-ref name="startPeriodicAt" ref="0x2ac2c4228d10" scoped=""/>
+        <function-ref name="isOneShot" ref="0x2ac2c42288c0" scoped=""/>
+        <function-ref name="getdt" ref="0x2ac2c42261c0" scoped=""/>
+        <function-ref name="gett0" ref="0x2ac2c4227d40" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c4228470" scoped=""/>
+        <function-ref name="startPeriodic" ref="0x2ac2c422a158" scoped=""/>
+        <function-ref name="startOneShotAt" ref="0x2ac2c4227320" scoped=""/>
+        <function-ref name="startOneShot" ref="0x2ac2c422a5f8" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c422aa98" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

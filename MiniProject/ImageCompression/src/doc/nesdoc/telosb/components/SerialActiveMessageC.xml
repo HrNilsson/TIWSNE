@@ -1,0 +1,522 @@
+<?xml version="1.0" ?><component loc="44:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" nicename="SerialActiveMessageC" qname="SerialActiveMessageC">
+      <documentation loc="71:/home/kasper/tinyos-main//tos/lib/serial/Serial.h">
+        <short>
+ </short>
+        <long>
+ @author Phil Buonadonna
+ @author Lewis Girod
+ @author Ben Greenstein
+ @author Philip Levis
+ @date   August 7 2005
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="61:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SplitControl" ref="0x2ac2c41c6848" scoped=""/></from>
+          <to><interface-ref name="SplitControl" ref="0x2ac2c426b728" scoped=""/></to>
+        </wire>
+        <wire loc="63:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c4262920" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c4259460" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c425f0c0" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c4273d20" scoped=""/></to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="Receive" ref="0x2ac2c4260ab0" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c4274180" scoped=""/></to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="PacketAcknowledgements" ref="0x2ac2c425d348" scoped=""/></from>
+          <to><interface-ref name="PacketAcknowledgements" ref="0x2ac2c4272908" scoped=""/></to>
+        </wire>
+        <wire loc="66:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c425fcd0" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c4274738" scoped=""/></to>
+        </wire>
+        <wire loc="59:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c426b110" scoped=""/></to>
+        </wire>
+        <wire loc="60:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="Leds" ref="0x2ac2c42d78f8" scoped=""/></from>
+          <to><interface-ref name="Leds" ref="0x2ac2c425dc80" scoped=""/></to>
+        </wire>
+        <wire loc="69:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SubSend" ref="0x2ac2c4271308" scoped=""/></from>
+          <to><interface-ref name="Send" ref="0x2ac2c4269208" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="70:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SubReceive" ref="0x2ac2c426f020" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c426a760" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="72:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SerialPacketInfo" ref="0x2ac2c42d7020" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </from>
+          <to><interface-ref name="Info" ref="0x2ac2c4558020" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="46:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" name="SplitControl" provided="1" ref="0x2ac2c41c6848">
+      <component-ref nicename="SerialActiveMessageC" qname="SerialActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SplitControl" ref="0x2ac2c41c6848" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c41c6b98" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c41c6d20" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c4262020" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c42621a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" name="AMSend" provided="1" ref="0x2ac2c4262920">
+      <component-ref nicename="SerialActiveMessageC" qname="SerialActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c4262920" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c4262c70" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c4262df8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4260020" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c42601a8" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c4260330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="49:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" name="Packet" provided="1" ref="0x2ac2c425f0c0">
+      <component-ref nicename="SerialActiveMessageC" qname="SerialActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Packet" ref="0x2ac2c425f0c0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c425f410" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c425f598" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c425f720" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c425f8a8" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c425fa30" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" name="Receive" provided="1" ref="0x2ac2c4260ab0">
+      <component-ref nicename="SerialActiveMessageC" qname="SerialActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Receive" ref="0x2ac2c4260ab0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c4260e00" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="53:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" name="Leds" provided="0" ref="0x2ac2c425dc80">
+      <component-ref nicename="SerialActiveMessageC" qname="SerialActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Leds" ref="0x2ac2c425dc80" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Leds" qname="Leds"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="led0Off" ref="0x2ac2c425c020" scoped=""/>
+        <function-ref name="led0Toggle" ref="0x2ac2c425c1a8" scoped=""/>
+        <function-ref name="led1On" ref="0x2ac2c425c330" scoped=""/>
+        <function-ref name="led1Toggle" ref="0x2ac2c425c4b8" scoped=""/>
+        <function-ref name="led2Toggle" ref="0x2ac2c425c640" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c425c7c8" scoped=""/>
+        <function-ref name="led1Off" ref="0x2ac2c425c950" scoped=""/>
+        <function-ref name="led2Off" ref="0x2ac2c425b020" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c425cad8" scoped=""/>
+        <function-ref name="led0On" ref="0x2ac2c425cc60" scoped=""/>
+        <function-ref name="led2On" ref="0x2ac2c425cde8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="51:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" name="PacketAcknowledgements" provided="1" ref="0x2ac2c425d348">
+      <component-ref nicename="SerialActiveMessageC" qname="SerialActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PacketAcknowledgements" ref="0x2ac2c425d348" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketAcknowledgements" qname="PacketAcknowledgements"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="requestAck" ref="0x2ac2c425d698" scoped=""/>
+        <function-ref name="noAck" ref="0x2ac2c425d820" scoped=""/>
+        <function-ref name="wasAcked" ref="0x2ac2c425d9a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="50:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" name="AMPacket" provided="1" ref="0x2ac2c425fcd0">
+      <component-ref nicename="SerialActiveMessageC" qname="SerialActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMPacket" ref="0x2ac2c425fcd0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c425e0a0" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c425e228" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c425e3b0" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c425e538" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c425e6c0" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c425e848" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c425e9d0" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c425eb58" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c425ece0" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c425ee68" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c425d020" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="49:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageP.nc" name="AMPacket" provided="1" ref="0x2ac2c4274738">
+      <component-ref nicename="SerialActiveMessageC.AM" qname="SerialActiveMessageC.AM"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMPacket" ref="0x2ac2c4274738" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c4274a88" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c4274c10" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c4274d98" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c4273020" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c42731a8" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c4273330" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c42734b8" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c4273640" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c42737c8" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c4273950" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c4273ad8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="51:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageP.nc" name="PacketAcknowledgements" provided="1" ref="0x2ac2c4272908">
+      <component-ref nicename="SerialActiveMessageC.AM" qname="SerialActiveMessageC.AM"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PacketAcknowledgements" ref="0x2ac2c4272908" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketAcknowledgements" qname="PacketAcknowledgements"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="requestAck" ref="0x2ac2c4272c58" scoped=""/>
+        <function-ref name="noAck" ref="0x2ac2c4272de0" scoped=""/>
+        <function-ref name="wasAcked" ref="0x2ac2c4271020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageP.nc" name="Receive" provided="1" ref="0x2ac2c4274180">
+      <component-ref nicename="SerialActiveMessageC.AM" qname="SerialActiveMessageC.AM"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Receive" ref="0x2ac2c4274180" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c42744f0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="58:/home/kasper/tinyos-main//tos/system/MainC.nc" name="SoftwareInit" provided="0" ref="0x2ac2c2e67e48">
+      <component-ref nicename="MainC" qname="MainC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c2e661c0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="56:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc" name="Leds" provided="0" ref="0x2ac2c42d78f8">
+      <component-ref nicename="SerialDispatcherC" qname="SerialDispatcherC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Leds" ref="0x2ac2c42d78f8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Leds" qname="Leds"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="led0Off" ref="0x2ac2c42d7c48" scoped=""/>
+        <function-ref name="led0Toggle" ref="0x2ac2c42d7dd0" scoped=""/>
+        <function-ref name="led1On" ref="0x2ac2c42d6020" scoped=""/>
+        <function-ref name="led1Toggle" ref="0x2ac2c42d61a8" scoped=""/>
+        <function-ref name="led2Toggle" ref="0x2ac2c42d6330" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c42d64b8" scoped=""/>
+        <function-ref name="led1Off" ref="0x2ac2c42d6640" scoped=""/>
+        <function-ref name="led2Off" ref="0x2ac2c42d6c60" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c42d67c8" scoped=""/>
+        <function-ref name="led0On" ref="0x2ac2c42d6950" scoped=""/>
+        <function-ref name="led2On" ref="0x2ac2c42d6ad8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="54:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageP.nc" name="SubSend" provided="0" ref="0x2ac2c4271308">
+      <component-ref nicename="SerialActiveMessageC.AM" qname="SerialActiveMessageC.AM"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SubSend" ref="0x2ac2c4271308" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c4271658" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c42717e0" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4271968" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c4271af0" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c4271c78" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="51:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc" name="Receive" provided="1" ref="0x2ac2c426a760">
+      <component-ref nicename="SerialDispatcherC" qname="SerialDispatcherC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Receive" ref="0x2ac2c426a760" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uart_id_t" ref="0x2ac2c35c4b38"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c426aab0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="55:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc" name="SerialPacketInfo" provided="0" ref="0x2ac2c42d7020">
+      <component-ref nicename="SerialDispatcherC" qname="SerialDispatcherC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SerialPacketInfo" ref="0x2ac2c42d7020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SerialPacketInfo" qname="SerialPacketInfo"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uart_id_t" ref="0x2ac2c35c4b38"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="upperLength" ref="0x2ac2c42d7370" scoped=""/>
+        <function-ref name="offset" ref="0x2ac2c42d74f8" scoped=""/>
+        <function-ref name="dataLinkLength" ref="0x2ac2c42d7680" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="49:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc" name="Init" provided="1" ref="0x2ac2c426b110">
+      <component-ref nicename="SerialDispatcherC" qname="SerialDispatcherC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Init" ref="0x2ac2c426b110" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c426b460" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="50:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageP.nc" name="Packet" provided="1" ref="0x2ac2c4273d20">
+      <component-ref nicename="SerialActiveMessageC.AM" qname="SerialActiveMessageC.AM"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Packet" ref="0x2ac2c4273d20" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c42720a0" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c4272228" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c42723b0" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4272538" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c42726c0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="55:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageP.nc" name="SubReceive" provided="0" ref="0x2ac2c426f020">
+      <component-ref nicename="SerialActiveMessageC.AM" qname="SerialActiveMessageC.AM"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SubReceive" ref="0x2ac2c426f020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c426f370" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageP.nc" name="AMSend" provided="1" ref="0x2ac2c4259460">
+      <component-ref nicename="SerialActiveMessageC.AM" qname="SerialActiveMessageC.AM"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c4259460" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c42597d0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c4259958" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4259ae0" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c4259c68" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c4259df0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="52:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc" name="Send" provided="1" ref="0x2ac2c4269208">
+      <component-ref nicename="SerialDispatcherC" qname="SerialDispatcherC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Send" ref="0x2ac2c4269208" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uart_id_t" ref="0x2ac2c35c4b38"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c4269558" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c42696e0" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4269868" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c42699f0" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c4269b78" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="50:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc" name="SplitControl" provided="1" ref="0x2ac2c426b728">
+      <component-ref nicename="SerialDispatcherC" qname="SerialDispatcherC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SplitControl" ref="0x2ac2c426b728" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c426ba78" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c426bc00" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c426bd88" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c426a020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/lib/serial/SerialPacketInfoActiveMessageP.nc" name="Info" provided="1" ref="0x2ac2c4558020">
+      <component-ref nicename="SerialPacketInfoActiveMessageP" qname="SerialPacketInfoActiveMessageP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Info" ref="0x2ac2c4558020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SerialPacketInfo" qname="SerialPacketInfo"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="upperLength" ref="0x2ac2c4558370" scoped=""/>
+        <function-ref name="offset" ref="0x2ac2c45584f8" scoped=""/>
+        <function-ref name="dataLinkLength" ref="0x2ac2c4558680" scoped=""/>
+      </interface-functions>
+    </interface><component loc="56:/home/kasper/tinyos-main//tos/system/MainC.nc" nicename="MainC" qname="MainC">
+      <documentation loc="45:/home/kasper/tinyos-main//tos/system/MainC.nc">
+        <short>
+ MainC is the system interface the TinyOS boot sequence.</short>
+        <long>
+ MainC is the system interface the TinyOS boot sequence. It wires the
+ boot sequence implementation to the scheduler and hardware resources.
+
+ @author Philip Levis
+ @date   August 6 2005
+ @see    TEP 107: Boot Sequence
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="72:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="Boot" ref="0x2ac2c2e659c0" scoped=""/></from>
+          <to><interface-ref name="Boot" ref="0x2ac2c2e64c40" scoped=""/></to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="Scheduler" ref="0x2ac2c3010308" scoped=""/></from>
+          <to><interface-ref name="Scheduler" ref="0x2ac2c29e8390" scoped=""/></to>
+        </wire>
+        <wire loc="68:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="PlatformInit" ref="0x2ac2c3010ce0" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c2e66d70" scoped=""/></to>
+        </wire>
+        <wire loc="71:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="SoftwareInit" ref="0x2ac2c302a418" scoped=""/></from>
+          <to><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="45(SerialActiveMessageC.AM):/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageP.nc" nicename="SerialActiveMessageC.AM" qname="SerialActiveMessageC.AM">
+      <documentation loc="71:/home/kasper/tinyos-main//tos/lib/serial/Serial.h">
+        <short>
+ </short>
+        <long>
+ @author Phil Buonadonna
+ @author Lewis Girod
+ @author Ben Greenstein
+ @author Philip Levis
+ @date   August 7 2005
+</long>
+      </documentation>
+      <instance number="0">
+        <component-ref nicename="SerialActiveMessageP" qname="SerialActiveMessageP"/>
+      </instance>
+      <module/>
+    </component><component loc="46:/home/kasper/tinyos-main//tos/lib/serial/SerialPacketInfoActiveMessageP.nc" nicename="SerialPacketInfoActiveMessageP" qname="SerialPacketInfoActiveMessageP">
+      <documentation loc="71:/home/kasper/tinyos-main//tos/lib/serial/Serial.h">
+        <short>
+ </short>
+        <long>
+ @author Phil Buonadonna
+ @author Lewis Girod
+ @author Ben Greenstein
+ @author Philip Levis
+ @date   August 7 2005
+</long>
+      </documentation>
+      <module/>
+    </component><component loc="47:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc" nicename="SerialDispatcherC" qname="SerialDispatcherC">
+      <documentation loc="35:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+        <short>
+ This component provides functionality to send many different kinds
+ of serial packets on top of a general packet sending component.</short>
+        <long>
+ This component provides functionality to send many different kinds
+ of serial packets on top of a general packet sending component. It
+ achieves this by knowing where the different packets in a message_t
+ exist through the SerialPacketInfo interface.
+
+ @author Philip Levis
+ @author Ben Greenstein
+ @date August 7 2005
+
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="67:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+          <from><interface-ref name="SplitControl" ref="0x2ac2c426b728" scoped=""/></from>
+          <to><interface-ref name="SplitControl" ref="0x2ac2c42d2d00" scoped=""/></to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+          <from><interface-ref name="Send" ref="0x2ac2c4269208" scoped=""/></from>
+          <to><interface-ref name="Send" ref="0x2ac2c43dc020" scoped=""/></to>
+        </wire>
+        <wire loc="69:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+          <from><interface-ref name="Init" ref="0x2ac2c426b110" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c42d26e8" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+          <from><interface-ref name="Receive" ref="0x2ac2c426a760" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c43dd868" scoped=""/></to>
+        </wire>
+        <wire loc="66:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+          <from><interface-ref name="PacketInfo" ref="0x2ac2c43dcdb8" scoped=""/></from>
+          <to><interface-ref name="SerialPacketInfo" ref="0x2ac2c42d7020" scoped=""/></to>
+        </wire>
+        <wire loc="70:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+          <from><interface-ref name="Leds" ref="0x2ac2c42c8bc8" scoped=""/></from>
+          <to><interface-ref name="Leds" ref="0x2ac2c42d78f8" scoped=""/></to>
+        </wire>
+        <wire loc="71:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+          <from><interface-ref name="Leds" ref="0x2ac2c43daa50" scoped=""/></from>
+          <to><interface-ref name="Leds" ref="0x2ac2c42d78f8" scoped=""/></to>
+        </wire>
+        <wire loc="72:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+          <from><interface-ref name="Leds" ref="0x2ac2c43d1420" scoped=""/></from>
+          <to><interface-ref name="Leds" ref="0x2ac2c42d78f8" scoped=""/></to>
+        </wire>
+        <wire loc="74:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+          <from><interface-ref name="ReceiveBytePacket" ref="0x2ac2c43db6c8" scoped=""/></from>
+          <to><interface-ref name="ReceiveBytePacket" ref="0x2ac2c42c6b48" scoped=""/></to>
+        </wire>
+        <wire loc="75:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+          <from><interface-ref name="SendBytePacket" ref="0x2ac2c43da020" scoped=""/></from>
+          <to><interface-ref name="SendBytePacket" ref="0x2ac2c42c9898" scoped=""/></to>
+        </wire>
+        <wire loc="77:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+          <from><interface-ref name="SerialFrameComm" ref="0x2ac2c42c0b38" scoped=""/></from>
+          <to><interface-ref name="SerialFrameComm" ref="0x2ac2c43d5b38" scoped=""/></to>
+        </wire>
+        <wire loc="78:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+          <from><interface-ref name="SerialControl" ref="0x2ac2c42bf398" scoped=""/></from>
+          <to><interface-ref name="StdControl" ref="0x2ac2c43d47e8" scoped=""/></to>
+        </wire>
+        <wire loc="80:/home/kasper/tinyos-main//tos/lib/serial/SerialDispatcherC.nc">
+          <from><interface-ref name="UartStream" ref="0x2ac2c43c5448" scoped=""/></from>
+          <to><interface-ref name="UartStream" ref="0x2ac2c441f020" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component></referenced></component>

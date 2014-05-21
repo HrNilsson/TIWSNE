@@ -1,0 +1,1683 @@
+<?xml version="1.0" ?><component loc="7:ImageCompressionAppC.nc" nicename="ImageCompressionAppC" qname="ImageCompressionAppC">
+      <configuration/>
+      <wiring>
+        <wire loc="32:ImageCompressionAppC.nc">
+          <from><interface-ref name="Boot" ref="0x2ac2c359f780" scoped=""/></from>
+          <to><interface-ref name="Boot" ref="0x2ac2c2e659c0" scoped=""/></to>
+        </wire>
+        <wire loc="33:ImageCompressionAppC.nc">
+          <from><interface-ref name="Leds" ref="0x2ac2c359fd88" scoped=""/></from>
+          <to><interface-ref name="Leds" ref="0x2ac2c3039c38" scoped=""/></to>
+        </wire>
+        <wire loc="34:ImageCompressionAppC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c359d628" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c33e0a60" scoped=""/></to>
+        </wire>
+        <wire loc="36:ImageCompressionAppC.nc">
+          <from><interface-ref name="GetButton" ref="0x2ac2c3598830" scoped=""/></from>
+          <to><interface-ref name="Get" ref="0x2ac2c32b0cf0" scoped=""/></to>
+        </wire>
+        <wire loc="37:ImageCompressionAppC.nc">
+          <from><interface-ref name="NotifyButton" ref="0x2ac2c3597a88" scoped=""/></from>
+          <to><interface-ref name="Notify" ref="0x2ac2c32ab388" scoped=""/></to>
+        </wire>
+        <wire loc="39:ImageCompressionAppC.nc">
+          <from><interface-ref name="AMControl" ref="0x2ac2c358f548" scoped=""/></from>
+          <to><interface-ref name="SplitControl" ref="0x2ac2c36df140" scoped=""/></to>
+        </wire>
+        <wire loc="41:ImageCompressionAppC.nc">
+          <from><interface-ref name="CompressedSend" ref="0x2ac2c35e6690" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c462fc20" scoped=""/></to>
+        </wire>
+        <wire loc="42:ImageCompressionAppC.nc">
+          <from><interface-ref name="CompressedReceive" ref="0x2ac2c35e3d68" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c46211c8" scoped=""/></to>
+        </wire>
+        <wire loc="43:ImageCompressionAppC.nc">
+          <from><interface-ref name="CompressedPacket" ref="0x2ac2c36152f8" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c462e888" scoped=""/></to>
+        </wire>
+        <wire loc="44:ImageCompressionAppC.nc">
+          <from><interface-ref name="CompressedAMPacket" ref="0x2ac2c3605c70" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c462d578" scoped=""/></to>
+        </wire>
+        <wire loc="46:ImageCompressionAppC.nc">
+          <from><interface-ref name="UncompressedSend" ref="0x2ac2c36163d0" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c461d5e0" scoped=""/></to>
+        </wire>
+        <wire loc="47:ImageCompressionAppC.nc">
+          <from><interface-ref name="UncompressedReceive" ref="0x2ac2c3606180" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c4617d30" scoped=""/></to>
+        </wire>
+        <wire loc="48:ImageCompressionAppC.nc">
+          <from><interface-ref name="UncompressedPacket" ref="0x2ac2c3606890" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c461c268" scoped=""/></to>
+        </wire>
+        <wire loc="49:ImageCompressionAppC.nc">
+          <from><interface-ref name="UncompressedAMPacket" ref="0x2ac2c3604720" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c461ce20" scoped=""/></to>
+        </wire>
+        <wire loc="51:ImageCompressionAppC.nc">
+          <from><interface-ref name="UncompressedStore" ref="0x2ac2c3635d80" scoped=""/></from>
+          <to><interface-ref name="BlockWrite" ref="0x2ac2c4839430" scoped=""/></to>
+        </wire>
+        <wire loc="52:ImageCompressionAppC.nc">
+          <from><interface-ref name="UncompressedRestore" ref="0x2ac2c362c6a8" scoped=""/></from>
+          <to><interface-ref name="BlockRead" ref="0x2ac2c483a6c0" scoped=""/></to>
+        </wire>
+        <wire loc="54:ImageCompressionAppC.nc">
+          <from><interface-ref name="CompressedStore" ref="0x2ac2c3600570" scoped=""/></from>
+          <to><interface-ref name="BlockWrite" ref="0x2ac2c4836da8" scoped=""/></to>
+        </wire>
+        <wire loc="55:ImageCompressionAppC.nc">
+          <from><interface-ref name="CompressedRestore" ref="0x2ac2c3634580" scoped=""/></from>
+          <to><interface-ref name="BlockRead" ref="0x2ac2c48361b0" scoped=""/></to>
+        </wire>
+        <wire loc="57:ImageCompressionAppC.nc">
+          <from><interface-ref name="SerialControl" ref="0x2ac2c362a3f0" scoped=""/></from>
+          <to><interface-ref name="SplitControl" ref="0x2ac2c41c6848" scoped=""/></to>
+        </wire>
+        <wire loc="58:ImageCompressionAppC.nc">
+          <from><interface-ref name="SerialReceive" ref="0x2ac2c3629020" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c422f438" scoped=""/></to>
+        </wire>
+        <wire loc="59:ImageCompressionAppC.nc">
+          <from><interface-ref name="SerialAMSend" ref="0x2ac2c36296f8" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c42306a8" scoped=""/></to>
+        </wire>
+        <wire loc="60:ImageCompressionAppC.nc">
+          <from><interface-ref name="SerialFlow" ref="0x2ac2c3625988" scoped=""/></from>
+          <to><interface-ref name="FlowControl" ref="0x2ac2c422fbd8" scoped=""/></to>
+        </wire>
+        <wire loc="62:ImageCompressionAppC.nc">
+          <from><interface-ref name="Comp" ref="0x2ac2c36215c8" scoped=""/></from>
+          <to><interface-ref name="QuantCompress" ref="0x2ac2c45c32d0" scoped=""/></to>
+        </wire>
+        <wire loc="68:ImageCompressionAppC.nc">
+          <from><interface-ref name="SubSend" ref="0x2ac2c422ecd8" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c488d1d0" scoped=""/></to>
+        </wire>
+        <wire loc="69:ImageCompressionAppC.nc">
+          <from><interface-ref name="AckSend" ref="0x2ac2c422d9d0" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c48877b0" scoped=""/></to>
+        </wire>
+        <wire loc="70:ImageCompressionAppC.nc">
+          <from><interface-ref name="SubReceive" ref="0x2ac2c422c7f0" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c4260ab0" scoped=""/>
+          <arguments>
+            <value cst="I:23">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="71:ImageCompressionAppC.nc">
+          <from><interface-ref name="AckReceive" ref="0x2ac2c422ce78" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c4260ab0" scoped=""/>
+          <arguments>
+            <value cst="I:22">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="72:ImageCompressionAppC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c422b5c0" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c482c128" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification/><referenced><interface loc="32:ImageCompressionC.nc" name="SerialReceive" provided="0" ref="0x2ac2c3629020">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SerialReceive" ref="0x2ac2c3629020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c3629370" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="49:/home/kasper/tinyos-main//tos/platforms/telosb/UserButtonC.nc" name="Notify" provided="1" ref="0x2ac2c32ab388">
+      <component-ref nicename="UserButtonC" qname="UserButtonC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Notify" ref="0x2ac2c32ab388" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Notify" qname="Notify"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><enum-ref ref="0x2ac2c3288b18"/>
+            <typename><typedef-ref name="button_state_t" ref="0x2ac2c3285498"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="disable" ref="0x2ac2c3283470" scoped=""/>
+        <function-ref name="enable" ref="0x2ac2c3283020" scoped=""/>
+        <function-ref name="notify" ref="0x2ac2c32838c0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="49:/home/kasper/tinyos-main//tos/system/AMSenderC.nc" name="AMSend" provided="1" ref="0x2ac2c462fc20">
+      <component-ref nicename="ImageCompressionAppC.CompressedSender" qname="ImageCompressionAppC.CompressedSender"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c462fc20" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c462e020" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c462e1a8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c462e330" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c462e4b8" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c462e640" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="23:ReliableSerialC.nc" name="Timer" provided="0" ref="0x2ac2c422b5c0">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Timer" ref="0x2ac2c422b5c0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Timer" qname="Timer"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df020"/>
+            <typename><typedef-ref name="TMilli" ref="0x2ac2c33df378"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c42278f0" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c4228020" scoped=""/>
+        <function-ref name="startPeriodicAt" ref="0x2ac2c4228d10" scoped=""/>
+        <function-ref name="isOneShot" ref="0x2ac2c42288c0" scoped=""/>
+        <function-ref name="getdt" ref="0x2ac2c42261c0" scoped=""/>
+        <function-ref name="gett0" ref="0x2ac2c4227d40" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c4228470" scoped=""/>
+        <function-ref name="startPeriodic" ref="0x2ac2c422a158" scoped=""/>
+        <function-ref name="startOneShotAt" ref="0x2ac2c4227320" scoped=""/>
+        <function-ref name="startOneShot" ref="0x2ac2c422a5f8" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c422aa98" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="26:ImageCompressionC.nc" name="UncompressedRestore" provided="0" ref="0x2ac2c362c6a8">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="UncompressedRestore" ref="0x2ac2c362c6a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockRead" qname="BlockRead"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c362c9f8" scoped=""/>
+        <function-ref name="computeCrcDone" ref="0x2ac2c362cb80" scoped=""/>
+        <function-ref name="computeCrc" ref="0x2ac2c362cd08" scoped=""/>
+        <function-ref name="getSize" ref="0x2ac2c3600020" scoped=""/>
+        <function-ref name="readDone" ref="0x2ac2c36001a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="49:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc" name="AMSend" provided="1" ref="0x2ac2c488d1d0">
+      <component-ref nicename="ImageCompressionAppC.DataSender" qname="ImageCompressionAppC.DataSender"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c488d1d0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c488d520" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c488d6a8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c488d830" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c488d9b8" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c488db40" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc" name="BlockWrite" provided="1" ref="0x2ac2c4836da8">
+      <component-ref nicename="ImageCompressionAppC.CompressedFlashVolume" qname="ImageCompressionAppC.CompressedFlashVolume"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="BlockWrite" ref="0x2ac2c4836da8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockWrite" qname="BlockWrite"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="syncDone" ref="0x2ac2c4835170" scoped=""/>
+        <function-ref name="writeDone" ref="0x2ac2c48352f8" scoped=""/>
+        <function-ref name="erase" ref="0x2ac2c4835480" scoped=""/>
+        <function-ref name="eraseDone" ref="0x2ac2c4835608" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c4835790" scoped=""/>
+        <function-ref name="sync" ref="0x2ac2c4835918" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="36:ImageCompressionC.nc" name="Comp" provided="0" ref="0x2ac2c36215c8">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Comp" ref="0x2ac2c36215c8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="QuantCompress" qname="QuantCompress"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="deCompressVector" ref="0x2ac2c3621918" scoped=""/>
+        <function-ref name="compressVector" ref="0x2ac2c3621aa0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="49:/home/kasper/tinyos-main//tos/system/AMSenderC.nc" name="AMSend" provided="1" ref="0x2ac2c461d5e0">
+      <component-ref nicename="ImageCompressionAppC.UncompressedSender" qname="ImageCompressionAppC.UncompressedSender"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c461d5e0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c461d930" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c461dab8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c461dc40" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c461ddc8" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c461c020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="7:ImageCompressionC.nc" name="Leds" provided="0" ref="0x2ac2c359fd88">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Leds" ref="0x2ac2c359fd88" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Leds" qname="Leds"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="led0Off" ref="0x2ac2c359e170" scoped=""/>
+        <function-ref name="led0Toggle" ref="0x2ac2c359e2f8" scoped=""/>
+        <function-ref name="led1On" ref="0x2ac2c359e480" scoped=""/>
+        <function-ref name="led1Toggle" ref="0x2ac2c359e608" scoped=""/>
+        <function-ref name="led2Toggle" ref="0x2ac2c359e790" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c359e918" scoped=""/>
+        <function-ref name="led1Off" ref="0x2ac2c359eaa0" scoped=""/>
+        <function-ref name="led2Off" ref="0x2ac2c359d1a8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c359ec28" scoped=""/>
+        <function-ref name="led0On" ref="0x2ac2c359edb0" scoped=""/>
+        <function-ref name="led2On" ref="0x2ac2c359d020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/system/AMReceiverC.nc" name="Receive" provided="1" ref="0x2ac2c4617d30">
+      <component-ref nicename="ImageCompressionAppC.UncompressedReceiver" qname="ImageCompressionAppC.UncompressedReceiver"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Receive" ref="0x2ac2c4617d30" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c46160d8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/system/LedsC.nc" name="Leds" provided="1" ref="0x2ac2c3039c38">
+      <component-ref nicename="LedsC" qname="LedsC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Leds" ref="0x2ac2c3039c38" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Leds" qname="Leds"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="led0Off" ref="0x2ac2c3043020" scoped=""/>
+        <function-ref name="led0Toggle" ref="0x2ac2c30431a8" scoped=""/>
+        <function-ref name="led1On" ref="0x2ac2c3043330" scoped=""/>
+        <function-ref name="led1Toggle" ref="0x2ac2c30434b8" scoped=""/>
+        <function-ref name="led2Toggle" ref="0x2ac2c3043640" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c30437c8" scoped=""/>
+        <function-ref name="led1Off" ref="0x2ac2c3043950" scoped=""/>
+        <function-ref name="led2Off" ref="0x2ac2c3042020" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c3043ad8" scoped=""/>
+        <function-ref name="led0On" ref="0x2ac2c3043c60" scoped=""/>
+        <function-ref name="led2On" ref="0x2ac2c3043de8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="6:ImageCompressionC.nc" name="Boot" provided="0" ref="0x2ac2c359f780">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Boot" ref="0x2ac2c359f780" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Boot" qname="Boot"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="booted" ref="0x2ac2c359fad0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="50:/home/kasper/tinyos-main//tos/system/AMSenderC.nc" name="Packet" provided="1" ref="0x2ac2c462e888">
+      <component-ref nicename="ImageCompressionAppC.CompressedSender" qname="ImageCompressionAppC.CompressedSender"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Packet" ref="0x2ac2c462e888" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c462ebd8" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c462ed60" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c462d020" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c462d1a8" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c462d330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="16:ReliableSerialC.nc" name="FlowControl" provided="1" ref="0x2ac2c422fbd8">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="FlowControl" ref="0x2ac2c422fbd8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Set" qname="Set"/>
+        <arguments>
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="set" ref="0x2ac2c422e768" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="15:ImageCompressionC.nc" name="CompressedSend" provided="0" ref="0x2ac2c35e6690">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CompressedSend" ref="0x2ac2c35e6690" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c35e69e0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c35e6b68" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c35e6cf0" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c35e6e78" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c358e030" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="57:/home/kasper/tinyos-main//tos/system/MainC.nc" name="Boot" provided="1" ref="0x2ac2c2e659c0">
+      <component-ref nicename="MainC" qname="MainC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Boot" ref="0x2ac2c2e659c0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Boot" qname="Boot"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="booted" ref="0x2ac2c2e65d10" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="11:ImageCompressionC.nc" name="NotifyButton" provided="0" ref="0x2ac2c3597a88">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="NotifyButton" ref="0x2ac2c3597a88" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Notify" qname="Notify"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><enum-ref ref="0x2ac2c3288b18"/>
+            <typename><typedef-ref name="button_state_t" ref="0x2ac2c3285498"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="disable" ref="0x2ac2c3596a70" scoped=""/>
+        <function-ref name="enable" ref="0x2ac2c3596620" scoped=""/>
+        <function-ref name="notify" ref="0x2ac2c3594020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="49:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc" name="AMSend" provided="1" ref="0x2ac2c48877b0">
+      <component-ref nicename="ImageCompressionAppC.AckSender" qname="ImageCompressionAppC.AckSender"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c48877b0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c4887b00" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c4887c88" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4887e10" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c4886020" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c48861a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="50:/home/kasper/tinyos-main//tos/system/AMSenderC.nc" name="Packet" provided="1" ref="0x2ac2c461c268">
+      <component-ref nicename="ImageCompressionAppC.UncompressedSender" qname="ImageCompressionAppC.UncompressedSender"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Packet" ref="0x2ac2c461c268" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c461c5b8" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c461c740" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c461c8c8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c461ca50" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c461cbd8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc" name="BlockWrite" provided="1" ref="0x2ac2c4839430">
+      <component-ref nicename="ImageCompressionAppC.UncompressedFlashVolume" qname="ImageCompressionAppC.UncompressedFlashVolume"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="BlockWrite" ref="0x2ac2c4839430" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockWrite" qname="BlockWrite"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="syncDone" ref="0x2ac2c4839780" scoped=""/>
+        <function-ref name="writeDone" ref="0x2ac2c4839908" scoped=""/>
+        <function-ref name="erase" ref="0x2ac2c4839a90" scoped=""/>
+        <function-ref name="eraseDone" ref="0x2ac2c4839c18" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c4839da0" scoped=""/>
+        <function-ref name="sync" ref="0x2ac2c4838020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="17:ImageCompressionC.nc" name="CompressedPacket" provided="0" ref="0x2ac2c36152f8">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CompressedPacket" ref="0x2ac2c36152f8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c3615648" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c36157d0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c3615958" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c3615ae0" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c3615c68" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="28:ImageCompressionC.nc" name="CompressedStore" provided="0" ref="0x2ac2c3600570">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CompressedStore" ref="0x2ac2c3600570" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockWrite" qname="BlockWrite"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="syncDone" ref="0x2ac2c36008c0" scoped=""/>
+        <function-ref name="writeDone" ref="0x2ac2c3600a48" scoped=""/>
+        <function-ref name="erase" ref="0x2ac2c3600bd0" scoped=""/>
+        <function-ref name="eraseDone" ref="0x2ac2c3600d58" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3634020" scoped=""/>
+        <function-ref name="sync" ref="0x2ac2c36341a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="18:ImageCompressionC.nc" name="CompressedAMPacket" provided="0" ref="0x2ac2c3605c70">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CompressedAMPacket" ref="0x2ac2c3605c70" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c35e4020" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c35e41a8" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c35e4330" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c35e44b8" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c35e4640" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c35e47c8" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c35e4950" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c35e4ad8" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c35e4c60" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c35e4de8" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c3616020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="4:QuantCompressC.nc" name="QuantCompress" provided="1" ref="0x2ac2c45c32d0">
+      <component-ref nicename="QuantCompressC" qname="QuantCompressC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="QuantCompress" ref="0x2ac2c45c32d0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="QuantCompress" qname="QuantCompress"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="deCompressVector" ref="0x2ac2c45c3620" scoped=""/>
+        <function-ref name="compressVector" ref="0x2ac2c45c37a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="20:ReliableSerialC.nc" name="AckSend" provided="0" ref="0x2ac2c422d9d0">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AckSend" ref="0x2ac2c422d9d0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c422dd20" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c422c020" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c422c1a8" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c422c330" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c422c4b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="34:ImageCompressionC.nc" name="SerialFlow" provided="0" ref="0x2ac2c3625988">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SerialFlow" ref="0x2ac2c3625988" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Set" qname="Set"/>
+        <arguments>
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="set" ref="0x2ac2c3627528" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" name="Receive" provided="1" ref="0x2ac2c4260ab0">
+      <component-ref nicename="SerialActiveMessageC" qname="SerialActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Receive" ref="0x2ac2c4260ab0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c4260e00" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="8:ImageCompressionC.nc" name="Timer" provided="0" ref="0x2ac2c359d628">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Timer" ref="0x2ac2c359d628" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Timer" qname="Timer"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df020"/>
+            <typename><typedef-ref name="TMilli" ref="0x2ac2c33df378"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c35998f0" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c359b020" scoped=""/>
+        <function-ref name="startPeriodicAt" ref="0x2ac2c359bd10" scoped=""/>
+        <function-ref name="isOneShot" ref="0x2ac2c359b8c0" scoped=""/>
+        <function-ref name="getdt" ref="0x2ac2c35981c0" scoped=""/>
+        <function-ref name="gett0" ref="0x2ac2c3599d40" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c359b470" scoped=""/>
+        <function-ref name="startPeriodic" ref="0x2ac2c359c198" scoped=""/>
+        <function-ref name="startOneShotAt" ref="0x2ac2c3599320" scoped=""/>
+        <function-ref name="startOneShot" ref="0x2ac2c359c638" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c359cad8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="51:/home/kasper/tinyos-main//tos/system/AMSenderC.nc" name="AMPacket" provided="1" ref="0x2ac2c462d578">
+      <component-ref nicename="ImageCompressionAppC.CompressedSender" qname="ImageCompressionAppC.CompressedSender"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMPacket" ref="0x2ac2c462d578" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c462d8c8" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c462da50" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c462dbd8" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c462dd60" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c462c020" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c462c1a8" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c462c330" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c462c4b8" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c462c640" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c462c7c8" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c462c950" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="29:ImageCompressionC.nc" name="CompressedRestore" provided="0" ref="0x2ac2c3634580">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CompressedRestore" ref="0x2ac2c3634580" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockRead" qname="BlockRead"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c36348d0" scoped=""/>
+        <function-ref name="computeCrcDone" ref="0x2ac2c3634a58" scoped=""/>
+        <function-ref name="computeCrc" ref="0x2ac2c3634be0" scoped=""/>
+        <function-ref name="getSize" ref="0x2ac2c3634d68" scoped=""/>
+        <function-ref name="readDone" ref="0x2ac2c362a020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/system/TimerMilliC.nc" name="Timer" provided="1" ref="0x2ac2c33e0a60">
+      <component-ref nicename="ImageCompressionAppC.Timer" qname="ImageCompressionAppC.Timer"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Timer" ref="0x2ac2c33e0a60" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Timer" qname="Timer"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df020"/>
+            <typename><typedef-ref name="TMilli" ref="0x2ac2c33df378"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c356cd60" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c356d470" scoped=""/>
+        <function-ref name="startPeriodicAt" ref="0x2ac2c356c1c0" scoped=""/>
+        <function-ref name="isOneShot" ref="0x2ac2c356dd10" scoped=""/>
+        <function-ref name="getdt" ref="0x2ac2c35a4648" scoped=""/>
+        <function-ref name="gett0" ref="0x2ac2c35a41f8" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c356d8c0" scoped=""/>
+        <function-ref name="startPeriodic" ref="0x2ac2c356e620" scoped=""/>
+        <function-ref name="startOneShotAt" ref="0x2ac2c356c790" scoped=""/>
+        <function-ref name="startOneShot" ref="0x2ac2c356eac0" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c356d020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="15:ReliableSerialC.nc" name="Receive" provided="1" ref="0x2ac2c422f438">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Receive" ref="0x2ac2c422f438" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c422f788" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="51:/home/kasper/tinyos-main//tos/system/AMSenderC.nc" name="AMPacket" provided="1" ref="0x2ac2c461ce20">
+      <component-ref nicename="ImageCompressionAppC.UncompressedSender" qname="ImageCompressionAppC.UncompressedSender"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMPacket" ref="0x2ac2c461ce20" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c461a1a8" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c461a330" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c461a4b8" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c461a640" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c461a7c8" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c461a950" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c461aad8" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c461ac60" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c461ade8" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c4619020" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c46191a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="14:ReliableSerialC.nc" name="AMSend" provided="1" ref="0x2ac2c42306a8">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c42306a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c42309f8" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c4230b80" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4230d08" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c422f020" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c422f1a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="19:ReliableSerialC.nc" name="SubSend" provided="0" ref="0x2ac2c422ecd8">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SubSend" ref="0x2ac2c422ecd8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c422d0a0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c422d228" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c422d3b0" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c422d538" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c422d6c0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="21:ReliableSerialC.nc" name="SubReceive" provided="0" ref="0x2ac2c422c7f0">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SubReceive" ref="0x2ac2c422c7f0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c422cb40" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="13:ImageCompressionC.nc" name="AMControl" provided="0" ref="0x2ac2c358f548">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMControl" ref="0x2ac2c358f548" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c358f898" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c358fa20" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c358fba8" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c358fd30" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="22:ImageCompressionC.nc" name="UncompressedPacket" provided="0" ref="0x2ac2c3606890">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="UncompressedPacket" ref="0x2ac2c3606890" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c3606ce0" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c3606e68" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c3604020" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c36041a8" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c3604330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" name="SplitControl" provided="1" ref="0x2ac2c41c6848">
+      <component-ref nicename="SerialActiveMessageC" qname="SerialActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SplitControl" ref="0x2ac2c41c6848" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c41c6b98" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c41c6d20" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c4262020" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c42621a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="20:ImageCompressionC.nc" name="UncompressedSend" provided="0" ref="0x2ac2c36163d0">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="UncompressedSend" ref="0x2ac2c36163d0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c3616720" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c36168a8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c3616a30" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c3616bb8" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c3616d40" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="61:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="SplitControl" provided="1" ref="0x2ac2c36df140">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SplitControl" ref="0x2ac2c36df140" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c36df490" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c36df618" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c36df7a0" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c36df928" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="31:ImageCompressionC.nc" name="SerialControl" provided="0" ref="0x2ac2c362a3f0">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SerialControl" ref="0x2ac2c362a3f0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c362a740" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c362a8c8" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c362aa50" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c362abd8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="33:ImageCompressionC.nc" name="SerialAMSend" provided="0" ref="0x2ac2c36296f8">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SerialAMSend" ref="0x2ac2c36296f8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c3629a48" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c3629bd0" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c3629d58" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c3628020" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c36281a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="44:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc" name="BlockRead" provided="1" ref="0x2ac2c483a6c0">
+      <component-ref nicename="ImageCompressionAppC.UncompressedFlashVolume" qname="ImageCompressionAppC.UncompressedFlashVolume"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="BlockRead" ref="0x2ac2c483a6c0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockRead" qname="BlockRead"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c483aa10" scoped=""/>
+        <function-ref name="computeCrcDone" ref="0x2ac2c483ab98" scoped=""/>
+        <function-ref name="computeCrc" ref="0x2ac2c483ad20" scoped=""/>
+        <function-ref name="getSize" ref="0x2ac2c4839020" scoped=""/>
+        <function-ref name="readDone" ref="0x2ac2c48391a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="25:ImageCompressionC.nc" name="UncompressedStore" provided="0" ref="0x2ac2c3635d80">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="UncompressedStore" ref="0x2ac2c3635d80" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockWrite" qname="BlockWrite"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="syncDone" ref="0x2ac2c3601170" scoped=""/>
+        <function-ref name="writeDone" ref="0x2ac2c36012f8" scoped=""/>
+        <function-ref name="erase" ref="0x2ac2c3601480" scoped=""/>
+        <function-ref name="eraseDone" ref="0x2ac2c3601608" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3601790" scoped=""/>
+        <function-ref name="sync" ref="0x2ac2c3601918" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="23:ImageCompressionC.nc" name="UncompressedAMPacket" provided="0" ref="0x2ac2c3604720">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="UncompressedAMPacket" ref="0x2ac2c3604720" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c3604a70" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c3604bf8" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c3604d80" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c3603020" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c36031a8" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c3603330" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c36034b8" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c3603640" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c36037c8" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c3603950" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c3603ad8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="22:ReliableSerialC.nc" name="AckReceive" provided="0" ref="0x2ac2c422ce78">
+      <component-ref nicename="ReliableSerialC" qname="ReliableSerialC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AckReceive" ref="0x2ac2c422ce78" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c422b1f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/system/TimerMilliC.nc" name="Timer" provided="1" ref="0x2ac2c482c128">
+      <component-ref nicename="ImageCompressionAppC.AckTimer" qname="ImageCompressionAppC.AckTimer"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Timer" ref="0x2ac2c482c128" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Timer" qname="Timer"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df020"/>
+            <typename><typedef-ref name="TMilli" ref="0x2ac2c33df378"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c48295f0" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c482ba48" scoped=""/>
+        <function-ref name="startPeriodicAt" ref="0x2ac2c482a8c0" scoped=""/>
+        <function-ref name="isOneShot" ref="0x2ac2c482a470" scoped=""/>
+        <function-ref name="getdt" ref="0x2ac2c4827020" scoped=""/>
+        <function-ref name="gett0" ref="0x2ac2c4829a40" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c482a020" scoped=""/>
+        <function-ref name="startPeriodic" ref="0x2ac2c482cc70" scoped=""/>
+        <function-ref name="startOneShotAt" ref="0x2ac2c4829020" scoped=""/>
+        <function-ref name="startOneShot" ref="0x2ac2c482b158" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c482b5f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/system/AMReceiverC.nc" name="Receive" provided="1" ref="0x2ac2c46211c8">
+      <component-ref nicename="ImageCompressionAppC.CompressedReceiver" qname="ImageCompressionAppC.CompressedReceiver"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Receive" ref="0x2ac2c46211c8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c4621518" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/platforms/telosb/UserButtonC.nc" name="Get" provided="1" ref="0x2ac2c32b0cf0">
+      <component-ref nicename="UserButtonC" qname="UserButtonC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Get" ref="0x2ac2c32b0cf0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Get" qname="Get"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><enum-ref ref="0x2ac2c3288b18"/>
+            <typename><typedef-ref name="button_state_t" ref="0x2ac2c3285498"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x2ac2c32848b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="44:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc" name="BlockRead" provided="1" ref="0x2ac2c48361b0">
+      <component-ref nicename="ImageCompressionAppC.CompressedFlashVolume" qname="ImageCompressionAppC.CompressedFlashVolume"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="BlockRead" ref="0x2ac2c48361b0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockRead" qname="BlockRead"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c4836500" scoped=""/>
+        <function-ref name="computeCrcDone" ref="0x2ac2c4836688" scoped=""/>
+        <function-ref name="computeCrc" ref="0x2ac2c4836810" scoped=""/>
+        <function-ref name="getSize" ref="0x2ac2c4836998" scoped=""/>
+        <function-ref name="readDone" ref="0x2ac2c4836b20" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="10:ImageCompressionC.nc" name="GetButton" provided="0" ref="0x2ac2c3598830">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="GetButton" ref="0x2ac2c3598830" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Get" qname="Get"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><enum-ref ref="0x2ac2c3288b18"/>
+            <typename><typedef-ref name="button_state_t" ref="0x2ac2c3285498"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x2ac2c35973d8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="16:ImageCompressionC.nc" name="CompressedReceive" provided="0" ref="0x2ac2c35e3d68">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CompressedReceive" ref="0x2ac2c35e3d68" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c358d0f0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="21:ImageCompressionC.nc" name="UncompressedReceive" provided="0" ref="0x2ac2c3606180">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="UncompressedReceive" ref="0x2ac2c3606180" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c36064d0" scoped=""/>
+      </interface-functions>
+    </interface><component loc="44(ImageCompressionAppC.Timer):/home/kasper/tinyos-main//tos/system/TimerMilliC.nc" nicename="ImageCompressionAppC.Timer" qname="ImageCompressionAppC.Timer">
+      <instance number="0">
+        <component-ref nicename="TimerMilliC" qname="TimerMilliC"/>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="52:/home/kasper/tinyos-main//tos/system/TimerMilliC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c33e0a60" scoped=""/></from>
+          <to><interface-ref name="TimerMilli" ref="0x2ac2c3403e30" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned=""/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+      </wiring>
+    </component><component loc="43(ImageCompressionAppC.CompressedReceiver):/home/kasper/tinyos-main//tos/system/AMReceiverC.nc" nicename="ImageCompressionAppC.CompressedReceiver" qname="ImageCompressionAppC.CompressedReceiver">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/system/AMReceiverC.nc">
+        <short>
+ The virtualized AM reception abstraction.</short>
+        <long>
+ The virtualized AM reception abstraction.
+
+ @author Philip Levis
+ @date   Jan 16 2006
+ @see    TEP 116: Packet Protocols
+</long>
+      </documentation>
+      <instance number="0">
+        <component-ref nicename="AMReceiverC" qname="AMReceiverC"/>
+        <arguments>
+          <value cst="I:6">
+            <type-int alignment="I:2" cname="int" size="I:2"/>
+          </value>
+        </arguments>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="55:/home/kasper/tinyos-main//tos/system/AMReceiverC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c4621760" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c36db448" scoped=""/></to>
+        </wire>
+        <wire loc="54:/home/kasper/tinyos-main//tos/system/AMReceiverC.nc">
+          <from><interface-ref name="Receive" ref="0x2ac2c46211c8" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c36dd300" scoped=""/>
+          <arguments>
+            <value cst="I:6">
+              <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+                <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+              </type-int>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="56:/home/kasper/tinyos-main//tos/system/AMReceiverC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c46203f0" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c36da080" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="47:/home/kasper/tinyos-main//tos/platforms/telosb/UserButtonC.nc" nicename="UserButtonC" qname="UserButtonC">
+      <configuration/>
+      <wiring>
+        <wire loc="59:/home/kasper/tinyos-main//tos/platforms/telosb/UserButtonC.nc">
+          <from><interface-ref name="Notify" ref="0x2ac2c32ab388" scoped=""/></from>
+          <to><interface-ref name="Notify" ref="0x2ac2c33bd188" scoped=""/></to>
+        </wire>
+        <wire loc="58:/home/kasper/tinyos-main//tos/platforms/telosb/UserButtonC.nc">
+          <from><interface-ref name="Get" ref="0x2ac2c32b0cf0" scoped=""/></from>
+          <to><interface-ref name="Get" ref="0x2ac2c33bf020" scoped=""/></to>
+        </wire>
+        <wire loc="54:/home/kasper/tinyos-main//tos/platforms/telosb/UserButtonC.nc">
+          <from><interface-ref name="GpioInterrupt" ref="0x2ac2c33c5bd8" scoped=""/></from>
+          <to><interface-ref name="GpioInterrupt" ref="0x2ac2c32a4bf0" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/platforms/telosb/UserButtonC.nc">
+          <from><interface-ref name="GeneralIO" ref="0x2ac2c33c69b0" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x2ac2c32af660" scoped=""/></to>
+        </wire>
+        <wire loc="61:/home/kasper/tinyos-main//tos/platforms/telosb/UserButtonC.nc">
+          <from><interface-ref name="GetLower" ref="0x2ac2c33bcc00" scoped=""/></from>
+          <to><interface-ref name="Get" ref="0x2ac2c33c8020" scoped=""/></to>
+        </wire>
+        <wire loc="62:/home/kasper/tinyos-main//tos/platforms/telosb/UserButtonC.nc">
+          <from><interface-ref name="NotifyLower" ref="0x2ac2c33bbe28" scoped=""/></from>
+          <to><interface-ref name="Notify" ref="0x2ac2c33c7128" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="12:ReliableSerialC.nc" nicename="ReliableSerialC" qname="ReliableSerialC">
+      <module/>
+    </component><component loc="47(ImageCompressionAppC.AckSender):/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc" nicename="ImageCompressionAppC.AckSender" qname="ImageCompressionAppC.AckSender">
+      <documentation loc="71:/home/kasper/tinyos-main//tos/lib/serial/Serial.h">
+        <short>
+ </short>
+        <long>
+ @author Phil Buonadonna
+ @author Lewis Girod
+ @author Ben Greenstein
+ @author Philip Levis
+ @date   August 7 2005
+</long>
+      </documentation>
+      <instance number="1">
+        <component-ref nicename="SerialAMSenderC" qname="SerialAMSenderC"/>
+        <arguments>
+          <value cst="I:22">
+            <type-int alignment="I:2" cname="int" size="I:2"/>
+          </value>
+        </arguments>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="63:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c48877b0" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c535cdb8" scoped=""/></to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c48863f0" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c425f0c0" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c4885020" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c425fcd0" scoped=""/></to>
+        </wire>
+        <wire loc="66:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc">
+          <from><interface-ref name="Acks" ref="0x2ac2c48845b8" scoped=""/></from>
+          <to><interface-ref name="PacketAcknowledgements" ref="0x2ac2c425d348" scoped=""/></to>
+        </wire>
+        <wire loc="60:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc">
+          <from><interface-ref name="Send" ref="0x2ac2c535aa38" scoped=""/></from>
+          <to><interface-ref name="Send" ref="0x2ac2c4818020" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned=""/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="61:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c5359700" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c425fcd0" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="2:QuantCompressC.nc" nicename="QuantCompressC" qname="QuantCompressC" safe="">
+      <module/>
+    </component><component loc="59:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" nicename="ActiveMessageC" qname="ActiveMessageC">
+      <documentation loc="49:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+        <short>
+
+ The Active Message layer on the Telos platform.</short>
+        <long>
+
+ The Active Message layer on the Telos platform. This is a naming wrapper
+ around the CC2420 Active Message layer.
+
+ @author Philip Levis
+ @version $Revision: 1.9 $ $Date: 2010-06-29 22:07:55 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="78:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="SplitControl" ref="0x2ac2c36df140" scoped=""/></from>
+          <to><interface-ref name="SplitControl" ref="0x2ac2c3731310" scoped=""/></to>
+        </wire>
+        <wire loc="80:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c36de1c8" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c37302b0" scoped=""/></to>
+        </wire>
+        <wire loc="82:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="Snoop" ref="0x2ac2c36dde48" scoped=""/></from>
+          <to><interface-ref name="Snoop" ref="0x2ac2c372e020" scoped=""/></to>
+        </wire>
+        <wire loc="83:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c36db448" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c372dbd8" scoped=""/></to>
+        </wire>
+        <wire loc="89:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="PacketTimeStamp32khz" ref="0x2ac2c36d8020" scoped=""/></from>
+          <to><interface-ref name="PacketTimeStamp32khz" ref="0x2ac2c3fa3130" scoped=""/></to>
+        </wire>
+        <wire loc="86:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="LowPowerListening" ref="0x2ac2c36fe848" scoped=""/></from>
+          <to><interface-ref name="LowPowerListening" ref="0x2ac2c371f628" scoped=""/></to>
+        </wire>
+        <wire loc="81:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="Receive" ref="0x2ac2c36dd300" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c372f3c8" scoped=""/></to>
+        </wire>
+        <wire loc="85:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="PacketAcknowledgements" ref="0x2ac2c37120d0" scoped=""/></from>
+          <to><interface-ref name="PacketAcknowledgements" ref="0x2ac2c372b7e0" scoped=""/></to>
+        </wire>
+        <wire loc="84:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c36da080" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c372e610" scoped=""/></to>
+        </wire>
+        <wire loc="90:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="PacketTimeStampMilli" ref="0x2ac2c370be48" scoped=""/></from>
+          <to><interface-ref name="PacketTimeStampMilli" ref="0x2ac2c3f9f020" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="47(ImageCompressionAppC.CompressedSender):/home/kasper/tinyos-main//tos/system/AMSenderC.nc" nicename="ImageCompressionAppC.CompressedSender" qname="ImageCompressionAppC.CompressedSender">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/system/AMSenderC.nc">
+        <short>
+ The virtualized active message send abstraction.</short>
+        <long>
+ The virtualized active message send abstraction. Each instantiation
+ of AMSenderC has its own queue of depth one. Therefore, it does not
+ have to contend with other AMSenderC instantiations for queue space.
+ The underlying implementation schedules the packets in these queues
+ using some form of fair-share queueing.
+
+ @author Philip Levis
+ @date   Jan 16 2006
+ @see    TEP 116: Packet Protocols
+</long>
+      </documentation>
+      <instance number="0">
+        <component-ref nicename="AMSenderC" qname="AMSenderC"/>
+        <arguments>
+          <value cst="I:6">
+            <type-int alignment="I:2" cname="int" size="I:2"/>
+          </value>
+        </arguments>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="64:/home/kasper/tinyos-main//tos/system/AMSenderC.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c462fc20" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c5186978" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/system/AMSenderC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c462e888" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c5185578" scoped=""/></to>
+        </wire>
+        <wire loc="66:/home/kasper/tinyos-main//tos/system/AMSenderC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c462d578" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c5184268" scoped=""/></to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/system/AMSenderC.nc">
+          <from><interface-ref name="Acks" ref="0x2ac2c462cbd8" scoped=""/></from>
+          <to><interface-ref name="Acks" ref="0x2ac2c51838c8" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="43(ImageCompressionAppC.UncompressedReceiver):/home/kasper/tinyos-main//tos/system/AMReceiverC.nc" nicename="ImageCompressionAppC.UncompressedReceiver" qname="ImageCompressionAppC.UncompressedReceiver">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/system/AMReceiverC.nc">
+        <short>
+ The virtualized AM reception abstraction.</short>
+        <long>
+ The virtualized AM reception abstraction.
+
+ @author Philip Levis
+ @date   Jan 16 2006
+ @see    TEP 116: Packet Protocols
+</long>
+      </documentation>
+      <instance number="1">
+        <component-ref nicename="AMReceiverC" qname="AMReceiverC"/>
+        <arguments>
+          <value cst="I:7">
+            <type-int alignment="I:2" cname="int" size="I:2"/>
+          </value>
+        </arguments>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="55:/home/kasper/tinyos-main//tos/system/AMReceiverC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c4616320" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c36db448" scoped=""/></to>
+        </wire>
+        <wire loc="54:/home/kasper/tinyos-main//tos/system/AMReceiverC.nc">
+          <from><interface-ref name="Receive" ref="0x2ac2c4617d30" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c36dd300" scoped=""/>
+          <arguments>
+            <value cst="I:7">
+              <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+                <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+              </type-int>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="56:/home/kasper/tinyos-main//tos/system/AMReceiverC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c4615020" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c36da080" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="47(ImageCompressionAppC.UncompressedSender):/home/kasper/tinyos-main//tos/system/AMSenderC.nc" nicename="ImageCompressionAppC.UncompressedSender" qname="ImageCompressionAppC.UncompressedSender">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/system/AMSenderC.nc">
+        <short>
+ The virtualized active message send abstraction.</short>
+        <long>
+ The virtualized active message send abstraction. Each instantiation
+ of AMSenderC has its own queue of depth one. Therefore, it does not
+ have to contend with other AMSenderC instantiations for queue space.
+ The underlying implementation schedules the packets in these queues
+ using some form of fair-share queueing.
+
+ @author Philip Levis
+ @date   Jan 16 2006
+ @see    TEP 116: Packet Protocols
+</long>
+      </documentation>
+      <instance number="1">
+        <component-ref nicename="AMSenderC" qname="AMSenderC"/>
+        <arguments>
+          <value cst="I:7">
+            <type-int alignment="I:2" cname="int" size="I:2"/>
+          </value>
+        </arguments>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="64:/home/kasper/tinyos-main//tos/system/AMSenderC.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c461d5e0" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c51df9c8" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/system/AMSenderC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c461c268" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c51dd700" scoped=""/></to>
+        </wire>
+        <wire loc="66:/home/kasper/tinyos-main//tos/system/AMSenderC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c461ce20" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c51dc3f0" scoped=""/></to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/system/AMSenderC.nc">
+          <from><interface-ref name="Acks" ref="0x2ac2c4619430" scoped=""/></from>
+          <to><interface-ref name="Acks" ref="0x2ac2c51dba50" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="44:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc" nicename="SerialActiveMessageC" qname="SerialActiveMessageC">
+      <documentation loc="71:/home/kasper/tinyos-main//tos/lib/serial/Serial.h">
+        <short>
+ </short>
+        <long>
+ @author Phil Buonadonna
+ @author Lewis Girod
+ @author Ben Greenstein
+ @author Philip Levis
+ @date   August 7 2005
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="61:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SplitControl" ref="0x2ac2c41c6848" scoped=""/></from>
+          <to><interface-ref name="SplitControl" ref="0x2ac2c426b728" scoped=""/></to>
+        </wire>
+        <wire loc="63:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c4262920" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c4259460" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c425f0c0" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c4273d20" scoped=""/></to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="Receive" ref="0x2ac2c4260ab0" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c4274180" scoped=""/></to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="PacketAcknowledgements" ref="0x2ac2c425d348" scoped=""/></from>
+          <to><interface-ref name="PacketAcknowledgements" ref="0x2ac2c4272908" scoped=""/></to>
+        </wire>
+        <wire loc="66:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c425fcd0" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c4274738" scoped=""/></to>
+        </wire>
+        <wire loc="59:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c426b110" scoped=""/></to>
+        </wire>
+        <wire loc="60:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="Leds" ref="0x2ac2c42d78f8" scoped=""/></from>
+          <to><interface-ref name="Leds" ref="0x2ac2c425dc80" scoped=""/></to>
+        </wire>
+        <wire loc="69:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SubSend" ref="0x2ac2c4271308" scoped=""/></from>
+          <to><interface-ref name="Send" ref="0x2ac2c4269208" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="70:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SubReceive" ref="0x2ac2c426f020" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c426a760" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="72:/home/kasper/tinyos-main//tos/lib/serial/SerialActiveMessageC.nc">
+          <from><interface-ref name="SerialPacketInfo" ref="0x2ac2c42d7020" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </from>
+          <to><interface-ref name="Info" ref="0x2ac2c4558020" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="44(ImageCompressionAppC.AckTimer):/home/kasper/tinyos-main//tos/system/TimerMilliC.nc" nicename="ImageCompressionAppC.AckTimer" qname="ImageCompressionAppC.AckTimer">
+      <instance number="2">
+        <component-ref nicename="TimerMilliC" qname="TimerMilliC"/>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="52:/home/kasper/tinyos-main//tos/system/TimerMilliC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c482c128" scoped=""/></from>
+          <to><interface-ref name="TimerMilli" ref="0x2ac2c3403e30" scoped=""/>
+          <arguments>
+            <value cst="I:3">
+              <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned=""/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+      </wiring>
+    </component><component loc="45:/home/kasper/tinyos-main//tos/system/LedsC.nc" nicename="LedsC" qname="LedsC">
+      <documentation loc="34:/home/kasper/tinyos-main//tos/system/LedsC.nc">
+        <short>
+
+ The basic TinyOS LEDs abstraction.</short>
+        <long>
+
+ The basic TinyOS LEDs abstraction.
+
+ @author Phil Buonadonna
+ @author David Gay
+ @author Philip Levis
+ @author Joe Polastre
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="51:/home/kasper/tinyos-main//tos/system/LedsC.nc">
+          <from><interface-ref name="Leds" ref="0x2ac2c3039c38" scoped=""/></from>
+          <to><interface-ref name="Leds" ref="0x2ac2c30365e8" scoped=""/></to>
+        </wire>
+        <wire loc="53:/home/kasper/tinyos-main//tos/system/LedsC.nc">
+          <from><interface-ref name="Init" ref="0x2ac2c3058460" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c3036020" scoped=""/></to>
+        </wire>
+        <wire loc="54:/home/kasper/tinyos-main//tos/system/LedsC.nc">
+          <from><interface-ref name="Led0" ref="0x2ac2c30527c8" scoped=""/></from>
+          <to><interface-ref name="Led0" ref="0x2ac2c305b020" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/system/LedsC.nc">
+          <from><interface-ref name="Led1" ref="0x2ac2c3034958" scoped=""/></from>
+          <to><interface-ref name="Led1" ref="0x2ac2c305a1b0" scoped=""/></to>
+        </wire>
+        <wire loc="56:/home/kasper/tinyos-main//tos/system/LedsC.nc">
+          <from><interface-ref name="Led2" ref="0x2ac2c3051ae0" scoped=""/></from>
+          <to><interface-ref name="Led2" ref="0x2ac2c3059378" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="42(ImageCompressionAppC.CompressedFlashVolume):/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc" nicename="ImageCompressionAppC.CompressedFlashVolume" qname="ImageCompressionAppC.CompressedFlashVolume">
+      <documentation loc="1:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25p.h">
+        <short>
+ Copyright (c) 2005-2006 Arch Rock Corporation
+ All rights reserved.</short>
+        <long>
+ Copyright (c) 2005-2006 Arch Rock Corporation
+ All rights reserved.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ - Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the
+   distribution.
+ - Neither the name of the Arch Rock Corporation nor the names of
+   its contributors may be used to endorse or promote products derived
+   from this software without specific prior written permission.
+
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE
+ ARCHED ROCK OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ OF THE POSSIBILITY OF SUCH DAMAGE
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.4 $ $Date: 2006-12-12 18:23:12 $
+</long>
+      </documentation>
+      <instance number="1">
+        <component-ref nicename="BlockStorageC" qname="BlockStorageC"/>
+        <arguments>
+          <value cst="I:1">
+            <type-int alignment="I:2" cname="int" size="I:2"/>
+          </value>
+        </arguments>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="58:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc">
+          <from><interface-ref name="BlockRead" ref="0x2ac2c48361b0" scoped=""/></from>
+          <to><interface-ref name="Read" ref="0x2ac2c4684020" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="59:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc">
+          <from><interface-ref name="BlockWrite" ref="0x2ac2c4836da8" scoped=""/></from>
+          <to><interface-ref name="Write" ref="0x2ac2c4683270" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="60:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc">
+          <from><interface-ref name="StorageMap" ref="0x2ac2c4835ba0" scoped=""/></from>
+          <to><interface-ref name="StorageMap" ref="0x2ac2c4682570" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="63:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc">
+          <from><interface-ref name="ClientResource" ref="0x2ac2c46701c8" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </from>
+          <to><interface-ref name="ClientResource" ref="0x2ac2c47081c8" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc">
+          <from><interface-ref name="Sector" ref="0x2ac2c4681610" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </from>
+          <to><interface-ref name="Sector" ref="0x2ac2c4706400" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc">
+          <from><interface-ref name="Volume" ref="0x2ac2c5303020" scoped=""/></from>
+          <to><interface-ref name="Volume" ref="0x2ac2c4704510" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+      </wiring>
+    </component><component loc="56:/home/kasper/tinyos-main//tos/system/MainC.nc" nicename="MainC" qname="MainC">
+      <documentation loc="45:/home/kasper/tinyos-main//tos/system/MainC.nc">
+        <short>
+ MainC is the system interface the TinyOS boot sequence.</short>
+        <long>
+ MainC is the system interface the TinyOS boot sequence. It wires the
+ boot sequence implementation to the scheduler and hardware resources.
+
+ @author Philip Levis
+ @date   August 6 2005
+ @see    TEP 107: Boot Sequence
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="72:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="Boot" ref="0x2ac2c2e659c0" scoped=""/></from>
+          <to><interface-ref name="Boot" ref="0x2ac2c2e64c40" scoped=""/></to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="Scheduler" ref="0x2ac2c3010308" scoped=""/></from>
+          <to><interface-ref name="Scheduler" ref="0x2ac2c29e8390" scoped=""/></to>
+        </wire>
+        <wire loc="68:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="PlatformInit" ref="0x2ac2c3010ce0" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c2e66d70" scoped=""/></to>
+        </wire>
+        <wire loc="71:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="SoftwareInit" ref="0x2ac2c302a418" scoped=""/></from>
+          <to><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="47(ImageCompressionAppC.DataSender):/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc" nicename="ImageCompressionAppC.DataSender" qname="ImageCompressionAppC.DataSender">
+      <documentation loc="71:/home/kasper/tinyos-main//tos/lib/serial/Serial.h">
+        <short>
+ </short>
+        <long>
+ @author Phil Buonadonna
+ @author Lewis Girod
+ @author Ben Greenstein
+ @author Philip Levis
+ @date   August 7 2005
+</long>
+      </documentation>
+      <instance number="0">
+        <component-ref nicename="SerialAMSenderC" qname="SerialAMSenderC"/>
+        <arguments>
+          <value cst="I:23">
+            <type-int alignment="I:2" cname="int" size="I:2"/>
+          </value>
+        </arguments>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="63:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c488d1d0" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c52f3a80" scoped=""/></to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c488dd88" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c425f0c0" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c488b9d8" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c425fcd0" scoped=""/></to>
+        </wire>
+        <wire loc="66:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc">
+          <from><interface-ref name="Acks" ref="0x2ac2c48890a0" scoped=""/></from>
+          <to><interface-ref name="PacketAcknowledgements" ref="0x2ac2c425d348" scoped=""/></to>
+        </wire>
+        <wire loc="60:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc">
+          <from><interface-ref name="Send" ref="0x2ac2c52f2760" scoped=""/></from>
+          <to><interface-ref name="Send" ref="0x2ac2c4818020" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned=""/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="61:/home/kasper/tinyos-main//tos/lib/serial/SerialAMSenderC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c52f13f0" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c425fcd0" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="42(ImageCompressionAppC.UncompressedFlashVolume):/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc" nicename="ImageCompressionAppC.UncompressedFlashVolume" qname="ImageCompressionAppC.UncompressedFlashVolume">
+      <documentation loc="1:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25p.h">
+        <short>
+ Copyright (c) 2005-2006 Arch Rock Corporation
+ All rights reserved.</short>
+        <long>
+ Copyright (c) 2005-2006 Arch Rock Corporation
+ All rights reserved.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ - Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the
+   distribution.
+ - Neither the name of the Arch Rock Corporation nor the names of
+   its contributors may be used to endorse or promote products derived
+   from this software without specific prior written permission.
+
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE
+ ARCHED ROCK OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ OF THE POSSIBILITY OF SUCH DAMAGE
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.4 $ $Date: 2006-12-12 18:23:12 $
+</long>
+      </documentation>
+      <instance number="0">
+        <component-ref nicename="BlockStorageC" qname="BlockStorageC"/>
+        <arguments>
+          <value cst="I:0">
+            <type-int alignment="I:2" cname="int" size="I:2"/>
+          </value>
+        </arguments>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="58:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc">
+          <from><interface-ref name="BlockRead" ref="0x2ac2c483a6c0" scoped=""/></from>
+          <to><interface-ref name="Read" ref="0x2ac2c4684020" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="59:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc">
+          <from><interface-ref name="BlockWrite" ref="0x2ac2c4839430" scoped=""/></from>
+          <to><interface-ref name="Write" ref="0x2ac2c4683270" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="60:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc">
+          <from><interface-ref name="StorageMap" ref="0x2ac2c48382a8" scoped=""/></from>
+          <to><interface-ref name="StorageMap" ref="0x2ac2c4682570" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="63:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc">
+          <from><interface-ref name="ClientResource" ref="0x2ac2c46701c8" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </from>
+          <to><interface-ref name="ClientResource" ref="0x2ac2c47081c8" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc">
+          <from><interface-ref name="Sector" ref="0x2ac2c4681610" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </from>
+          <to><interface-ref name="Sector" ref="0x2ac2c4706400" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/chips/stm25p/BlockStorageC.nc">
+          <from><interface-ref name="Volume" ref="0x2ac2c5261020" scoped=""/></from>
+          <to><interface-ref name="Volume" ref="0x2ac2c4704510" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+      </wiring>
+    </component><component loc="5:ImageCompressionC.nc" nicename="ImageCompressionC" qname="ImageCompressionC">
+      <module/>
+    </component></referenced></component>

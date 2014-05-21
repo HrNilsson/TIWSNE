@@ -1,0 +1,269 @@
+<?xml version="1.0" ?><interfacedef loc="43:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO">
+      <documentation loc="34:/home/kasper/tinyos-main//tos/types/TinyError.h">
+        <short>
+ </short>
+        <long>
+ @author Phil Levis
+ @author David Gay
+ Revision:  $Revision: 1.12 $
+
+ Defines global error codes for error_t in TinyOS.
+</long>
+      </documentation>
+      <function command="" loc="78:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="makeInput" provided="0" ref="0x2ac2c3075440">
+        <documentation loc="75:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc">
+          <short>
+ Set pin direction to input.</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="80:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="isInput" provided="0" ref="0x2ac2c3075b28">
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="110:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="setResistor" provided="0" ref="0x2ac2c3070290">
+        <documentation loc="103:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc">
+          <short>
+ Set pin pullup / pull down resistor mode.</short>
+          <long>
+ Set pin pullup / pull down resistor mode.
+ @param mode One of the MSP430_PORT_RESISTOR_* values
+ @return EINVAL if invalid mode or pin does not support resistor configuration;
+ FAIL if pin is not an input;
+ SUCCESS if pin supports resistor configuration, is an input, and mode is valid
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="error_t" ref="0x2ac2c29f3780"/></typename>
+          </type-int>
+          <function-parameters>
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="110:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="mode" ref="0x2ac2c3070020">
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="58:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="toggle" provided="0" ref="0x2ac2c3078dc0">
+        <documentation loc="55:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc">
+          <short>
+ Toggle pin status.</short>
+          <long>
+ Toggle pin status.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="87:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="isOutput" provided="0" ref="0x2ac2c3074950">
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="117:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="getResistor" provided="0" ref="0x2ac2c3070b10">
+        <documentation loc="112:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc">
+          <short>
+ Get the pin pullup / pulldown resistor mode.</short>
+          <long>
+ Get the pin pullup / pulldown resistor mode.
+
+ @return one of the MSP430_PORT_RESISTOR_* values
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="85:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="makeOutput" provided="0" ref="0x2ac2c3074258">
+        <documentation loc="82:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc">
+          <short>
+ Set pin direction to output.</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="73:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="get" provided="0" ref="0x2ac2c3076ca8">
+        <documentation loc="68:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc">
+          <short>
+ Read pin value.</short>
+          <long>
+ Read pin value.
+
+ @return TRUE if pin is high, FALSE otherwise.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="99:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="selectIOFunc" provided="0" ref="0x2ac2c3071020">
+        <documentation loc="96:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc">
+          <short>
+ Set pin for I/O functionality.</short>
+          <long>
+ Set pin for I/O functionality.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="66:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="getRaw" provided="0" ref="0x2ac2c3076510">
+        <documentation loc="60:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc">
+          <short>
+ Get the port status that contains the pin.</short>
+          <long>
+ Get the port status that contains the pin.
+
+ @return Status of the port that contains the given pin. The x'th
+ pin on the port will be represented in the x'th bit.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="48:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="set" provided="0" ref="0x2ac2c3078020">
+        <documentation loc="45:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc">
+          <short>
+ Set pin to high.</short>
+          <long>
+ Set pin to high.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="92:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="selectModuleFunc" provided="0" ref="0x2ac2c30720d8">
+        <documentation loc="89:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc">
+          <short>
+ Set pin for module specific functionality.</short>
+          <long>
+ Set pin for module specific functionality.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="101:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="isIOFunc" provided="0" ref="0x2ac2c3071748">
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="94:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="isModuleFunc" provided="0" ref="0x2ac2c3072838">
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="53:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc" name="clr" provided="0" ref="0x2ac2c30786e0">
+        <documentation loc="50:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIO.nc">
+          <short>
+ Set pin to low.</short>
+          <long>
+ Set pin to low.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+    </interfacedef>
