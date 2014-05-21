@@ -56,6 +56,7 @@ implementation {
 	App.SerialControl -> SerialActiveMessageC;
   	App.SerialReceive -> ReliableSerialC;
   	App.SerialAMSend -> ReliableSerialC;
+  	App.SerialFlow -> ReliableSerialC;
   	
   	components new TimerMilliC() as AckTimer;
 	components new SerialAMSenderC(AM_RELIABLE_MSG) as DataSender;

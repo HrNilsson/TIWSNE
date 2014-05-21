@@ -31,6 +31,7 @@ module ImageCompressionC{
  	uses interface SplitControl as SerialControl;
 	uses interface Receive as SerialReceive;
 	uses interface AMSend as SerialAMSend;
+	uses interface Set<bool> as SerialFlow;
 }
 
 implementation{
@@ -43,6 +44,7 @@ implementation{
 	
 	TaskFlag taskFlag = INIT;
 	
+	nx_uint8_t receiveFromPCBuffer[MAX_SERIALDATA_LENGTH];
 	nx_uint8_t flashDataUncompressed[NO_OF_UNCOMPRESSED_PIXELS];
 	nx_uint32_t flashDataCompressed[NO_OF_COMPRESSED_PIXELS];
 	
