@@ -33,7 +33,7 @@ module ImageCompressionC{
 	uses interface AMSend as SerialAMSend;
 	uses interface Set<bool> as SerialFlow;
 	
-	uses interface QuantCompress;
+	uses interface QuantCompress as Comp;
 
 }
 
@@ -49,7 +49,7 @@ implementation{
 	
 	nx_uint8_t receiveFromPCBuffer[MAX_SERIALDATA_LENGTH];
 	nx_uint8_t flashDataUncompressed[NO_OF_UNCOMPRESSED_PIXELS];
-	nx_uint32_t flashDataCompressed[NO_OF_COMPRESSED_PIXELS];
+	imageVector flashDataCompressed[NO_OF_COMPRESSED_PIXELS];
 	
 	//-------------------------HELPER PROTOTYPES---------------------------------//
 	void StartReceiveFromPcTask();
@@ -453,10 +453,9 @@ implementation{
 					//Compress this shiiiiiit to flashDataCompressed
 					for(i=0 ; i <= NO_OF_UNCOMPRESSED_PIXELS ; i+5) {
 						
-						
+						flashDataCompressed[i/5] = call Comp.compressVector(flashDataUncompressed+i);
 						
 					}
-					
 					
 					taskFlag = SEND_PACKET;
 					post SendCompressedToMoteTask();
