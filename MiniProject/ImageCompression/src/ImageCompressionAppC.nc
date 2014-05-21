@@ -1,10 +1,7 @@
 #include "ImageCompression.h"
 #include "StorageVolumes.h"
-#define NEW_PRINTF_SEMANTICS
-#include "printf.h"
 
 #define TOSH_DATA_LENGTH 113
-
 
 configuration ImageCompressionAppC {
 }
@@ -17,8 +14,6 @@ implementation {
 	components ActiveMessageC;
 	components ReliableSerialC;
   	components SerialActiveMessageC;
-  	components PrintfC;
-  	components SerialStartC;
 
 	// Transceiver for compressed data format
 	components new AMSenderC(AM_COMPRESSED_IMAGE) as CompressedSender;
