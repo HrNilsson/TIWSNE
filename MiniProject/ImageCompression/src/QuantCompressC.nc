@@ -7,7 +7,7 @@ module QuantCompressC @safe() {
 
 implementation {
 	
-	command imageVector QuantCompress.compressVector(uint8_t * inputVec) {
+	command imageVector QuantCompress.compressVector(nx_uint8_t * inputVec) {
 	
 		imageVector imVec;
 	
@@ -22,7 +22,7 @@ implementation {
 		return imVec;
 	}
 
-	command void QuantCompress.deCompressVector(imageVector imVec, uint8_t *outputVec){
+	command void QuantCompress.deCompressVector(imageVector imVec, nx_uint8_t *outputVec){
 	
 		outputVec[0] = imVec.px0<<2;
 		outputVec[1] = imVec.px1<<2;

@@ -438,11 +438,11 @@ implementation{
 				{
 					if (flashCnt < TOTAL_UNCOMPRESSED_PACKETS)
 					{
-						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, flashDataUncompressed, NO_OF_UNCOMPRESSED_PIXELS);
 					}
 					else if (flashCnt >= TOTAL_UNCOMPRESSED_PACKETS)
 					{
-						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, UNCOMPRESSED_IMAGE_REST); 	
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, flashDataUncompressed, UNCOMPRESSED_IMAGE_REST); 	
 					}
 					break;
 				}
