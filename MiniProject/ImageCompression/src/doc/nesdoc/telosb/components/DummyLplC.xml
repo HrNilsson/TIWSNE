@@ -1,0 +1,193 @@
+<?xml version="1.0" ?><component loc="41:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc" nicename="DummyLplC" qname="DummyLplC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc">
+        <short>
+ Dummy low power listening interface used when LowPowerListening is not
+ compiled in with the application.</short>
+        <long>
+ Dummy low power listening interface used when LowPowerListening is not
+ compiled in with the application.
+ Sleep interval is always 0, and duty cycle is always 100%
+ @author David Moss
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="63:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc">
+          <from><interface-ref name="SplitControl" ref="0x2ac2c414ddc8" scoped=""/></from>
+          <to><interface-ref name="SubControl" ref="0x2ac2c414ad28" scoped=""/></to>
+        </wire>
+        <wire loc="61:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc">
+          <from><interface-ref name="Send" ref="0x2ac2c414e080" scoped=""/></from>
+          <to><interface-ref name="SubSend" ref="0x2ac2c414b838" scoped=""/></to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc">
+          <from><interface-ref name="LowPowerListening" ref="0x2ac2c414d318" scoped=""/></from>
+          <to><interface-ref name="LowPowerListening" ref="0x2ac2c4145170" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc">
+          <from><interface-ref name="SendState" ref="0x2ac2c414c928" scoped=""/></from>
+          <to><interface-ref name="State" ref="0x2ac2c4148d50" scoped=""/></to>
+        </wire>
+        <wire loc="62:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc">
+          <from><interface-ref name="Receive" ref="0x2ac2c414ec80" scoped=""/></from>
+          <to><interface-ref name="SubReceive" ref="0x2ac2c414a668" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="46:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc" name="SplitControl" provided="1" ref="0x2ac2c414ddc8">
+      <component-ref nicename="DummyLplC" qname="DummyLplC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SplitControl" ref="0x2ac2c414ddc8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c414c170" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c414c2f8" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c414c480" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c414c608" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="51:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc" name="SubSend" provided="0" ref="0x2ac2c414b838">
+      <component-ref nicename="DummyLplC" qname="DummyLplC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SubSend" ref="0x2ac2c414b838" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c414bb88" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c414bd10" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c414a020" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c414a1a8" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c414a330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="52:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc" name="SubReceive" provided="0" ref="0x2ac2c414a668">
+      <component-ref nicename="DummyLplC" qname="DummyLplC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SubReceive" ref="0x2ac2c414a668" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c414a9b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc" name="Send" provided="1" ref="0x2ac2c414e080">
+      <component-ref nicename="DummyLplC" qname="DummyLplC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Send" ref="0x2ac2c414e080" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c414e3d0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c414e558" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c414e6e0" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c414e868" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c414e9f0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc" name="LowPowerListening" provided="1" ref="0x2ac2c414d318">
+      <component-ref nicename="DummyLplC" qname="DummyLplC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="LowPowerListening" ref="0x2ac2c414d318" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="LowPowerListening" qname="LowPowerListening"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="setRemoteWakeupInterval" ref="0x2ac2c414d668" scoped=""/>
+        <function-ref name="getRemoteWakeupInterval" ref="0x2ac2c414d7f0" scoped=""/>
+        <function-ref name="getLocalWakeupInterval" ref="0x2ac2c414d978" scoped=""/>
+        <function-ref name="setLocalWakeupInterval" ref="0x2ac2c414db00" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc" name="SendState" provided="1" ref="0x2ac2c414c928">
+      <component-ref nicename="DummyLplC" qname="DummyLplC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SendState" ref="0x2ac2c414c928" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="State" qname="State"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="getState" ref="0x2ac2c414cc78" scoped=""/>
+        <function-ref name="toIdle" ref="0x2ac2c414ce00" scoped=""/>
+        <function-ref name="isState" ref="0x2ac2c414b020" scoped=""/>
+        <function-ref name="isIdle" ref="0x2ac2c414b1a8" scoped=""/>
+        <function-ref name="requestState" ref="0x2ac2c414b330" scoped=""/>
+        <function-ref name="forceState" ref="0x2ac2c414b4b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="53:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc" name="SubControl" provided="0" ref="0x2ac2c414ad28">
+      <component-ref nicename="DummyLplC" qname="DummyLplC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SubControl" ref="0x2ac2c414ad28" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c41490a0" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c4149228" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c41493b0" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c4149538" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="44:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplC.nc" name="Receive" provided="1" ref="0x2ac2c414ec80">
+      <component-ref nicename="DummyLplC" qname="DummyLplC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Receive" ref="0x2ac2c414ec80" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c414d020" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="67:/home/kasper/tinyos-main//tos/system/StateC.nc" name="State" provided="1" ref="0x2ac2c4148d50">
+      <component-ref nicename="DummyLplC.StateC" qname="DummyLplC.StateC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="State" ref="0x2ac2c4148d50" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="State" qname="State"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="getState" ref="0x2ac2c41460d8" scoped=""/>
+        <function-ref name="toIdle" ref="0x2ac2c4146260" scoped=""/>
+        <function-ref name="isState" ref="0x2ac2c41463e8" scoped=""/>
+        <function-ref name="isIdle" ref="0x2ac2c4146570" scoped=""/>
+        <function-ref name="requestState" ref="0x2ac2c41466f8" scoped=""/>
+        <function-ref name="forceState" ref="0x2ac2c4146880" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="41:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplP.nc" name="LowPowerListening" provided="1" ref="0x2ac2c4145170">
+      <component-ref nicename="DummyLplP" qname="DummyLplP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="LowPowerListening" ref="0x2ac2c4145170" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="LowPowerListening" qname="LowPowerListening"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="setRemoteWakeupInterval" ref="0x2ac2c41454c0" scoped=""/>
+        <function-ref name="getRemoteWakeupInterval" ref="0x2ac2c4145648" scoped=""/>
+        <function-ref name="getLocalWakeupInterval" ref="0x2ac2c41457d0" scoped=""/>
+        <function-ref name="setLocalWakeupInterval" ref="0x2ac2c4145958" scoped=""/>
+      </interface-functions>
+    </interface><component loc="65(DummyLplC.StateC):/home/kasper/tinyos-main//tos/system/StateC.nc" nicename="DummyLplC.StateC" qname="DummyLplC.StateC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/types/State.h">
+        <short>
+ </short>
+        <long>
+ @author David Moss
+</long>
+      </documentation>
+      <instance number="3">
+        <component-ref nicename="StateC" qname="StateC"/>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="74:/home/kasper/tinyos-main//tos/system/StateC.nc">
+          <from><interface-ref name="State" ref="0x2ac2c4148d50" scoped=""/></from>
+          <to><interface-ref name="State" ref="0x2ac2c39e2858" scoped=""/>
+          <arguments>
+            <value cst="I:3">
+              <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned=""/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+      </wiring>
+    </component><component loc="39:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplP.nc" nicename="DummyLplP" qname="DummyLplP">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/lpl/DummyLplP.nc">
+        <short>
+ Dummy low power listening interface used when LowPowerListening is not
+ compiled in with the application.</short>
+        <long>
+ Dummy low power listening interface used when LowPowerListening is not
+ compiled in with the application.
+ Wakeup interval is always 0 (always on)
+ @author David Moss
+</long>
+      </documentation>
+      <module/>
+    </component></referenced></component>

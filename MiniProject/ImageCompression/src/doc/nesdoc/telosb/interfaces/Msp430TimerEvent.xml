@@ -1,0 +1,19 @@
+<?xml version="1.0" ?><interfacedef loc="37:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerEvent.nc" nicename="Msp430TimerEvent" qname="Msp430TimerEvent">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerEvent.nc">
+        <short>
+ </short>
+        <long>
+ @author Cory Sharp &lt;cssharp@eecs.berkeley.edu&gt;
+</long>
+      </documentation>
+      <function event="" loc="39:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerEvent.nc" name="fired" provided="0" ref="0x2ac2c2f28db0">
+        <interfacedef-ref nicename="Msp430TimerEvent" qname="Msp430TimerEvent"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+    </interfacedef>

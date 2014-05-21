@@ -329,6 +329,8 @@ implementation{
  
 	event void CompressedRestore.readDone(storage_addr_t addr,void * buf, storage_len_t len, error_t error)
 	{
+		flashCnt ++;
+		post SendCompressedToPcTask();
 
 	}
 
@@ -685,7 +687,7 @@ implementation{
 		switch(taskFlag)
 		{
 			case READ_FLASH:
-			{
+			{ 
 				if(flashCnt < SERIAL_DATA_NUMBER_OF_PACKETS)
 				{
 					call UncompressedRestore.read(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
@@ -720,11 +722,11 @@ implementation{
 			{
 				if(flashCnt < TOTAL_COMPRESSED_PACKETS)
 				{
-					call CompressedRestore.read(flashCnt*NO_OF_COMPRESSED_PIXELS*4, &flashDataCompressed, NO_OF_COMPRESSED_PIXELS*4);
+					call CompressedRestore.read(flashCnt*88, &flashDataCompressed, 110);
 				}
 				else if(flashCnt == TOTAL_COMPRESSED_PACKETS)
 				{
-					call CompressedRestore.read(flashCnt*NO_OF_COMPRESSED_PIXELS*4, &flashDataCompressed, COMPRESSED_IMAGE_REST);
+					call CompressedRestore.read(flashCnt*88, &flashDataCompressed, 46);
 				} 
 				break;
 			}
@@ -733,6 +735,8 @@ implementation{
 				void * payload = call SerialAMSend.getPayload(&serialPacket, MAX_SERIALDATA_LENGTH);
 				
 				memcpy(payload,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
+				
+				
 				
 				call SerialAMSend.send(AM_BROADCAST_ADDR, &serialPacket, MAX_SERIALDATA_LENGTH);
 			

@@ -1,0 +1,56 @@
+<?xml version="1.0" ?><interfacedef loc="3:QuantCompress.nc" nicename="QuantCompress" qname="QuantCompress">
+      <function command="" loc="6:QuantCompress.nc" name="deCompressVector" provided="0" ref="0x2ac2c36212a0">
+        <interfacedef-ref nicename="QuantCompress" qname="QuantCompress"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-tag alignment="I:1" size="I:4"><nx_struct-ref name="imageVectors" ref="0x2ac2c2e59138"/>
+              <typename><typedef-ref name="imageVector" ref="0x2ac2c2e58878"/></typename>
+            </type-tag>
+            <type-pointer alignment="I:2" size="I:2">
+              <type-int alignment="I:1" cname="unsigned char" network="nx_uint8_t" size="I:1" unsigned="">
+                <typename><typedef-ref name="nx_uint8_t" ref="0x2ac2c28e9b08"/></typename>
+              </type-int>
+            </type-pointer>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="6:QuantCompress.nc" ref="0x2ac2c3623c50">
+            <type-tag alignment="I:1" size="I:4"><nx_struct-ref name="imageVectors" ref="0x2ac2c2e59138"/>
+              <typename><typedef-ref name="imageVector" ref="0x2ac2c2e58878"/></typename>
+            </type-tag>
+          </variable>
+          <variable loc="6:QuantCompress.nc" name="outputVec" ref="0x2ac2c3621020">
+            <type-pointer alignment="I:2" size="I:2">
+              <type-int alignment="I:1" cname="unsigned char" network="nx_uint8_t" size="I:1" unsigned="">
+                <typename><typedef-ref name="nx_uint8_t" ref="0x2ac2c28e9b08"/></typename>
+              </type-int>
+            </type-pointer>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="5:QuantCompress.nc" name="compressVector" provided="0" ref="0x2ac2c36235f8">
+        <interfacedef-ref nicename="QuantCompress" qname="QuantCompress"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-tag alignment="I:1" size="I:4"><nx_struct-ref name="imageVectors" ref="0x2ac2c2e59138"/>
+            <typename><typedef-ref name="imageVector" ref="0x2ac2c2e58878"/></typename>
+          </type-tag>
+          <function-parameters>
+            <type-pointer alignment="I:2" size="I:2">
+              <type-int alignment="I:1" cname="unsigned char" network="nx_uint8_t" size="I:1" unsigned="">
+                <typename><typedef-ref name="nx_uint8_t" ref="0x2ac2c28e9b08"/></typename>
+              </type-int>
+            </type-pointer>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="5:QuantCompress.nc" name="inputVec" ref="0x2ac2c3623388">
+            <type-pointer alignment="I:2" size="I:2">
+              <type-int alignment="I:1" cname="unsigned char" network="nx_uint8_t" size="I:1" unsigned="">
+                <typename><typedef-ref name="nx_uint8_t" ref="0x2ac2c28e9b08"/></typename>
+              </type-int>
+            </type-pointer>
+          </variable>
+        </parameters>
+      </function>
+    </interfacedef>

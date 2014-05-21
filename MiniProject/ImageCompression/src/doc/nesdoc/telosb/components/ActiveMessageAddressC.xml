@@ -1,0 +1,68 @@
+<?xml version="1.0" ?><component loc="52:/home/kasper/tinyos-main//tos/system/ActiveMessageAddressC.nc" nicename="ActiveMessageAddressC" qname="ActiveMessageAddressC" safe="">
+      <documentation loc="45:/home/kasper/tinyos-main//tos/system/ActiveMessageAddressC.nc">
+        <short>
+ Component that stores the node's active message address and group ID.</short>
+        <long>
+ Component that stores the node's active message address and group ID.
+
+ @author Philip Levis
+ @author David Moss
+</long>
+      </documentation>
+      <module/>
+    <specification><interface loc="54:/home/kasper/tinyos-main//tos/system/ActiveMessageAddressC.nc" name="ActiveMessageAddress" provided="1" ref="0x2ac2c3d982b8">
+      <component-ref nicename="ActiveMessageAddressC" qname="ActiveMessageAddressC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ActiveMessageAddress" ref="0x2ac2c3d982b8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ActiveMessageAddress" qname="ActiveMessageAddress"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="amAddress" ref="0x2ac2c3d98608" scoped=""/>
+        <function-ref name="changed" ref="0x2ac2c3d98790" scoped=""/>
+        <function-ref name="amGroup" ref="0x2ac2c3d98918" scoped=""/>
+        <function-ref name="setAddress" ref="0x2ac2c3d98aa0" scoped=""/>
+      </interface-functions>
+    </interface><function command="" loc="106:/home/kasper/tinyos-main//tos/system/ActiveMessageAddressC.nc" name="amAddress" provided="1" ref="0x2ac2c3d971d8" safe="">
+      <documentation loc="101:/home/kasper/tinyos-main//tos/system/ActiveMessageAddressC.nc">
+        <short>
+ Get the node's default AM address.</short>
+        <long>
+ Get the node's default AM address.
+ @return address
+ @deprecated Use ActiveMessageAddress.amAddress() instead
+</long>
+      </documentation>
+      <component-ref nicename="ActiveMessageAddressC" qname="ActiveMessageAddressC"/>
+      <type-function alignment="I:1" size="I:1">
+        <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned=""/>
+        <function-parameters>
+        </function-parameters>
+      </type-function>
+      <parameters>
+      </parameters>
+    </function><function command="" loc="118:/home/kasper/tinyos-main//tos/system/ActiveMessageAddressC.nc" name="setAmAddress" provided="1" ref="0x2ac2c3d97af0" safe="">
+      <documentation loc="112:/home/kasper/tinyos-main//tos/system/ActiveMessageAddressC.nc">
+        <short>
+ Set the node's default AM address.</short>
+        <long>
+ Set the node's default AM address.
+
+ @param a - the address.
+ @deprecated Use ActiveMessageAddress.setAddress() instead
+</long>
+      </documentation>
+      <component-ref nicename="ActiveMessageAddressC" qname="ActiveMessageAddressC"/>
+      <type-function alignment="I:1" size="I:1">
+        <type-void alignment="I:1" size="I:1"/>
+        <function-parameters>
+          <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned=""/>
+        </function-parameters>
+      </type-function>
+      <parameters>
+        <variable loc="56:/home/kasper/tinyos-main//tos/system/ActiveMessageAddressC.nc" name="a" ref="0x2ac2c3d97880">
+          <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned="">
+            <typename><typedef-ref name="am_addr_t" ref="0x2ac2c35c5878"/></typename>
+          </type-int>
+        </variable>
+      </parameters>
+    </function></specification><referenced/></component>

@@ -1,0 +1,38 @@
+<?xml version="1.0" ?><component loc="54:/home/kasper/tinyos-main//tos/system/SchedulerBasicP.nc" nicename="SchedulerBasicP" qname="SchedulerBasicP" safe="">
+      <module/>
+    <specification><interface loc="56:/home/kasper/tinyos-main//tos/system/SchedulerBasicP.nc" name="TaskBasic" provided="1" ref="0x2ac2c2e207f8">
+      <component-ref nicename="SchedulerBasicP" qname="SchedulerBasicP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="TaskBasic" ref="0x2ac2c2e207f8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c2e20b48" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c2e20cd0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="57:/home/kasper/tinyos-main//tos/system/SchedulerBasicP.nc" name="McuSleep" provided="0" ref="0x2ac2c2e1ed30">
+      <component-ref nicename="SchedulerBasicP" qname="SchedulerBasicP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="McuSleep" ref="0x2ac2c2e1ed30" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="McuSleep" qname="McuSleep"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="sleep" ref="0x2ac2c2e1d0d8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="55:/home/kasper/tinyos-main//tos/system/SchedulerBasicP.nc" name="Scheduler" provided="1" ref="0x2ac2c2e21940">
+      <component-ref nicename="SchedulerBasicP" qname="SchedulerBasicP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Scheduler" ref="0x2ac2c2e21940" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Scheduler" qname="Scheduler"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c2e21c90" scoped=""/>
+        <function-ref name="taskLoop" ref="0x2ac2c2e21e18" scoped=""/>
+        <function-ref name="runNextTask" ref="0x2ac2c2e20020" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

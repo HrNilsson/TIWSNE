@@ -1,0 +1,63 @@
+<?xml version="1.0" ?><component loc="47:/home/kasper/tinyos-main//tos/lib/serial/HdlcTranslateC.nc" nicename="HdlcTranslateC" qname="HdlcTranslateC">
+      <documentation loc="71:/home/kasper/tinyos-main//tos/lib/serial/Serial.h">
+        <short>
+ </short>
+        <long>
+ @author Phil Buonadonna
+ @author Lewis Girod
+ @author Ben Greenstein
+ @author Philip Levis
+ @date   August 7 2005
+</long>
+      </documentation>
+      <module/>
+    <specification><interface loc="50:/home/kasper/tinyos-main//tos/lib/serial/HdlcTranslateC.nc" name="UartStream" provided="0" ref="0x2ac2c43c5448">
+      <component-ref nicename="HdlcTranslateC" qname="HdlcTranslateC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="UartStream" ref="0x2ac2c43c5448" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="UartStream" qname="UartStream"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c43c5798" scoped=""/>
+        <function-ref name="receivedByte" ref="0x2ac2c43c5920" scoped=""/>
+        <function-ref name="receive" ref="0x2ac2c43c5aa8" scoped=""/>
+        <function-ref name="enableReceiveInterrupt" ref="0x2ac2c43c5c30" scoped=""/>
+        <function-ref name="receiveDone" ref="0x2ac2c43c5db8" scoped=""/>
+        <function-ref name="disableReceiveInterrupt" ref="0x2ac2c43d1020" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c43d11a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/lib/serial/HdlcTranslateC.nc" name="SerialFrameComm" provided="1" ref="0x2ac2c43d5b38">
+      <component-ref nicename="HdlcTranslateC" qname="HdlcTranslateC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SerialFrameComm" ref="0x2ac2c43d5b38" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SerialFrameComm" qname="SerialFrameComm"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="putDelimiter" ref="0x2ac2c43d2020" scoped=""/>
+        <function-ref name="resetSend" ref="0x2ac2c43d21a8" scoped=""/>
+        <function-ref name="dataReceived" ref="0x2ac2c43d2330" scoped=""/>
+        <function-ref name="resetReceive" ref="0x2ac2c43d24b8" scoped=""/>
+        <function-ref name="putData" ref="0x2ac2c43d2640" scoped=""/>
+        <function-ref name="putDone" ref="0x2ac2c43d27c8" scoped=""/>
+        <function-ref name="delimiterReceived" ref="0x2ac2c43d2950" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="51:/home/kasper/tinyos-main//tos/lib/serial/HdlcTranslateC.nc" name="Leds" provided="0" ref="0x2ac2c43d1420">
+      <component-ref nicename="HdlcTranslateC" qname="HdlcTranslateC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Leds" ref="0x2ac2c43d1420" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Leds" qname="Leds"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="led0Off" ref="0x2ac2c43d1770" scoped=""/>
+        <function-ref name="led0Toggle" ref="0x2ac2c43d18f8" scoped=""/>
+        <function-ref name="led1On" ref="0x2ac2c43d1a80" scoped=""/>
+        <function-ref name="led1Toggle" ref="0x2ac2c43d1c08" scoped=""/>
+        <function-ref name="led2Toggle" ref="0x2ac2c43d1d90" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c43d0020" scoped=""/>
+        <function-ref name="led1Off" ref="0x2ac2c43d01a8" scoped=""/>
+        <function-ref name="led2Off" ref="0x2ac2c43d07c8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c43d0330" scoped=""/>
+        <function-ref name="led0On" ref="0x2ac2c43d04b8" scoped=""/>
+        <function-ref name="led2On" ref="0x2ac2c43d0640" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

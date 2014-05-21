@@ -1,0 +1,20 @@
+digraph "BlockStorageC" {
+  n0x2ac2c4610680 [shape=ellipse, style=filled, label="BlockRead", fontsize=12];
+  "Stm25pBlockP" [fontsize=12, shape=box, URL="../chtml/Stm25pBlockP.html"];
+  n0x2ac2c460f310 [shape=ellipse, style=filled, label="BlockWrite", fontsize=12];
+  "Stm25pBlockP" [fontsize=12, shape=box, URL="../chtml/Stm25pBlockP.html"];
+  n0x2ac2c4688720 [shape=ellipse, style=filled, label="StorageMap", fontsize=12];
+  "Stm25pBlockP" [fontsize=12, shape=box, URL="../chtml/Stm25pBlockP.html"];
+  "Stm25pBlockP" [fontsize=12, shape=box, URL="../chtml/Stm25pBlockP.html"];
+  "Stm25pSectorC" [fontsize=12, shape=box,peripheries=2, URL="../chtml/Stm25pSectorC.html"];
+  "Stm25pBlockP" [fontsize=12, shape=box, URL="../chtml/Stm25pBlockP.html"];
+  "Stm25pSectorC" [fontsize=12, shape=box,peripheries=2, URL="../chtml/Stm25pSectorC.html"];
+  "BlockStorageC.BinderP" [fontsize=12, shape=box, style=dashed, label="Stm25pBinderP\n(BinderP)", URL="../chtml/Stm25pBinderP.html"];
+  "Stm25pSectorC" [fontsize=12, shape=box,peripheries=2, URL="../chtml/Stm25pSectorC.html"];
+  "n0x2ac2c4610680" -> "Stm25pBlockP" [label="BlockRead", URL="../ihtml/BlockRead.html", fontsize=10];
+  "n0x2ac2c460f310" -> "Stm25pBlockP" [label="BlockWrite", URL="../ihtml/BlockWrite.html", fontsize=10];
+  "n0x2ac2c4688720" -> "Stm25pBlockP" [label="StorageMap", URL="../ihtml/StorageMap.html", fontsize=10];
+  "Stm25pBlockP" -> "Stm25pSectorC" [label="Resource[uint8_t]", style=bold, URL="../ihtml/Resource.html", fontsize=10];
+  "Stm25pBlockP" -> "Stm25pSectorC" [label="Stm25pSector[uint8_t]", style=bold, URL="../ihtml/Stm25pSector.html", fontsize=10];
+  "BlockStorageC.BinderP" -> "Stm25pSectorC" [label="Stm25pVolume", URL="../ihtml/Stm25pVolume.html", fontsize=10];
+}

@@ -1,0 +1,392 @@
+<html>
+  <head>
+    <LINK rel="stylesheet" href="nesdoc.css" type="text/css" media="screen"><title>Interface: Stm25pSector</title>
+  </head>
+  <body>
+    <h2>Interface: Stm25pSector</h2>
+    <b>interface Stm25pSector</b><p>
+ Copyright (c) 2005-2006 Arch Rock Corporation
+ All rights reserved.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ - Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the
+   distribution.
+ - Neither the name of the Arch Rock Corporation nor the names of
+   its contributors may be used to endorse or promote products derived
+   from this software without specific prior written permission.
+
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE
+ ARCHED ROCK OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ OF THE POSSIBILITY OF SUCH DAMAGE
+
+ 
+    <p>
+    <dl>
+      <dt><b>Author:</b>
+      <dd>
+        Jonathan Hui &lt;jhui@archrock.com&gt;
+ 
+      </dd>
+      <dt><b>Version:</b>
+      <dd>
+        $Revision: 1.4 $ $Date: 2006-12-12 18:23:12 $
+
+      </dd>
+    </dl>
+    <p><p><div id=heading>Commands</div><div id=funcsig><span id=funcnameshort>command error_t <a href="#computeCrc">computeCrc</a>(uint16_t crc, stm25p_addr_t addr, stm25p_len_t len)
+      </span><menu>
+ Compute CRC for some contiguous data.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>command error_t <a href="#erase">erase</a>(uint8_t sector, uint8_t num_sectors)
+      </span><menu>
+ Erase a number of sectors.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>command uint8_t <a href="#getNumSectors">getNumSectors</a>()
+      </span><menu>
+ Get the number of sectors in the volume.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>command stm25p_addr_t <a href="#getPhysicalAddress">getPhysicalAddress</a>(stm25p_addr_t addr)
+      </span><menu>
+ Get the physical address of a volume address.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>command error_t <a href="#read">read</a>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len)
+      </span><menu>
+ Read data from the flash chip.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>command error_t <a href="#write">write</a>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len)
+      </span><menu>
+ Write data to the flash chip.
+      </menu>
+    </div><p><div id=heading>Events</div><div id=funcsig><span id=funcnameshort>event void <a href="#computeCrcDone">computeCrcDone</a>(stm25p_addr_t addr, stm25p_len_t len, uint16_t crc, error_t error)
+      </span><menu>
+ Signals when the crc computation is complete.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>event void <a href="#eraseDone">eraseDone</a>(uint8_t sector, uint8_t num_sectors, error_t error)
+      </span><menu>
+ Signals when the erase operation is complete.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>event void <a href="#readDone">readDone</a>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len, error_t error)
+      </span><menu>
+ Signals when the read operation is complete.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>event void <a href="#writeDone">writeDone</a>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len, error_t error)
+      </span><menu>
+ Signals when the write operation is complete.
+      </menu>
+    </div><p><div id=heading>Commands - Details</div>
+    <a name="computeCrc"></a>
+    <h4>computeCrc
+    </h4>
+    <span id=funcnameshort>command error_t <b>computeCrc</b>(uint16_t crc, stm25p_addr_t addr, stm25p_len_t len)
+    </span>
+    <p>
+    <menu>
+      
+ Compute CRC for some contiguous data. On SUCCESS, the
+ <code>computeCrcDone</code> event will be signalled when the
+ operation completes.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>crc</code> -  the crc value to start with.
+ 
+        </dd>
+        <dd>
+          <code>addr</code> -  within the volume to begin crc computation.
+ 
+        </dd>
+        <dd>
+          <code>len</code> -  number of bytes to compute crc over.
+ 
+        </dd>
+        <dt><b>Returns:</b>
+        <dd>
+          SUCCESS if the request was accepted, FAIL otherwise.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="erase"></a>
+    <h4>erase
+    </h4>
+    <span id=funcnameshort>command error_t <b>erase</b>(uint8_t sector, uint8_t num_sectors)
+    </span>
+    <p>
+    <menu>
+      
+ Erase a number of sectors. On SUCCESS, the <code>eraseDone</code>
+ event will be signalled when the operation completes.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>sector</code> -  within volume to begin erasing.
+ 
+        </dd>
+        <dd>
+          <code>num_sectors</code> -  number of sectors to erase.
+ 
+        </dd>
+        <dt><b>Returns:</b>
+        <dd>
+          SUCCESS if request was accepted, FAIL otherwise.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="getNumSectors"></a>
+    <h4>getNumSectors
+    </h4>
+    <span id=funcnameshort>command uint8_t <b>getNumSectors</b>()
+    </span>
+    <p>
+    <menu>
+      
+ Get the number of sectors in the volume.
+
+    </menu>
+    <hr>
+    <a name="getPhysicalAddress"></a>
+    <h4>getPhysicalAddress
+    </h4>
+    <span id=funcnameshort>command stm25p_addr_t <b>getPhysicalAddress</b>(stm25p_addr_t addr)
+    </span>
+    <p>
+    <menu>
+      
+ Get the physical address of a volume address.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Returns:</b>
+        <dd>
+          The physical address corresponding to the volume address.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="read"></a>
+    <h4>read
+    </h4>
+    <span id=funcnameshort>command error_t <b>read</b>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len)
+    </span>
+    <p>
+    <menu>
+      
+ Read data from the flash chip. On SUCCESS, the
+ <code>readDone</code> event will be signalled when the operation
+ is complete.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>addr</code> -  within volume to read data from.
+ 
+        </dd>
+        <dd>
+          <code>buf</code> -  pointer to read buffer.
+ 
+        </dd>
+        <dd>
+          <code>len</code> -  number of bytes to read.
+ 
+        </dd>
+        <dt><b>Returns:</b>
+        <dd>
+          SUCCESS if request was accepted, FAIL otherwise.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="write"></a>
+    <h4>write
+    </h4>
+    <span id=funcnameshort>command error_t <b>write</b>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len)
+    </span>
+    <p>
+    <menu>
+      
+ Write data to the flash chip. On SUCCESS, the
+ <code>writeDone</code> event will be signalled when the operation
+ is complete.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>addr</code> -  within volume to write data to.
+ 
+        </dd>
+        <dd>
+          <code>buf</code> -  pointer to data buffer.
+ 
+        </dd>
+        <dd>
+          <code>len</code> -  number of bytes to write.
+ 
+        </dd>
+        <dt><b>Returns:</b>
+        <dd>
+          SUCCESS if request was accepted, FAIL otherwise.
+
+        </dd>
+      </dl>
+    </menu>
+    <p><div id=heading>Events - Details</div>
+    <a name="computeCrcDone"></a>
+    <h4>computeCrcDone
+    </h4>
+    <span id=funcnameshort>event void <b>computeCrcDone</b>(stm25p_addr_t addr, stm25p_len_t len, uint16_t crc, error_t error)
+    </span>
+    <p>
+    <menu>
+      
+ Signals when the crc computation is complete.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>addr</code> -  within the volume that the crc computation began at.
+ 
+        </dd>
+        <dd>
+          <code>len</code> -  number of bytes that the crc was computed over.
+ 
+        </dd>
+        <dd>
+          <code>crc</code> -  the resulting crc value
+ 
+        </dd>
+        <dd>
+          <code>error</code> -  notification of how the operation went.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="eraseDone"></a>
+    <h4>eraseDone
+    </h4>
+    <span id=funcnameshort>event void <b>eraseDone</b>(uint8_t sector, uint8_t num_sectors, error_t error)
+    </span>
+    <p>
+    <menu>
+      
+ Signals when the erase operation is complete.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>sector</code> -  within volume that erasing begain.
+ 
+        </dd>
+        <dd>
+          <code>num_sectors</code> -  number of sectors erased.
+ 
+        </dd>
+        <dd>
+          <code>error</code> -  notification of how the operation went.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="readDone"></a>
+    <h4>readDone
+    </h4>
+    <span id=funcnameshort>event void <b>readDone</b>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len, error_t error)
+    </span>
+    <p>
+    <menu>
+      
+ Signals when the read operation is complete.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>addr</code> -  within the volume that data was read from.
+ 
+        </dd>
+        <dd>
+          <code>buf</code> -  pointer to buffer that data was placed.
+ 
+        </dd>
+        <dd>
+          <code>len</code> -  number of bytes read.
+ 
+        </dd>
+        <dd>
+          <code>error</code> -  notification of how the operation went.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="writeDone"></a>
+    <h4>writeDone
+    </h4>
+    <span id=funcnameshort>event void <b>writeDone</b>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len, error_t error)
+    </span>
+    <p>
+    <menu>
+      
+ Signals when the write operation is complete.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>addr</code> -  within the volume that data was written to.
+ 
+        </dd>
+        <dd>
+          <code>buf</code> -  pointer to data buffer.
+ 
+        </dd>
+        <dd>
+          <code>len</code> -  number of bytes written.
+ 
+        </dd>
+        <dd>
+          <code>error</code> -  notification of how the operation went.
+
+        </dd>
+      </dl>
+    </menu>
+  </body>
+</html>

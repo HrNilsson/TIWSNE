@@ -1,0 +1,334 @@
+<?xml version="1.0" ?><component loc="38:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendC.nc" nicename="UniqueSendC" qname="UniqueSendC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendC.nc">
+        <short>
+ Generate a unique dsn byte for this outgoing packet
+ This should sit at the top of the stack
+ </short>
+        <long>
+ Generate a unique dsn byte for this outgoing packet
+ This should sit at the top of the stack
+ @author David Moss
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="55:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendC.nc">
+          <from><interface-ref name="Send" ref="0x2ac2c4065d10" scoped=""/></from>
+          <to><interface-ref name="Send" ref="0x2ac2c405e438" scoped=""/></to>
+        </wire>
+        <wire loc="56:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendC.nc">
+          <from><interface-ref name="SubSend" ref="0x2ac2c405d750" scoped=""/></from>
+          <to><interface-ref name="SubSend" ref="0x2ac2c4062a40" scoped=""/></to>
+        </wire>
+        <wire loc="58:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendC.nc">
+          <from><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c405d080" scoped=""/></to>
+        </wire>
+        <wire loc="60:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendC.nc">
+          <from><interface-ref name="State" ref="0x2ac2c405c428" scoped=""/></from>
+          <to><interface-ref name="State" ref="0x2ac2c405f978" scoped=""/></to>
+        </wire>
+        <wire loc="61:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendC.nc">
+          <from><interface-ref name="Random" ref="0x2ac2c405b2a8" scoped=""/></from>
+          <to><interface-ref name="Random" ref="0x2ac2c407fb98" scoped=""/></to>
+        </wire>
+        <wire loc="62:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendC.nc">
+          <from><interface-ref name="CC2420PacketBody" ref="0x2ac2c405ba70" scoped=""/></from>
+          <to><interface-ref name="CC2420PacketBody" ref="0x2ac2c3fa5d08" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="44:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendC.nc" name="SubSend" provided="0" ref="0x2ac2c4062a40">
+      <component-ref nicename="UniqueSendC" qname="UniqueSendC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SubSend" ref="0x2ac2c4062a40" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c4062d90" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c4061020" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c40611a8" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c4061330" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c40614b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="40:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendC.nc" name="Send" provided="1" ref="0x2ac2c4065d10">
+      <component-ref nicename="UniqueSendC" qname="UniqueSendC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Send" ref="0x2ac2c4065d10" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c40620a0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c4062228" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c40623b0" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c4062538" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c40626c0" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="46:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" name="State" provided="0" ref="0x2ac2c405c428">
+      <component-ref nicename="UniqueSendP" qname="UniqueSendP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="State" ref="0x2ac2c405c428" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="State" qname="State"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="getState" ref="0x2ac2c405c778" scoped=""/>
+        <function-ref name="toIdle" ref="0x2ac2c405c900" scoped=""/>
+        <function-ref name="isState" ref="0x2ac2c405ca88" scoped=""/>
+        <function-ref name="isIdle" ref="0x2ac2c405cc10" scoped=""/>
+        <function-ref name="requestState" ref="0x2ac2c405cd98" scoped=""/>
+        <function-ref name="forceState" ref="0x2ac2c405b020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="41:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" name="Init" provided="1" ref="0x2ac2c405d080">
+      <component-ref nicename="UniqueSendP" qname="UniqueSendP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Init" ref="0x2ac2c405d080" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c405d3d0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/system/RandomC.nc" name="Random" provided="1" ref="0x2ac2c407fb98">
+      <component-ref nicename="RandomC" qname="RandomC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Random" ref="0x2ac2c407fb98" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Random" qname="Random"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="rand16" ref="0x2ac2c407e020" scoped=""/>
+        <function-ref name="rand32" ref="0x2ac2c407e1a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="58:/home/kasper/tinyos-main//tos/system/MainC.nc" name="SoftwareInit" provided="0" ref="0x2ac2c2e67e48">
+      <component-ref nicename="MainC" qname="MainC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c2e661c0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" name="Random" provided="0" ref="0x2ac2c405b2a8">
+      <component-ref nicename="UniqueSendP" qname="UniqueSendP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Random" ref="0x2ac2c405b2a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Random" qname="Random"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="rand16" ref="0x2ac2c405b5f8" scoped=""/>
+        <function-ref name="rand32" ref="0x2ac2c405b780" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" name="SubSend" provided="0" ref="0x2ac2c405d750">
+      <component-ref nicename="UniqueSendP" qname="UniqueSendP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SubSend" ref="0x2ac2c405d750" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c405daa0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c405dc28" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c405ddb0" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c405c020" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c405c1a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="67:/home/kasper/tinyos-main//tos/system/StateC.nc" name="State" provided="1" ref="0x2ac2c405f978">
+      <component-ref nicename="UniqueSendC.StateC" qname="UniqueSendC.StateC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="State" ref="0x2ac2c405f978" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="State" qname="State"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="getState" ref="0x2ac2c405fcc8" scoped=""/>
+        <function-ref name="toIdle" ref="0x2ac2c405fe50" scoped=""/>
+        <function-ref name="isState" ref="0x2ac2c40b2020" scoped=""/>
+        <function-ref name="isIdle" ref="0x2ac2c40b21a8" scoped=""/>
+        <function-ref name="requestState" ref="0x2ac2c40b2330" scoped=""/>
+        <function-ref name="forceState" ref="0x2ac2c40b24b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" name="CC2420PacketBody" provided="0" ref="0x2ac2c405ba70">
+      <component-ref nicename="UniqueSendP" qname="UniqueSendP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CC2420PacketBody" ref="0x2ac2c405ba70" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420PacketBody" qname="CC2420PacketBody"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="getPayload" ref="0x2ac2c405bdc0" scoped=""/>
+        <function-ref name="getHeader" ref="0x2ac2c405a020" scoped=""/>
+        <function-ref name="getMetadata" ref="0x2ac2c405a1a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc" name="CC2420PacketBody" provided="1" ref="0x2ac2c3fa5d08">
+      <component-ref nicename="CC2420PacketC" qname="CC2420PacketC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CC2420PacketBody" ref="0x2ac2c3fa5d08" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420PacketBody" qname="CC2420PacketBody"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="getPayload" ref="0x2ac2c3fa40a0" scoped=""/>
+        <function-ref name="getHeader" ref="0x2ac2c3fa4228" scoped=""/>
+        <function-ref name="getMetadata" ref="0x2ac2c3fa43b0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="40:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" name="Send" provided="1" ref="0x2ac2c405e438">
+      <component-ref nicename="UniqueSendP" qname="UniqueSendP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Send" ref="0x2ac2c405e438" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c405e788" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c405e910" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c405ea98" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c405ec20" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c405eda8" scoped=""/>
+      </interface-functions>
+    </interface><component loc="38:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc" nicename="CC2420PacketC" qname="CC2420PacketC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+        <short>
+ </short>
+        <long>
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @author David Moss
+ @author Chad Metcalf
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="58:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="LinkPacketMetadata" ref="0x2ac2c3fa46b0" scoped=""/></from>
+          <to><interface-ref name="LinkPacketMetadata" ref="0x2ac2c3f96630" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="CC2420Packet" ref="0x2ac2c3fa84b0" scoped=""/></from>
+          <to><interface-ref name="CC2420Packet" ref="0x2ac2c3f982e8" scoped=""/></to>
+        </wire>
+        <wire loc="59:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="PacketTimeStamp32khz" ref="0x2ac2c3fa3130" scoped=""/></from>
+          <to><interface-ref name="PacketTimeStamp32khz" ref="0x2ac2c3f94060" scoped=""/></to>
+        </wire>
+        <wire loc="57:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="CC2420PacketBody" ref="0x2ac2c3fa5d08" scoped=""/></from>
+          <to><interface-ref name="CC2420PacketBody" ref="0x2ac2c3f97b60" scoped=""/></to>
+        </wire>
+        <wire loc="61:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="PacketTimeSyncOffset" ref="0x2ac2c3f9cac8" scoped=""/></from>
+          <to><interface-ref name="PacketTimeSyncOffset" ref="0x2ac2c3ff0ac8" scoped=""/></to>
+        </wire>
+        <wire loc="60:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="PacketTimeStampMilli" ref="0x2ac2c3f9f020" scoped=""/></from>
+          <to><interface-ref name="PacketTimeStampMilli" ref="0x2ac2c3f90020" scoped=""/></to>
+        </wire>
+        <wire loc="56:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="Acks" ref="0x2ac2c3fa53b8" scoped=""/></from>
+          <to><interface-ref name="Acks" ref="0x2ac2c3f97210" scoped=""/></to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="Counter" ref="0x2ac2c4000720" scoped=""/></from>
+          <to><interface-ref name="Counter" ref="0x2ac2c3888730" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="LocalTime32khz" ref="0x2ac2c3fed520" scoped=""/></from>
+          <to><interface-ref name="LocalTime" ref="0x2ac2c4002528" scoped=""/></to>
+        </wire>
+        <wire loc="69:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="LocalTimeMilli" ref="0x2ac2c3fec788" scoped=""/></from>
+          <to><interface-ref name="LocalTime" ref="0x2ac2c33ee980" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="38:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" nicename="UniqueSendP" qname="UniqueSendP" safe="">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc">
+        <short>
+ This layer is responsible for supplying a unique data sequence number (dsn)
+ to each outgoing message.</short>
+        <long>
+ This layer is responsible for supplying a unique data sequence number (dsn)
+ to each outgoing message.
+ @author David Moss
+</long>
+      </documentation>
+      <module/>
+    </component><component loc="56:/home/kasper/tinyos-main//tos/system/MainC.nc" nicename="MainC" qname="MainC">
+      <documentation loc="45:/home/kasper/tinyos-main//tos/system/MainC.nc">
+        <short>
+ MainC is the system interface the TinyOS boot sequence.</short>
+        <long>
+ MainC is the system interface the TinyOS boot sequence. It wires the
+ boot sequence implementation to the scheduler and hardware resources.
+
+ @author Philip Levis
+ @date   August 6 2005
+ @see    TEP 107: Boot Sequence
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="72:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="Boot" ref="0x2ac2c2e659c0" scoped=""/></from>
+          <to><interface-ref name="Boot" ref="0x2ac2c2e64c40" scoped=""/></to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="Scheduler" ref="0x2ac2c3010308" scoped=""/></from>
+          <to><interface-ref name="Scheduler" ref="0x2ac2c29e8390" scoped=""/></to>
+        </wire>
+        <wire loc="68:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="PlatformInit" ref="0x2ac2c3010ce0" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c2e66d70" scoped=""/></to>
+        </wire>
+        <wire loc="71:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="SoftwareInit" ref="0x2ac2c302a418" scoped=""/></from>
+          <to><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="65(UniqueSendC.StateC):/home/kasper/tinyos-main//tos/system/StateC.nc" nicename="UniqueSendC.StateC" qname="UniqueSendC.StateC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/types/State.h">
+        <short>
+ </short>
+        <long>
+ @author David Moss
+</long>
+      </documentation>
+      <instance number="2">
+        <component-ref nicename="StateC" qname="StateC"/>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="74:/home/kasper/tinyos-main//tos/system/StateC.nc">
+          <from><interface-ref name="State" ref="0x2ac2c405f978" scoped=""/></from>
+          <to><interface-ref name="State" ref="0x2ac2c39e2858" scoped=""/>
+          <arguments>
+            <value cst="I:2">
+              <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned=""/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+      </wiring>
+    </component><component loc="43:/home/kasper/tinyos-main//tos/system/RandomC.nc" nicename="RandomC" qname="RandomC">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/system/RandomC.nc">
+        <short>
+ The standard TinyOS random number generator.</short>
+        <long>
+ The standard TinyOS random number generator. If your system requires a 
+ specific random number generator, it should wire to that component
+ directly. 
+
+ @author  Barbara Hohlt 
+ @author  Phil Levis 
+ @date    March 1 2005
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="56:/home/kasper/tinyos-main//tos/system/RandomC.nc">
+          <from><interface-ref name="Random" ref="0x2ac2c407fb98" scoped=""/></from>
+          <to><interface-ref name="Random" ref="0x2ac2c4078a08" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/system/RandomC.nc">
+          <from><interface-ref name="SeedInit" ref="0x2ac2c407db10" scoped=""/></from>
+          <to><interface-ref name="SeedInit" ref="0x2ac2c40799f0" scoped=""/></to>
+        </wire>
+        <wire loc="54:/home/kasper/tinyos-main//tos/system/RandomC.nc">
+          <from><interface-ref name="Init" ref="0x2ac2c4083db8" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c4079198" scoped=""/></to>
+        </wire>
+        <wire loc="52:/home/kasper/tinyos-main//tos/system/RandomC.nc">
+          <from><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c4079198" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component></referenced></component>

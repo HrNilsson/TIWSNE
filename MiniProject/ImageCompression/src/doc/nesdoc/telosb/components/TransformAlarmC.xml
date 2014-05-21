@@ -1,0 +1,101 @@
+<?xml version="1.0" ?><component abstract="" loc="51:/home/kasper/tinyos-main//tos/lib/timer/TransformAlarmC.nc" nicename="TransformAlarmC" qname="TransformAlarmC" safe="">
+      <documentation loc="34:/home/kasper/tinyos-main//tos/lib/timer/TransformAlarmC.nc">
+        <short>
+ TransformAlarmC decreases precision and/or widens an Alarm.</short>
+        <long>
+ TransformAlarmC decreases precision and/or widens an Alarm.  An already
+ widened Counter component is used to help.
+
+ &lt;p&gt;See TEP102 for more details.
+ @param to_precision_tag A type indicating the precision of the transformed
+   Alarm.
+ @param to_size_type The type for the width of the transformed Alarm.
+ @param from_precision_tag A type indicating the precision of the original
+   Alarm.
+ @param from_size_type The type for the width of the original Alarm.
+ @param bit_shift_right Original time units will be 2 to the power 
+   &lt;code&gt;bit_shift_right&lt;/code&gt; larger than transformed time units.
+
+ @author Cory Sharp &lt;cssharp@eecs.berkeley.edu&gt;
+</long>
+      </documentation>
+      <parameters>
+        <typedef loc="52:/home/kasper/tinyos-main//tos/lib/timer/TransformAlarmC.nc" name="to_precision_tag" ref="0x2ac2c34b3020">
+          <component-ref nicename="TransformAlarmC" qname="TransformAlarmC"/>
+          <type-var alignment="U:" size="U:"><typedef-ref name="to_precision_tag" ref="0x2ac2c34b3020" scoped=""/></type-var>
+        </typedef>
+        <typedef loc="53:/home/kasper/tinyos-main//tos/lib/timer/TransformAlarmC.nc" name="to_size_type" ref="0x2ac2c34b3788">
+          <component-ref nicename="TransformAlarmC" qname="TransformAlarmC"/>
+          <type-var alignment="U:" size="U:"><typedef-ref name="to_size_type" ref="0x2ac2c34b3788" scoped=""/></type-var>
+        </typedef>
+        <typedef loc="54:/home/kasper/tinyos-main//tos/lib/timer/TransformAlarmC.nc" name="from_precision_tag" ref="0x2ac2c34b3b50">
+          <component-ref nicename="TransformAlarmC" qname="TransformAlarmC"/>
+          <type-var alignment="U:" size="U:"><typedef-ref name="from_precision_tag" ref="0x2ac2c34b3b50" scoped=""/></type-var>
+        </typedef>
+        <typedef loc="55:/home/kasper/tinyos-main//tos/lib/timer/TransformAlarmC.nc" name="from_size_type" ref="0x2ac2c34b1348">
+          <component-ref nicename="TransformAlarmC" qname="TransformAlarmC"/>
+          <type-var alignment="U:" size="U:"><typedef-ref name="from_size_type" ref="0x2ac2c34b1348" scoped=""/></type-var>
+        </typedef>
+        <constant loc="56:/home/kasper/tinyos-main//tos/lib/timer/TransformAlarmC.nc" name="bit_shift_right" ref="0x2ac2c34b16f0">
+          <component-ref nicename="TransformAlarmC" qname="TransformAlarmC"/>
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+          </type-int>
+        </constant>
+      </parameters>
+      <module/>
+    <specification><interface loc="61:/home/kasper/tinyos-main//tos/lib/timer/TransformAlarmC.nc" name="Alarm" provided="1" ref="0x2ac2c34b02d8">
+      <component-ref nicename="TransformAlarmC" qname="TransformAlarmC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Alarm" ref="0x2ac2c34b02d8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Alarm" qname="Alarm"/>
+        <arguments>
+          <type-var alignment="U:" size="U:"><typedef-ref name="to_precision_tag" ref="0x2ac2c34b3020" scoped=""/></type-var>
+          <type-var alignment="U:" size="U:"><typedef-ref name="to_size_type" ref="0x2ac2c34b3788" scoped=""/></type-var>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c34ae928" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c34af9e8" scoped=""/>
+        <function-ref name="startAt" ref="0x2ac2c34ae320" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c34afe70" scoped=""/>
+        <function-ref name="getAlarm" ref="0x2ac2c34aedb0" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c34af088" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c34af560" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="73:/home/kasper/tinyos-main//tos/lib/timer/TransformAlarmC.nc" name="AlarmFrom" provided="0" ref="0x2ac2c34aa9f8">
+      <component-ref nicename="TransformAlarmC" qname="TransformAlarmC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AlarmFrom" ref="0x2ac2c34aa9f8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Alarm" qname="Alarm"/>
+        <arguments>
+          <type-var alignment="U:" size="U:"><typedef-ref name="from_precision_tag" ref="0x2ac2c34b3b50" scoped=""/></type-var>
+          <type-var alignment="U:" size="U:"><typedef-ref name="from_size_type" ref="0x2ac2c34b1348" scoped=""/></type-var>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c34dc088" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c34dd130" scoped=""/>
+        <function-ref name="startAt" ref="0x2ac2c34dda40" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c34dd5b8" scoped=""/>
+        <function-ref name="getAlarm" ref="0x2ac2c34dc510" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c34de780" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c34dec58" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="68:/home/kasper/tinyos-main//tos/lib/timer/TransformAlarmC.nc" name="Counter" provided="0" ref="0x2ac2c34ac5a0">
+      <component-ref nicename="TransformAlarmC" qname="TransformAlarmC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Counter" ref="0x2ac2c34ac5a0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Counter" qname="Counter"/>
+        <arguments>
+          <type-var alignment="U:" size="U:"><typedef-ref name="to_precision_tag" ref="0x2ac2c34b3020" scoped=""/></type-var>
+          <type-var alignment="U:" size="U:"><typedef-ref name="to_size_type" ref="0x2ac2c34b3788" scoped=""/></type-var>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x2ac2c34ab3a8" scoped=""/>
+        <function-ref name="clearOverflow" ref="0x2ac2c34abcb8" scoped=""/>
+        <function-ref name="isOverflowPending" ref="0x2ac2c34ab830" scoped=""/>
+        <function-ref name="overflow" ref="0x2ac2c34aa190" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

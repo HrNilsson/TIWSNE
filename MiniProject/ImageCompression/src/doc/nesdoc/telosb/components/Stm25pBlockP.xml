@@ -1,0 +1,122 @@
+<?xml version="1.0" ?><component loc="37:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pBlockP.nc" nicename="Stm25pBlockP" qname="Stm25pBlockP">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pBlockP.nc">
+        <short>
+ </short>
+        <long>
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.4 $ $Date: 2006-12-12 18:23:12 $
+</long>
+      </documentation>
+      <module/>
+    <specification><interface loc="43:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pBlockP.nc" name="Sector" provided="0" ref="0x2ac2c4681610">
+      <component-ref nicename="Stm25pBlockP" qname="Stm25pBlockP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Sector" ref="0x2ac2c4681610" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Stm25pSector" qname="Stm25pSector"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="getPhysicalAddress" ref="0x2ac2c4681960" scoped=""/>
+        <function-ref name="read" ref="0x2ac2c4681ae8" scoped=""/>
+        <function-ref name="writeDone" ref="0x2ac2c4681c70" scoped=""/>
+        <function-ref name="erase" ref="0x2ac2c4681df8" scoped=""/>
+        <function-ref name="eraseDone" ref="0x2ac2c4680020" scoped=""/>
+        <function-ref name="computeCrcDone" ref="0x2ac2c46801a8" scoped=""/>
+        <function-ref name="computeCrc" ref="0x2ac2c4680330" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c46804b8" scoped=""/>
+        <function-ref name="getNumSectors" ref="0x2ac2c4680640" scoped=""/>
+        <function-ref name="readDone" ref="0x2ac2c46807c8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="39:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pBlockP.nc" name="Read" provided="1" ref="0x2ac2c4684020">
+      <component-ref nicename="Stm25pBlockP" qname="Stm25pBlockP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Read" ref="0x2ac2c4684020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockRead" qname="BlockRead"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c4684370" scoped=""/>
+        <function-ref name="computeCrcDone" ref="0x2ac2c46844f8" scoped=""/>
+        <function-ref name="computeCrc" ref="0x2ac2c4684680" scoped=""/>
+        <function-ref name="getSize" ref="0x2ac2c4684808" scoped=""/>
+        <function-ref name="readDone" ref="0x2ac2c4684990" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="41:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pBlockP.nc" name="StorageMap" provided="1" ref="0x2ac2c4682570">
+      <component-ref nicename="Stm25pBlockP" qname="Stm25pBlockP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="StorageMap" ref="0x2ac2c4682570" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="StorageMap" qname="StorageMap"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="getPhysicalAddress" ref="0x2ac2c46828c0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pBlockP.nc" name="Leds" provided="0" ref="0x2ac2c4670df0">
+      <component-ref nicename="Stm25pBlockP" qname="Stm25pBlockP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Leds" ref="0x2ac2c4670df0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Leds" qname="Leds"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="led0Off" ref="0x2ac2c466f170" scoped=""/>
+        <function-ref name="led0Toggle" ref="0x2ac2c466f2f8" scoped=""/>
+        <function-ref name="led1On" ref="0x2ac2c466f480" scoped=""/>
+        <function-ref name="led1Toggle" ref="0x2ac2c466f608" scoped=""/>
+        <function-ref name="led2Toggle" ref="0x2ac2c466f790" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c466f918" scoped=""/>
+        <function-ref name="led1Off" ref="0x2ac2c466faa0" scoped=""/>
+        <function-ref name="led2Off" ref="0x2ac2c466e1a8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c466fc28" scoped=""/>
+        <function-ref name="led0On" ref="0x2ac2c466fdb0" scoped=""/>
+        <function-ref name="led2On" ref="0x2ac2c466e020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="40:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pBlockP.nc" name="Write" provided="1" ref="0x2ac2c4683270">
+      <component-ref nicename="Stm25pBlockP" qname="Stm25pBlockP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Write" ref="0x2ac2c4683270" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockWrite" qname="BlockWrite"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="syncDone" ref="0x2ac2c46835c0" scoped=""/>
+        <function-ref name="writeDone" ref="0x2ac2c4683748" scoped=""/>
+        <function-ref name="erase" ref="0x2ac2c46838d0" scoped=""/>
+        <function-ref name="eraseDone" ref="0x2ac2c4683a58" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c4683be0" scoped=""/>
+        <function-ref name="sync" ref="0x2ac2c4683d68" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="44:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pBlockP.nc" name="ClientResource" provided="0" ref="0x2ac2c46701c8">
+      <component-ref nicename="Stm25pBlockP" qname="Stm25pBlockP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ClientResource" ref="0x2ac2c46701c8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c4670518" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c46706a0" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c4670828" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c46709b0" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c4670b38" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

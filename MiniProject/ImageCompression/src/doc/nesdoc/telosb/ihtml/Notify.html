@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <LINK rel="stylesheet" href="nesdoc.css" type="text/css" media="screen"><title>Interface: Notify</title>
+  </head>
+  <body>
+    <h2>Interface: Notify</h2>
+    <b>interface Notify&lt;typedef val_t&gt;</b><p>
+ The Notify interface is intended for delivery of values from
+ self-triggered devices, at relatively low rates. For example, a
+ driver for a motion detector or a switch might provide this
+ interface. The type of the value is given as a template
+ argument. Generally, these values are backed by memory or
+ computation. Because no error code is included, both calls must be
+ guaranteed to succeed. This interface should be used when a single
+ logical unit supports both getting and setting.
+
+ <p>
+ See TEP114 - SIDs: Source and Sink Independent Drivers for details.
+ 
+ 
+    <p>
+    <dl>
+      <dt><b>Parameters:</b>
+      <dd>
+        <code>val_t</code> -  the type of the object that will be stored
+
+ 
+      </dd>
+      <dt><b>Author:</b>
+      <dd>
+        Gilman Tolle &lt;gtolle@archrock.com&gt;
+ 
+      </dd>
+      <dt><b>Version:</b>
+      <dd>
+        $Revision: 1.4 $ $Date: 2006-12-12 18:23:14 $
+
+      </dd>
+    </dl>
+    <p><p><div id=heading>Commands</div><div id=funcsig><span id=funcnameshort>command error_t <a href="#disable">disable</a>()
+      </span><menu>
+ Disables delivery of notifications from the device to the calling
+ generic client component.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>command error_t <a href="#enable">enable</a>()
+      </span><menu>
+ Enables delivery of notifications from the device to the calling
+ generic client component.
+      </menu>
+    </div><p><div id=heading>Events</div><div id=funcsig><span id=funcnameshort>event void <a href="#notify">notify</a>(val_t val)
+      </span><menu>
+ Signals the arrival of a new value from the device.
+      </menu>
+    </div><p><div id=heading>Commands - Details</div>
+    <a name="disable"></a>
+    <h4>disable
+    </h4>
+    <span id=funcnameshort>command error_t <b>disable</b>()
+    </span>
+    <p>
+    <menu>
+      
+ Disables delivery of notifications from the device to the calling
+ generic client component.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Returns:</b>
+        <dd>
+          SUCCESS if notifications were disabled
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="enable"></a>
+    <h4>enable
+    </h4>
+    <span id=funcnameshort>command error_t <b>enable</b>()
+    </span>
+    <p>
+    <menu>
+      
+ Enables delivery of notifications from the device to the calling
+ generic client component.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Returns:</b>
+        <dd>
+          SUCCESS if notifications were enabled
+
+        </dd>
+      </dl>
+    </menu>
+    <p><div id=heading>Events - Details</div>
+    <a name="notify"></a>
+    <h4>notify
+    </h4>
+    <span id=funcnameshort>event void <b>notify</b>(val_t val)
+    </span>
+    <p>
+    <menu>
+      
+ Signals the arrival of a new value from the device.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>val</code> -  the value arriving from the device
+
+        </dd>
+      </dl>
+    </menu>
+  </body>
+</html>

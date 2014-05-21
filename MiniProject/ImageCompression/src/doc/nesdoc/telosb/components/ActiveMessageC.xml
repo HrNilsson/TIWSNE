@@ -1,0 +1,515 @@
+<?xml version="1.0" ?><component loc="59:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" nicename="ActiveMessageC" qname="ActiveMessageC">
+      <documentation loc="49:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+        <short>
+
+ The Active Message layer on the Telos platform.</short>
+        <long>
+
+ The Active Message layer on the Telos platform. This is a naming wrapper
+ around the CC2420 Active Message layer.
+
+ @author Philip Levis
+ @version $Revision: 1.9 $ $Date: 2010-06-29 22:07:55 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="78:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="SplitControl" ref="0x2ac2c36df140" scoped=""/></from>
+          <to><interface-ref name="SplitControl" ref="0x2ac2c3731310" scoped=""/></to>
+        </wire>
+        <wire loc="80:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c36de1c8" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c37302b0" scoped=""/></to>
+        </wire>
+        <wire loc="82:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="Snoop" ref="0x2ac2c36dde48" scoped=""/></from>
+          <to><interface-ref name="Snoop" ref="0x2ac2c372e020" scoped=""/></to>
+        </wire>
+        <wire loc="83:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c36db448" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c372dbd8" scoped=""/></to>
+        </wire>
+        <wire loc="89:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="PacketTimeStamp32khz" ref="0x2ac2c36d8020" scoped=""/></from>
+          <to><interface-ref name="PacketTimeStamp32khz" ref="0x2ac2c3fa3130" scoped=""/></to>
+        </wire>
+        <wire loc="86:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="LowPowerListening" ref="0x2ac2c36fe848" scoped=""/></from>
+          <to><interface-ref name="LowPowerListening" ref="0x2ac2c371f628" scoped=""/></to>
+        </wire>
+        <wire loc="81:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="Receive" ref="0x2ac2c36dd300" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c372f3c8" scoped=""/></to>
+        </wire>
+        <wire loc="85:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="PacketAcknowledgements" ref="0x2ac2c37120d0" scoped=""/></from>
+          <to><interface-ref name="PacketAcknowledgements" ref="0x2ac2c372b7e0" scoped=""/></to>
+        </wire>
+        <wire loc="84:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c36da080" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c372e610" scoped=""/></to>
+        </wire>
+        <wire loc="90:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="PacketTimeStampMilli" ref="0x2ac2c370be48" scoped=""/></from>
+          <to><interface-ref name="PacketTimeStampMilli" ref="0x2ac2c3f9f020" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="61:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="SplitControl" provided="1" ref="0x2ac2c36df140">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SplitControl" ref="0x2ac2c36df140" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c36df490" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c36df618" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c36df7a0" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c36df928" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="63:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="AMSend" provided="1" ref="0x2ac2c36de1c8">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c36de1c8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c36de518" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c36de6a0" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c36de828" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c36de9b0" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c36deb38" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="65:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="Snoop" provided="1" ref="0x2ac2c36dde48">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Snoop" ref="0x2ac2c36dde48" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c36db1c0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="67:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="Packet" provided="1" ref="0x2ac2c36db448">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Packet" ref="0x2ac2c36db448" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c36db798" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c36db920" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c36dbaa8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c36dbc30" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c36dbdb8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="70:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="PacketTimeStamp32khz" provided="1" ref="0x2ac2c36d8020">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PacketTimeStamp32khz" ref="0x2ac2c36d8020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketTimeStamp" qname="PacketTimeStamp"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df788"/>
+            <typename><typedef-ref name="T32khz" ref="0x2ac2c33dfae0"/></typename>
+          </type-tag>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="timestamp" ref="0x2ac2c36d7478" scoped=""/>
+        <function-ref name="clear" ref="0x2ac2c36d7b58" scoped=""/>
+        <function-ref name="isValid" ref="0x2ac2c36d8d70" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c370b278" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="72:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="LowPowerListening" provided="1" ref="0x2ac2c36fe848">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="LowPowerListening" ref="0x2ac2c36fe848" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="LowPowerListening" qname="LowPowerListening"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="setRemoteWakeupInterval" ref="0x2ac2c36feb98" scoped=""/>
+        <function-ref name="getRemoteWakeupInterval" ref="0x2ac2c36fed20" scoped=""/>
+        <function-ref name="getLocalWakeupInterval" ref="0x2ac2c3704020" scoped=""/>
+        <function-ref name="setLocalWakeupInterval" ref="0x2ac2c37041a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="64:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="Receive" provided="1" ref="0x2ac2c36dd300">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Receive" ref="0x2ac2c36dd300" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c36dd650" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="69:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="PacketAcknowledgements" provided="1" ref="0x2ac2c37120d0">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PacketAcknowledgements" ref="0x2ac2c37120d0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketAcknowledgements" qname="PacketAcknowledgements"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="requestAck" ref="0x2ac2c3712420" scoped=""/>
+        <function-ref name="noAck" ref="0x2ac2c37125a8" scoped=""/>
+        <function-ref name="wasAcked" ref="0x2ac2c3712730" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="68:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="AMPacket" provided="1" ref="0x2ac2c36da080">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMPacket" ref="0x2ac2c36da080" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c36da3d0" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c36da558" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c36da6e0" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c36da868" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c36da9f0" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c36dab78" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c36dad00" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c36d9020" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c36d91a8" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c36d9330" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c36d94b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="71:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="PacketTimeStampMilli" provided="1" ref="0x2ac2c370be48">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PacketTimeStampMilli" ref="0x2ac2c370be48" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketTimeStamp" qname="PacketTimeStamp"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df020"/>
+            <typename><typedef-ref name="TMilli" ref="0x2ac2c33df378"/></typename>
+          </type-tag>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="timestamp" ref="0x2ac2c3707300" scoped=""/>
+        <function-ref name="clear" ref="0x2ac2c37079e0" scoped=""/>
+        <function-ref name="isValid" ref="0x2ac2c3708be8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c37060f8" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="58:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc" name="Snoop" provided="1" ref="0x2ac2c372e020">
+      <component-ref nicename="CC2420ActiveMessageC" qname="CC2420ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Snoop" ref="0x2ac2c372e020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c372e370" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="65:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc" name="LowPowerListening" provided="1" ref="0x2ac2c371f628">
+      <component-ref nicename="CC2420ActiveMessageC" qname="CC2420ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="LowPowerListening" ref="0x2ac2c371f628" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="LowPowerListening" qname="LowPowerListening"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="setRemoteWakeupInterval" ref="0x2ac2c371f978" scoped=""/>
+        <function-ref name="getRemoteWakeupInterval" ref="0x2ac2c371fb00" scoped=""/>
+        <function-ref name="getLocalWakeupInterval" ref="0x2ac2c371fc88" scoped=""/>
+        <function-ref name="setLocalWakeupInterval" ref="0x2ac2c371fe10" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="59:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc" name="AMPacket" provided="1" ref="0x2ac2c372e610">
+      <component-ref nicename="CC2420ActiveMessageC" qname="CC2420ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMPacket" ref="0x2ac2c372e610" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c372e960" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c372eae8" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c372ec70" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c372edf8" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c372d020" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c372d1a8" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c372d330" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c372d4b8" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c372d640" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c372d7c8" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c372d950" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="55:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc" name="SplitControl" provided="1" ref="0x2ac2c3731310">
+      <component-ref nicename="CC2420ActiveMessageC" qname="CC2420ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SplitControl" ref="0x2ac2c3731310" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c3731660" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c37317e8" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c3731970" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c3731af8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc" name="PacketTimeStamp32khz" provided="1" ref="0x2ac2c3fa3130">
+      <component-ref nicename="CC2420PacketC" qname="CC2420PacketC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PacketTimeStamp32khz" ref="0x2ac2c3fa3130" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketTimeStamp" qname="PacketTimeStamp"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df788"/>
+            <typename><typedef-ref name="T32khz" ref="0x2ac2c33dfae0"/></typename>
+          </type-tag>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="timestamp" ref="0x2ac2c3fa2588" scoped=""/>
+        <function-ref name="clear" ref="0x2ac2c3fa2c68" scoped=""/>
+        <function-ref name="isValid" ref="0x2ac2c3fa3e80" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c3fa0380" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="56:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc" name="AMSend" provided="1" ref="0x2ac2c37302b0">
+      <component-ref nicename="CC2420ActiveMessageC" qname="CC2420ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c37302b0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c3730600" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c3730788" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c3730910" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c3730a98" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c3730c20" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="57:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc" name="Receive" provided="1" ref="0x2ac2c372f3c8">
+      <component-ref nicename="CC2420ActiveMessageC" qname="CC2420ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Receive" ref="0x2ac2c372f3c8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c372f718" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="60:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc" name="Packet" provided="1" ref="0x2ac2c372dbd8">
+      <component-ref nicename="CC2420ActiveMessageC" qname="CC2420ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Packet" ref="0x2ac2c372dbd8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c372c020" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c372c1a8" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c372c330" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c372c4b8" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c372c640" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc" name="PacketTimeStampMilli" provided="1" ref="0x2ac2c3f9f020">
+      <component-ref nicename="CC2420PacketC" qname="CC2420PacketC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PacketTimeStampMilli" ref="0x2ac2c3f9f020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketTimeStamp" qname="PacketTimeStamp"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df020"/>
+            <typename><typedef-ref name="TMilli" ref="0x2ac2c33df378"/></typename>
+          </type-tag>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="timestamp" ref="0x2ac2c3f9d478" scoped=""/>
+        <function-ref name="clear" ref="0x2ac2c3f9db58" scoped=""/>
+        <function-ref name="isValid" ref="0x2ac2c3f9fd70" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c3f9c278" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="62:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc" name="PacketAcknowledgements" provided="1" ref="0x2ac2c372b7e0">
+      <component-ref nicename="CC2420ActiveMessageC" qname="CC2420ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PacketAcknowledgements" ref="0x2ac2c372b7e0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketAcknowledgements" qname="PacketAcknowledgements"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="requestAck" ref="0x2ac2c372bb30" scoped=""/>
+        <function-ref name="noAck" ref="0x2ac2c372bcb8" scoped=""/>
+        <function-ref name="wasAcked" ref="0x2ac2c372be40" scoped=""/>
+      </interface-functions>
+    </interface><component loc="38:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc" nicename="CC2420PacketC" qname="CC2420PacketC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+        <short>
+ </short>
+        <long>
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @author David Moss
+ @author Chad Metcalf
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="58:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="LinkPacketMetadata" ref="0x2ac2c3fa46b0" scoped=""/></from>
+          <to><interface-ref name="LinkPacketMetadata" ref="0x2ac2c3f96630" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="CC2420Packet" ref="0x2ac2c3fa84b0" scoped=""/></from>
+          <to><interface-ref name="CC2420Packet" ref="0x2ac2c3f982e8" scoped=""/></to>
+        </wire>
+        <wire loc="59:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="PacketTimeStamp32khz" ref="0x2ac2c3fa3130" scoped=""/></from>
+          <to><interface-ref name="PacketTimeStamp32khz" ref="0x2ac2c3f94060" scoped=""/></to>
+        </wire>
+        <wire loc="57:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="CC2420PacketBody" ref="0x2ac2c3fa5d08" scoped=""/></from>
+          <to><interface-ref name="CC2420PacketBody" ref="0x2ac2c3f97b60" scoped=""/></to>
+        </wire>
+        <wire loc="61:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="PacketTimeSyncOffset" ref="0x2ac2c3f9cac8" scoped=""/></from>
+          <to><interface-ref name="PacketTimeSyncOffset" ref="0x2ac2c3ff0ac8" scoped=""/></to>
+        </wire>
+        <wire loc="60:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="PacketTimeStampMilli" ref="0x2ac2c3f9f020" scoped=""/></from>
+          <to><interface-ref name="PacketTimeStampMilli" ref="0x2ac2c3f90020" scoped=""/></to>
+        </wire>
+        <wire loc="56:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="Acks" ref="0x2ac2c3fa53b8" scoped=""/></from>
+          <to><interface-ref name="Acks" ref="0x2ac2c3f97210" scoped=""/></to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="Counter" ref="0x2ac2c4000720" scoped=""/></from>
+          <to><interface-ref name="Counter" ref="0x2ac2c3888730" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="LocalTime32khz" ref="0x2ac2c3fed520" scoped=""/></from>
+          <to><interface-ref name="LocalTime" ref="0x2ac2c4002528" scoped=""/></to>
+        </wire>
+        <wire loc="69:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketC.nc">
+          <from><interface-ref name="LocalTimeMilli" ref="0x2ac2c3fec788" scoped=""/></from>
+          <to><interface-ref name="LocalTime" ref="0x2ac2c33ee980" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="53:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc" nicename="CC2420ActiveMessageC" qname="CC2420ActiveMessageC">
+      <configuration/>
+      <wiring>
+        <wire loc="82:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="SplitControl" ref="0x2ac2c3731310" scoped=""/></from>
+          <to><interface-ref name="SplitControl" ref="0x2ac2c3749020" scoped=""/></to>
+        </wire>
+        <wire loc="83:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="RadioBackoff" ref="0x2ac2c3718700" scoped=""/></from>
+          <to><interface-ref name="RadioBackoff" ref="0x2ac2c4180020" scoped=""/></to>
+        </wire>
+        <wire loc="86:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="SendNotifier" ref="0x2ac2c37161c8" scoped=""/></from>
+          <to><interface-ref name="SendNotifier" ref="0x2ac2c4181400" scoped=""/></to>
+        </wire>
+        <wire loc="84:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c372dbd8" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c41822a8" scoped=""/></to>
+        </wire>
+        <wire loc="85:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c37302b0" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c4187980" scoped=""/></to>
+        </wire>
+        <wire loc="88:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="Snoop" ref="0x2ac2c372e020" scoped=""/></from>
+          <to><interface-ref name="Snoop" ref="0x2ac2c4185628" scoped=""/></to>
+        </wire>
+        <wire loc="92:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="CC2420Packet" ref="0x2ac2c3723888" scoped=""/></from>
+          <to><interface-ref name="CC2420Packet" ref="0x2ac2c37397e8" scoped=""/></to>
+        </wire>
+        <wire loc="91:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="LowPowerListening" ref="0x2ac2c371f628" scoped=""/></from>
+          <to><interface-ref name="LowPowerListening" ref="0x2ac2c3736668" scoped=""/></to>
+        </wire>
+        <wire loc="87:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="Receive" ref="0x2ac2c372f3c8" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c4186ab0" scoped=""/></to>
+        </wire>
+        <wire loc="93:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="PacketAcknowledgements" ref="0x2ac2c372b7e0" scoped=""/></from>
+          <to><interface-ref name="PacketAcknowledgements" ref="0x2ac2c3737658" scoped=""/></to>
+        </wire>
+        <wire loc="90:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="PacketLink" ref="0x2ac2c374e450" scoped=""/></from>
+          <to><interface-ref name="PacketLink" ref="0x2ac2c3735128" scoped=""/></to>
+        </wire>
+        <wire loc="89:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c372e610" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c4185c18" scoped=""/></to>
+        </wire>
+        <wire loc="94:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="LinkPacketMetadata" ref="0x2ac2c37207b0" scoped=""/></from>
+          <to><interface-ref name="LinkPacketMetadata" ref="0x2ac2c3736020" scoped=""/></to>
+        </wire>
+        <wire loc="97:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="RadioResource" ref="0x2ac2c4179698" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c3748340" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="98:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="SubSend" ref="0x2ac2c417f020" scoped=""/></from>
+          <to><interface-ref name="ActiveSend" ref="0x2ac2c37414c8" scoped=""/></to>
+        </wire>
+        <wire loc="99:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="SubReceive" ref="0x2ac2c417fcc8" scoped=""/></from>
+          <to><interface-ref name="ActiveReceive" ref="0x2ac2c37391d0" scoped=""/></to>
+        </wire>
+        <wire loc="101:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="ActiveMessageAddress" ref="0x2ac2c417b8d0" scoped=""/></from>
+          <to><interface-ref name="ActiveMessageAddress" ref="0x2ac2c3d982b8" scoped=""/></to>
+        </wire>
+        <wire loc="102:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="CC2420Packet" ref="0x2ac2c417e368" scoped=""/></from>
+          <to><interface-ref name="CC2420Packet" ref="0x2ac2c3fa84b0" scoped=""/></to>
+        </wire>
+        <wire loc="103:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="CC2420PacketBody" ref="0x2ac2c417d188" scoped=""/></from>
+          <to><interface-ref name="CC2420PacketBody" ref="0x2ac2c3fa5d08" scoped=""/></to>
+        </wire>
+        <wire loc="104:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="CC2420Config" ref="0x2ac2c417dab0" scoped=""/></from>
+          <to><interface-ref name="CC2420Config" ref="0x2ac2c37f6528" scoped=""/></to>
+        </wire>
+        <wire loc="106:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="SubBackoff" ref="0x2ac2c417a6a0" scoped=""/></from>
+          <to><interface-ref name="RadioBackoff" ref="0x2ac2c3770678" scoped=""/></to>
+        </wire>
+        <wire loc="109:/home/kasper/tinyos-main//tos/chips/cc2420/CC2420ActiveMessageC.nc">
+          <from><interface-ref name="Leds" ref="0x2ac2c41782a8" scoped=""/></from>
+          <to><interface-ref name="Leds" ref="0x2ac2c3039c38" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component></referenced></component>
