@@ -272,6 +272,11 @@ implementation{
 		{
 			flashCnt ++;
 			call SerialFlow.set(TRUE);
+			
+			if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS)
+			{		
+				call SerialControl.stop(); 	
+			}
 		}
 	}
  
@@ -373,14 +378,13 @@ implementation{
 		
 		memcpy(PCSerialBuffer,payload,MAX_SERIALDATA_LENGTH);
 		
-		if(flashCnt < SERIAL_DATA_NUMBER_OF_PACKETS)
+		if(flashCnt < SERIAL_DATA_NUMBER_OF_PACKETS-1)
 		{
 			call UncompressedStore.write(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
 		}
-		else if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS)
+		else if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS-1)
 		{
-			call UncompressedStore.write(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,SERIAL_DATA_REST);	
-			call SerialControl.stop(); 	
+			call UncompressedStore.write(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,SERIAL_DATA_REST);		
 		}
 		else
 		{
@@ -425,7 +429,7 @@ implementation{
 
 	void StartReceiveFromPcTask()
 	{
-		//call SerialControl.start();
+		call SerialControl.start();
 	}
 	
 	void BlinkLeds()
