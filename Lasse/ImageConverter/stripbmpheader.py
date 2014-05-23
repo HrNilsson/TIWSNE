@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-//cat picheader picraw >> pic
+#cat picheader picraw >> pic
 
 import sys
 import struct
