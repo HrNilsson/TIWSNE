@@ -75,9 +75,14 @@ implementation{
 	}
 	
 	event void NotifyButton.notify(button_state_t btnState){
-			if ( btnState == BUTTON_PRESSED ) {
-			state = ++state % NUMBER_OF_STATES;
-			call Leds.set(state); //This should be turned of when battery consumption is compared. 
+		
+		/*printf("Hi I am writing to you from my TinyOS application!!\n");
+	  	printf("Here is a uint8: %u\n", state);
+	  	printfflush();				*/
+
+		if ( btnState == BUTTON_PRESSED ) {
+		state = ++state % NUMBER_OF_STATES;
+		call Leds.set(state); //This should be turned of when battery consumption is compared. 
 			
 			switch(state) {
 				case IDLE:
@@ -214,6 +219,12 @@ implementation{
 					memcpy(&flashDataUncompressed, &(uncompressedMsg->pixels), sizeof(flashDataUncompressed));
 					
 					taskFlag = SAVE_FLASH;
+					if(transSeqNo == TOTAL_UNCOMPRESSED_PACKETS)
+					{
+						taskFlag = POST_TASK;	
+					}
+					BlinkLeds();
+					
 					post ReceivingUncompressedFromMoteTask();
 				}	
 				else if (uncompressedMsg->seqNo == transSeqNo-1) 
@@ -441,7 +452,8 @@ implementation{
 					}
 					else if (flashCnt >= TOTAL_UNCOMPRESSED_PACKETS)
 					{
-						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, flashDataUncompressed, UNCOMPRESSED_IMAGE_REST);
+						call Leds.set(0xFF);
+						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, &flashDataUncompressed, UNCOMPRESSED_IMAGE_REST);
 					}
 
 					break;
