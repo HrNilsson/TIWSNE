@@ -382,6 +382,13 @@ implementation{
 				post SendUncompressedToPcTask();
 				break;
 			}
+			
+			case SENDING_COMPRESSED_TO_PC:
+			{
+				taskFlag = READ_FLASH;
+				post SendCompressedToPcTask();
+				break;
+			}
 		}
 	}
 
@@ -753,15 +760,15 @@ implementation{
 			{
 				void * payload = call SerialAMSend.getPayload(&serialPacket, MAX_SERIALDATA_LENGTH);
 				
-				memcpy(payload,flashDataCompressed,MAX_SERIALDATA_LENGTH);
 				
-				for (deCompressCnt; deCompressCnt < NO_OF_COMPRESSED_PIXELS; deCompressCnt++)
+				for (deCompressCnt; deCompressCnt < 22; deCompressCnt++)
 				{
-					call Comp.deCompressVector(flashDataCompressed[deCompressCnt], PCSerielBuffer+deCompressCnt*5;
+					call Comp.deCompressVector(flashDataCompressed[deCompressCnt], PCSerialBuffer[deCompressCnt*5]);
 				}
 				
+				memcpy(payload,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
+				
 				call SerialAMSend.send(AM_BROADCAST_ADDR, &serialPacket, MAX_SERIALDATA_LENGTH);
-			
 				
 				break;
 			}
