@@ -372,9 +372,8 @@ implementation{
 
 	event message_t * SerialReceive.receive(message_t *pMsg, void *payload, uint8_t len)
 	{
-		
-		BlinkLeds();
 		call SerialFlow.set(FALSE);
+		BlinkLeds();
 		
 		memcpy(PCSerialBuffer,payload,MAX_SERIALDATA_LENGTH);
 		
@@ -749,11 +748,11 @@ implementation{
 		{
 			case READ_FLASH:
 			{ 
-				if(flashCnt < SERIAL_DATA_NUMBER_OF_PACKETS)
+				if(flashCnt < SERIAL_DATA_NUMBER_OF_PACKETS-1)
 				{
 					call UncompressedRestore.read(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
 				}
-				else if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS)
+				else if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS-1)
 				{
 					call UncompressedRestore.read(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,SERIAL_DATA_REST);
 				} 
