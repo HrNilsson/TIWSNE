@@ -88,7 +88,7 @@ implementation{
 		if ( btnState == BUTTON_PRESSED ) {
 		state = ++state % NUMBER_OF_STATES;
 		call Leds.set(state); //This should be turned of when battery consumption is compared. 
-			
+		
 			switch(state) {
 				case IDLE:
 					//Make sure to shot down radio.
@@ -131,7 +131,11 @@ implementation{
 				case SENDING_UNCOMPRESSED_TO_PC:
 					taskFlag = READ_FLASH;
 					flashCnt = 0;
-					call SerialControl.start();
+					if(call SerialControl.start() != SUCCESS)
+					{
+						//We assume it its already started!!
+						post SendUncompressedToPcTask();
+					}
 					break;
 	
 				case SENDING_COMPRESSED_TO_PC:
@@ -224,11 +228,6 @@ implementation{
 					memcpy(&flashDataUncompressed, &(uncompressedMsg->pixels), sizeof(flashDataUncompressed));
 					
 					taskFlag = SAVE_FLASH;
-					if(transSeqNo == TOTAL_UNCOMPRESSED_PACKETS)
-					{
-						taskFlag = POST_TASK;	
-					}
-					BlinkLeds();
 					
 					post ReceivingUncompressedFromMoteTask();
 				}	
@@ -266,10 +265,9 @@ implementation{
 		if(state == RECEIVING_UNCOMPRESSED_FROM_MOTE) {
 			flashCnt ++;
 			taskFlag = SEND_PACKET;
-			BlinkLeds();
 			if (flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS)
 			{
-				call Leds.set(0);
+				call UncompressedStore.sync();
 			}
 			post ReceivingUncompressedFromMoteTask();
 		}
@@ -411,10 +409,10 @@ implementation{
 				} 
 				else 
 				{
+					BlinkLeds();
 					taskFlag = READ_FLASH;
 					post SendUncompressedToPcTask();
 				}
-				BlinkLeds();
 				
 				break;
 			}
@@ -771,7 +769,6 @@ implementation{
 				memcpy(payload,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
 				
 				call SerialAMSend.send(AM_BROADCAST_ADDR, &serialPacket, MAX_SERIALDATA_LENGTH);
-			
 				
 				break;
 			}
