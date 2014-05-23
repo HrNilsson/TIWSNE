@@ -250,6 +250,11 @@ implementation{
 		if(state == RECEIVING_UNCOMPRESSED_FROM_MOTE) {
 			flashCnt ++;
 			taskFlag = SEND_PACKET;
+			BlinkLeds();
+			if (flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS)
+			{
+				call Leds.set(0);
+			}
 			post ReceivingUncompressedFromMoteTask();
 		}
 		else if(state == RECEIVING_FROM_PC)
@@ -763,7 +768,7 @@ implementation{
 				
 				for (deCompressCnt; deCompressCnt < 22; deCompressCnt++)
 				{
-					call Comp.deCompressVector(flashDataCompressed[deCompressCnt], &PCSerialBuffer[deCompressCnt*5]);
+					call Comp.deCompressVector(flashDataCompressed[deCompressCnt], PCSerialBuffer[deCompressCnt*5]);
 				}
 				
 				memcpy(payload,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
