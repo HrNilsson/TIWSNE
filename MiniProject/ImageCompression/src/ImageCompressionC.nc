@@ -124,13 +124,13 @@ implementation{
 					break;
 	
 				case SENDING_UNCOMPRESSED_TO_PC:
-					taskFlag = INIT;
+					taskFlag = READ_FLASH;
 					flashCnt = 0;
 					call SerialControl.start();
 					break;
 	
 				case SENDING_COMPRESSED_TO_PC:
-					taskFlag = INIT;
+					taskFlag = READ_FLASH;
 					flashCnt = 0;
 					break;
 	
@@ -367,6 +367,8 @@ implementation{
 
 	event message_t * SerialReceive.receive(message_t *pMsg, void *payload, uint8_t len)
 	{
+		
+		BlinkLeds();
 		call SerialFlow.set(FALSE);
 		
 		memcpy(PCSerialBuffer,payload,MAX_SERIALDATA_LENGTH);
@@ -394,13 +396,17 @@ implementation{
 		{
 			case SENDING_UNCOMPRESSED_TO_PC:
 			{
-				taskFlag = READ_FLASH;
-				post SendUncompressedToPcTask();
-				BlinkLeds();
 				if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS) 
 				{
 					call Leds.set(0);	
+				} 
+				else 
+				{
+					taskFlag = READ_FLASH;
+					post SendUncompressedToPcTask();
 				}
+				BlinkLeds();
+				
 				break;
 			}
 			
