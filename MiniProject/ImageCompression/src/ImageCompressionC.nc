@@ -67,11 +67,16 @@ implementation{
 	
 	//---------------------------EVENTS------------------------------------------//
 	event void Boot.booted(){
-		call NotifyButton.enable(); // Enable key press
+		
 		state = IDLE;
 		transSeqNo = 0;
 		toggleLeds = FALSE;
 		flashCnt = 0;
+		
+		call UncompressedStore.erase();
+		call CompressedStore.erase();
+		
+		
 	}
 	
 	event void NotifyButton.notify(button_state_t btnState){
@@ -275,7 +280,8 @@ implementation{
 			
 			if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS)
 			{		
-				call SerialControl.stop(); 	
+				call SerialControl.stop();
+				call UncompressedStore.sync(); 	
 			}
 		}
 	}
@@ -336,7 +342,7 @@ implementation{
  
 	event void CompressedStore.eraseDone(error_t error)
 	{
-	
+		call NotifyButton.enable(); // Enable key press
 	}
  
 	event void CompressedStore.syncDone(error_t error)
