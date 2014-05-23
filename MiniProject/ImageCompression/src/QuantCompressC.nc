@@ -22,7 +22,7 @@ implementation {
 		return imVec;
 	}
 
-	command void QuantCompress.deCompressVector(imageVector imVec, uint8_t *outputVec){
+	command void QuantCompress.deCompressVector(imageVector imVec, nx_uint8_t *outputVec){
 	
 		outputVec[0] = imVec.px0<<2;
 		
