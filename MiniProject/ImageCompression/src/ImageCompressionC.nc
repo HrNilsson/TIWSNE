@@ -419,7 +419,7 @@ implementation{
 
 	void StartReceiveFromPcTask()
 	{
-		call SerialControl.start();
+		//call SerialControl.start();
 	}
 	
 	void BlinkLeds()
@@ -524,12 +524,13 @@ implementation{
 			
 				case COMPRESS:
 				{
+					
 					uint8_t i = 0; 
 					//Compress this shiiiiiit to flashDataCompressed
 					
 					if (flashCnt < TOTAL_UNCOMPRESSED_PACKETS)
 					{
-						for(i=0 ; i <= NO_OF_UNCOMPRESSED_PIXELS ; i+5) {
+						for(i=0 ; i <= NO_OF_UNCOMPRESSED_PIXELS ; i = i+5) {
 	
 							flashDataCompressed[i/5] = call Comp.compressVector(flashDataUncompressed+i);
 	
@@ -540,7 +541,7 @@ implementation{
 					{
 						call UncompressedRestore.read(flashCnt*NO_OF_UNCOMPRESSED_PIXELS, flashDataUncompressed, UNCOMPRESSED_IMAGE_REST); 
 						
-						for(i=0 ; i <= UNCOMPRESSED_IMAGE_REST ; i+5) {
+						for(i=0 ; i <= UNCOMPRESSED_IMAGE_REST ; i = i+5) {
 						
 							flashDataCompressed[i/5] = call Comp.compressVector(flashDataUncompressed+i);
 						
@@ -549,7 +550,7 @@ implementation{
 						flashDataCompressed[i/5+1] = call Comp.compressVector(flashDataUncompressed+i);
 						flashDataCompressed[i/5+1].notFull = 0x11; // Signal imageVector with only one pixel						
 					}
-										
+					
 					taskFlag = SEND_PACKET;
 					post SendCompressedToMoteTask();
 					break;
@@ -789,7 +790,7 @@ implementation{
 				
 				for (deCompressCnt; deCompressCnt < 22; deCompressCnt++)
 				{
-					call Comp.deCompressVector(flashDataCompressed[deCompressCnt], PCSerialBuffer[deCompressCnt*5]);
+					call Comp.deCompressVector(flashDataCompressed[deCompressCnt], &PCSerialBuffer[deCompressCnt*5]);
 				}
 				
 				memcpy(payload,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
