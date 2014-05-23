@@ -763,7 +763,7 @@ implementation{
 				
 				for (deCompressCnt; deCompressCnt < 22; deCompressCnt++)
 				{
-					call Comp.deCompressVector(flashDataCompressed[deCompressCnt], PCSerialBuffer[deCompressCnt*5]);
+					call Comp.deCompressVector(flashDataCompressed[deCompressCnt], &PCSerialBuffer[deCompressCnt*5]);
 				}
 				
 				memcpy(payload,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
