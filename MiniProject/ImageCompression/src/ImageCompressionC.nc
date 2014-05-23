@@ -380,6 +380,11 @@ implementation{
 			{
 				taskFlag = READ_FLASH;
 				post SendUncompressedToPcTask();
+				BlinkLeds();
+				if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS) 
+				{
+					call Leds.set(0);	
+				}
 				break;
 			}
 			
@@ -389,6 +394,8 @@ implementation{
 				post SendCompressedToPcTask();
 				break;
 			}
+			default:
+				break;
 		}
 	}
 
@@ -735,6 +742,8 @@ implementation{
 				
 				break;
 			}
+			default:
+				break;
 		}
 		
 		
@@ -772,6 +781,8 @@ implementation{
 				
 				break;
 			}
+			default:
+				break;
 		}		
 		
 	}
