@@ -86,7 +86,7 @@ public class PCFileTransferer implements MessageListener {
 				short[] sData = dataQueue.take();
 				
 				int bytesToCopy = receiveBlockSize;
-				if((bytesReceived + sData.length) > IMAGELENGTH)
+				if((bytesReceived + bytesToCopy) > IMAGELENGTH)
 					bytesToCopy = (int) (IMAGELENGTH - bytesReceived);
 					
 				bData = new byte[bytesToCopy];
@@ -122,7 +122,7 @@ public class PCFileTransferer implements MessageListener {
 	}	
 
 	private static void usage() {
-		System.err.println("usage: PCFileTransferer -s <sendFilePath> OR -r <receiveFilePath> [-comm <source>][-m <sendToMoteId>]");
+		System.err.println("usage: PCFileTransferer -s <sendFilePath> OR -r <receiveFilePath> <receiveBlockSize> [-comm <source>][-m <sendToMoteId>]");
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -141,7 +141,7 @@ public class PCFileTransferer implements MessageListener {
 				i++;
 			}
 			else if(args[i].equals("-r"))
-			{
+			{				
 				receiveFilePath = args[i+1];
 				receiveBlockSize = Integer.parseInt(args[i+2]);
 				i += 2;
