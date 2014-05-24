@@ -67,11 +67,16 @@ implementation{
 	
 	//---------------------------EVENTS------------------------------------------//
 	event void Boot.booted(){
-		call NotifyButton.enable(); // Enable key press
+		
 		state = IDLE;
 		transSeqNo = 0;
 		toggleLeds = FALSE;
 		flashCnt = 0;
+		
+		call UncompressedStore.erase();
+		call CompressedStore.erase();
+		
+		
 	}
 	
 	event void NotifyButton.notify(button_state_t btnState){
@@ -83,7 +88,7 @@ implementation{
 		if ( btnState == BUTTON_PRESSED ) {
 		state = ++state % NUMBER_OF_STATES;
 		call Leds.set(state); //This should be turned of when battery consumption is compared. 
-			
+		
 			switch(state) {
 				case IDLE:
 					//Make sure to shot down radio.
@@ -126,7 +131,11 @@ implementation{
 				case SENDING_UNCOMPRESSED_TO_PC:
 					taskFlag = READ_FLASH;
 					flashCnt = 0;
-					call SerialControl.start();
+					if(call SerialControl.start() != SUCCESS)
+					{
+						//We assume it its already started!!
+						post SendUncompressedToPcTask();
+					}
 					break;
 	
 				case SENDING_COMPRESSED_TO_PC:
@@ -219,11 +228,6 @@ implementation{
 					memcpy(&flashDataUncompressed, &(uncompressedMsg->pixels), sizeof(flashDataUncompressed));
 					
 					taskFlag = SAVE_FLASH;
-					if(transSeqNo == TOTAL_UNCOMPRESSED_PACKETS)
-					{
-						taskFlag = POST_TASK;	
-					}
-					BlinkLeds();
 					
 					post ReceivingUncompressedFromMoteTask();
 				}	
@@ -261,10 +265,9 @@ implementation{
 		if(state == RECEIVING_UNCOMPRESSED_FROM_MOTE) {
 			flashCnt ++;
 			taskFlag = SEND_PACKET;
-			BlinkLeds();
 			if (flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS)
 			{
-				call Leds.set(0);
+				call UncompressedStore.sync();
 			}
 			post ReceivingUncompressedFromMoteTask();
 		}
@@ -272,6 +275,12 @@ implementation{
 		{
 			flashCnt ++;
 			call SerialFlow.set(TRUE);
+			
+			if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS)
+			{		
+				call SerialControl.stop();
+				call UncompressedStore.sync(); 	
+			}
 		}
 	}
  
@@ -331,7 +340,7 @@ implementation{
  
 	event void CompressedStore.eraseDone(error_t error)
 	{
-	
+		call NotifyButton.enable(); // Enable key press
 	}
  
 	event void CompressedStore.syncDone(error_t error)
@@ -367,20 +376,18 @@ implementation{
 
 	event message_t * SerialReceive.receive(message_t *pMsg, void *payload, uint8_t len)
 	{
-		
-		BlinkLeds();
 		call SerialFlow.set(FALSE);
+		BlinkLeds();
 		
 		memcpy(PCSerialBuffer,payload,MAX_SERIALDATA_LENGTH);
 		
-		if(flashCnt < SERIAL_DATA_NUMBER_OF_PACKETS)
+		if(flashCnt < SERIAL_DATA_NUMBER_OF_PACKETS-1)
 		{
 			call UncompressedStore.write(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
 		}
-		else if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS)
+		else if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS-1)
 		{
-			call UncompressedStore.write(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,SERIAL_DATA_REST);	
-			call SerialControl.stop(); 	
+			call UncompressedStore.write(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,SERIAL_DATA_REST);		
 		}
 		else
 		{
@@ -402,10 +409,10 @@ implementation{
 				} 
 				else 
 				{
+					BlinkLeds();
 					taskFlag = READ_FLASH;
 					post SendUncompressedToPcTask();
 				}
-				BlinkLeds();
 				
 				break;
 			}
@@ -425,7 +432,7 @@ implementation{
 
 	void StartReceiveFromPcTask()
 	{
-		//call SerialControl.start();
+		call SerialControl.start();
 	}
 	
 	void BlinkLeds()
@@ -745,11 +752,11 @@ implementation{
 		{
 			case READ_FLASH:
 			{ 
-				if(flashCnt < SERIAL_DATA_NUMBER_OF_PACKETS)
+				if(flashCnt < SERIAL_DATA_NUMBER_OF_PACKETS-1)
 				{
 					call UncompressedRestore.read(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
 				}
-				else if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS)
+				else if(flashCnt == SERIAL_DATA_NUMBER_OF_PACKETS-1)
 				{
 					call UncompressedRestore.read(flashCnt*MAX_SERIALDATA_LENGTH,PCSerialBuffer,SERIAL_DATA_REST);
 				} 
@@ -762,7 +769,6 @@ implementation{
 				memcpy(payload,PCSerialBuffer,MAX_SERIALDATA_LENGTH);
 				
 				call SerialAMSend.send(AM_BROADCAST_ADDR, &serialPacket, MAX_SERIALDATA_LENGTH);
-			
 				
 				break;
 			}
