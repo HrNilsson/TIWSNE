@@ -331,9 +331,13 @@ implementation{
  
 	event void CompressedStore.writeDone(storage_addr_t addr, void * buf, storage_len_t len, error_t error)
 	{
-		if(state == RECEIVING_COMPRESSED_FROM_MOTE) {
+		if(state == RECEIVING_UNCOMPRESSED_FROM_MOTE) {
 			flashCnt ++;
 			taskFlag = SEND_PACKET;
+			if (flashCnt == TOTAL_COMPRESSED_PACKETS)
+			{
+				call CompressedStore.sync();
+			}
 			post ReceivingCompressedFromMoteTask();
 		}
 	}
