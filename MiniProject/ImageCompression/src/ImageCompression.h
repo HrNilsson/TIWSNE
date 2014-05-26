@@ -22,7 +22,7 @@ enum AM_ID_TYPES {
  
  enum WIRELESS_DEFINES {
  	TOTAL_UNCOMPRESSED_PACKETS = 596, // 256*256/(110 bytes pr. packet) 
- 	TOTAL_COMPRESSED_PACKETS = 477, //Uncompressed*4/5 Assuming compression of << 2
+ 	TOTAL_COMPRESSED_PACKETS = 486, //Uncompressed*4/5 Assuming compression of << 2
  	NO_OF_UNCOMPRESSED_PIXELS = 110,
  	NO_OF_COMPRESSED_PIXELS = 27,
  	TIMEOUT_WAIT_FOR_ACK = 100,
@@ -40,6 +40,7 @@ typedef enum TaskFlag {
 	READ_FLASH,
 	SAVE_FLASH,
 	COMPRESS,
+	DECOMPRESS,
 	SEND_PACKET,
 	RETRANSMIT_PACKET,
 	SEND_TO_PC,
