@@ -136,7 +136,7 @@ output_files/
 *.dex
 
 ## Java class files
-#*.class
+*.class
 
 # generated files
 bin/
