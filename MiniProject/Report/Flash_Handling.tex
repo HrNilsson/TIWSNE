@@ -1,0 +1,10 @@
+\section{Flash Handling}
+
+In order to perform the compression and transmission of the image, the sensor mote must be able to store it in memory. However since Telosb mote uses a Texas Instruments  MSP430 microcontroller with insufficient RAM and internal flash storage\footnote{TelosBProductDescription.pdf\cite{telosbProductDesc} page 1}, the external flash must be used to store the image.
+
+\subsection{Volumes}
+When external flash is needed on a sensor mote running TinyOS, the \emph{volume} memory abstraction is available. \cite{tinyOSprog} Since sensor mote application typically do not require high level memory manipulation such a file handling,  it it well suited for deploying sensor mote applications on many different hardware platforms.  
+
+ 
+
+   
