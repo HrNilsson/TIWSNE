@@ -22,7 +22,7 @@ In this project a simple compression scheme has been implemented, where the two 
 This effectively reduces the amount of data to $ \frac{3}{4} $ of the original. 
 
 Next is the challenge of compressing the truncated data into a smaller bitstream for transmission.
-At this point every 6-bit truncated pixel is still stored in a 8-bit \texttt{unit8_t}.
+At this point every 6-bit truncated pixel is still stored in a 8-bit \texttt{unit8\_t}.
 The way this is handled is by utilizing so-called bitfields.
 
-%% 
+\fxnote{Insæt exerpt med bitfield struct}
