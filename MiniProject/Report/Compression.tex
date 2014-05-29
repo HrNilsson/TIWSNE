@@ -1,2 +1,14 @@
 %!TEX root = TIWSNE_Mini_project_main.tex
 \section{Compression}
+When compressing an image there are two overall strategies to follow:
+\emph{Lossless} or \emph{lossy} compression.
+Lossless compression means encoding and repackaging data in order to remove as much redundant information as possible. 
+One method of doing this is called \emph{Huffman coding}.
+This involves building a code tree or "alphabet" with variable symbol length.
+Symbols, or our case pixel intensities, that occur more often and hemce contain less information, are encoded with a shorter bit length. 
+This increases that average information per symbol, or entropy, leading to a decrease in file size.
+
+The implementation og Huffman coding is rather processor and memory intensive compared to what is available in the.
+Further, an implementation of Huffman coding is beyond the scope of this class.
+
+In stead, a lossy compression scheme has been implemented in this project.
