@@ -1,0 +1,27 @@
+\section{Flash Handling}
+
+In order to perform the compression and transmission of the image, the sensor mote must be able to store it in memory. However since the TelosB mote uses a Texas Instruments  MSP430 microcontroller with insufficient RAM and internal flash storage\footnote{TelosBProductDescription.pdf\cite{telosbProductDesc} page 1}, the external flash on the TelosB must be used to store the image.
+
+\subsection{Volumes}
+When external flash is needed on a sensor mote running TinyOS, the \emph{volume} memory abstraction is available. A volume is contiguous region of storage with a certain format and that can be accessed with an associated interface. TinyOS defines three basic storage abstractions: Log, Block and Config\footnote{TinyOS programming\cite{tinyOSprog} page 90}.
+\\Volumes are defined in an .xml file, which is used by a platform dependant tool to make a header file. The header file contains definitions needed when instantiating the storage component that governs the volume, and can be found in appendix \ref{App:SourceCode} as StorageVolumes.h.   
+
+The block storage interface is suitable for storing an image file since it does not make sense to store the image as logging or configuration data. The BlockStorageC component provides the BlockWrite and BlockRead interfaces, used when storing and restoring the image. The following functions are used by sensor application:
+
+\begin{itemize}
+\item Erase
+\item Write
+\item Sync
+\item Read
+\end{itemize}  
+
+Upon booting the volume is erased to prepare it for storing the image. As each packet is received the content is written to the volume. Sync is called after the last packet has been written to ensure all data has been saved in the flash before moving forward. When stored, segments of the image can be read using the read function.
+
+
+
+
+
+
+ 
+
+   

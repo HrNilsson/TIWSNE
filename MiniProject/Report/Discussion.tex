@@ -1,2 +1,30 @@
 %!TEX root = TIWSNE_Mini_project_main.tex
 \chapter{Discussion}
+
+The theory for this project is that energy could be saved, by compression data before transmitting them. As it is represented in the results, this is not the case in our project. The main reason for this is a faulty system design. 
+The theory states that energy can be saved, because compressing and decompressing data consumes much less power, than is saved by transmitting fever packets.
+However, in our design, the compression and decompression takes place while the radio is turned on. In this way no power is saved. On the contrary it uses more power.
+
+Unfortunately we did not have the time to correct the design and prove the theory, but a short reasoning supports the theory:
+
+% TODO: Check all values!
+In the results, it was shown that transmitting all the uncompressed data took 26 seconds. In the case with compression it took 28.6 seconds, even though 20\% fever packets where sent. 
+
+If the compression happened prior to the transmission, sending the compressed data would roughly take $26*0,80 = 20.8$ seconds. 
+
+Compressing the data prior to the transmission might increase the time used, due to increased flash handling, but we will assume it takes 10 seconds.
+When the radio is turned of, the current draw from the mote is approx. 3 mA. When the radio is on it is 20 mA. 
+% Perhaps we should use watt instead?
+
+Using these metrics we can calculate the used consumption in both cases:\\
+Uncompressed:
+\begin{equation}
+26 s * 20 mA = 520 mAs
+\end{equation}
+Compression prior to transmission:
+\begin{equation}
+10 s * 3 mA + 20.8 s * 20 mA = 30 mAs + 416 mAs  = 446 mA
+\end{equation}
+
+From these calculations there is a clear power saving, by performing the compression. Even though these are all rough estimates, changing the parameters slightly to the worse, will not change the result.
+Note that this is only based on the sending note, but the calculations for the receiving note will be very similar, since transmitting and receiving uses almost the same power.
