@@ -1,6 +1,7 @@
 %!TEX root = TIWSNE_Mini_project_main.tex
 \section{Program Flow}
-The program deployed on the sender mote and the receiver mote is identical, except for their note id. This is possible, since a state machine is implemented. The main idea is pretty simple. The state machine have eight states, and is controlled with the button on the mote. The LED's on the mote is used to display the current state.
+The program deployed on the sender mote and the receiver mote is identical, except for their node id.
+This is possible, since a state machine is implemented. The main idea is pretty simple. The state machine have eight states, and is controlled with the button on the mote. The LED's on the mote is used to display the current state.
 
 
 The eight states reflects all the needed functionality in both the sender and receiver:
@@ -24,9 +25,9 @@ A simplified sequence diagram of the boot sequence and a key press is shown in F
 \label{fig:BootAndState}
 \end{figure}
 
-In Figure \ref{fig:SendReceiveSeq} a simplified sequence diagram for the \emph{Sending compressed to mote} and \emph{Receiving compressed from mote} states are shown. Each task is initially posted when changing state and executed by the TinyOS. When sending, data is read from the flash, compressed and send. After sending, a timer is started, to be able to retransmit in case no acknowledgment is received. When the ACK is received, the task post itself again. This sequence continues until all packets have been sent, or the state is changed.
+In Figure \ref{fig:SendReceiveSeq} a simplified sequence diagram for the \emph{Sending compressed to mote} and \emph{Receiving compressed from mote} states are shown. Each task is initially posted when changing state and executed by the TinyOS. When sending, data is read from the flash, compressed and send. After sending, a timer is started, to be able to retransmit in case no acknowledgment is received. When the ACK is received, the task posts itself again. This sequence continues until all packets have been sent, or the state is changed.
 
-The receiving state is quite similar, it waits until it receives a packet, then decompress it and store it in the flash, and sends an ACK back to the sender.
+The receiving state is quite similar, it waits until it receives a packet, then decompress it and stores it in the flash, and sends an ACK back to the sender.
 
 
 \begin{figure}[H]

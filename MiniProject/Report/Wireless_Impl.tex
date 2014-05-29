@@ -16,7 +16,11 @@ To achieve all these criteria there is two approaches:
 \item Forward Error Control, which is a proactive approach. 
 \end{itemize}
 
-The FEC adds redundancy bits to the sent packet and thus decreases the packet error rate. The encoding and decoding requires implementing a block code, such as the Reed-Soloman code. This project does not focus on FEC or block codes, so this approach is discarded. Further it is assumed that the wireless channel is good, and the transmitting distance is very small, so the increased packet error rate might be negligible. The FEC approach alone does not guaranty a error free transmission, it only improves the error rate.
+The FEC adds redundancy bits to the sent packet and thus decreases the packet error rate.
+The encoding and decoding requires implementing a block code, such as the Reed-Soloman code.
+This project does not focus on FEC or block codes, so this approach is discarded.
+Further it is assumed that the wireless channel is good, and the transmitting distance is very small, so the increased packet error rate might be negligible.
+The FEC approach alone does not guarantee an error free transmission, it only improves the error rate.
 
 The three most common ARQ methods can be seen in Figure \ref{fig:ARQ}. The Stop-and-Wait method is the simplest, slowest and most power consuming. The receiver sends a positive acknowledgment for every packet, and the transmitter only transmits one packet at a time. If an acknowledgment is not received within a certain timeout limit, the sender retransmits the last packet.
 

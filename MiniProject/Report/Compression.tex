@@ -1,2 +1,28 @@
 %!TEX root = TIWSNE_Mini_project_main.tex
 \section{Compression}
+When compressing an image there are two overall strategies to follow:
+\emph{Lossless} or \emph{lossy} compression.
+
+Lossless compression means encoding and repackaging data in order to remove as much redundant information as possible, while maintaining all information needed for a perfect reconstruction. 
+One method of doing this is called \emph{Huffman coding}.
+This involves building a code tree or "alphabet" with variable symbol length.
+Symbols, or our case pixel intensities, that occur more often and hemce contain less information, are encoded with a shorter bit length. 
+This increases that average information per symbol, or entropy, leading to a decrease in file size.
+
+The implementation og Huffman coding is rather processor and memory intensive compared to what is available on the TelosB.
+Further, an implementation of Huffman coding is beyond the scope of this course.
+
+In stead, a lossy compression scheme has been implemented in this project.
+Lossy compression involves discarding information yielding great decreases in file size at the expense of the ability to perfectly reconstruct the image.
+An example of lossy image compressin is \emph{JPEG-compression}.
+This utilizes Dicrete Cosine Transforms, knowledge of human psycho-visual perception and ultimately Huffman Coding to greatly compress images while maintaining a low impact on perceived image quality.
+Again, this is more processing and memory intensive than what is feasible on a TelosB mote and beyond the scope of the course.
+
+In this project a simple compression scheme has been implemented, where the two least significant  bits (LSB) is truncated, without regard to the amount of information contaied within them.
+This effectively reduces the amount of data to $ \frac{3}{4} $ of the original. 
+
+Next is the challenge of compressing the truncated data into a smaller bitstream for transmission.
+At this point every 6-bit truncated pixel is still stored in a 8-bit \texttt{unit8\_t}.
+The way this is handled is by utilizing so-called bitfields.
+
+\fxnote{Insæt exerpt med bitfield struct}
