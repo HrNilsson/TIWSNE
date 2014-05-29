@@ -1,0 +1,59 @@
+\section{Energy consumption} 
+\label{sec:energy_consumption}
+The energy consumptions has been measured for the sending mote.
+Measuremens are done by shunting the power supply to measure current draw.
+Using an oscilloscope the current draw was integrated over time (See figures \ref{fig:UncompressedSend} and \ref{fig:CompressedSend}).
+Then multiplying by the battery voltage yields  energy consumption.
+
+\begin{equation}
+E_{send} = 
+\dfrac{V_{send\ integrated}}
+{R_{shunt}}
+* V_{battery}
+\end{equation}
+
+\begin{equation}
+R_{shunt} = 10\ \Omega
+\qquad
+V_{battery} = 2.734\ V
+\end{equation}
+
+
+\subsection{Uncompressed}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{UncompressedEnergy}
+\caption{Voltage over $ 10\ \Omega $ current shunt during sending of an uncompressed image}
+\label{fig:UncompressedSend}
+\end{figure}
+
+\begin{equation}
+E_{send\ Uncompressed} = 
+\dfrac{564.87\ mVs}
+{10\ \Omega}
+* 2.734\ V
+=
+154.4\ mJ
+\end{equation}
+
+\subsection{Compressed}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{CompressedEnergy}
+\caption{Voltage over $ 10\ \Omega $ current shunt during sending of an compressed image}
+\label{fig:CompressedSend}
+\end{figure}
+
+\begin{equation}
+E_{send\ Uncompressed} = 
+\dfrac{588.87\ mVs}
+{10\ \Omega}
+* 2.734\ V
+=
+160.99\ mJ
+\end{equation}
+
+
+
