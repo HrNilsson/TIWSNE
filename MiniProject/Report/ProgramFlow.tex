@@ -1,2 +1,38 @@
 %!TEX root = TIWSNE_Mini_project_main.tex
 \section{Program Flow}
+The program deployed on the sender mote and the receiver mote is identical, except for their note id. This is possible, since a state machine is implemented. The main idea is pretty simple. The state machine have eight states, and is controlled with the button on the mote. The LED's on the mote is used to display the current state.
+
+
+The eight states reflects all the needed functionality in both the sender and receiver:
+\begin{itemize}
+\item Idle
+\item Receiving from PC
+\item Sending uncompressed to mote
+\item Sending compressed to mote
+\item Receiving uncompressed from mote
+\item Receiving compressed from mote
+\item Sending uncompressed to PC
+\item Sending compressed to PC
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{BootAndStateSeq}
+\caption{Simplified boot and state change sequence diagram}
+\label{fig:BootAndState}
+\end{figure}
+
+A simplified sequence diagram of the boot and a key press is shown in Figure \ref{fig:BootAndState}. On boot, the used flash areas are erased, and the key is enabled. After boot, the idle state is entered. When the key is pressed the state is changed and everything needed is initialized and the radio is turn on or off, depending on the state. Finally a task is posted to start the transmissions.
+
+In Figure \ref{fig:SendReceiveSeq} a simplified sequence diagram for the \emph{Sending compressed to mote} and \emph{Receiving compressed from mote} is shown.
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{SendSeq}
+\caption{Simplified program flow for wireless transmission.}
+\label{fig:SendReceiveSeq}
+\end{figure}
+
+Compression
