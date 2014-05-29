@@ -15,6 +15,8 @@ The eight states reflects all the needed functionality in both the sender and re
 \item Sending compressed to PC
 \end{itemize}
 
+A simplified sequence diagram of the boot sequence and a key press is shown in Figure \ref{fig:BootAndState}. On boot, the used flash areas are erased, and the key is enabled. After boot, the idle state is entered. When the key is pressed the state is changed and everything needed is initialized and the radio is turn on or off, depending on the state. Finally a task is posted to start the transmissions.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\linewidth]{BootAndStateSeq}
@@ -22,10 +24,9 @@ The eight states reflects all the needed functionality in both the sender and re
 \label{fig:BootAndState}
 \end{figure}
 
-A simplified sequence diagram of the boot and a key press is shown in Figure \ref{fig:BootAndState}. On boot, the used flash areas are erased, and the key is enabled. After boot, the idle state is entered. When the key is pressed the state is changed and everything needed is initialized and the radio is turn on or off, depending on the state. Finally a task is posted to start the transmissions.
+In Figure \ref{fig:SendReceiveSeq} a simplified sequence diagram for the \emph{Sending compressed to mote} and \emph{Receiving compressed from mote} states are shown. Each task is initially posted when changing state and executed by the TinyOS. When sending, data is read from the flash, compressed and send. After sending, a timer is started, to be able to retransmit in case no acknowledgment is received. When the ACK is received, the task post itself again. This sequence continues until all packets have been sent, or the state is changed.
 
-In Figure \ref{fig:SendReceiveSeq} a simplified sequence diagram for the \emph{Sending compressed to mote} and \emph{Receiving compressed from mote} is shown.
-
+The receiving state is quite similar, it waits until it receives a packet, then decompress it and store it in the flash, and sends an ACK back to the sender.
 
 
 \begin{figure}[H]
@@ -35,4 +36,8 @@ In Figure \ref{fig:SendReceiveSeq} a simplified sequence diagram for the \emph{S
 \label{fig:SendReceiveSeq}
 \end{figure}
 
-Compression
+The program flow for sending and receiving uncompressed packets, is exactly similar, except that the compression and decompression is removed.
+
+Serial program flow?
+
+Improvements in discussion
