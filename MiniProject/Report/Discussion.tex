@@ -1,6 +1,7 @@
 %!TEX root = TIWSNE_Mini_project_main.tex
 \chapter{Discussion}
 
+\section{Energy considerations}
 
 The thesis for this project is that energy could be saved, by compressing data before transmitting it. As it is represented in the results, this is not the case for this project. The main reason for this is a faulty application design. 
 The theory states that energy can be saved, because compressing and decompressing data consumes much less power than is saved by transmitting fever packets.
@@ -35,20 +36,23 @@ Note that this is only based on the sending mote, but the calculations for the r
 
 Note that this is only based on the sending note, but the calculations for the receiving note will be very similar, since transmitting and receiving uses almost the same power.
 
-\section{Design Improvements}
-
-Given the above calculations and aforementioned results, a number of design improvements can be stated: 
-
-\begin{enumerate}
-\item When sending, the application should be modified to put the transceiver circuit in sleep mode when not transmitting a package or waiting for an acknowledgement. 
-\item When receiving, the application should be modified to send the acknowledgement as soon as the packet has been received. 
-\end{enumerate} 
-
-If timing control was added to the wireless protocol, it would be possible to put the receiving radio circuit in sleep mode whilst decompressing and storing the packet. The mote should then use the timing information to know when to turn the radio back on and listen for the next packet.
-
-The improvements are concerned with reducing the amount of time spent with the transceiver circuit turned on, as this part of the mote consumes a lot of energy.
+\section{Compression rate}
 
 The compressed image did not visibly loose quality, thus harder compression (truncating more bits) would be possible while still maintaining an acceptable image quality - depending on the application requirements.
 Truncating 4 bits instead of two would effectively halve the data to be sent.
 Using 4 bits would also significantly reduce the complexity of the compression algorithm, as $4 \texttt{ bits} * 2= 1 \texttt{ octet}$ and the radio interface is octet based.
-The approach used in the project packs $5 * 6\texttt{ bits} = 30\texttt{ bits}$ in $32 \texttt{ bit}$ chunks thus wasting $2/32*100\% = 6.25\%$ of transmitted data.   
+The approach used in the project packs $5 * 6\texttt{ bits} = 30\texttt{ bits}$ in $32 \texttt{ bit}$ chunks thus wasting $\frac{2\texttt{ bits}}{32\texttt{ bits}}*100\% = 6.25\%$ of transmitted data.
+
+\section{Design Improvements}
+
+Given the above calculations and aforementioned results, a number of design improvements are suggested: 
+
+\begin{enumerate}
+\item When sending, the application should be modified to put the transceiver circuit in sleep mode when not transmitting a package or waiting for an acknowledgement. 
+\item When receiving, the application should be modified to send the acknowledgement as soon as the packet has been received.
+\item Using a compression, which doesn't result in wasted bits being transmitted.
+\end{enumerate} 
+
+If timing control was added to the wireless protocol, it would be possible to put the receiving radio circuit in sleep mode whilst decompressing and storing the packet. The mote should then use the timing information to know when to turn the radio back on and listen for the next packet.
+
+The improvements are concerned with reducing the amount of time spent with the transceiver circuit turned on, as this part of the mote consumes a lot of energy.  
