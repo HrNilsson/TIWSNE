@@ -26,8 +26,29 @@ At this point every 6-bit truncated pixel is still stored in a 8-bit \texttt{uni
 The way this is handled is by utilizing so-called bitfields.
 
 
+\begin{lstlisting}[
+	style		= nesC, 
+	captionpos	= b, 
+	caption		= Definition of \texttt{imageVector} bitfield,
+	label		= lst:imageVector
+	]
+typedef nx_struct imageVectors {
+	
+	// Five pixels in one structure
+	nx_uint8_t px0 : 6;
+	nx_uint8_t px1 : 6;
+	nx_uint8_t px2 : 6;
+	nx_uint8_t px3 : 6;
+	nx_uint8_t px4 : 6;
+	
+	// Fill to 32 bits
+	nx_uint8_t notFull: 2;
+	
+} imageVector;
 
-\fxnote{Insæt exerpt med bitfield struct}
+\end{lstlisting}
+
+
 \fxnote{Beskriv imageVector type}
 
 To handle compression and decompression a module has been implemented that provides an \texttt{interface} with \texttt{command}s for each action.
