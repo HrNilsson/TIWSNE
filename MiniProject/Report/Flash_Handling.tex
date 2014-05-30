@@ -1,4 +1,4 @@
-\section{Flash Handling}
+\section{Flash handling}
 
 In order to perform the compression and transmission of the image, the sensor mote must be able to store it in memory. However since the TelosB mote uses a Texas Instruments  MSP430 microcontroller with insufficient RAM and internal flash storage\footnote{TelosBProductDescription.pdf\cite{telosbProductDesc} page 1}, the external flash on the TelosB must be used to store the image.
 
@@ -8,6 +8,7 @@ When external flash is needed on a sensor mote running TinyOS, the \emph{volume}
 
 The block storage interface is suitable for storing an image file since it does not make sense to store the image as logging or configuration data. The BlockStorageC component provides the BlockWrite and BlockRead interfaces, used when storing and restoring the image. The following functions are used by the sensor application:
 
+\newpage
 \begin{itemize}
 \item Erase
 \item Write

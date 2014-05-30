@@ -18,6 +18,7 @@ An example of lossy image compression is \emph{JPEG-compression}.
 This utilizes Discrete Cosine Transforms, knowledge of human psycho-visual perception and ultimately Huffman Coding to greatly compress images while maintaining a low impact on perceived image quality.
 Again, this is more processing and memory intensive than what is feasible on a TelosB mote and beyond the scope of the course.
 
+\newpage
 In this project a simple compression scheme has been implemented, where the two least significant  bits (LSB) is truncated, without regard to the amount of information contained within them.
 This effectively reduces the amount of data to $ \frac{3}{4} $ of the original. 
 
