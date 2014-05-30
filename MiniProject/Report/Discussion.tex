@@ -1,13 +1,16 @@
 %!TEX root = TIWSNE_Mini_project_main.tex
 \chapter{Discussion}
 
-The theory for this project is that energy could be saved, by compression data before transmitting them. As it is represented in the results, this is not the case in our project. The main reason for this is a faulty system design. 
-The theory states that energy can be saved, because compressing and decompressing data consumes much less power, than is saved by transmitting fever packets.
+
+The thesis for this project is that energy could be saved, by compressing data before transmitting it. As it is represented in the results, this is not the case for this project. The main reason for this is a faulty application design. 
+The theory states that energy can be saved, because compressing and decompressing data consumes much less power than is saved by transmitting fever packets.
+
 However, in our design, the compression and decompression takes place while the radio is turned on. In this way no power is saved. On the contrary it uses more power.
 
 Unfortunately we did not have the time to correct the design and prove the theory, but a short reasoning supports the theory:
 
-% TODO: Check all values!
+
+\fxnote{Check all values!}
 In the results, it was shown that transmitting all the uncompressed data took 26 seconds. In the case with compression it took 28.6 seconds, even though 20\% fever packets where sent. 
 
 If the compression happened prior to the transmission, sending the compressed data would roughly take $26*0,80 = 20.8$ seconds. 
@@ -27,6 +30,23 @@ Compression prior to transmission:
 \end{equation}
 
 From these calculations there is a clear power saving, by performing the compression. Even though these are all rough estimates, changing the parameters slightly to the worse, will not change the result.
+
 Note that this is only based on the sending mote, but the calculations for the receiving mote will be very similar, since transmitting and receiving uses almost the same power.
 
 The compressed image did visibly loose quality, thus harder compression (truncating more bits) would be possible while still maintaining an acceptable image quality - depending on the application requirements. \fxnote{elaborate/restructure ...}
+
+Note that this is only based on the sending note, but the calculations for the receiving note will be very similar, since transmitting and receiving uses almost the same power.
+
+\section{Design Improvements}
+
+Given the above calculations and aforementioned results, a number of design improvements can be stated: 
+
+\begin{enumerate}
+\item When sending, the application should be modified to put the transceiver circuit in sleep mode when not transmitting a package or waiting for an acknowledgement. 
+\item When receiving, the application should be modified to send the acknowledgement as soon as the packet has been received. 
+\end{enumerate} 
+
+If timing control was added to the wireless protocol, it would be possible to put the receiving radio circuit in sleep mode whilst decompressing and storing the packet. The mote should then use the timing information to know when to turn the radio back on and listen for the next packet.
+
+The improvements are concerned with reducing the amount of time spent with the transceiver circuit turned on, as this part of the mote consumes a lot of energy.   
+
