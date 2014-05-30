@@ -3,8 +3,11 @@
 The energy consumptions has been measured for the sending mote.
 Measurements are done by shunting the power supply to measure current draw.
 Using an oscilloscope the current draw was integrated over time (See figures \ref{fig:UncompressedSend} and \ref{fig:CompressedSend}).
-Then multiplying by the battery voltage yields energy consumption. 
-\\The measurements cover only the sending sequence, which consists of iterations of reading from flash, optional compression of the data, sending the packets and waiting for the acknowledgements. 
+Then multiplying by the battery voltage yields energy consumption. \\
+The measurements cover only the sending sequence, which consists of iterations of reading from flash, optional compression of the data, sending the packets and waiting for the acknowledgements. 
+
+\textbf{NOTE:} The measurements on the oscilloscope are scaled by a factor of 10.
+Hence the difference between the what is shown in figures \ref{fig:UncompressedSend} / \ref{fig:CompressedSend} and equations \ref{eq:SendUncompressed} / \ref{eq:SendCompressed}.
 
 \begin{equation}
 E_{send} = 
@@ -31,11 +34,12 @@ V_{battery} = 2.734\ V
 
 \begin{equation}
 E_{send\ Uncompressed} = 
-\dfrac{564.87\ mVs}
+\dfrac{5.649\ Vs}
 {10\ \Omega}
 * 2.734\ V
 =
-154.4\ mJ
+1.544\ J
+\label{eq:SendUncompressed}
 \end{equation}
 
 \subsection{Compressed}
@@ -49,11 +53,12 @@ E_{send\ Uncompressed} =
 
 \begin{equation}
 E_{send\ Uncompressed} = 
-\dfrac{588.87\ mVs}
+\dfrac{5.889\ Vs}
 {10\ \Omega}
 * 2.734\ V
 =
-160.99\ mJ
+1.601\ J
+\label{eq:SendCompressed}
 \end{equation}
 
 

@@ -14,9 +14,10 @@ Unfortunately we did not have the time to correct the design and prove the theor
 
 
 \fxnote{Check all values!}
-In the results, it was shown that transmitting all the uncompressed data took 26 seconds. In the case with compression it took 28.6 seconds, even though 20\% fever packets where sent. 
+In the results, it was shown that transmitting all the uncompressed data took 26.8 seconds. 
+In the case with compression it took 28.8 seconds, even though 20\% fever packets where sent. 
 
-If the compression happened prior to the transmission, sending the compressed data would roughly take $26*0,80 = 20.8$ seconds. 
+If the compression happened prior to the transmission, sending the compressed data would roughly take $26.8*0.80 = 21.44$ seconds. 
 
 Compressing the data prior to the transmission might increase the time used, due to increased flash handling, but we will assume it takes 10 seconds.
 When the radio is turned of, the current draw from the mote is approx. 3 mA. When the radio is on it is 20 mA. 
@@ -25,11 +26,11 @@ When the radio is turned of, the current draw from the mote is approx. 3 mA. Whe
 Using these metrics we can calculate the used consumption in both cases:\\
 Uncompressed:
 \begin{equation}
-26 s * 20 mA = 520 mAs
+26.8 s * 20 mA = 536 mAs
 \end{equation}
 Compression prior to transmission:
 \begin{equation}
-10 s * 3 mA + 20.8 s * 20 mA = 30 mAs + 416 mAs  = 446 mA
+10 s * 3 mA + 21.4 s * 20 mA = 30 mAs + 428 mAs  = 458 mAs
 \end{equation}
 
 From these calculations there is a clear power saving, by performing the compression. Even though these are all rough estimates, changing the parameters slightly to the worse, will not change the result.

@@ -50,7 +50,7 @@ typedef nx_struct imageVectors {
 A bitfield is a custom data type contains a struct, where the bit length of all the contained variables are customizable, as long as the total amount of bits are consistent with standard integer types.
 In this project 32-bit \texttt{uint32\_t}.
 
-Listing \ref{lst:imageVector} shows the bitfield used to store pixels in this project.
+Listing \ref{lst:ImageVector} shows the bitfield used to store pixels in this project.
 Because our compressed pixelsize of 6 bits does not divide neatly into 32 or 64 bit data types, there is some overhead in the bitfield.
 The resulting compression rate is then:
 
