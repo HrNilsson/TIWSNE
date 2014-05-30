@@ -37,7 +37,7 @@ Note that this is only based on the sending mote, but the calculations for the r
 \section{Compression rate}
 
 The compressed image did not visibly loose quality, thus harder compression (truncating more bits) would be possible while still maintaining an acceptable image quality - depending on the application requirements.
-Truncating 4 bits instead of two would effectively halve the data to be sent.
+As an example, truncating 4 bits instead of two would effectively halve the data to be sent.
 Using 4 bits would also significantly reduce the complexity of the compression algorithm, as $4 \texttt{ bits} * 2= 1 \texttt{ octet}$ and the radio interface is octet based.
 The approach used in the project packs $5 * 6\texttt{ bits} = 30\texttt{ bits}$ in $32 \texttt{ bit}$ chunks thus wasting $\frac{2\texttt{ bits}}{32\texttt{ bits}}*100\% = 6.25\%$ of transmitted data.
 
