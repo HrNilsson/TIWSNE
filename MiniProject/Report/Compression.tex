@@ -14,11 +14,11 @@ Further, an implementation of Huffman coding is beyond the scope of this course.
 
 In stead, a lossy compression scheme has been implemented in this project.
 Lossy compression involves discarding information yielding great decreases in file size at the expense of the ability to perfectly reconstruct the image.
-An example of lossy image compressin is \emph{JPEG-compression}.
-This utilizes Dicrete Cosine Transforms, knowledge of human psycho-visual perception and ultimately Huffman Coding to greatly compress images while maintaining a low impact on perceived image quality.
+An example of lossy image compression is \emph{JPEG-compression}.
+This utilizes Discrete Cosine Transforms, knowledge of human psycho-visual perception and ultimately Huffman Coding to greatly compress images while maintaining a low impact on perceived image quality.
 Again, this is more processing and memory intensive than what is feasible on a TelosB mote and beyond the scope of the course.
 
-In this project a simple compression scheme has been implemented, where the two least significant  bits (LSB) is truncated, without regard to the amount of information contaied within them.
+In this project a simple compression scheme has been implemented, where the two least significant  bits (LSB) is truncated, without regard to the amount of information contained within them.
 This effectively reduces the amount of data to $ \frac{3}{4} $ of the original. 
 
 Next is the challenge of compressing the truncated data into a smaller bitstream for transmission.
