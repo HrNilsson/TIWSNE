@@ -1,9 +1,10 @@
 \section{Energy consumption} 
 \label{sec:energy_consumption}
 The energy consumptions has been measured for the sending mote.
-Measuremens are done by shunting the power supply to measure current draw.
+Measurements are done by shunting the power supply to measure current draw.
 Using an oscilloscope the current draw was integrated over time (See figures \ref{fig:UncompressedSend} and \ref{fig:CompressedSend}).
-Then multiplying by the battery voltage yields  energy consumption.
+Then multiplying by the battery voltage yields energy consumption. 
+\\The measurements cover only the sending sequence, which consists of iterations of reading from flash, optional compression of the data, sending the packets and waiting for the acknowledgements. 
 
 \begin{equation}
 E_{send} = 

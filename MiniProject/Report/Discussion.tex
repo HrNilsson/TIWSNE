@@ -1,6 +1,8 @@
 %!TEX root = TIWSNE_Mini_project_main.tex
 \chapter{Discussion}
 
+This section discusses energy calculations, compression rate and possible design improvements.  
+
 \section{Energy considerations}
 
 The thesis for this project is that energy could be saved, by compressing data before transmitting it. As it is represented in the results, this is not the case for this project. The main reason for this is a faulty application design. 
@@ -51,6 +53,6 @@ Given the above calculations and aforementioned results, a number of design impr
 \item Using a compression, which doesn't result in wasted bits being transmitted. 
 \end{enumerate} 
 
-If timing control was added to the wireless protocol, it would be possible to put the receiving radio circuit in sleep mode whilst decompressing and storing the packet. The mote should then use the timing information to know when to turn the radio back on and listen for the next packet.
+If timing control was added to the wireless protocol, it would be possible to put the receiving radio circuit in sleep mode whilst decompressing and storing the packet. The receiving mote should then use the timing information to know when to turn the radio back on and listen for the next packet.
 
-The improvements are concerned with reducing the amount of time spent with the transceiver circuit turned on, as this part of the mote consumes a lot of energy.  
+The improvements are concerned with reducing the amount of time spent with the transceiver circuit turned on, as this part of the mote in particular consumes a lot of energy.  
