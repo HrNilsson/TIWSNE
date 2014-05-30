@@ -28,7 +28,7 @@ The way this is handled is by utilizing so-called bitfields.
 \begin{lstlisting}[
 	style		= nesC, 
 	captionpos	= b, 
-	caption		= Definition of \texttt{imageVector} bitfield from \texttt{imageCompression.h} (See appendix for source code
+	caption		= Definition of \texttt{imageVector} bitfield from \texttt{imageCompression.h} (See appendix for source code,
 	label		= lst:imageVector
 	]
 typedef nx_struct imageVectors {
@@ -50,7 +50,7 @@ typedef nx_struct imageVectors {
 A bitfield is a custom data type contains a struct, where the bit length of all the contained variables are customizable, as long as the total amount of bits are consistent with standard integer types.
 In this project 32-bit \texttt{uint32\_t}.
 
-Listing \ref{lst:ImageVector} shows the bitfield used to store pixels in this project.
+Listing \ref{lst:imageVector} shows the bitfield used to store pixels in this project.
 Because our compressed pixelsize of 6 bits does not divide neatly into 32 or 64 bit data types, there is some overhead in the bitfield.
 The resulting compression rate is then:
 
