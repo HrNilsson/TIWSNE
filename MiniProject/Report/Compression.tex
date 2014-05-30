@@ -25,11 +25,10 @@ Next is the challenge of compressing the truncated data into a smaller bitstream
 At this point every 6-bit truncated pixel is still stored in a 8-bit \texttt{unit8\_t}.
 The way this is handled is by utilizing so-called bitfields.
 
-
 \begin{lstlisting}[
 	style		= nesC, 
 	captionpos	= b, 
-	caption		= Definition of \texttt{imageVector} bitfield,
+	caption		= Definition of \texttt{imageVector} bitfield from \texttt{imageCompression.h} (See appendix for source code
 	label		= lst:imageVector
 	]
 typedef nx_struct imageVectors {
@@ -48,12 +47,37 @@ typedef nx_struct imageVectors {
 
 \end{lstlisting}
 
+A bitfield is a custom data type contains a struct, where the bit length of all the contained variables are customizable, as long as the total amount of bits are consistent with standard integer types.
+In this project 32-bit \texttt{uint32\_t}.
 
-\fxnote{Beskriv imageVector type}
+Listing \ref{lst:imageVector} shows the bitfield used to store pixels in this project.
+Because our compressed pixelsize of 6 bits does not divide neatly into 32 or 64 bit data types, there is some overhead in the bitfield.
+The resulting compression rate is then:
 
-To handle compression and decompression a module has been implemented that provides an \texttt{interface} with \texttt{command}s for each action.
+\begin{equation}
+R_{compression} = 
+\dfrac{32\ bits}
+{5 * 8\ bits} =
+\dfrac{4}{5} = 
+80\ \%
+\end{equation}
+
+The extra fill bits are then used for signalling when and end of file is reached and not all fields contain valid pixels.
+This is used by the methods that handle compression/decompression. 
+
+To handle compression and decompression a module, \texttt{QuantCompressC} has been implemented that provides an \texttt{interface} (See listing \ref{lst:QC_interface}) with a \texttt{command} for each action.
 These are then \texttt{call}ed from within the main state machine (See section \ref{sec:program_flow}).
 
+\begin{lstlisting}[
+	style		= nesC, 
+	captionpos	= b, 
+	caption		= \texttt{Interface} for QuantCompressC (See appendix for source code),
+	label		= lst:QC_interface
+	]
+#include "ImageCompression.h"
 
-
-\fxnote{Mere om QuantCompressC, interface og metoder}
+interface QuantCompress{
+	command imageVector compressVector(nx_uint8_t * inputVec);
+	command void deCompressVector(imageVector, nx_uint8_t * outputVec);
+}
+\end{lstlisting}
