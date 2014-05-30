@@ -1,0 +1,14 @@
+digraph "AsyncStdControlPowerManagerC" {
+  "AsyncStdControlPowerManagerC.PowerManager" [fontsize=12, shape=box, style=dashed, label="AsyncPowerManagerP\n(PowerManager)", URL="../chtml/AsyncPowerManagerP.html"];
+  n0x2ac2c4523830 [shape=ellipse, style=filled, label="AsyncStdControl", fontsize=12];
+  "AsyncStdControlPowerManagerC.PowerManager" [fontsize=12, shape=box, style=dashed, label="AsyncPowerManagerP\n(PowerManager)", URL="../chtml/AsyncPowerManagerP.html"];
+  n0x2ac2c4521020 [shape=ellipse, style=filled, label="PowerDownCleanup", fontsize=12];
+  "AsyncStdControlPowerManagerC.PowerManager" [fontsize=12, shape=box, style=dashed, label="AsyncPowerManagerP\n(PowerManager)", URL="../chtml/AsyncPowerManagerP.html"];
+  n0x2ac2c4521688 [shape=ellipse, style=filled, label="ResourceDefaultOwner", fontsize=12];
+  "AsyncStdControlPowerManagerC.PowerManager" [fontsize=12, shape=box, style=dashed, label="AsyncPowerManagerP\n(PowerManager)", URL="../chtml/AsyncPowerManagerP.html"];
+  n0x2ac2c45202d8 [shape=ellipse, style=filled, label="ArbiterInfo", fontsize=12];
+  "AsyncStdControlPowerManagerC.PowerManager" -> "n0x2ac2c4523830" [label="AsyncStdControl", URL="../ihtml/AsyncStdControl.html", fontsize=10];
+  "AsyncStdControlPowerManagerC.PowerManager" -> "n0x2ac2c4521020" [label="PowerDownCleanup", URL="../ihtml/PowerDownCleanup.html", fontsize=10];
+  "AsyncStdControlPowerManagerC.PowerManager" -> "n0x2ac2c4521688" [label="ResourceDefaultOwner", URL="../ihtml/ResourceDefaultOwner.html", fontsize=10];
+  "AsyncStdControlPowerManagerC.PowerManager" -> "n0x2ac2c45202d8" [label="ArbiterInfo", URL="../ihtml/ArbiterInfo.html", fontsize=10];
+}

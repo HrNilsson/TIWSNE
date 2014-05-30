@@ -1,0 +1,68 @@
+<?xml version="1.0" ?><component abstract="" loc="43:/home/kasper/tinyos-main//tos/system/AMQueueEntryP.nc" nicename="AMQueueEntryP" qname="AMQueueEntryP" safe="">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/system/AMQueueEntryP.nc">
+        <short>
+ Internal AM component that fills in needed packet fields for the 
+ AMSend -&gt; Send transformation.</short>
+        <long>
+ Internal AM component that fills in needed packet fields for the 
+ AMSend -&gt; Send transformation.
+
+ @author Philip Levis
+ @date   Jan 16 2006
+</long>
+      </documentation>
+      <parameters>
+        <constant loc="43:/home/kasper/tinyos-main//tos/system/AMQueueEntryP.nc" name="amId" ref="0x2ac2c45ab8b8">
+          <component-ref nicename="AMQueueEntryP" qname="AMQueueEntryP"/>
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+          </type-int>
+        </constant>
+      </parameters>
+      <module/>
+    <specification><interface loc="44:/home/kasper/tinyos-main//tos/system/AMQueueEntryP.nc" name="AMSend" provided="1" ref="0x2ac2c45a7100">
+      <component-ref nicename="AMQueueEntryP" qname="AMQueueEntryP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c45a7100" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c45a7450" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c45a75d8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c45a7760" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c45a78e8" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c45a7a70" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/system/AMQueueEntryP.nc" name="Send" provided="0" ref="0x2ac2c45a7d48">
+      <component-ref nicename="AMQueueEntryP" qname="AMQueueEntryP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Send" ref="0x2ac2c45a7d48" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c45a60d8" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c45a6260" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c45a63e8" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c45a6570" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c45a66f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/system/AMQueueEntryP.nc" name="AMPacket" provided="0" ref="0x2ac2c45a6998">
+      <component-ref nicename="AMQueueEntryP" qname="AMQueueEntryP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMPacket" ref="0x2ac2c45a6998" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c45a6ce8" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c45a6e70" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c45a5020" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c45a51a8" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c45a5330" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c45a54b8" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c45a5640" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c45a57c8" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c45a5950" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c45a5ad8" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c45a5c60" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

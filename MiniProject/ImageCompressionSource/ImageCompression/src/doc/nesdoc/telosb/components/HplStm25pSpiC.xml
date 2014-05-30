@@ -1,0 +1,166 @@
+<?xml version="1.0" ?><component loc="40:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pSpiC.nc" nicename="HplStm25pSpiC" qname="HplStm25pSpiC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pSpiC.nc">
+        <short>
+ HPL implementation of the Spi bus for a ST M25P chip connected to a
+ TI MSP430.</short>
+        <long>
+ HPL implementation of the Spi bus for a ST M25P chip connected to a
+ TI MSP430.
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.4 $ $Date: 2006-12-12 18:23:45 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="53:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pSpiC.nc">
+          <from><interface-ref name="SpiPacket" ref="0x2ac2c47e0020" scoped=""/></from>
+          <to><interface-ref name="SpiPacket" ref="0x2ac2c47dd890" scoped=""/></to>
+        </wire>
+        <wire loc="52:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pSpiC.nc">
+          <from><interface-ref name="SpiByte" ref="0x2ac2c47e2910" scoped=""/></from>
+          <to><interface-ref name="SpiByte" ref="0x2ac2c47de820" scoped=""/></to>
+        </wire>
+        <wire loc="51:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pSpiC.nc">
+          <from><interface-ref name="Resource" ref="0x2ac2c47e5bd0" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c47df448" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="44:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pSpiC.nc" name="SpiPacket" provided="1" ref="0x2ac2c47e0020">
+      <component-ref nicename="HplStm25pSpiC" qname="HplStm25pSpiC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SpiPacket" ref="0x2ac2c47e0020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SpiPacket" qname="SpiPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c47e0370" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c47e04f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pSpiC.nc" name="SpiByte" provided="1" ref="0x2ac2c47e2910">
+      <component-ref nicename="HplStm25pSpiC" qname="HplStm25pSpiC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SpiByte" ref="0x2ac2c47e2910" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SpiByte" qname="SpiByte"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="write" ref="0x2ac2c47e2c60" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="42:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pSpiC.nc" name="Resource" provided="1" ref="0x2ac2c47e5bd0">
+      <component-ref nicename="HplStm25pSpiC" qname="HplStm25pSpiC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Resource" ref="0x2ac2c47e5bd0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c47e2020" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c47e21a8" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c47e2330" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c47e24b8" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c47e2640" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="81:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Spi0C.nc" name="Resource" provided="1" ref="0x2ac2c47df448">
+      <component-ref nicename="HplStm25pSpiC.SpiC" qname="HplStm25pSpiC.SpiC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Resource" ref="0x2ac2c47df448" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c47df798" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c47df920" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c47dfaa8" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c47dfc30" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c47dfdb8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="87:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Spi0C.nc" name="SpiPacket" provided="1" ref="0x2ac2c47dd890">
+      <component-ref nicename="HplStm25pSpiC.SpiC" qname="HplStm25pSpiC.SpiC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SpiPacket" ref="0x2ac2c47dd890" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SpiPacket" qname="SpiPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c47ddbe0" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c47ddd68" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="83:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Spi0C.nc" name="SpiByte" provided="1" ref="0x2ac2c47de820">
+      <component-ref nicename="HplStm25pSpiC.SpiC" qname="HplStm25pSpiC.SpiC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SpiByte" ref="0x2ac2c47de820" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SpiByte" qname="SpiByte"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="write" ref="0x2ac2c47deb70" scoped=""/>
+      </interface-functions>
+    </interface><component loc="79(HplStm25pSpiC.SpiC):/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Spi0C.nc" nicename="HplStm25pSpiC.SpiC" qname="HplStm25pSpiC.SpiC">
+      <instance number="0">
+        <component-ref nicename="Msp430Spi0C" qname="Msp430Spi0C"/>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="114:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Spi0C.nc">
+          <from><interface-ref name="ResourceRequested" ref="0x2ac2c47de0c0" scoped=""/></from>
+          <to><interface-ref name="ResourceRequested" ref="0x2ac2c5297c58" scoped=""/></to>
+        </wire>
+        <wire loc="110:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Spi0C.nc">
+          <from><interface-ref name="SpiPacket" ref="0x2ac2c47dd890" scoped=""/></from>
+          <to><interface-ref name="SpiPacket" ref="0x2ac2c3a41020" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="106:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Spi0C.nc">
+          <from><interface-ref name="SpiByte" ref="0x2ac2c47de820" scoped=""/></from>
+          <to><interface-ref name="SpiByte" ref="0x2ac2c3a45970" scoped=""/></to>
+        </wire>
+        <wire loc="105:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Spi0C.nc">
+          <from><interface-ref name="Resource" ref="0x2ac2c47df448" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c3a476d8" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="108:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Spi0C.nc">
+          <from><interface-ref name="FastSpiByte" ref="0x2ac2c47dedf8" scoped=""/></from>
+          <to><interface-ref name="FastSpiByte" ref="0x2ac2c3a44020" scoped=""/></to>
+        </wire>
+        <wire loc="111:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Spi0C.nc">
+          <from><interface-ref name="Msp430SpiConfigure" ref="0x2ac2c3a3f020" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </from>
+          <to><interface-ref name="Msp430SpiConfigure" ref="0x2ac2c47dc020" scoped=""/></to>
+        </wire>
+        <wire loc="115:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Spi0C.nc">
+          <from><interface-ref name="ResourceConfigure" ref="0x2ac2c5289d60" scoped=""/></from>
+          <to><interface-ref name="ResourceConfigure" ref="0x2ac2c3a451c8" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="116:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Spi0C.nc">
+          <from><interface-ref name="UsartResource" ref="0x2ac2c3a41d90" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </from>
+          <to><interface-ref name="Resource" ref="0x2ac2c5297060" scoped=""/></to>
+        </wire>
+        <wire loc="117:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430Spi0C.nc">
+          <from><interface-ref name="UsartInterrupts" ref="0x2ac2c3a90e58" scoped=""/></from>
+          <to><interface-ref name="HplMsp430UsartInterrupts" ref="0x2ac2c5290430" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component></referenced></component>

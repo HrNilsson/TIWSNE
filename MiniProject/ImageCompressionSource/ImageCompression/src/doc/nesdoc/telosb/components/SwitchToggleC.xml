@@ -1,0 +1,85 @@
+<?xml version="1.0" ?><component abstract="" loc="41:/home/kasper/tinyos-main//tos/platforms/telosb/SwitchToggleC.nc" nicename="SwitchToggleC" qname="SwitchToggleC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/platforms/telosb/UserButton.h">
+        <short>
+ Implementation of the user button for the telosb platform
+
+ </short>
+        <long>
+ Implementation of the user button for the telosb platform
+
+ @author Gilman Tolle &lt;gtolle@archrock.com&gt;
+ @version $Revision: 1.1 $
+</long>
+      </documentation>
+      <parameters>
+      </parameters>
+      <module/>
+    <specification><interface loc="51:/home/kasper/tinyos-main//tos/platforms/telosb/SwitchToggleC.nc" name="sendEvent" provided="0" ref="0x2ac2c33a36b8">
+      <component-ref nicename="SwitchToggleC" qname="SwitchToggleC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="sendEvent" ref="0x2ac2c33a36b8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c33a3a08" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c33a3b90" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/platforms/telosb/SwitchToggleC.nc" name="GpioInterrupt" provided="0" ref="0x2ac2c33a4020">
+      <component-ref nicename="SwitchToggleC" qname="SwitchToggleC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="GpioInterrupt" ref="0x2ac2c33a4020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GpioInterrupt" qname="GpioInterrupt"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="fired" ref="0x2ac2c33a4370" scoped=""/>
+        <function-ref name="disable" ref="0x2ac2c33a44f8" scoped=""/>
+        <function-ref name="enableFallingEdge" ref="0x2ac2c33a4680" scoped=""/>
+        <function-ref name="enableRisingEdge" ref="0x2ac2c33a4808" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/platforms/telosb/SwitchToggleC.nc" name="Notify" provided="1" ref="0x2ac2c33a83b8">
+      <component-ref nicename="SwitchToggleC" qname="SwitchToggleC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Notify" ref="0x2ac2c33a83b8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Notify" qname="Notify"/>
+        <arguments>
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="disable" ref="0x2ac2c33a7470" scoped=""/>
+        <function-ref name="enable" ref="0x2ac2c33a7020" scoped=""/>
+        <function-ref name="notify" ref="0x2ac2c33a78c0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="42:/home/kasper/tinyos-main//tos/platforms/telosb/SwitchToggleC.nc" name="Get" provided="1" ref="0x2ac2c33a92b8">
+      <component-ref nicename="SwitchToggleC" qname="SwitchToggleC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Get" ref="0x2ac2c33a92b8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Get" qname="Get"/>
+        <arguments>
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x2ac2c33a9e00" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/platforms/telosb/SwitchToggleC.nc" name="GeneralIO" provided="0" ref="0x2ac2c33a7d88">
+      <component-ref nicename="SwitchToggleC" qname="SwitchToggleC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="GeneralIO" ref="0x2ac2c33a7d88" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c33a5170" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c33a52f8" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c33a5480" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c33a5608" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c33a5790" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c33a5918" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c33a5aa0" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c33a5c28" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

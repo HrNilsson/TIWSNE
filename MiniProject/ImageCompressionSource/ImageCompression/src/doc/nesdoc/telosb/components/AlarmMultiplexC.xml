@@ -1,0 +1,116 @@
+<?xml version="1.0" ?><component loc="43:/home/kasper/tinyos-main//tos/chips/cc2420/alarm/AlarmMultiplexC.nc" nicename="AlarmMultiplexC" qname="AlarmMultiplexC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/alarm/AlarmMultiplexC.nc">
+        <short>
+ A component that multiplexes the use of an alarm.</short>
+        <long>
+ A component that multiplexes the use of an alarm. The assumption is
+ that its use is mutually exclusive and users check whether the
+ events are for them.
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.1 $ $Date: 2007-07-04 00:37:14 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="54:/home/kasper/tinyos-main//tos/chips/cc2420/alarm/AlarmMultiplexC.nc">
+          <from><interface-ref name="Init" ref="0x2ac2c38a4bd8" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c389ce70" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/chips/cc2420/alarm/AlarmMultiplexC.nc">
+          <from><interface-ref name="Alarm32khz32" ref="0x2ac2c38a1648" scoped=""/></from>
+          <to><interface-ref name="Alarm32khz32" ref="0x2ac2c38ab6c0" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="45:/home/kasper/tinyos-main//tos/chips/cc2420/alarm/AlarmMultiplexC.nc" name="Init" provided="1" ref="0x2ac2c38a4bd8">
+      <component-ref nicename="AlarmMultiplexC" qname="AlarmMultiplexC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Init" ref="0x2ac2c38a4bd8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c38a1020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/chips/cc2420/alarm/AlarmMultiplexC.nc" name="Alarm32khz32" provided="1" ref="0x2ac2c38a1648">
+      <component-ref nicename="AlarmMultiplexC" qname="AlarmMultiplexC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Alarm32khz32" ref="0x2ac2c38a1648" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Alarm" qname="Alarm"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df788"/>
+            <typename><typedef-ref name="T32khz" ref="0x2ac2c33dfae0"/></typename>
+          </type-tag>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c389ecc0" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c389fd50" scoped=""/>
+        <function-ref name="startAt" ref="0x2ac2c389e6b8" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c389e230" scoped=""/>
+        <function-ref name="getAlarm" ref="0x2ac2c389d190" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c389f3f0" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c389f8c8" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="43:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420AlarmC.nc" name="Alarm32khz32" provided="1" ref="0x2ac2c38ab6c0">
+      <component-ref nicename="AlarmMultiplexC.Alarm" qname="AlarmMultiplexC.Alarm"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Alarm32khz32" ref="0x2ac2c38ab6c0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Alarm" qname="Alarm"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df788"/>
+            <typename><typedef-ref name="T32khz" ref="0x2ac2c33dfae0"/></typename>
+          </type-tag>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c38a8020" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c38a9020" scoped=""/>
+        <function-ref name="startAt" ref="0x2ac2c38a9930" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c38a94a8" scoped=""/>
+        <function-ref name="getAlarm" ref="0x2ac2c38a84a8" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c38aa578" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c38aaa50" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="42:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420AlarmC.nc" name="Init" provided="1" ref="0x2ac2c389ce70">
+      <component-ref nicename="AlarmMultiplexC.Alarm" qname="AlarmMultiplexC.Alarm"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Init" ref="0x2ac2c389ce70" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c38ab1e8" scoped=""/>
+      </interface-functions>
+    </interface><component loc="40(AlarmMultiplexC.Alarm):/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420AlarmC.nc" nicename="AlarmMultiplexC.Alarm" qname="AlarmMultiplexC.Alarm">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420AlarmC.nc">
+        <short>
+ HPL implementation of 32khz alarms for the ChipCon CC2420 radio
+ connected to a TI MSP430 processor.</short>
+        <long>
+ HPL implementation of 32khz alarms for the ChipCon CC2420 radio
+ connected to a TI MSP430 processor.
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.4 $ $Date: 2006-12-12 18:23:44 $
+</long>
+      </documentation>
+      <instance number="0">
+        <component-ref nicename="HplCC2420AlarmC" qname="HplCC2420AlarmC"/>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="51:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420AlarmC.nc">
+          <from><interface-ref name="Init" ref="0x2ac2c389ce70" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c4dead88" scoped=""/></to>
+        </wire>
+        <wire loc="52:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420AlarmC.nc">
+          <from><interface-ref name="Alarm32khz32" ref="0x2ac2c38ab6c0" scoped=""/></from>
+          <to><interface-ref name="Alarm" ref="0x2ac2c4de9608" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component></referenced></component>

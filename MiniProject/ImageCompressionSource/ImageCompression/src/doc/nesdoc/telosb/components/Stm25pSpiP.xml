@@ -1,0 +1,136 @@
+<?xml version="1.0" ?><component loc="39:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSpiP.nc" nicename="Stm25pSpiP" qname="Stm25pSpiP">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSpiP.nc">
+        <short>
+ </short>
+        <long>
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.4 $ $Date: 2006-12-12 18:23:13 $
+</long>
+      </documentation>
+      <module/>
+    <specification><interface loc="49:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSpiP.nc" name="SpiPacket" provided="0" ref="0x2ac2c47ab7a0">
+      <component-ref nicename="Stm25pSpiP" qname="Stm25pSpiP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SpiPacket" ref="0x2ac2c47ab7a0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SpiPacket" qname="SpiPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c47abaf0" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c47abc78" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSpiP.nc" name="SpiByte" provided="0" ref="0x2ac2c47ab168">
+      <component-ref nicename="Stm25pSpiP" qname="Stm25pSpiP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SpiByte" ref="0x2ac2c47ab168" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SpiByte" qname="SpiByte"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="write" ref="0x2ac2c47ab4b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSpiP.nc" name="CSN" provided="0" ref="0x2ac2c47aee80">
+      <component-ref nicename="Stm25pSpiP" qname="Stm25pSpiP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CSN" ref="0x2ac2c47aee80" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c47ad1f8" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c47ad380" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c47ad508" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c47ad690" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c47ad818" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c47ad9a0" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c47adb28" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c47adcb0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="41:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSpiP.nc" name="Init" provided="1" ref="0x2ac2c47b44b8">
+      <component-ref nicename="Stm25pSpiP" qname="Stm25pSpiP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Init" ref="0x2ac2c47b44b8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c47b4808" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSpiP.nc" name="Spi" provided="1" ref="0x2ac2c47b1988">
+      <component-ref nicename="Stm25pSpiP" qname="Stm25pSpiP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Spi" ref="0x2ac2c47b1988" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Stm25pSpi" qname="Stm25pSpi"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="sectorEraseDone" ref="0x2ac2c47b1cd8" scoped=""/>
+        <function-ref name="bulkErase" ref="0x2ac2c47b1e60" scoped=""/>
+        <function-ref name="powerDown" ref="0x2ac2c47af020" scoped=""/>
+        <function-ref name="readDone" ref="0x2ac2c47afde8" scoped=""/>
+        <function-ref name="read" ref="0x2ac2c47af330" scoped=""/>
+        <function-ref name="pageProgramDone" ref="0x2ac2c47af4b8" scoped=""/>
+        <function-ref name="sectorErase" ref="0x2ac2c47af640" scoped=""/>
+        <function-ref name="computeCrcDone" ref="0x2ac2c47af7c8" scoped=""/>
+        <function-ref name="powerUp" ref="0x2ac2c47af950" scoped=""/>
+        <function-ref name="computeCrc" ref="0x2ac2c47afad8" scoped=""/>
+        <function-ref name="pageProgram" ref="0x2ac2c47afc60" scoped=""/>
+        <function-ref name="bulkEraseDone" ref="0x2ac2c47af1a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSpiP.nc" name="SpiResource" provided="0" ref="0x2ac2c47ae1c8">
+      <component-ref nicename="Stm25pSpiP" qname="Stm25pSpiP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SpiResource" ref="0x2ac2c47ae1c8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c47ae518" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c47ae6a0" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c47ae828" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c47ae9b0" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c47aeb38" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="50:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSpiP.nc" name="Leds" provided="0" ref="0x2ac2c47aa020">
+      <component-ref nicename="Stm25pSpiP" qname="Stm25pSpiP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Leds" ref="0x2ac2c47aa020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Leds" qname="Leds"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="led0Off" ref="0x2ac2c47aa370" scoped=""/>
+        <function-ref name="led0Toggle" ref="0x2ac2c47aa4f8" scoped=""/>
+        <function-ref name="led1On" ref="0x2ac2c47aa680" scoped=""/>
+        <function-ref name="led1Toggle" ref="0x2ac2c47aa808" scoped=""/>
+        <function-ref name="led2Toggle" ref="0x2ac2c47aa990" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c47aab18" scoped=""/>
+        <function-ref name="led1Off" ref="0x2ac2c47aaca0" scoped=""/>
+        <function-ref name="led2Off" ref="0x2ac2c47a9330" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c47aae28" scoped=""/>
+        <function-ref name="led0On" ref="0x2ac2c47a9020" scoped=""/>
+        <function-ref name="led2On" ref="0x2ac2c47a91a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="42:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSpiP.nc" name="ClientResource" provided="1" ref="0x2ac2c47b4bb8">
+      <component-ref nicename="Stm25pSpiP" qname="Stm25pSpiP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ClientResource" ref="0x2ac2c47b4bb8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c47b1020" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c47b11a8" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c47b1330" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c47b14b8" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c47b1640" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSpiP.nc" name="Hold" provided="0" ref="0x2ac2c47ac060">
+      <component-ref nicename="Stm25pSpiP" qname="Stm25pSpiP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Hold" ref="0x2ac2c47ac060" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c47ac3b0" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c47ac538" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c47ac6c0" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c47ac848" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c47ac9d0" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c47acb58" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c47acce0" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c47ace68" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

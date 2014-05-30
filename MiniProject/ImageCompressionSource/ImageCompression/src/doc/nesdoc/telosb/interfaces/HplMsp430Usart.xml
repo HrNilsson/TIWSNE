@@ -1,0 +1,704 @@
+<?xml version="1.0" ?><interfacedef loc="45:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" nicename="HplMsp430Usart" qname="HplMsp430Usart">
+      <documentation loc="31:/home/kasper/tinyos-main//tos/chips/msp430/usart/msp430usart.h">
+        <short>
+ </short>
+        <long>
+ @author Vlado Handziski &lt;handzisk@tkn.tu-berlin.de&gt;
+ @author Philipp Huppertz &lt;huppertz@tkn.tu-berlin.de&gt;
+</long>
+      </documentation>
+      <function command="" loc="213:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="isTxEmpty" provided="0" ref="0x2ac2c3a6d290">
+        <documentation loc="209:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ SUCCESS if the TX buffer is empty and all of the bits have been
+ shifted out
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="143:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="enableUartRx" provided="0" ref="0x2ac2c3a78730">
+        <documentation loc="140:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Enables the Uart RX functionality of the USART module.</short>
+          <long>
+ Enables the Uart RX functionality of the USART module.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="50:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="setUctl" provided="0" ref="0x2ac2c3a87c70">
+        <documentation loc="47:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Sets the UxCTL Control Register
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-tag alignment="I:1" size="I:1"><struct-ref ref="0x2ac2c3a06528"/>
+              <typename><typedef-ref name="msp430_uctl_t" ref="0x2ac2c3a06d50"/></typename>
+            </type-tag>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="50:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="control" ref="0x2ac2c3a87a00">
+            <type-tag alignment="I:1" size="I:1"><struct-ref ref="0x2ac2c3a06528"/>
+              <typename><typedef-ref name="msp430_uctl_t" ref="0x2ac2c3a06d50"/></typename>
+            </type-tag>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="123:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="enableUart" provided="0" ref="0x2ac2c3a7b978">
+        <documentation loc="120:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Enables both the Rx and the Tx Uart modules.</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="70:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="setUrctl" provided="0" ref="0x2ac2c3a81020">
+        <documentation loc="67:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Sets the UxRCTL Receive Control Register
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-tag alignment="I:1" size="I:1"><struct-ref ref="0x2ac2c3a01280"/>
+              <typename><typedef-ref name="msp430_urctl_t" ref="0x2ac2c3a01aa8"/></typename>
+            </type-tag>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="70:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="control" ref="0x2ac2c3a83cc8">
+            <type-tag alignment="I:1" size="I:1"><struct-ref ref="0x2ac2c3a01280"/>
+              <typename><typedef-ref name="msp430_urctl_t" ref="0x2ac2c3a01aa8"/></typename>
+            </type-tag>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="180:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="enableRxIntr" provided="0" ref="0x2ac2c3a72928">
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="197:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="clrRxIntr" provided="0" ref="0x2ac2c3a6fce8">
+        <documentation loc="194:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Clears RX interrupt pending flag
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="65:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="getUtctl" provided="0" ref="0x2ac2c3a83590">
+        <documentation loc="62:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Reads the UxTCTL Transmit Control Register
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-tag alignment="I:1" size="I:1"><struct-ref ref="0x2ac2c3a04350"/>
+            <typename><typedef-ref name="msp430_utctl_t" ref="0x2ac2c3a04ac8"/></typename>
+          </type-tag>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="75:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="getUrctl" provided="0" ref="0x2ac2c3a817a8">
+        <documentation loc="72:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Reads the UxRCTL Receive Control Register
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-tag alignment="I:1" size="I:1"><struct-ref ref="0x2ac2c3a01280"/>
+            <typename><typedef-ref name="msp430_urctl_t" ref="0x2ac2c3a01aa8"/></typename>
+          </type-tag>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="97:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="resetUsart" provided="0" ref="0x2ac2c3a7d338">
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="97:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="reset" ref="0x2ac2c3a7d0c8">
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="95:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="getUmctl" provided="0" ref="0x2ac2c3a7f9d0">
+        <documentation loc="92:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Reads the UxMCTL Modulation Control Register
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="179:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="disableIntr" provided="0" ref="0x2ac2c3a72258">
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="60:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="setUtctl" provided="0" ref="0x2ac2c3a84dc8">
+        <documentation loc="57:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Sets the UxTCTL Transmit Control Register
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-tag alignment="I:1" size="I:1"><struct-ref ref="0x2ac2c3a04350"/>
+              <typename><typedef-ref name="msp430_utctl_t" ref="0x2ac2c3a04ac8"/></typename>
+            </type-tag>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="60:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="control" ref="0x2ac2c3a84b58">
+            <type-tag alignment="I:1" size="I:1"><struct-ref ref="0x2ac2c3a04350"/>
+              <typename><typedef-ref name="msp430_utctl_t" ref="0x2ac2c3a04ac8"/></typename>
+            </type-tag>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="85:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="getUbr" provided="0" ref="0x2ac2c3a80848">
+        <documentation loc="82:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Reads the UxBR0 and UxBR1 Baud Rate Control Registers
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned="">
+            <typename><typedef-ref name="uint16_t" ref="0x2ac2c209ab20"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="181:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="enableTxIntr" provided="0" ref="0x2ac2c3a71020">
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="90:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="setUmctl" provided="0" ref="0x2ac2c3a7f290">
+        <documentation loc="87:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Sets the UxMCTL Modulation Control Register
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="90:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="umctl" ref="0x2ac2c3a7f020">
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="113:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="isUartRx" provided="0" ref="0x2ac2c3a7cac0">
+        <documentation loc="110:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Returns TRUE if the USART has Uart RX mode enabled
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="118:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="isUart" provided="0" ref="0x2ac2c3a7b258">
+        <documentation loc="115:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Returns TRUE if the USART is set to Uart mode (both RX and TX)
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="177:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="disableRxIntr" provided="0" ref="0x2ac2c3a73468">
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="163:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="isSpi" provided="0" ref="0x2ac2c3a76570">
+        <documentation loc="160:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Returns TRUE if the USART is set to Spi mode
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="133:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="enableUartTx" provided="0" ref="0x2ac2c3a7a830">
+        <documentation loc="130:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Enables the Uart TX functionality of the USART module.</short>
+          <long>
+ Enables the Uart TX functionality of the USART module.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="178:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="disableTxIntr" provided="0" ref="0x2ac2c3a73b40">
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="148:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="disableUartRx" provided="0" ref="0x2ac2c3a77020">
+        <documentation loc="145:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Disables the Uart RX module.</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="182:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="enableIntr" provided="0" ref="0x2ac2c3a716d8">
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="103:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="getMode" provided="0" ref="0x2ac2c3a7daa8">
+        <documentation loc="99:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Returns an enum value corresponding to the current mode of the
+ USART module.</short>
+          <long>
+ Returns an enum value corresponding to the current mode of the
+ USART module.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-tag alignment="I:2" size="I:2"><enum-ref ref="0x2ac2c3a0c560"/>
+            <typename><typedef-ref name="msp430_usartmode_t" ref="0x2ac2c3a09ce0"/></typename>
+          </type-tag>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="187:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="isTxIntrPending" provided="0" ref="0x2ac2c3a71e10">
+        <documentation loc="184:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ TRUE if TX interrupt pending, flag must be cleared explicitly
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="207:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="clrIntr" provided="0" ref="0x2ac2c3a6eb20">
+        <documentation loc="204:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Clears both TX and RX interrupt pending flags
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="80:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="setUbr" provided="0" ref="0x2ac2c3a80108">
+        <documentation loc="77:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Sets the UxBR0 and UxBR1 Baud Rate Control Registers
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned="">
+              <typename><typedef-ref name="uint16_t" ref="0x2ac2c209ab20"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="80:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="ubr" ref="0x2ac2c3a81e68">
+            <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned="">
+              <typename><typedef-ref name="uint16_t" ref="0x2ac2c209ab20"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="224:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="tx" provided="0" ref="0x2ac2c3a6dbb8">
+        <documentation loc="215:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Transmit a byte of data.</short>
+          <long>
+ Transmit a byte of data. When the transmission is completed,
+ &lt;code&gt;txDone&lt;/done&gt; is generated. Only then a new byte may be
+ transmitted, otherwise the previous byte will be overwritten.
+ The mode of transmission (Uart or Spi) depends on the current
+ state of the USART, which must be managed by a higher layer.
+
+ @return SUCCESS always.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="224:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="data" ref="0x2ac2c3a6d948">
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="55:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="getUctl" provided="0" ref="0x2ac2c3a84428">
+        <documentation loc="52:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Reads the UxCTL Control Register
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-tag alignment="I:1" size="I:1"><struct-ref ref="0x2ac2c3a06528"/>
+            <typename><typedef-ref name="msp430_uctl_t" ref="0x2ac2c3a06d50"/></typename>
+          </type-tag>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="128:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="disableUart" provided="0" ref="0x2ac2c3a7a0d8">
+        <documentation loc="125:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Disables both the Rx and the Tx Uart modules.</short>
+          <long>
+ Disables both the Rx and the Tx Uart modules.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="153:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="enableSpi" provided="0" ref="0x2ac2c3a77710">
+        <documentation loc="150:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Enables the USART when in Spi mode.</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="174:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="setModeUart" provided="0" ref="0x2ac2c3a74c78">
+        <documentation loc="170:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Switches USART to Uart mode (RX and TX enabled)
+ Interrupts disabled by default.</short>
+          <long>
+ Switches USART to Uart mode (RX and TX enabled)
+ Interrupts disabled by default.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-pointer alignment="I:2" size="I:2">
+              <type-tag alignment="I:2" size="I:8"><union-ref ref="0x2ac2c3a24180"/>
+                <typename><typedef-ref name="msp430_uart_union_config_t" ref="0x2ac2c3a24588"/></typename>
+              </type-tag>
+            </type-pointer>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="174:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="config" ref="0x2ac2c3a74a08">
+            <type-pointer alignment="I:2" size="I:2">
+              <type-tag alignment="I:2" size="I:8"><union-ref ref="0x2ac2c3a24180"/>
+                <typename><typedef-ref name="msp430_uart_union_config_t" ref="0x2ac2c3a24588"/></typename>
+              </type-tag>
+            </type-pointer>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="168:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="setModeSpi" provided="0" ref="0x2ac2c3a74020">
+        <documentation loc="165:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Switches USART to Spi mode.</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-pointer alignment="I:2" size="I:2">
+              <type-tag alignment="I:2" size="I:4"><union-ref ref="0x2ac2c3a37898"/>
+                <typename><typedef-ref name="msp430_spi_union_config_t" ref="0x2ac2c3a37ca0"/></typename>
+              </type-tag>
+            </type-pointer>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="168:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="config" ref="0x2ac2c3a76d58">
+            <type-pointer alignment="I:2" size="I:2">
+              <type-tag alignment="I:2" size="I:4"><union-ref ref="0x2ac2c3a37898"/>
+                <typename><typedef-ref name="msp430_spi_union_config_t" ref="0x2ac2c3a37ca0"/></typename>
+              </type-tag>
+            </type-pointer>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="231:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="rx" provided="0" ref="0x2ac2c3a6b430">
+        <documentation loc="226:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Get current value from RX-buffer.</short>
+          <long>
+ Get current value from RX-buffer.
+
+ @return SUCCESS always.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="192:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="isRxIntrPending" provided="0" ref="0x2ac2c3a6f5d0">
+        <documentation loc="189:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ TRUE if RX interrupt pending, flag must be cleared explicitly
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="108:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="isUartTx" provided="0" ref="0x2ac2c3a7c290">
+        <documentation loc="105:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Returns TRUE if the USART has Uart TX mode enabled
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="202:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="clrTxIntr" provided="0" ref="0x2ac2c3a6e440">
+        <documentation loc="199:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Clears TX interrupt pending flag
+</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="158:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="disableSpi" provided="0" ref="0x2ac2c3a77e10">
+        <documentation loc="155:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Disables the USART when in Spi mode.</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function command="" loc="138:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc" name="disableUartTx" provided="0" ref="0x2ac2c3a78020">
+        <documentation loc="135:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart.nc">
+          <short>
+ Disables the Uart TX module.</short>
+        </documentation>
+        <interfacedef-ref nicename="HplMsp430Usart" qname="HplMsp430Usart"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+    </interfacedef>

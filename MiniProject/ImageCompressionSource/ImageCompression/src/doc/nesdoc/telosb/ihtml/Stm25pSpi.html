@@ -1,0 +1,419 @@
+<html>
+  <head>
+    <LINK rel="stylesheet" href="nesdoc.css" type="text/css" media="screen"><title>Interface: Stm25pSpi</title>
+  </head>
+  <body>
+    <h2>Interface: Stm25pSpi</h2>
+    <b>interface Stm25pSpi</b><p>
+ SPI abstraction for the ST M25P family of serial code flash chips.
+
+ 
+    <p>
+    <dl>
+      <dt><b>Author:</b>
+      <dd>
+        Jonathan Hui &lt;jhui@archrock.com&gt;
+ 
+      </dd>
+      <dt><b>Version:</b>
+      <dd>
+        $Revision: 1.4 $ $Date: 2006-12-12 18:23:13 $
+
+      </dd>
+    </dl>
+    <p><p><div id=heading>Commands</div><div id=funcsig><span id=funcnameshort>command error_t <a href="#bulkErase">bulkErase</a>()
+      </span><menu>
+ Initiate a bulk erase.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>command error_t <a href="#computeCrc">computeCrc</a>(uint16_t crc, stm25p_addr_t addr, stm25p_len_t len)
+      </span><menu>
+ Initiate a crc computation.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>command error_t <a href="#pageProgram">pageProgram</a>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len)
+      </span><menu>
+ Initiate a page program.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>command error_t <a href="#powerDown">powerDown</a>()
+      </span><menu>
+ Put chip into deep power down mode.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>command error_t <a href="#powerUp">powerUp</a>()
+      </span><menu>
+ Release chip from power down mode.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>command error_t <a href="#read">read</a>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len)
+      </span><menu>
+ Initiate a read operation.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>command error_t <a href="#sectorErase">sectorErase</a>(uint8_t sector)
+      </span><menu>
+ Initiate a sector erase.
+      </menu>
+    </div><p><div id=heading>Events</div><div id=funcsig><span id=funcnameshort>event void <a href="#bulkEraseDone">bulkEraseDone</a>(error_t error)
+      </span><menu>
+ Signals the completion of a bulk erase operation.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>event void <a href="#computeCrcDone">computeCrcDone</a>(uint16_t crc, stm25p_addr_t addr, stm25p_len_t len, error_t error)
+      </span><menu>
+ Signals the completion of a crc computation operation.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>event void <a href="#pageProgramDone">pageProgramDone</a>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len, error_t error)
+      </span><menu>
+ Signal the completion of a page program operation.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>event void <a href="#readDone">readDone</a>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len, error_t error)
+      </span><menu>
+ Signals the completion of a read operation.
+      </menu>
+    </div><div id=funcsig><span id=funcnameshort>event void <a href="#sectorEraseDone">sectorEraseDone</a>(uint8_t sector, error_t error)
+      </span><menu>
+ Signals the completion of a sector erase operation.
+      </menu>
+    </div><p><div id=heading>Commands - Details</div>
+    <a name="bulkErase"></a>
+    <h4>bulkErase
+    </h4>
+    <span id=funcnameshort>command error_t <b>bulkErase</b>()
+    </span>
+    <p>
+    <menu>
+      
+ Initiate a bulk erase. On SUCCESS, the <code>bulkEraseDone</code>
+ event will be signalled when the operation completes.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Returns:</b>
+        <dd>
+          SUCCESS if the request was accepted, FAIL otherwise.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="computeCrc"></a>
+    <h4>computeCrc
+    </h4>
+    <span id=funcnameshort>command error_t <b>computeCrc</b>(uint16_t crc, stm25p_addr_t addr, stm25p_len_t len)
+    </span>
+    <p>
+    <menu>
+      
+ Initiate a crc computation. On SUCCESS, the
+ <code>computeCrcDone</code> event will be signalled when the
+ operation completes.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>crc</code> -  starting crc value.
+ 
+        </dd>
+        <dd>
+          <code>addr</code> -  the starting physical address.
+ 
+        </dd>
+        <dd>
+          <code>len</code> -  the number of bytes to do crc computation over.
+ 
+        </dd>
+        <dt><b>Returns:</b>
+        <dd>
+          SUCCESS if the request was accepted, FAIL otherwise.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="pageProgram"></a>
+    <h4>pageProgram
+    </h4>
+    <span id=funcnameshort>command error_t <b>pageProgram</b>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len)
+    </span>
+    <p>
+    <menu>
+      
+ Initiate a page program. On SUCCESS, the
+ <code>pageProgramDone</code> event will be signalled when the
+ operation completes.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>addr</code> -  starting physical address.
+ 
+        </dd>
+        <dd>
+          <code>buf</code> -  pointer to data buffer.
+ 
+        </dd>
+        <dd>
+          <code>len</code> -  number of bytes to write.
+ 
+        </dd>
+        <dt><b>Returns:</b>
+        <dd>
+          SUCCESS if the request was accepted, FAIL otherwise.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="powerDown"></a>
+    <h4>powerDown
+    </h4>
+    <span id=funcnameshort>command error_t <b>powerDown</b>()
+    </span>
+    <p>
+    <menu>
+      
+ Put chip into deep power down mode.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Returns:</b>
+        <dd>
+          SUCCESS if the request completed successfully, FAIL
+ otherwise.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="powerUp"></a>
+    <h4>powerUp
+    </h4>
+    <span id=funcnameshort>command error_t <b>powerUp</b>()
+    </span>
+    <p>
+    <menu>
+      
+ Release chip from power down mode.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Returns:</b>
+        <dd>
+          SUCCESS if the request completed successfully, FAIL
+ otherwise.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="read"></a>
+    <h4>read
+    </h4>
+    <span id=funcnameshort>command error_t <b>read</b>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len)
+    </span>
+    <p>
+    <menu>
+      
+ Initiate a read operation. On SUCCESS, the <code>readDone</cdoe>
+ event will be signalled when the operation completes.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>addr</code> -  the physical address to start at.
+ 
+        </dd>
+        <dd>
+          <code>buf</code> -  pointer to data buffer.
+ 
+        </dd>
+        <dd>
+          <code>len</code> -  number of bytes to read.
+ 
+        </dd>
+        <dt><b>Returns:</b>
+        <dd>
+          SUCCESS if the request was accepted, FAIL otherwise.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="sectorErase"></a>
+    <h4>sectorErase
+    </h4>
+    <span id=funcnameshort>command error_t <b>sectorErase</b>(uint8_t sector)
+    </span>
+    <p>
+    <menu>
+      
+ Initiate a sector erase. On SUCCESS, the
+ <code>sectorEraseDone</code> event will be signalled when the
+ operation completes.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>sector</code> -  physical sector to erase.
+ 
+        </dd>
+        <dt><b>Returns:</b>
+        <dd>
+          SUCCESS if the request was accepted, FAIL otherwise.
+
+        </dd>
+      </dl>
+    </menu>
+    <p><div id=heading>Events - Details</div>
+    <a name="bulkEraseDone"></a>
+    <h4>bulkEraseDone
+    </h4>
+    <span id=funcnameshort>event void <b>bulkEraseDone</b>(error_t error)
+    </span>
+    <p>
+    <menu>
+      
+ Signals the completion of a bulk erase operation.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>error</code> -  notification of how the operation went.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="computeCrcDone"></a>
+    <h4>computeCrcDone
+    </h4>
+    <span id=funcnameshort>event void <b>computeCrcDone</b>(uint16_t crc, stm25p_addr_t addr, stm25p_len_t len, error_t error)
+    </span>
+    <p>
+    <menu>
+      
+ Signals the completion of a crc computation operation.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>crc</code> -  resulting crc value.
+ 
+        </dd>
+        <dd>
+          <code>addr</code> -  the starting physical address.
+ 
+        </dd>
+        <dd>
+          <code>len</code> -  the number of bytes the crc was computed over.
+ 
+        </dd>
+        <dd>
+          <code>error</code> -  notification of how the operation went.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="pageProgramDone"></a>
+    <h4>pageProgramDone
+    </h4>
+    <span id=funcnameshort>event void <b>pageProgramDone</b>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len, error_t error)
+    </span>
+    <p>
+    <menu>
+      
+ Signal the completion of a page program operation.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>addr</code> -  starting physical address.
+ 
+        </dd>
+        <dd>
+          <code>buf</code> -  pointer to data buffer.
+ 
+        </dd>
+        <dd>
+          <code>len</code> -  number of bytes to write.
+ 
+        </dd>
+        <dd>
+          <code>error</code> -  notification of how the operation went.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="readDone"></a>
+    <h4>readDone
+    </h4>
+    <span id=funcnameshort>event void <b>readDone</b>(stm25p_addr_t addr, uint8_t *buf, stm25p_len_t len, error_t error)
+    </span>
+    <p>
+    <menu>
+      
+ Signals the completion of a read operation.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>addr</code> -  the starting physical address.
+ 
+        </dd>
+        <dd>
+          <code>buf</code> -  pointer to data buffer.
+ 
+        </dd>
+        <dd>
+          <code>len</code> -  number of bytes read.
+ 
+        </dd>
+        <dd>
+          <code>error</code> -  notification of how the operation went.
+
+        </dd>
+      </dl>
+    </menu>
+    <hr>
+    <a name="sectorEraseDone"></a>
+    <h4>sectorEraseDone
+    </h4>
+    <span id=funcnameshort>event void <b>sectorEraseDone</b>(uint8_t sector, error_t error)
+    </span>
+    <p>
+    <menu>
+      
+ Signals the completion of a sector erase operation.
+
+ 
+      <p>
+      <dl>
+        <dt><b>Parameters:</b>
+        <dd>
+          <code>sector</code> -  physical sector erased
+ 
+        </dd>
+        <dd>
+          <code>error</code> -  notification of how the operation went.
+
+        </dd>
+      </dl>
+    </menu>
+  </body>
+</html>

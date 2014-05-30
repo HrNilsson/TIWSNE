@@ -1,0 +1,377 @@
+<?xml version="1.0" ?><component loc="5:ImageCompressionC.nc" nicename="ImageCompressionC" qname="ImageCompressionC">
+      <module/>
+    <specification><interface loc="28:ImageCompressionC.nc" name="CompressedStore" provided="0" ref="0x2ac2c3600570">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CompressedStore" ref="0x2ac2c3600570" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockWrite" qname="BlockWrite"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="syncDone" ref="0x2ac2c36008c0" scoped=""/>
+        <function-ref name="writeDone" ref="0x2ac2c3600a48" scoped=""/>
+        <function-ref name="erase" ref="0x2ac2c3600bd0" scoped=""/>
+        <function-ref name="eraseDone" ref="0x2ac2c3600d58" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3634020" scoped=""/>
+        <function-ref name="sync" ref="0x2ac2c36341a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="11:ImageCompressionC.nc" name="NotifyButton" provided="0" ref="0x2ac2c3597a88">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="NotifyButton" ref="0x2ac2c3597a88" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Notify" qname="Notify"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><enum-ref ref="0x2ac2c3288b18"/>
+            <typename><typedef-ref name="button_state_t" ref="0x2ac2c3285498"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="disable" ref="0x2ac2c3596a70" scoped=""/>
+        <function-ref name="enable" ref="0x2ac2c3596620" scoped=""/>
+        <function-ref name="notify" ref="0x2ac2c3594020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="13:ImageCompressionC.nc" name="AMControl" provided="0" ref="0x2ac2c358f548">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMControl" ref="0x2ac2c358f548" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c358f898" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c358fa20" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c358fba8" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c358fd30" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="16:ImageCompressionC.nc" name="CompressedReceive" provided="0" ref="0x2ac2c35e3d68">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CompressedReceive" ref="0x2ac2c35e3d68" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c358d0f0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="18:ImageCompressionC.nc" name="CompressedAMPacket" provided="0" ref="0x2ac2c3605c70">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CompressedAMPacket" ref="0x2ac2c3605c70" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c35e4020" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c35e41a8" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c35e4330" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c35e44b8" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c35e4640" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c35e47c8" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c35e4950" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c35e4ad8" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c35e4c60" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c35e4de8" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c3616020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="23:ImageCompressionC.nc" name="UncompressedAMPacket" provided="0" ref="0x2ac2c3604720">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="UncompressedAMPacket" ref="0x2ac2c3604720" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c3604a70" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c3604bf8" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c3604d80" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c3603020" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c36031a8" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c3603330" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c36034b8" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c3603640" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c36037c8" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c3603950" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c3603ad8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="6:ImageCompressionC.nc" name="Boot" provided="0" ref="0x2ac2c359f780">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Boot" ref="0x2ac2c359f780" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Boot" qname="Boot"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="booted" ref="0x2ac2c359fad0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="31:ImageCompressionC.nc" name="SerialControl" provided="0" ref="0x2ac2c362a3f0">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SerialControl" ref="0x2ac2c362a3f0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c362a740" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c362a8c8" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c362aa50" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c362abd8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="21:ImageCompressionC.nc" name="UncompressedReceive" provided="0" ref="0x2ac2c3606180">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="UncompressedReceive" ref="0x2ac2c3606180" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c36064d0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="10:ImageCompressionC.nc" name="GetButton" provided="0" ref="0x2ac2c3598830">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="GetButton" ref="0x2ac2c3598830" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Get" qname="Get"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><enum-ref ref="0x2ac2c3288b18"/>
+            <typename><typedef-ref name="button_state_t" ref="0x2ac2c3285498"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x2ac2c35973d8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="60:ImageCompressionC.nc" name="SendUncompressedToMoteTask" provided="0" ref="0x2ac2c361d220">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SendUncompressedToMoteTask" ref="0x2ac2c361d220" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c361d570" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c361d6f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="62:ImageCompressionC.nc" name="ReceivingUncompressedFromMoteTask" provided="0" ref="0x2ac2c36572b0">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ReceivingUncompressedFromMoteTask" ref="0x2ac2c36572b0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c3657600" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c3657788" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="17:ImageCompressionC.nc" name="CompressedPacket" provided="0" ref="0x2ac2c36152f8">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CompressedPacket" ref="0x2ac2c36152f8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c3615648" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c36157d0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c3615958" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c3615ae0" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c3615c68" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="61:ImageCompressionC.nc" name="SendCompressedToMoteTask" provided="0" ref="0x2ac2c361c100">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SendCompressedToMoteTask" ref="0x2ac2c361c100" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c361c650" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c361c7d8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="25:ImageCompressionC.nc" name="UncompressedStore" provided="0" ref="0x2ac2c3635d80">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="UncompressedStore" ref="0x2ac2c3635d80" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockWrite" qname="BlockWrite"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="syncDone" ref="0x2ac2c3601170" scoped=""/>
+        <function-ref name="writeDone" ref="0x2ac2c36012f8" scoped=""/>
+        <function-ref name="erase" ref="0x2ac2c3601480" scoped=""/>
+        <function-ref name="eraseDone" ref="0x2ac2c3601608" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3601790" scoped=""/>
+        <function-ref name="sync" ref="0x2ac2c3601918" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="32:ImageCompressionC.nc" name="SerialReceive" provided="0" ref="0x2ac2c3629020">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SerialReceive" ref="0x2ac2c3629020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Receive" qname="Receive"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="receive" ref="0x2ac2c3629370" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="36:ImageCompressionC.nc" name="Comp" provided="0" ref="0x2ac2c36215c8">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Comp" ref="0x2ac2c36215c8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="QuantCompress" qname="QuantCompress"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="deCompressVector" ref="0x2ac2c3621918" scoped=""/>
+        <function-ref name="compressVector" ref="0x2ac2c3621aa0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="7:ImageCompressionC.nc" name="Leds" provided="0" ref="0x2ac2c359fd88">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Leds" ref="0x2ac2c359fd88" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Leds" qname="Leds"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="led0Off" ref="0x2ac2c359e170" scoped=""/>
+        <function-ref name="led0Toggle" ref="0x2ac2c359e2f8" scoped=""/>
+        <function-ref name="led1On" ref="0x2ac2c359e480" scoped=""/>
+        <function-ref name="led1Toggle" ref="0x2ac2c359e608" scoped=""/>
+        <function-ref name="led2Toggle" ref="0x2ac2c359e790" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c359e918" scoped=""/>
+        <function-ref name="led1Off" ref="0x2ac2c359eaa0" scoped=""/>
+        <function-ref name="led2Off" ref="0x2ac2c359d1a8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c359ec28" scoped=""/>
+        <function-ref name="led0On" ref="0x2ac2c359edb0" scoped=""/>
+        <function-ref name="led2On" ref="0x2ac2c359d020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="63:ImageCompressionC.nc" name="ReceivingCompressedFromMoteTask" provided="0" ref="0x2ac2c36562a8">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ReceivingCompressedFromMoteTask" ref="0x2ac2c36562a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c36565f8" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c3656780" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="29:ImageCompressionC.nc" name="CompressedRestore" provided="0" ref="0x2ac2c3634580">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CompressedRestore" ref="0x2ac2c3634580" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockRead" qname="BlockRead"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c36348d0" scoped=""/>
+        <function-ref name="computeCrcDone" ref="0x2ac2c3634a58" scoped=""/>
+        <function-ref name="computeCrc" ref="0x2ac2c3634be0" scoped=""/>
+        <function-ref name="getSize" ref="0x2ac2c3634d68" scoped=""/>
+        <function-ref name="readDone" ref="0x2ac2c362a020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="64:ImageCompressionC.nc" name="SendUncompressedToPcTask" provided="0" ref="0x2ac2c36552a8">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SendUncompressedToPcTask" ref="0x2ac2c36552a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c36555f8" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c3655780" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="65:ImageCompressionC.nc" name="SendCompressedToPcTask" provided="0" ref="0x2ac2c36532a0">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SendCompressedToPcTask" ref="0x2ac2c36532a0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c36535f0" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c3653778" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="15:ImageCompressionC.nc" name="CompressedSend" provided="0" ref="0x2ac2c35e6690">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CompressedSend" ref="0x2ac2c35e6690" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c35e69e0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c35e6b68" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c35e6cf0" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c35e6e78" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c358e030" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="20:ImageCompressionC.nc" name="UncompressedSend" provided="0" ref="0x2ac2c36163d0">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="UncompressedSend" ref="0x2ac2c36163d0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c3616720" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c36168a8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c3616a30" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c3616bb8" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c3616d40" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="22:ImageCompressionC.nc" name="UncompressedPacket" provided="0" ref="0x2ac2c3606890">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="UncompressedPacket" ref="0x2ac2c3606890" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c3606ce0" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c3606e68" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c3604020" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c36041a8" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c3604330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="26:ImageCompressionC.nc" name="UncompressedRestore" provided="0" ref="0x2ac2c362c6a8">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="UncompressedRestore" ref="0x2ac2c362c6a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="BlockRead" qname="BlockRead"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c362c9f8" scoped=""/>
+        <function-ref name="computeCrcDone" ref="0x2ac2c362cb80" scoped=""/>
+        <function-ref name="computeCrc" ref="0x2ac2c362cd08" scoped=""/>
+        <function-ref name="getSize" ref="0x2ac2c3600020" scoped=""/>
+        <function-ref name="readDone" ref="0x2ac2c36001a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="33:ImageCompressionC.nc" name="SerialAMSend" provided="0" ref="0x2ac2c36296f8">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SerialAMSend" ref="0x2ac2c36296f8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c3629a48" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c3629bd0" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c3629d58" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c3628020" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c36281a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="34:ImageCompressionC.nc" name="SerialFlow" provided="0" ref="0x2ac2c3625988">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SerialFlow" ref="0x2ac2c3625988" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Set" qname="Set"/>
+        <arguments>
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="bool" ref="0x2ac2c29e01d0"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="set" ref="0x2ac2c3627528" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="8:ImageCompressionC.nc" name="Timer" provided="0" ref="0x2ac2c359d628">
+      <component-ref nicename="ImageCompressionC" qname="ImageCompressionC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Timer" ref="0x2ac2c359d628" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Timer" qname="Timer"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df020"/>
+            <typename><typedef-ref name="TMilli" ref="0x2ac2c33df378"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c35998f0" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c359b020" scoped=""/>
+        <function-ref name="startPeriodicAt" ref="0x2ac2c359bd10" scoped=""/>
+        <function-ref name="isOneShot" ref="0x2ac2c359b8c0" scoped=""/>
+        <function-ref name="getdt" ref="0x2ac2c35981c0" scoped=""/>
+        <function-ref name="gett0" ref="0x2ac2c3599d40" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c359b470" scoped=""/>
+        <function-ref name="startPeriodic" ref="0x2ac2c359c198" scoped=""/>
+        <function-ref name="startOneShotAt" ref="0x2ac2c3599320" scoped=""/>
+        <function-ref name="startOneShot" ref="0x2ac2c359c638" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c359cad8" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

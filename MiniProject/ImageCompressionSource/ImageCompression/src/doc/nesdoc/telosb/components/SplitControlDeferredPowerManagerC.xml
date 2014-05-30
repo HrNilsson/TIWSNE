@@ -1,0 +1,250 @@
+<?xml version="1.0" ?><component abstract="" loc="70:/home/kasper/tinyos-main//tos/lib/power/SplitControlDeferredPowerManagerC.nc" nicename="SplitControlDeferredPowerManagerC" qname="SplitControlDeferredPowerManagerC">
+      <documentation loc="41:/home/kasper/tinyos-main//tos/lib/power/SplitControlDeferredPowerManagerC.nc">
+        <short>
+ Please refer to TEP 115 for more information about this component and its
+ intended use.&lt;br&gt;&lt;br&gt;
+
+ This component povides a power management policy for managing the power
+ states of non-virtualized devices.</short>
+        <long>
+ Please refer to TEP 115 for more information about this component and its
+ intended use.&lt;br&gt;&lt;br&gt;
+
+ This component povides a power management policy for managing the power
+ states of non-virtualized devices.  Non-virtualized devices are shared
+ using a parameterized Resource interface, and are powered down according
+ to some policy whenever there are no more pending requests to that Resource.
+ The policy implemented by this component is to delay the power down of a
+ device by some contant factor.  Such a policy is useful whenever a device
+ has a long wake-up latency.  The cost of waiting for the device to power
+ up can be avoided if the device is requested again before some predetermined
+ amount of time.&lt;br&gt;&lt;br&gt;
+
+ Powerdown of the device is done through the &lt;code&gt;SplitControl&lt;/code&gt;
+ interface, so this component can only be used with those devices that
+ provide that interface.&lt;br&gt;&lt;br&gt;
+
+ For devices providing either the &lt;code&gt;AsyncStdControl&lt;/code&gt; or
+ &lt;code&gt;StdControl&lt;/code&gt; interfaces, please use either the
+ &lt;code&gt;AsyncStdControlDeferredPowerManagerC&lt;/code&gt; component or the
+ &lt;code&gt;StdControlDeferredPowerManagerC&lt;/code&gt; component respectively.
+
+ @param &lt;b&gt;delay&lt;/b&gt; -- The amount of time the power manager should wait
+                        before shutting down the device once it is free.
+ 
+ @author Kevin Klues (klueska@cs.wustl.edu)
+</long>
+      </documentation>
+      <parameters>
+        <constant loc="70:/home/kasper/tinyos-main//tos/lib/power/SplitControlDeferredPowerManagerC.nc" name="delay" ref="0x2ac2c477a720">
+          <component-ref nicename="SplitControlDeferredPowerManagerC" qname="SplitControlDeferredPowerManagerC"/>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </constant>
+      </parameters>
+      <configuration/>
+      <wiring>
+        <wire loc="83:/home/kasper/tinyos-main//tos/lib/power/SplitControlDeferredPowerManagerC.nc">
+          <from><interface-ref name="SplitControl" ref="0x2ac2c47ca780" scoped=""/></from>
+          <to><interface-ref name="SplitControl" ref="0x2ac2c477abd0" scoped=""/></to>
+        </wire>
+        <wire loc="85:/home/kasper/tinyos-main//tos/lib/power/SplitControlDeferredPowerManagerC.nc">
+          <from><interface-ref name="PowerDownCleanup" ref="0x2ac2c47c9268" scoped=""/></from>
+          <to><interface-ref name="PowerDownCleanup" ref="0x2ac2c47797a8" scoped=""/></to>
+        </wire>
+        <wire loc="87:/home/kasper/tinyos-main//tos/lib/power/SplitControlDeferredPowerManagerC.nc">
+          <from><interface-ref name="ResourceDefaultOwner" ref="0x2ac2c47c9800" scoped=""/></from>
+          <to><interface-ref name="ResourceDefaultOwner" ref="0x2ac2c4779e10" scoped=""/></to>
+        </wire>
+        <wire loc="88:/home/kasper/tinyos-main//tos/lib/power/SplitControlDeferredPowerManagerC.nc">
+          <from><interface-ref name="ArbiterInfo" ref="0x2ac2c47c73f0" scoped=""/></from>
+          <to><interface-ref name="ArbiterInfo" ref="0x2ac2c4778a80" scoped=""/></to>
+        </wire>
+        <wire loc="90:/home/kasper/tinyos-main//tos/lib/power/SplitControlDeferredPowerManagerC.nc">
+          <from><interface-ref name="TimerMilli" ref="0x2ac2c47c7c58" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c4776020" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="72:/home/kasper/tinyos-main//tos/lib/power/SplitControlDeferredPowerManagerC.nc" name="SplitControl" provided="0" ref="0x2ac2c477abd0">
+      <component-ref nicename="SplitControlDeferredPowerManagerC" qname="SplitControlDeferredPowerManagerC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SplitControl" ref="0x2ac2c477abd0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c4779020" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c47791a8" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c4779330" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c47794b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="74:/home/kasper/tinyos-main//tos/lib/power/SplitControlDeferredPowerManagerC.nc" name="PowerDownCleanup" provided="0" ref="0x2ac2c47797a8">
+      <component-ref nicename="SplitControlDeferredPowerManagerC" qname="SplitControlDeferredPowerManagerC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PowerDownCleanup" ref="0x2ac2c47797a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PowerDownCleanup" qname="PowerDownCleanup"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="cleanup" ref="0x2ac2c4779af8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="75:/home/kasper/tinyos-main//tos/lib/power/SplitControlDeferredPowerManagerC.nc" name="ResourceDefaultOwner" provided="0" ref="0x2ac2c4779e10">
+      <component-ref nicename="SplitControlDeferredPowerManagerC" qname="SplitControlDeferredPowerManagerC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ResourceDefaultOwner" ref="0x2ac2c4779e10" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ResourceDefaultOwner" qname="ResourceDefaultOwner"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c47781a8" scoped=""/>
+        <function-ref name="requested" ref="0x2ac2c4778330" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c47784b8" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c4778640" scoped=""/>
+        <function-ref name="immediateRequested" ref="0x2ac2c47787c8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="76:/home/kasper/tinyos-main//tos/lib/power/SplitControlDeferredPowerManagerC.nc" name="ArbiterInfo" provided="0" ref="0x2ac2c4778a80">
+      <component-ref nicename="SplitControlDeferredPowerManagerC" qname="SplitControlDeferredPowerManagerC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ArbiterInfo" ref="0x2ac2c4778a80" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ArbiterInfo" qname="ArbiterInfo"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="inUse" ref="0x2ac2c4778dd0" scoped=""/>
+        <function-ref name="userId" ref="0x2ac2c4777020" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="69:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="ArbiterInfo" provided="0" ref="0x2ac2c47c73f0">
+      <component-ref nicename="SplitControlDeferredPowerManagerC.PowerManager" qname="SplitControlDeferredPowerManagerC.PowerManager"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ArbiterInfo" ref="0x2ac2c47c73f0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ArbiterInfo" qname="ArbiterInfo"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="inUse" ref="0x2ac2c47c7740" scoped=""/>
+        <function-ref name="userId" ref="0x2ac2c47c78c8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="65:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="SplitControl" provided="0" ref="0x2ac2c47ca780">
+      <component-ref nicename="SplitControlDeferredPowerManagerC.PowerManager" qname="SplitControlDeferredPowerManagerC.PowerManager"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SplitControl" ref="0x2ac2c47ca780" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="SplitControl" qname="SplitControl"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startDone" ref="0x2ac2c47caad0" scoped=""/>
+        <function-ref name="stopDone" ref="0x2ac2c47cac58" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c47cade0" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c47c9020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="70:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="TimerMilli" provided="0" ref="0x2ac2c47c7c58">
+      <component-ref nicename="SplitControlDeferredPowerManagerC.PowerManager" qname="SplitControlDeferredPowerManagerC.PowerManager"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="TimerMilli" ref="0x2ac2c47c7c58" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Timer" qname="Timer"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df020"/>
+            <typename><typedef-ref name="TMilli" ref="0x2ac2c33df378"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c47c4e78" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c47c55a8" scoped=""/>
+        <function-ref name="startPeriodicAt" ref="0x2ac2c47c42d8" scoped=""/>
+        <function-ref name="isOneShot" ref="0x2ac2c47c5e48" scoped=""/>
+        <function-ref name="getdt" ref="0x2ac2c47c3748" scoped=""/>
+        <function-ref name="gett0" ref="0x2ac2c47c32f8" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c47c59f8" scoped=""/>
+        <function-ref name="startPeriodic" ref="0x2ac2c47c67e8" scoped=""/>
+        <function-ref name="startOneShotAt" ref="0x2ac2c47c48a8" scoped=""/>
+        <function-ref name="startOneShot" ref="0x2ac2c47c6c88" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c47c5158" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="67:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="PowerDownCleanup" provided="0" ref="0x2ac2c47c9268">
+      <component-ref nicename="SplitControlDeferredPowerManagerC.PowerManager" qname="SplitControlDeferredPowerManagerC.PowerManager"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PowerDownCleanup" ref="0x2ac2c47c9268" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PowerDownCleanup" qname="PowerDownCleanup"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="cleanup" ref="0x2ac2c47c95b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/system/TimerMilliC.nc" name="Timer" provided="1" ref="0x2ac2c4776020">
+      <component-ref nicename="SplitControlDeferredPowerManagerC.TimerMilliC" qname="SplitControlDeferredPowerManagerC.TimerMilliC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Timer" ref="0x2ac2c4776020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Timer" qname="Timer"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df020"/>
+            <typename><typedef-ref name="TMilli" ref="0x2ac2c33df378"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c47722b8" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c4775978" scoped=""/>
+        <function-ref name="startPeriodicAt" ref="0x2ac2c47746c8" scoped=""/>
+        <function-ref name="isOneShot" ref="0x2ac2c4774278" scoped=""/>
+        <function-ref name="getdt" ref="0x2ac2c4772b58" scoped=""/>
+        <function-ref name="gett0" ref="0x2ac2c4772708" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c4775dc8" scoped=""/>
+        <function-ref name="startPeriodic" ref="0x2ac2c4776b68" scoped=""/>
+        <function-ref name="startOneShotAt" ref="0x2ac2c4774c98" scoped=""/>
+        <function-ref name="startOneShot" ref="0x2ac2c4775088" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c4775528" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="68:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" name="ResourceDefaultOwner" provided="0" ref="0x2ac2c47c9800">
+      <component-ref nicename="SplitControlDeferredPowerManagerC.PowerManager" qname="SplitControlDeferredPowerManagerC.PowerManager"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ResourceDefaultOwner" ref="0x2ac2c47c9800" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ResourceDefaultOwner" qname="ResourceDefaultOwner"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c47c9b50" scoped=""/>
+        <function-ref name="requested" ref="0x2ac2c47c9cd8" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c47c9e60" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c47c7020" scoped=""/>
+        <function-ref name="immediateRequested" ref="0x2ac2c47c71a8" scoped=""/>
+      </interface-functions>
+    </interface><component abstract="" loc="44(SplitControlDeferredPowerManagerC.TimerMilliC):/home/kasper/tinyos-main//tos/system/TimerMilliC.nc" nicename="SplitControlDeferredPowerManagerC.TimerMilliC" qname="SplitControlDeferredPowerManagerC.TimerMilliC">
+      <instance>
+        <component-ref nicename="TimerMilliC" qname="TimerMilliC"/>
+      </instance>
+      <configuration/>
+    </component><component abstract="" loc="62(SplitControlDeferredPowerManagerC.PowerManager):/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc" nicename="SplitControlDeferredPowerManagerC.PowerManager" qname="SplitControlDeferredPowerManagerC.PowerManager">
+      <documentation loc="41:/home/kasper/tinyos-main//tos/lib/power/DeferredPowerManagerP.nc">
+        <short>
+ Please refer to TEP 115 for more information about this component and its
+ intended use.&lt;br&gt;&lt;br&gt;
+
+ This is the internal implementation of the deffered power management
+ policy for managing the power states of non-virtualized devices.</short>
+        <long>
+ Please refer to TEP 115 for more information about this component and its
+ intended use.&lt;br&gt;&lt;br&gt;
+
+ This is the internal implementation of the deffered power management
+ policy for managing the power states of non-virtualized devices.
+ Non-virtualized devices are shared using a parameterized Resource
+ interface, and are powered down according to some policy whenever there
+ are no more pending requests to that Resource.  The policy implemented
+ by this component is to delay the power down of a device by some contant
+ factor.  Such a policy is useful whenever a device has a long wake-up
+ latency.  The cost of waiting for the device to power up can be
+ avoided if the device is requested again before some predetermined
+ amount of time.
+
+ @param &lt;b&gt;delay&lt;/b&gt; -- The amount of time the power manager should wait
+                        before shutting down the device once it is free.
+ 
+ @author Kevin Klues (klueska@cs.wustl.edu)
+</long>
+      </documentation>
+      <instance>
+        <component-ref nicename="DeferredPowerManagerP" qname="DeferredPowerManagerP"/>
+        <arguments>
+          <value cst="U:">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+            </type-int>
+          </value>
+        </arguments>
+      </instance>
+      <module/>
+    </component></referenced></component>

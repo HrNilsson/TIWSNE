@@ -1,0 +1,407 @@
+<?xml version="1.0" ?><component loc="42:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" nicename="CC2420ControlP" qname="CC2420ControlP" safe="">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc">
+        <short>
+ </short>
+        <long>
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @author David Moss
+ @author Urs Hunkeler (ReadRssi implementation)
+ @version $Revision: 1.7 $ $Date: 2008/06/24 04:07:28 $
+</long>
+      </documentation>
+      <module/>
+    <specification><interface loc="46:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="CC2420Config" provided="1" ref="0x2ac2c37edd90">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CC2420Config" ref="0x2ac2c37edd90" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Config" qname="CC2420Config"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="setAutoAck" ref="0x2ac2c37ec170" scoped=""/>
+        <function-ref name="isAddressRecognitionEnabled" ref="0x2ac2c37ec2f8" scoped=""/>
+        <function-ref name="setAddressRecognition" ref="0x2ac2c37ec480" scoped=""/>
+        <function-ref name="syncDone" ref="0x2ac2c37ec608" scoped=""/>
+        <function-ref name="isHwAddressRecognitionDefault" ref="0x2ac2c37ec790" scoped=""/>
+        <function-ref name="setShortAddr" ref="0x2ac2c37ec918" scoped=""/>
+        <function-ref name="setChannel" ref="0x2ac2c37ecaa0" scoped=""/>
+        <function-ref name="isAutoAckEnabled" ref="0x2ac2c37ecc28" scoped=""/>
+        <function-ref name="setPanAddr" ref="0x2ac2c37ecdb0" scoped=""/>
+        <function-ref name="isHwAutoAckDefault" ref="0x2ac2c37eb020" scoped=""/>
+        <function-ref name="getExtAddr" ref="0x2ac2c37eb1a8" scoped=""/>
+        <function-ref name="getShortAddr" ref="0x2ac2c37eb330" scoped=""/>
+        <function-ref name="sync" ref="0x2ac2c37eb4b8" scoped=""/>
+        <function-ref name="getChannel" ref="0x2ac2c37eb740" scoped=""/>
+        <function-ref name="getPanAddr" ref="0x2ac2c37eb8c8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="66:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="RXCTRL1" provided="0" ref="0x2ac2c38133c0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="RXCTRL1" ref="0x2ac2c38133c0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3813710" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3813898" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="50:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="LocalIeeeEui64" provided="0" ref="0x2ac2c37e5340">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="LocalIeeeEui64" ref="0x2ac2c37e5340" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="LocalIeeeEui64" qname="LocalIeeeEui64"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="getId" ref="0x2ac2c37e5690" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="52:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="StartupTimer" provided="0" ref="0x2ac2c37e5cb8">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="StartupTimer" ref="0x2ac2c37e5cb8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Alarm" qname="Alarm"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df788"/>
+            <typename><typedef-ref name="T32khz" ref="0x2ac2c33dfae0"/></typename>
+          </type-tag>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c37e3410" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c37e44a8" scoped=""/>
+        <function-ref name="startAt" ref="0x2ac2c37e4db8" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c37e4930" scoped=""/>
+        <function-ref name="getAlarm" ref="0x2ac2c37e3898" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c37e7a40" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c37e4020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="64:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="MDMCTRL0" provided="0" ref="0x2ac2c3817158">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="MDMCTRL0" ref="0x2ac2c3817158" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c38174a8" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3817630" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="54:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="RSTN" provided="0" ref="0x2ac2c37e1020">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="RSTN" ref="0x2ac2c37e1020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c37e1370" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c37e14f8" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c37e1680" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c37e1808" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c37e1990" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c37e1b18" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c37e1ca0" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c37e1e28" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="ReadRssi" provided="1" ref="0x2ac2c37e9020">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ReadRssi" ref="0x2ac2c37e9020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Read" qname="Read"/>
+        <arguments>
+          <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned="">
+            <typename><typedef-ref name="uint16_t" ref="0x2ac2c209ab20"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c37e9b68" scoped=""/>
+        <function-ref name="readDone" ref="0x2ac2c37e8020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="126:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="syncDone" provided="0" ref="0x2ac2c3803c20">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="syncDone" ref="0x2ac2c3803c20" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c3801020" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c38011a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="67:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="RSSI" provided="0" ref="0x2ac2c3813c20">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="RSSI" ref="0x2ac2c3813c20" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3812020" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c38121a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="68:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="TXCTRL" provided="0" ref="0x2ac2c3812540">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="TXCTRL" ref="0x2ac2c3812540" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3812890" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3812a18" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="62:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="IOCFG0" provided="0" ref="0x2ac2c37d8020">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="IOCFG0" ref="0x2ac2c37d8020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c37d8370" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c37d84f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="57:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="ActiveMessageAddress" provided="0" ref="0x2ac2c37d97e8">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ActiveMessageAddress" ref="0x2ac2c37d97e8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ActiveMessageAddress" qname="ActiveMessageAddress"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="amAddress" ref="0x2ac2c37d9b38" scoped=""/>
+        <function-ref name="changed" ref="0x2ac2c37d9cc0" scoped=""/>
+        <function-ref name="amGroup" ref="0x2ac2c37d9e48" scoped=""/>
+        <function-ref name="setAddress" ref="0x2ac2c37dd020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="53:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="CSN" provided="0" ref="0x2ac2c37e3d70">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CSN" ref="0x2ac2c37e3d70" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c37e20f0" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c37e2278" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c37e2400" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c37e2588" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c37e2710" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c37e2898" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c37e2a20" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c37e2ba8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="71:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="SXOSCOFF" provided="0" ref="0x2ac2c3811a98">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SXOSCOFF" ref="0x2ac2c3811a98" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Strobe" qname="CC2420Strobe"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="strobe" ref="0x2ac2c3810020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="55:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="VREN" provided="0" ref="0x2ac2c37e01b0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="VREN" ref="0x2ac2c37e01b0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c37e0500" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c37e0688" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c37e0810" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c37e0998" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c37e0b20" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c37e0ca8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c37e0e30" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c37df020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="44:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="Init" provided="1" ref="0x2ac2c37f3a98">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Init" ref="0x2ac2c37f3a98" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c37f3de8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="65:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="MDMCTRL1" provided="0" ref="0x2ac2c38179e0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="MDMCTRL1" ref="0x2ac2c38179e0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3817d30" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3813020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="72:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="SXOSCON" provided="0" ref="0x2ac2c38103b0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SXOSCON" ref="0x2ac2c38103b0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Strobe" qname="CC2420Strobe"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="strobe" ref="0x2ac2c3810700" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="74:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="SpiResource" provided="0" ref="0x2ac2c3810a90">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SpiResource" ref="0x2ac2c3810a90" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c3810de0" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c380e020" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c380e1a8" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c380e330" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c380e4b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="76:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="SyncResource" provided="0" ref="0x2ac2c380d6d0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SyncResource" ref="0x2ac2c380d6d0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c380da20" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c380dba8" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c380dd30" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c380c020" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c380c1a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="CC2420Power" provided="1" ref="0x2ac2c37ebbc0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CC2420Power" ref="0x2ac2c37ebbc0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Power" qname="CC2420Power"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startOscillator" ref="0x2ac2c37ea020" scoped=""/>
+        <function-ref name="rfOff" ref="0x2ac2c37ea1a8" scoped=""/>
+        <function-ref name="rxOn" ref="0x2ac2c37ea330" scoped=""/>
+        <function-ref name="startVReg" ref="0x2ac2c37ea4b8" scoped=""/>
+        <function-ref name="stopVReg" ref="0x2ac2c37ea640" scoped=""/>
+        <function-ref name="startOscillatorDone" ref="0x2ac2c37ea7c8" scoped=""/>
+        <function-ref name="stopOscillator" ref="0x2ac2c37ea950" scoped=""/>
+        <function-ref name="startVRegDone" ref="0x2ac2c37eaad8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="63:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="IOCFG1" provided="0" ref="0x2ac2c37d8890">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="IOCFG1" ref="0x2ac2c37d8890" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c37d8be0" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c37d8d68" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="61:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="FSCTRL" provided="0" ref="0x2ac2c3815678">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="FSCTRL" ref="0x2ac2c3815678" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c38159c8" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3815b50" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="69:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="SRXON" provided="0" ref="0x2ac2c380fc18">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SRXON" ref="0x2ac2c380fc18" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Strobe" qname="CC2420Strobe"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="strobe" ref="0x2ac2c3811020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="78:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="Leds" provided="0" ref="0x2ac2c380c460">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Leds" ref="0x2ac2c380c460" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Leds" qname="Leds"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="led0Off" ref="0x2ac2c380c7b0" scoped=""/>
+        <function-ref name="led0Toggle" ref="0x2ac2c380c938" scoped=""/>
+        <function-ref name="led1On" ref="0x2ac2c380cac0" scoped=""/>
+        <function-ref name="led1Toggle" ref="0x2ac2c380cc48" scoped=""/>
+        <function-ref name="led2Toggle" ref="0x2ac2c380cdd0" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c380b020" scoped=""/>
+        <function-ref name="led1Off" ref="0x2ac2c380b1a8" scoped=""/>
+        <function-ref name="led2Off" ref="0x2ac2c380b7c8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c380b330" scoped=""/>
+        <function-ref name="led0On" ref="0x2ac2c380b4b8" scoped=""/>
+        <function-ref name="led2On" ref="0x2ac2c380b640" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="125:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="sync" provided="0" ref="0x2ac2c3804da0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="sync" ref="0x2ac2c3804da0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c3803170" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c38032f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="Resource" provided="1" ref="0x2ac2c37ed118">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Resource" ref="0x2ac2c37ed118" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c37ed468" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c37ed5f0" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c37ed778" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c37ed900" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c37eda88" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="60:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="PANID" provided="0" ref="0x2ac2c37dc098">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PANID" ref="0x2ac2c37dc098" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Ram" qname="CC2420Ram"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c37dc3e8" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c37dc570" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="59:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="IEEEADR" provided="0" ref="0x2ac2c3818710">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="IEEEADR" ref="0x2ac2c3818710" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Ram" qname="CC2420Ram"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3818b60" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3818ce8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="56:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="InterruptCCA" provided="0" ref="0x2ac2c37df3f0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="InterruptCCA" ref="0x2ac2c37df3f0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GpioInterrupt" qname="GpioInterrupt"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="fired" ref="0x2ac2c37df740" scoped=""/>
+        <function-ref name="disable" ref="0x2ac2c37df8c8" scoped=""/>
+        <function-ref name="enableFallingEdge" ref="0x2ac2c37dfa50" scoped=""/>
+        <function-ref name="enableRisingEdge" ref="0x2ac2c37dfbd8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="75:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="RssiResource" provided="0" ref="0x2ac2c380e858">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="RssiResource" ref="0x2ac2c380e858" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c380eba8" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c380ed30" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c380d020" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c380d1a8" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c380d330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="70:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="SRFOFF" provided="0" ref="0x2ac2c38113a8">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SRFOFF" ref="0x2ac2c38113a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Strobe" qname="CC2420Strobe"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="strobe" ref="0x2ac2c38116f8" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

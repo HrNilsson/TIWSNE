@@ -1,0 +1,331 @@
+<?xml version="1.0" ?><component abstract="" loc="47:/home/kasper/tinyos-main//tos/system/DirectAMSenderC.nc" nicename="DirectAMSenderC" qname="DirectAMSenderC">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/system/DirectAMSenderC.nc">
+        <short>
+ The virtualized active message send abstraction.</short>
+        <long>
+ The virtualized active message send abstraction. Each instantiation
+ of AMSenderC has its own queue of depth one. Therefore, it does not
+ have to contend with other AMSenderC instantiations for queue space.
+ The underlying implementation schedules the packets in these queues
+ using some form of fair-share queueing.
+
+ @author Philip Levis
+ @date   Jan 16 2006
+ @see    TEP 116: Packet Protocols
+</long>
+      </documentation>
+      <parameters>
+        <constant loc="47:/home/kasper/tinyos-main//tos/system/DirectAMSenderC.nc" name="AMId" ref="0x2ac2c45af020">
+          <component-ref nicename="DirectAMSenderC" qname="DirectAMSenderC"/>
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+          </type-int>
+        </constant>
+      </parameters>
+      <configuration/>
+      <wiring>
+        <wire loc="63:/home/kasper/tinyos-main//tos/system/DirectAMSenderC.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c45af490" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c45aabe0" scoped=""/></to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/system/DirectAMSenderC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c45ae0c0" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c36db448" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/system/DirectAMSenderC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c45aecd0" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c36da080" scoped=""/></to>
+        </wire>
+        <wire loc="66:/home/kasper/tinyos-main//tos/system/DirectAMSenderC.nc">
+          <from><interface-ref name="Acks" ref="0x2ac2c45ac3b8" scoped=""/></from>
+          <to><interface-ref name="PacketAcknowledgements" ref="0x2ac2c37120d0" scoped=""/></to>
+        </wire>
+        <wire loc="60:/home/kasper/tinyos-main//tos/system/DirectAMSenderC.nc">
+          <from><interface-ref name="Send" ref="0x2ac2c45a98e8" scoped=""/></from>
+          <to><interface-ref name="Send" ref="0x2ac2c45934f8" scoped=""/>
+          <arguments>
+            <value cst="U:">
+              <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned=""/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="61:/home/kasper/tinyos-main//tos/system/DirectAMSenderC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c4598578" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c36da080" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="49:/home/kasper/tinyos-main//tos/system/DirectAMSenderC.nc" name="AMSend" provided="1" ref="0x2ac2c45af490">
+      <component-ref nicename="DirectAMSenderC" qname="DirectAMSenderC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c45af490" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c45af7e0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c45af968" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c45afaf0" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c45afc78" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c45afe00" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="50:/home/kasper/tinyos-main//tos/system/DirectAMSenderC.nc" name="Packet" provided="1" ref="0x2ac2c45ae0c0">
+      <component-ref nicename="DirectAMSenderC" qname="DirectAMSenderC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Packet" ref="0x2ac2c45ae0c0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c45ae410" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c45ae598" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c45ae720" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c45ae8a8" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c45aea30" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="51:/home/kasper/tinyos-main//tos/system/DirectAMSenderC.nc" name="AMPacket" provided="1" ref="0x2ac2c45aecd0">
+      <component-ref nicename="DirectAMSenderC" qname="DirectAMSenderC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMPacket" ref="0x2ac2c45aecd0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c45ad0a0" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c45ad228" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c45ad3b0" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c45ad538" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c45ad6c0" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c45ad848" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c45ad9d0" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c45adb58" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c45adce0" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c45ade68" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c45ac020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="52:/home/kasper/tinyos-main//tos/system/DirectAMSenderC.nc" name="Acks" provided="1" ref="0x2ac2c45ac3b8">
+      <component-ref nicename="DirectAMSenderC" qname="DirectAMSenderC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Acks" ref="0x2ac2c45ac3b8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketAcknowledgements" qname="PacketAcknowledgements"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="requestAck" ref="0x2ac2c45ac708" scoped=""/>
+        <function-ref name="noAck" ref="0x2ac2c45ac890" scoped=""/>
+        <function-ref name="wasAcked" ref="0x2ac2c45aca18" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="47:/home/kasper/tinyos-main//tos/system/AMQueueEntryP.nc" name="AMPacket" provided="0" ref="0x2ac2c4598578">
+      <component-ref nicename="DirectAMSenderC.AMQueueEntryP" qname="DirectAMSenderC.AMQueueEntryP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMPacket" ref="0x2ac2c4598578" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c45988c8" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c4598a50" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c4598bd8" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c4598d60" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c4597020" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c45971a8" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c4597330" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c45974b8" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c4597640" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c45977c8" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c4597950" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="67:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="Packet" provided="1" ref="0x2ac2c36db448">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Packet" ref="0x2ac2c36db448" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c36db798" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c36db920" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c36dbaa8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c36dbc30" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c36dbdb8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/system/AMQueueEntryP.nc" name="Send" provided="0" ref="0x2ac2c45a98e8">
+      <component-ref nicename="DirectAMSenderC.AMQueueEntryP" qname="DirectAMSenderC.AMQueueEntryP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Send" ref="0x2ac2c45a98e8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c45a9c38" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c45a9dc0" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4598020" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c45981a8" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c4598330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="68:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="AMPacket" provided="1" ref="0x2ac2c36da080">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMPacket" ref="0x2ac2c36da080" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMPacket" qname="AMPacket"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="group" ref="0x2ac2c36da3d0" scoped=""/>
+        <function-ref name="source" ref="0x2ac2c36da558" scoped=""/>
+        <function-ref name="address" ref="0x2ac2c36da6e0" scoped=""/>
+        <function-ref name="destination" ref="0x2ac2c36da868" scoped=""/>
+        <function-ref name="setSource" ref="0x2ac2c36da9f0" scoped=""/>
+        <function-ref name="setDestination" ref="0x2ac2c36dab78" scoped=""/>
+        <function-ref name="type" ref="0x2ac2c36dad00" scoped=""/>
+        <function-ref name="setType" ref="0x2ac2c36d9020" scoped=""/>
+        <function-ref name="isForMe" ref="0x2ac2c36d91a8" scoped=""/>
+        <function-ref name="setGroup" ref="0x2ac2c36d9330" scoped=""/>
+        <function-ref name="localGroup" ref="0x2ac2c36d94b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/system/AMQueueP.nc" name="Send" provided="1" ref="0x2ac2c45934f8">
+      <component-ref nicename="AMQueueP" qname="AMQueueP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Send" ref="0x2ac2c45934f8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c4593848" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c45939d0" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c4593b58" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c4593ce0" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c4593e68" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="44:/home/kasper/tinyos-main//tos/system/AMQueueEntryP.nc" name="AMSend" provided="1" ref="0x2ac2c45aabe0">
+      <component-ref nicename="DirectAMSenderC.AMQueueEntryP" qname="DirectAMSenderC.AMQueueEntryP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="AMSend" ref="0x2ac2c45aabe0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="AMSend" qname="AMSend"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c45a9020" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c45a91a8" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c45a9330" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c45a94b8" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c45a9640" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="69:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" name="PacketAcknowledgements" provided="1" ref="0x2ac2c37120d0">
+      <component-ref nicename="ActiveMessageC" qname="ActiveMessageC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PacketAcknowledgements" ref="0x2ac2c37120d0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketAcknowledgements" qname="PacketAcknowledgements"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="requestAck" ref="0x2ac2c3712420" scoped=""/>
+        <function-ref name="noAck" ref="0x2ac2c37125a8" scoped=""/>
+        <function-ref name="wasAcked" ref="0x2ac2c3712730" scoped=""/>
+      </interface-functions>
+    </interface><component abstract="" loc="43(DirectAMSenderC.AMQueueEntryP):/home/kasper/tinyos-main//tos/system/AMQueueEntryP.nc" nicename="DirectAMSenderC.AMQueueEntryP" qname="DirectAMSenderC.AMQueueEntryP">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/system/AMQueueEntryP.nc">
+        <short>
+ Internal AM component that fills in needed packet fields for the 
+ AMSend -&gt; Send transformation.</short>
+        <long>
+ Internal AM component that fills in needed packet fields for the 
+ AMSend -&gt; Send transformation.
+
+ @author Philip Levis
+ @date   Jan 16 2006
+</long>
+      </documentation>
+      <instance>
+        <component-ref nicename="AMQueueEntryP" qname="AMQueueEntryP"/>
+        <arguments>
+          <value cst="U:">
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="am_id_t" ref="0x2ac2c35c5110"/></typename>
+            </type-int>
+          </value>
+        </arguments>
+      </instance>
+      <module/>
+    </component><component loc="59:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc" nicename="ActiveMessageC" qname="ActiveMessageC">
+      <documentation loc="49:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+        <short>
+
+ The Active Message layer on the Telos platform.</short>
+        <long>
+
+ The Active Message layer on the Telos platform. This is a naming wrapper
+ around the CC2420 Active Message layer.
+
+ @author Philip Levis
+ @version $Revision: 1.9 $ $Date: 2010-06-29 22:07:55 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="78:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="SplitControl" ref="0x2ac2c36df140" scoped=""/></from>
+          <to><interface-ref name="SplitControl" ref="0x2ac2c3731310" scoped=""/></to>
+        </wire>
+        <wire loc="80:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c36de1c8" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c37302b0" scoped=""/></to>
+        </wire>
+        <wire loc="82:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="Snoop" ref="0x2ac2c36dde48" scoped=""/></from>
+          <to><interface-ref name="Snoop" ref="0x2ac2c372e020" scoped=""/></to>
+        </wire>
+        <wire loc="83:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c36db448" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c372dbd8" scoped=""/></to>
+        </wire>
+        <wire loc="89:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="PacketTimeStamp32khz" ref="0x2ac2c36d8020" scoped=""/></from>
+          <to><interface-ref name="PacketTimeStamp32khz" ref="0x2ac2c3fa3130" scoped=""/></to>
+        </wire>
+        <wire loc="86:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="LowPowerListening" ref="0x2ac2c36fe848" scoped=""/></from>
+          <to><interface-ref name="LowPowerListening" ref="0x2ac2c371f628" scoped=""/></to>
+        </wire>
+        <wire loc="81:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="Receive" ref="0x2ac2c36dd300" scoped=""/></from>
+          <to><interface-ref name="Receive" ref="0x2ac2c372f3c8" scoped=""/></to>
+        </wire>
+        <wire loc="85:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="PacketAcknowledgements" ref="0x2ac2c37120d0" scoped=""/></from>
+          <to><interface-ref name="PacketAcknowledgements" ref="0x2ac2c372b7e0" scoped=""/></to>
+        </wire>
+        <wire loc="84:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c36da080" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c372e610" scoped=""/></to>
+        </wire>
+        <wire loc="90:/home/kasper/tinyos-main//tos/platforms/telosa/ActiveMessageC.nc">
+          <from><interface-ref name="PacketTimeStampMilli" ref="0x2ac2c370be48" scoped=""/></from>
+          <to><interface-ref name="PacketTimeStampMilli" ref="0x2ac2c3f9f020" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="42:/home/kasper/tinyos-main//tos/system/AMQueueP.nc" nicename="AMQueueP" qname="AMQueueP">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/system/AMQueueP.nc">
+        <short>
+ The fair-share send queue for AM radio communication.</short>
+        <long>
+ The fair-share send queue for AM radio communication.
+
+ @author Philip Levis
+ @date   Jan 16 2006
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="53:/home/kasper/tinyos-main//tos/system/AMQueueP.nc">
+          <from><interface-ref name="Send" ref="0x2ac2c45934f8" scoped=""/></from>
+          <to><interface-ref name="Send" ref="0x2ac2c4642920" scoped=""/></to>
+        </wire>
+        <wire loc="54:/home/kasper/tinyos-main//tos/system/AMQueueP.nc">
+          <from><interface-ref name="AMSend" ref="0x2ac2c46416f8" scoped=""/></from>
+          <to><interface-ref name="AMSend" ref="0x2ac2c36de1c8" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/system/AMQueueP.nc">
+          <from><interface-ref name="AMPacket" ref="0x2ac2c46403f0" scoped=""/></from>
+          <to><interface-ref name="AMPacket" ref="0x2ac2c36da080" scoped=""/></to>
+        </wire>
+        <wire loc="56:/home/kasper/tinyos-main//tos/system/AMQueueP.nc">
+          <from><interface-ref name="Packet" ref="0x2ac2c463fa10" scoped=""/></from>
+          <to><interface-ref name="Packet" ref="0x2ac2c36db448" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component></referenced></component>

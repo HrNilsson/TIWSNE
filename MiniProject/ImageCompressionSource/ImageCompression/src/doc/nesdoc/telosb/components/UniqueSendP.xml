@@ -1,0 +1,83 @@
+<?xml version="1.0" ?><component loc="38:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" nicename="UniqueSendP" qname="UniqueSendP" safe="">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc">
+        <short>
+ This layer is responsible for supplying a unique data sequence number (dsn)
+ to each outgoing message.</short>
+        <long>
+ This layer is responsible for supplying a unique data sequence number (dsn)
+ to each outgoing message.
+ @author David Moss
+</long>
+      </documentation>
+      <module/>
+    <specification><interface loc="45:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" name="SubSend" provided="0" ref="0x2ac2c405d750">
+      <component-ref nicename="UniqueSendP" qname="UniqueSendP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SubSend" ref="0x2ac2c405d750" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c405daa0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c405dc28" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c405ddb0" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c405c020" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c405c1a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="40:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" name="Send" provided="1" ref="0x2ac2c405e438">
+      <component-ref nicename="UniqueSendP" qname="UniqueSendP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Send" ref="0x2ac2c405e438" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Send" qname="Send"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="send" ref="0x2ac2c405e788" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c405e910" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c405ea98" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c405ec20" scoped=""/>
+        <function-ref name="sendDone" ref="0x2ac2c405eda8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" name="Random" provided="0" ref="0x2ac2c405b2a8">
+      <component-ref nicename="UniqueSendP" qname="UniqueSendP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Random" ref="0x2ac2c405b2a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Random" qname="Random"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="rand16" ref="0x2ac2c405b5f8" scoped=""/>
+        <function-ref name="rand32" ref="0x2ac2c405b780" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="41:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" name="Init" provided="1" ref="0x2ac2c405d080">
+      <component-ref nicename="UniqueSendP" qname="UniqueSendP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Init" ref="0x2ac2c405d080" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c405d3d0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" name="CC2420PacketBody" provided="0" ref="0x2ac2c405ba70">
+      <component-ref nicename="UniqueSendP" qname="UniqueSendP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CC2420PacketBody" ref="0x2ac2c405ba70" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420PacketBody" qname="CC2420PacketBody"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="getPayload" ref="0x2ac2c405bdc0" scoped=""/>
+        <function-ref name="getHeader" ref="0x2ac2c405a020" scoped=""/>
+        <function-ref name="getMetadata" ref="0x2ac2c405a1a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/chips/cc2420/unique/UniqueSendP.nc" name="State" provided="0" ref="0x2ac2c405c428">
+      <component-ref nicename="UniqueSendP" qname="UniqueSendP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="State" ref="0x2ac2c405c428" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="State" qname="State"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="getState" ref="0x2ac2c405c778" scoped=""/>
+        <function-ref name="toIdle" ref="0x2ac2c405c900" scoped=""/>
+        <function-ref name="isState" ref="0x2ac2c405ca88" scoped=""/>
+        <function-ref name="isIdle" ref="0x2ac2c405cc10" scoped=""/>
+        <function-ref name="requestState" ref="0x2ac2c405cd98" scoped=""/>
+        <function-ref name="forceState" ref="0x2ac2c405b020" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

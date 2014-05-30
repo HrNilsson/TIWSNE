@@ -1,0 +1,117 @@
+<?xml version="1.0" ?><component loc="64:/home/kasper/tinyos-main//tos/system/StateImplC.nc" nicename="StateImplC" qname="StateImplC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/types/State.h">
+        <short>
+ </short>
+        <long>
+ @author David Moss
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="75:/home/kasper/tinyos-main//tos/system/StateImplC.nc">
+          <from><interface-ref name="State" ref="0x2ac2c39e2858" scoped=""/></from>
+          <to><interface-ref name="State" ref="0x2ac2c39da1c8" scoped=""/></to>
+        </wire>
+        <wire loc="74:/home/kasper/tinyos-main//tos/system/StateImplC.nc">
+          <from><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c39db5d8" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="66:/home/kasper/tinyos-main//tos/system/StateImplC.nc" name="State" provided="1" ref="0x2ac2c39e2858">
+      <component-ref nicename="StateImplC" qname="StateImplC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="State" ref="0x2ac2c39e2858" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="State" qname="State"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="getState" ref="0x2ac2c39e2ba8" scoped=""/>
+        <function-ref name="toIdle" ref="0x2ac2c39e2d30" scoped=""/>
+        <function-ref name="isState" ref="0x2ac2c39df020" scoped=""/>
+        <function-ref name="isIdle" ref="0x2ac2c39df1a8" scoped=""/>
+        <function-ref name="requestState" ref="0x2ac2c39df330" scoped=""/>
+        <function-ref name="forceState" ref="0x2ac2c39df4b8" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="67:/home/kasper/tinyos-main//tos/system/StateImplP.nc" name="State" provided="1" ref="0x2ac2c39da1c8">
+      <component-ref nicename="StateImplP" qname="StateImplP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="State" ref="0x2ac2c39da1c8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="State" qname="State"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="getState" ref="0x2ac2c39da518" scoped=""/>
+        <function-ref name="toIdle" ref="0x2ac2c39da6a0" scoped=""/>
+        <function-ref name="isState" ref="0x2ac2c39da828" scoped=""/>
+        <function-ref name="isIdle" ref="0x2ac2c39da9b0" scoped=""/>
+        <function-ref name="requestState" ref="0x2ac2c39dab38" scoped=""/>
+        <function-ref name="forceState" ref="0x2ac2c39dacc0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="66:/home/kasper/tinyos-main//tos/system/StateImplP.nc" name="Init" provided="1" ref="0x2ac2c39db5d8">
+      <component-ref nicename="StateImplP" qname="StateImplP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Init" ref="0x2ac2c39db5d8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c39db928" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="58:/home/kasper/tinyos-main//tos/system/MainC.nc" name="SoftwareInit" provided="0" ref="0x2ac2c2e67e48">
+      <component-ref nicename="MainC" qname="MainC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c2e661c0" scoped=""/>
+      </interface-functions>
+    </interface><component loc="56:/home/kasper/tinyos-main//tos/system/MainC.nc" nicename="MainC" qname="MainC">
+      <documentation loc="45:/home/kasper/tinyos-main//tos/system/MainC.nc">
+        <short>
+ MainC is the system interface the TinyOS boot sequence.</short>
+        <long>
+ MainC is the system interface the TinyOS boot sequence. It wires the
+ boot sequence implementation to the scheduler and hardware resources.
+
+ @author Philip Levis
+ @date   August 6 2005
+ @see    TEP 107: Boot Sequence
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="72:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="Boot" ref="0x2ac2c2e659c0" scoped=""/></from>
+          <to><interface-ref name="Boot" ref="0x2ac2c2e64c40" scoped=""/></to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="Scheduler" ref="0x2ac2c3010308" scoped=""/></from>
+          <to><interface-ref name="Scheduler" ref="0x2ac2c29e8390" scoped=""/></to>
+        </wire>
+        <wire loc="68:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="PlatformInit" ref="0x2ac2c3010ce0" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c2e66d70" scoped=""/></to>
+        </wire>
+        <wire loc="71:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="SoftwareInit" ref="0x2ac2c302a418" scoped=""/></from>
+          <to><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="64:/home/kasper/tinyos-main//tos/system/StateImplP.nc" nicename="StateImplP" qname="StateImplP" safe="">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/types/State.h">
+        <short>
+ </short>
+        <long>
+ @author David Moss
+</long>
+      </documentation>
+      <module/>
+    </component></referenced></component>

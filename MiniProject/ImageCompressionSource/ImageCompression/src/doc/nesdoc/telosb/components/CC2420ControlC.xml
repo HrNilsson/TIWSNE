@@ -1,0 +1,2586 @@
+<?xml version="1.0" ?><component loc="42:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc" nicename="CC2420ControlC" qname="CC2420ControlC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+        <short>
+ Implementation for configuring a ChipCon CC2420 radio.</short>
+        <long>
+ Implementation for configuring a ChipCon CC2420 radio.
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.3 $ $Date: 2008/05/14 21:33:07 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="55:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="CC2420Config" ref="0x2ac2c37f6528" scoped=""/></from>
+          <to><interface-ref name="CC2420Config" ref="0x2ac2c37edd90" scoped=""/></to>
+        </wire>
+        <wire loc="57:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="ReadRssi" ref="0x2ac2c37f1800" scoped=""/></from>
+          <to><interface-ref name="ReadRssi" ref="0x2ac2c37e9020" scoped=""/></to>
+        </wire>
+        <wire loc="56:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="CC2420Power" ref="0x2ac2c37bf4a0" scoped=""/></from>
+          <to><interface-ref name="CC2420Power" ref="0x2ac2c37ebbc0" scoped=""/></to>
+        </wire>
+        <wire loc="54:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="Resource" ref="0x2ac2c37c55a8" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c37ed118" scoped=""/></to>
+        </wire>
+        <wire loc="60:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c37f3a98" scoped=""/></to>
+        </wire>
+        <wire loc="63:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="StartupTimer" ref="0x2ac2c37e5cb8" scoped=""/></from>
+          <to><interface-ref name="Alarm32khz32" ref="0x2ac2c38a1648" scoped=""/></to>
+        </wire>
+        <wire loc="66:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="CSN" ref="0x2ac2c37e3d70" scoped=""/></from>
+          <to><interface-ref name="CSN" ref="0x2ac2c38eb4f0" scoped=""/></to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="RSTN" ref="0x2ac2c37e1020" scoped=""/></from>
+          <to><interface-ref name="RSTN" ref="0x2ac2c38e89a8" scoped=""/></to>
+        </wire>
+        <wire loc="68:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="VREN" ref="0x2ac2c37e01b0" scoped=""/></from>
+          <to><interface-ref name="VREN" ref="0x2ac2c38e5ca8" scoped=""/></to>
+        </wire>
+        <wire loc="71:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="InterruptCCA" ref="0x2ac2c37df3f0" scoped=""/></from>
+          <to><interface-ref name="InterruptCCA" ref="0x2ac2c38fabd8" scoped=""/></to>
+        </wire>
+        <wire loc="74:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="SpiResource" ref="0x2ac2c3810a90" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c3d50610" scoped=""/></to>
+        </wire>
+        <wire loc="75:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="SRXON" ref="0x2ac2c380fc18" scoped=""/></from>
+          <to><interface-ref name="SRXON" ref="0x2ac2c3d4d020" scoped=""/></to>
+        </wire>
+        <wire loc="76:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="SRFOFF" ref="0x2ac2c38113a8" scoped=""/></from>
+          <to><interface-ref name="SRFOFF" ref="0x2ac2c3d4b2e8" scoped=""/></to>
+        </wire>
+        <wire loc="77:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="SXOSCON" ref="0x2ac2c38103b0" scoped=""/></from>
+          <to><interface-ref name="SXOSCON" ref="0x2ac2c3d4e2e8" scoped=""/></to>
+        </wire>
+        <wire loc="78:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="SXOSCOFF" ref="0x2ac2c3811a98" scoped=""/></from>
+          <to><interface-ref name="SXOSCOFF" ref="0x2ac2c3d4b900" scoped=""/></to>
+        </wire>
+        <wire loc="79:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="FSCTRL" ref="0x2ac2c3815678" scoped=""/></from>
+          <to><interface-ref name="FSCTRL" ref="0x2ac2c3d43e10" scoped=""/></to>
+        </wire>
+        <wire loc="80:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="IOCFG0" ref="0x2ac2c37d8020" scoped=""/></from>
+          <to><interface-ref name="IOCFG0" ref="0x2ac2c3d41d60" scoped=""/></to>
+        </wire>
+        <wire loc="81:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="IOCFG1" ref="0x2ac2c37d8890" scoped=""/></from>
+          <to><interface-ref name="IOCFG1" ref="0x2ac2c3d3f528" scoped=""/></to>
+        </wire>
+        <wire loc="82:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="MDMCTRL0" ref="0x2ac2c3817158" scoped=""/></from>
+          <to><interface-ref name="MDMCTRL0" ref="0x2ac2c3d46470" scoped=""/></to>
+        </wire>
+        <wire loc="83:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="MDMCTRL1" ref="0x2ac2c38179e0" scoped=""/></from>
+          <to><interface-ref name="MDMCTRL1" ref="0x2ac2c3d46c10" scoped=""/></to>
+        </wire>
+        <wire loc="84:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="PANID" ref="0x2ac2c37dc098" scoped=""/></from>
+          <to><interface-ref name="PANID" ref="0x2ac2c3d3bc10" scoped=""/></to>
+        </wire>
+        <wire loc="85:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="IEEEADR" ref="0x2ac2c3818710" scoped=""/></from>
+          <to><interface-ref name="IEEEADR" ref="0x2ac2c3d3b470" scoped=""/></to>
+        </wire>
+        <wire loc="86:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="RXCTRL1" ref="0x2ac2c38133c0" scoped=""/></from>
+          <to><interface-ref name="RXCTRL1" ref="0x2ac2c3d43470" scoped=""/></to>
+        </wire>
+        <wire loc="87:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="RSSI" ref="0x2ac2c3813c20" scoped=""/></from>
+          <to><interface-ref name="RSSI" ref="0x2ac2c3d45470" scoped=""/></to>
+        </wire>
+        <wire loc="88:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="TXCTRL" ref="0x2ac2c3812540" scoped=""/></from>
+          <to><interface-ref name="TXCTRL" ref="0x2ac2c3d44470" scoped=""/></to>
+        </wire>
+        <wire loc="91:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="SyncResource" ref="0x2ac2c380d6d0" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c3d85020" scoped=""/></to>
+        </wire>
+        <wire loc="94:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="RssiResource" ref="0x2ac2c380e858" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c3d621a8" scoped=""/></to>
+        </wire>
+        <wire loc="97:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="ActiveMessageAddress" ref="0x2ac2c37d97e8" scoped=""/></from>
+          <to><interface-ref name="ActiveMessageAddress" ref="0x2ac2c3d982b8" scoped=""/></to>
+        </wire>
+        <wire loc="100:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc">
+          <from><interface-ref name="LocalIeeeEui64" ref="0x2ac2c37e5340" scoped=""/></from>
+          <to><interface-ref name="LocalIeeeEui64" ref="0x2ac2c3d9ace0" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="45:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc" name="CC2420Config" provided="1" ref="0x2ac2c37f6528">
+      <component-ref nicename="CC2420ControlC" qname="CC2420ControlC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CC2420Config" ref="0x2ac2c37f6528" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Config" qname="CC2420Config"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="setAutoAck" ref="0x2ac2c37f6878" scoped=""/>
+        <function-ref name="isAddressRecognitionEnabled" ref="0x2ac2c37f6a00" scoped=""/>
+        <function-ref name="setAddressRecognition" ref="0x2ac2c37f6b88" scoped=""/>
+        <function-ref name="syncDone" ref="0x2ac2c37f6d10" scoped=""/>
+        <function-ref name="isHwAddressRecognitionDefault" ref="0x2ac2c37c0020" scoped=""/>
+        <function-ref name="setShortAddr" ref="0x2ac2c37c01a8" scoped=""/>
+        <function-ref name="setChannel" ref="0x2ac2c37c0330" scoped=""/>
+        <function-ref name="isAutoAckEnabled" ref="0x2ac2c37c04b8" scoped=""/>
+        <function-ref name="setPanAddr" ref="0x2ac2c37c0640" scoped=""/>
+        <function-ref name="isHwAutoAckDefault" ref="0x2ac2c37c07c8" scoped=""/>
+        <function-ref name="getExtAddr" ref="0x2ac2c37c0950" scoped=""/>
+        <function-ref name="getShortAddr" ref="0x2ac2c37c0ad8" scoped=""/>
+        <function-ref name="sync" ref="0x2ac2c37c0c60" scoped=""/>
+        <function-ref name="getChannel" ref="0x2ac2c37bf020" scoped=""/>
+        <function-ref name="getPanAddr" ref="0x2ac2c37bf1a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc" name="ReadRssi" provided="1" ref="0x2ac2c37f1800">
+      <component-ref nicename="CC2420ControlC" qname="CC2420ControlC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ReadRssi" ref="0x2ac2c37f1800" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Read" qname="Read"/>
+        <arguments>
+          <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned="">
+            <typename><typedef-ref name="uint16_t" ref="0x2ac2c209ab20"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c37f4370" scoped=""/>
+        <function-ref name="readDone" ref="0x2ac2c37f47c0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc" name="CC2420Power" provided="1" ref="0x2ac2c37bf4a0">
+      <component-ref nicename="CC2420ControlC" qname="CC2420ControlC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CC2420Power" ref="0x2ac2c37bf4a0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Power" qname="CC2420Power"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startOscillator" ref="0x2ac2c37bf7f0" scoped=""/>
+        <function-ref name="rfOff" ref="0x2ac2c37bf978" scoped=""/>
+        <function-ref name="rxOn" ref="0x2ac2c37bfb00" scoped=""/>
+        <function-ref name="startVReg" ref="0x2ac2c37bfc88" scoped=""/>
+        <function-ref name="stopVReg" ref="0x2ac2c37bfe10" scoped=""/>
+        <function-ref name="startOscillatorDone" ref="0x2ac2c37f5020" scoped=""/>
+        <function-ref name="stopOscillator" ref="0x2ac2c37f51a8" scoped=""/>
+        <function-ref name="startVRegDone" ref="0x2ac2c37f5330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="44:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlC.nc" name="Resource" provided="1" ref="0x2ac2c37c55a8">
+      <component-ref nicename="CC2420ControlC" qname="CC2420ControlC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Resource" ref="0x2ac2c37c55a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c37c58f8" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c37c5a80" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c37c5c08" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c37c5d90" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c37c1020" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="85:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="IEEEADR" provided="1" ref="0x2ac2c3d3b470">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="IEEEADR" ref="0x2ac2c3d3b470" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Ram" qname="CC2420Ram"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3d3b7c0" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3d3b948" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="71:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="SXOSCOFF" provided="0" ref="0x2ac2c3811a98">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SXOSCOFF" ref="0x2ac2c3811a98" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Strobe" qname="CC2420Strobe"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="strobe" ref="0x2ac2c3810020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="60:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="PANID" provided="0" ref="0x2ac2c37dc098">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PANID" ref="0x2ac2c37dc098" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Ram" qname="CC2420Ram"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c37dc3e8" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c37dc570" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="41:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="Resource" provided="1" ref="0x2ac2c3d621a8">
+      <component-ref nicename="CC2420ControlC.RssiResource" qname="CC2420ControlC.RssiResource"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Resource" ref="0x2ac2c3d621a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c3d624f8" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c3d62680" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c3d62808" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c3d62990" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c3d62b18" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="ReadRssi" provided="1" ref="0x2ac2c37e9020">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ReadRssi" ref="0x2ac2c37e9020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Read" qname="Read"/>
+        <arguments>
+          <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned="">
+            <typename><typedef-ref name="uint16_t" ref="0x2ac2c209ab20"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c37e9b68" scoped=""/>
+        <function-ref name="readDone" ref="0x2ac2c37e8020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="CC2420Power" provided="1" ref="0x2ac2c37ebbc0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CC2420Power" ref="0x2ac2c37ebbc0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Power" qname="CC2420Power"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="startOscillator" ref="0x2ac2c37ea020" scoped=""/>
+        <function-ref name="rfOff" ref="0x2ac2c37ea1a8" scoped=""/>
+        <function-ref name="rxOn" ref="0x2ac2c37ea330" scoped=""/>
+        <function-ref name="startVReg" ref="0x2ac2c37ea4b8" scoped=""/>
+        <function-ref name="stopVReg" ref="0x2ac2c37ea640" scoped=""/>
+        <function-ref name="startOscillatorDone" ref="0x2ac2c37ea7c8" scoped=""/>
+        <function-ref name="stopOscillator" ref="0x2ac2c37ea950" scoped=""/>
+        <function-ref name="startVRegDone" ref="0x2ac2c37eaad8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="64:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="MDMCTRL0" provided="0" ref="0x2ac2c3817158">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="MDMCTRL0" ref="0x2ac2c3817158" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c38174a8" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3817630" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="44:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="Init" provided="1" ref="0x2ac2c37f3a98">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Init" ref="0x2ac2c37f3a98" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c37f3de8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="68:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="TXCTRL" provided="0" ref="0x2ac2c3812540">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="TXCTRL" ref="0x2ac2c3812540" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3812890" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3812a18" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="76:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="SyncResource" provided="0" ref="0x2ac2c380d6d0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SyncResource" ref="0x2ac2c380d6d0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c380da20" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c380dba8" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c380dd30" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c380c020" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c380c1a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="75:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="RssiResource" provided="0" ref="0x2ac2c380e858">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="RssiResource" ref="0x2ac2c380e858" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c380eba8" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c380ed30" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c380d020" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c380d1a8" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c380d330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="66:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="RXCTRL1" provided="0" ref="0x2ac2c38133c0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="RXCTRL1" ref="0x2ac2c38133c0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3813710" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3813898" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="63:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="MDMCTRL0" provided="1" ref="0x2ac2c3d46470">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="MDMCTRL0" ref="0x2ac2c3d46470" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3d467c0" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3d46948" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="65:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="MDMCTRL1" provided="0" ref="0x2ac2c38179e0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="MDMCTRL1" ref="0x2ac2c38179e0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3817d30" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3813020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="58:/home/kasper/tinyos-main//tos/system/MainC.nc" name="SoftwareInit" provided="0" ref="0x2ac2c2e67e48">
+      <component-ref nicename="MainC" qname="MainC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Init" qname="Init"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c2e661c0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="54:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="RSTN" provided="0" ref="0x2ac2c37e1020">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="RSTN" ref="0x2ac2c37e1020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c37e1370" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c37e14f8" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c37e1680" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c37e1808" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c37e1990" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c37e1b18" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c37e1ca0" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c37e1e28" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="50:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="LocalIeeeEui64" provided="0" ref="0x2ac2c37e5340">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="LocalIeeeEui64" ref="0x2ac2c37e5340" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="LocalIeeeEui64" qname="LocalIeeeEui64"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="getId" ref="0x2ac2c37e5690" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="70:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="SRFOFF" provided="0" ref="0x2ac2c38113a8">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SRFOFF" ref="0x2ac2c38113a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Strobe" qname="CC2420Strobe"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="strobe" ref="0x2ac2c38116f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420InterruptsC.nc" name="InterruptCCA" provided="1" ref="0x2ac2c38fabd8">
+      <component-ref nicename="HplCC2420InterruptsC" qname="HplCC2420InterruptsC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="InterruptCCA" ref="0x2ac2c38fabd8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GpioInterrupt" qname="GpioInterrupt"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="fired" ref="0x2ac2c38f9020" scoped=""/>
+        <function-ref name="disable" ref="0x2ac2c38f91a8" scoped=""/>
+        <function-ref name="enableFallingEdge" ref="0x2ac2c38f9330" scoped=""/>
+        <function-ref name="enableRisingEdge" ref="0x2ac2c38f94b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="74:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="SpiResource" provided="0" ref="0x2ac2c3810a90">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SpiResource" ref="0x2ac2c3810a90" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c3810de0" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c380e020" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c380e1a8" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c380e330" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c380e4b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="65:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="RSSI" provided="1" ref="0x2ac2c3d45470">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="RSSI" ref="0x2ac2c3d45470" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3d457c0" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3d45948" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="54:/home/kasper/tinyos-main//tos/system/ActiveMessageAddressC.nc" name="ActiveMessageAddress" provided="1" ref="0x2ac2c3d982b8">
+      <component-ref nicename="ActiveMessageAddressC" qname="ActiveMessageAddressC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ActiveMessageAddress" ref="0x2ac2c3d982b8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ActiveMessageAddress" qname="ActiveMessageAddress"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="amAddress" ref="0x2ac2c3d98608" scoped=""/>
+        <function-ref name="changed" ref="0x2ac2c3d98790" scoped=""/>
+        <function-ref name="amGroup" ref="0x2ac2c3d98918" scoped=""/>
+        <function-ref name="setAddress" ref="0x2ac2c3d98aa0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="72:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="SXOSCON" provided="0" ref="0x2ac2c38103b0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SXOSCON" ref="0x2ac2c38103b0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Strobe" qname="CC2420Strobe"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="strobe" ref="0x2ac2c3810700" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="67:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="RSSI" provided="0" ref="0x2ac2c3813c20">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="RSSI" ref="0x2ac2c3813c20" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3812020" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c38121a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="67:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="TXCTRL" provided="1" ref="0x2ac2c3d44470">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="TXCTRL" ref="0x2ac2c3d44470" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3d447c0" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3d44948" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="SRXON" provided="1" ref="0x2ac2c3d4d020">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SRXON" ref="0x2ac2c3d4d020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Strobe" qname="CC2420Strobe"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="strobe" ref="0x2ac2c3d4d370" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc" name="VREN" provided="1" ref="0x2ac2c38e5ca8">
+      <component-ref nicename="HplCC2420PinsC" qname="HplCC2420PinsC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="VREN" ref="0x2ac2c38e5ca8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c38e4020" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c38e41a8" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c38e4330" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c38e44b8" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c38e4640" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c38e47c8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c38e4950" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c38e4ad8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="63:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="IOCFG1" provided="0" ref="0x2ac2c37d8890">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="IOCFG1" ref="0x2ac2c37d8890" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c37d8be0" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c37d8d68" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="56:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="InterruptCCA" provided="0" ref="0x2ac2c37df3f0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="InterruptCCA" ref="0x2ac2c37df3f0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GpioInterrupt" qname="GpioInterrupt"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="fired" ref="0x2ac2c37df740" scoped=""/>
+        <function-ref name="disable" ref="0x2ac2c37df8c8" scoped=""/>
+        <function-ref name="enableFallingEdge" ref="0x2ac2c37dfa50" scoped=""/>
+        <function-ref name="enableRisingEdge" ref="0x2ac2c37dfbd8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="53:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="CSN" provided="0" ref="0x2ac2c37e3d70">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CSN" ref="0x2ac2c37e3d70" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c37e20f0" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c37e2278" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c37e2400" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c37e2588" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c37e2710" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c37e2898" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c37e2a20" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c37e2ba8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="70:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="FSCTRL" provided="1" ref="0x2ac2c3d43e10">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="FSCTRL" ref="0x2ac2c3d43e10" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3d421a8" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3d42330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="62:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="IOCFG0" provided="0" ref="0x2ac2c37d8020">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="IOCFG0" ref="0x2ac2c37d8020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c37d8370" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c37d84f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="69:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="RXCTRL1" provided="1" ref="0x2ac2c3d43470">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="RXCTRL1" ref="0x2ac2c3d43470" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3d439c0" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3d43b48" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="75:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="IOCFG1" provided="1" ref="0x2ac2c3d3f528">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="IOCFG1" ref="0x2ac2c3d3f528" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3d3f878" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3d3fa00" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="CC2420Config" provided="1" ref="0x2ac2c37edd90">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CC2420Config" ref="0x2ac2c37edd90" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Config" qname="CC2420Config"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="setAutoAck" ref="0x2ac2c37ec170" scoped=""/>
+        <function-ref name="isAddressRecognitionEnabled" ref="0x2ac2c37ec2f8" scoped=""/>
+        <function-ref name="setAddressRecognition" ref="0x2ac2c37ec480" scoped=""/>
+        <function-ref name="syncDone" ref="0x2ac2c37ec608" scoped=""/>
+        <function-ref name="isHwAddressRecognitionDefault" ref="0x2ac2c37ec790" scoped=""/>
+        <function-ref name="setShortAddr" ref="0x2ac2c37ec918" scoped=""/>
+        <function-ref name="setChannel" ref="0x2ac2c37ecaa0" scoped=""/>
+        <function-ref name="isAutoAckEnabled" ref="0x2ac2c37ecc28" scoped=""/>
+        <function-ref name="setPanAddr" ref="0x2ac2c37ecdb0" scoped=""/>
+        <function-ref name="isHwAutoAckDefault" ref="0x2ac2c37eb020" scoped=""/>
+        <function-ref name="getExtAddr" ref="0x2ac2c37eb1a8" scoped=""/>
+        <function-ref name="getShortAddr" ref="0x2ac2c37eb330" scoped=""/>
+        <function-ref name="sync" ref="0x2ac2c37eb4b8" scoped=""/>
+        <function-ref name="getChannel" ref="0x2ac2c37eb740" scoped=""/>
+        <function-ref name="getPanAddr" ref="0x2ac2c37eb8c8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="59:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="IEEEADR" provided="0" ref="0x2ac2c3818710">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="IEEEADR" ref="0x2ac2c3818710" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Ram" qname="CC2420Ram"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3818b60" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3818ce8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="52:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="SXOSCOFF" provided="1" ref="0x2ac2c3d4b900">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SXOSCOFF" ref="0x2ac2c3d4b900" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Strobe" qname="CC2420Strobe"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="strobe" ref="0x2ac2c3d4bc50" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="64:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="MDMCTRL1" provided="1" ref="0x2ac2c3d46c10">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="MDMCTRL1" ref="0x2ac2c3d46c10" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3d45020" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3d451a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="86:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="PANID" provided="1" ref="0x2ac2c3d3bc10">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PANID" ref="0x2ac2c3d3bc10" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Ram" qname="CC2420Ram"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3d3a020" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3d3a1a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="SXOSCON" provided="1" ref="0x2ac2c3d4e2e8">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SXOSCON" ref="0x2ac2c3d4e2e8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Strobe" qname="CC2420Strobe"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="strobe" ref="0x2ac2c3d4e638" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="Resource" provided="1" ref="0x2ac2c37ed118">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Resource" ref="0x2ac2c37ed118" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c37ed468" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c37ed5f0" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c37ed778" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c37ed900" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c37eda88" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="51:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="SRFOFF" provided="1" ref="0x2ac2c3d4b2e8">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SRFOFF" ref="0x2ac2c3d4b2e8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Strobe" qname="CC2420Strobe"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="strobe" ref="0x2ac2c3d4b638" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="69:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="SRXON" provided="0" ref="0x2ac2c380fc18">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="SRXON" ref="0x2ac2c380fc18" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Strobe" qname="CC2420Strobe"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="strobe" ref="0x2ac2c3811020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="52:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="StartupTimer" provided="0" ref="0x2ac2c37e5cb8">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="StartupTimer" ref="0x2ac2c37e5cb8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Alarm" qname="Alarm"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df788"/>
+            <typename><typedef-ref name="T32khz" ref="0x2ac2c33dfae0"/></typename>
+          </type-tag>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c37e3410" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c37e44a8" scoped=""/>
+        <function-ref name="startAt" ref="0x2ac2c37e4db8" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c37e4930" scoped=""/>
+        <function-ref name="getAlarm" ref="0x2ac2c37e3898" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c37e7a40" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c37e4020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="41:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="Resource" provided="1" ref="0x2ac2c3d85020">
+      <component-ref nicename="CC2420ControlC.SyncSpiC" qname="CC2420ControlC.SyncSpiC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Resource" ref="0x2ac2c3d85020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c3d85370" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c3d854f8" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c3d85680" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c3d85808" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c3d85990" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="61:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="FSCTRL" provided="0" ref="0x2ac2c3815678">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="FSCTRL" ref="0x2ac2c3815678" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c38159c8" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3815b50" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="74:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="IOCFG0" provided="1" ref="0x2ac2c3d41d60">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="IOCFG0" ref="0x2ac2c3d41d60" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Register" qname="CC2420Register"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="read" ref="0x2ac2c3d3f0d8" scoped=""/>
+        <function-ref name="write" ref="0x2ac2c3d3f260" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="57:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="ActiveMessageAddress" provided="0" ref="0x2ac2c37d97e8">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ActiveMessageAddress" ref="0x2ac2c37d97e8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ActiveMessageAddress" qname="ActiveMessageAddress"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="amAddress" ref="0x2ac2c37d9b38" scoped=""/>
+        <function-ref name="changed" ref="0x2ac2c37d9cc0" scoped=""/>
+        <function-ref name="amGroup" ref="0x2ac2c37d9e48" scoped=""/>
+        <function-ref name="setAddress" ref="0x2ac2c37dd020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/chips/cc2420/alarm/AlarmMultiplexC.nc" name="Alarm32khz32" provided="1" ref="0x2ac2c38a1648">
+      <component-ref nicename="AlarmMultiplexC" qname="AlarmMultiplexC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Alarm32khz32" ref="0x2ac2c38a1648" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Alarm" qname="Alarm"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df788"/>
+            <typename><typedef-ref name="T32khz" ref="0x2ac2c33dfae0"/></typename>
+          </type-tag>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c389ecc0" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c389fd50" scoped=""/>
+        <function-ref name="startAt" ref="0x2ac2c389e6b8" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c389e230" scoped=""/>
+        <function-ref name="getAlarm" ref="0x2ac2c389d190" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c389f3f0" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c389f8c8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="27:/home/kasper/tinyos-main//tos/platforms/epic/chips/ds2411/LocalIeeeEui64C.nc" name="LocalIeeeEui64" provided="1" ref="0x2ac2c3d9ace0">
+      <component-ref nicename="LocalIeeeEui64C" qname="LocalIeeeEui64C"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="LocalIeeeEui64" ref="0x2ac2c3d9ace0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="LocalIeeeEui64" qname="LocalIeeeEui64"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="getId" ref="0x2ac2c3de10a0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc" name="CSN" provided="1" ref="0x2ac2c38eb4f0">
+      <component-ref nicename="HplCC2420PinsC" qname="HplCC2420PinsC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CSN" ref="0x2ac2c38eb4f0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c38eb840" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c38eb9c8" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c38ebb50" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c38ebcd8" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c38ebe60" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c38ea020" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c38ea1a8" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c38ea330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="55:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" name="VREN" provided="0" ref="0x2ac2c37e01b0">
+      <component-ref nicename="CC2420ControlP" qname="CC2420ControlP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="VREN" ref="0x2ac2c37e01b0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c37e0500" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c37e0688" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c37e0810" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c37e0998" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c37e0b20" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c37e0ca8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c37e0e30" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c37df020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="41:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" name="Resource" provided="1" ref="0x2ac2c3d50610">
+      <component-ref nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Resource" ref="0x2ac2c3d50610" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c3d50960" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c3d50ae8" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c3d50c70" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c3d50df8" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c3d4f020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc" name="RSTN" provided="1" ref="0x2ac2c38e89a8">
+      <component-ref nicename="HplCC2420PinsC" qname="HplCC2420PinsC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="RSTN" ref="0x2ac2c38e89a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c38e8cf8" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c38e8e80" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c38e7030" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c38e71b8" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c38e7340" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c38e74c8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c38e7650" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c38e77d8" scoped=""/>
+      </interface-functions>
+    </interface><component loc="40:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc" nicename="HplCC2420PinsC" qname="HplCC2420PinsC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+        <short>
+ HPL implementation of general-purpose I/O for the ChipCon CC2420
+ radio connected to a TI MSP430 processor.</short>
+        <long>
+ HPL implementation of general-purpose I/O for the ChipCon CC2420
+ radio connected to a TI MSP430 processor.
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.4 $ $Date: 2006-12-12 18:23:44 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="73:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="FIFO" ref="0x2ac2c38ea688" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x2ac2c38d9020" scoped=""/></to>
+        </wire>
+        <wire loc="74:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="FIFOP" ref="0x2ac2c38e9818" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x2ac2c38d5720" scoped=""/></to>
+        </wire>
+        <wire loc="75:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="RSTN" ref="0x2ac2c38e89a8" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x2ac2c38cf020" scoped=""/></to>
+        </wire>
+        <wire loc="72:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="CSN" ref="0x2ac2c38eb4f0" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x2ac2c38de6a8" scoped=""/></to>
+        </wire>
+        <wire loc="77:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="VREN" ref="0x2ac2c38e5ca8" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x2ac2c390e020" scoped=""/></to>
+        </wire>
+        <wire loc="71:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="CCA" ref="0x2ac2c38ec278" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x2ac2c38e3db8" scoped=""/></to>
+        </wire>
+        <wire loc="76:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="SFD" ref="0x2ac2c38e7b20" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x2ac2c38cb720" scoped=""/></to>
+        </wire>
+        <wire loc="63:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="HplGeneralIO" ref="0x2ac2c38e1020" scoped=""/></from>
+          <to><interface-ref name="Port14" ref="0x2ac2c3090978" scoped=""/></to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="HplGeneralIO" ref="0x2ac2c38dd908" scoped=""/></from>
+          <to><interface-ref name="Port42" ref="0x2ac2c30af568" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="HplGeneralIO" ref="0x2ac2c38d8120" scoped=""/></from>
+          <to><interface-ref name="Port13" ref="0x2ac2c306cb00" scoped=""/></to>
+        </wire>
+        <wire loc="66:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="HplGeneralIO" ref="0x2ac2c38d4908" scoped=""/></from>
+          <to><interface-ref name="Port10" ref="0x2ac2c307a020" scoped=""/></to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="HplGeneralIO" ref="0x2ac2c38ce120" scoped=""/></from>
+          <to><interface-ref name="Port46" ref="0x2ac2c30a6568" scoped=""/></to>
+        </wire>
+        <wire loc="68:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="HplGeneralIO" ref="0x2ac2c38ca908" scoped=""/></from>
+          <to><interface-ref name="Port41" ref="0x2ac2c30b1668" scoped=""/></to>
+        </wire>
+        <wire loc="69:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420PinsC.nc">
+          <from><interface-ref name="HplGeneralIO" ref="0x2ac2c390d120" scoped=""/></from>
+          <to><interface-ref name="Port45" ref="0x2ac2c30a8568" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="39(CC2420ControlC.RssiResource):/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" nicename="CC2420ControlC.RssiResource" qname="CC2420ControlC.RssiResource">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+        <short>
+ Implementation of basic SPI primitives for the ChipCon CC2420 radio.</short>
+        <long>
+ Implementation of basic SPI primitives for the ChipCon CC2420 radio.
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.4 $ $Date: 2009-08-14 20:33:43 $
+</long>
+      </documentation>
+      <instance number="2">
+        <component-ref nicename="CC2420SpiC" qname="CC2420SpiC"/>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="139:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXCTRL1" ref="0x2ac2c3db0c90" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:23">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="117:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="STXCAL" ref="0x2ac2c3d603a0" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:2">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="133:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MDMCTRL0" ref="0x2ac2c3db4dd8" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:17">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="142:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SECCTRL1" ref="0x2ac2c3dae7c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:26">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="143:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="BATTMON" ref="0x2ac2c3dad020" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:27">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="164:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXNONCE" ref="0x2ac2c3da27c0" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:272">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="160:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="KEY0" ref="0x2ac2c3da57c0" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:256">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="120:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="STXONCCA" ref="0x2ac2c3d5f638" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:5">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="158:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="TXFIFO_RAM" ref="0x2ac2c3da67c0" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="135:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RSSI" ref="0x2ac2c3db3d60" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:19">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="137:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="TXCTRL" ref="0x2ac2c3db1cc8" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:21">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="149:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MANAND" ref="0x2ac2c3da9020" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:33">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="144:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="IOCFG0" ref="0x2ac2c3dad7c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:28">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="111:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="ChipSpiResource" ref="0x2ac2c3d62da0" scoped=""/></from>
+          <to><interface-ref name="ChipSpiResource" ref="0x2ac2c397a4c8" scoped=""/></to>
+        </wire>
+        <wire loc="124:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SFLUSHTX" ref="0x2ac2c3db6020" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:9">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="125:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SACK" ref="0x2ac2c3db6638" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:10">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="126:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SACKPEND" ref="0x2ac2c3db6d50" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:11">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="159:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXFIFO_RAM" ref="0x2ac2c3da5020" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:128">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="122:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SXOSCOFF" ref="0x2ac2c3db72e8" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:7">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="136:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SYNCWORD" ref="0x2ac2c3db1528" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:20">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="134:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MDMCTRL1" ref="0x2ac2c3db35c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:18">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="116:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SXOSCON" ref="0x2ac2c3d61d60" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="163:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="TXNONCE" ref="0x2ac2c3da2020" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:320">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="161:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="KEY1" ref="0x2ac2c3da3020" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:304">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="150:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MANOR" ref="0x2ac2c3da97c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:34">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="157:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SHORTADR" ref="0x2ac2c3da6020" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:362">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="146:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MANFIDL" ref="0x2ac2c3dac7c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:30">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="167:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXFIFO" ref="0x2ac2c3da1020" scoped=""/></from>
+          <to><interface-ref name="Fifo" ref="0x2ac2c39793c8" scoped=""/>
+          <arguments>
+            <value cst="I:63">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="115:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SNOP" ref="0x2ac2c3d61748" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="132:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MAIN" ref="0x2ac2c3db4638" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:16">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="138:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXCTRL0" ref="0x2ac2c3db04f0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:22">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="145:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="IOCFG1" ref="0x2ac2c3dac020" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:29">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="140:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="FSCTRL" ref="0x2ac2c3daf838" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:24">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="118:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SRXON" ref="0x2ac2c3d609b8" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:3">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="141:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SECCTRL0" ref="0x2ac2c3dae020" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:25">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="112:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="Resource" ref="0x2ac2c3d621a8" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c397d810" scoped=""/>
+          <arguments>
+            <value cst="I:2">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="127:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SRXDEC" ref="0x2ac2c3db53a0" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:12">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="129:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SAES" ref="0x2ac2c3db4020" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:14">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="156:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="PANID" ref="0x2ac2c3da77c0" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:360">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="155:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="IEEEADR" ref="0x2ac2c3da7020" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:352">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="123:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SFLUSHRX" ref="0x2ac2c3db7900" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:8">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="152:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXFIFO_REGISTER" ref="0x2ac2c3da87c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:63">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="162:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SABUF" ref="0x2ac2c3da37c0" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:288">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="151:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="AGCCTRL" ref="0x2ac2c3da8020" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:35">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="119:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="STXON" ref="0x2ac2c3d5f020" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:4">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="148:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="FSMTC" ref="0x2ac2c3daa7c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:32">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="121:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SRFOFF" ref="0x2ac2c3d5fc50" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:6">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="147:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MANFIDH" ref="0x2ac2c3daa020" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:31">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="128:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="STXENC" ref="0x2ac2c3db59b8" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:13">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="168:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="TXFIFO" ref="0x2ac2c3da00a0" scoped=""/></from>
+          <to><interface-ref name="Fifo" ref="0x2ac2c39793c8" scoped=""/>
+          <arguments>
+            <value cst="I:62">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+      </wiring>
+    </component><component loc="40:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420InterruptsC.nc" nicename="HplCC2420InterruptsC" qname="HplCC2420InterruptsC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420InterruptsC.nc">
+        <short>
+ HPL implementation of interrupts and captures for the ChipCon
+ CC2420 radio connected to a TI MSP430 processor.</short>
+        <long>
+ HPL implementation of interrupts and captures for the ChipCon
+ CC2420 radio connected to a TI MSP430 processor.
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.4 $ $Date: 2006-12-12 18:23:44 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="63:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420InterruptsC.nc">
+          <from><interface-ref name="CaptureSFD" ref="0x2ac2c38fa020" scoped=""/></from>
+          <to><interface-ref name="Capture" ref="0x2ac2c38f2020" scoped=""/></to>
+        </wire>
+        <wire loc="64:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420InterruptsC.nc">
+          <from><interface-ref name="InterruptCCA" ref="0x2ac2c38fabd8" scoped=""/></from>
+          <to><interface-ref name="Interrupt" ref="0x2ac2c39249a0" scoped=""/></to>
+        </wire>
+        <wire loc="65:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420InterruptsC.nc">
+          <from><interface-ref name="InterruptFIFOP" ref="0x2ac2c38f9898" scoped=""/></from>
+          <to><interface-ref name="Interrupt" ref="0x2ac2c3921728" scoped=""/></to>
+        </wire>
+        <wire loc="53:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420InterruptsC.nc">
+          <from><interface-ref name="Msp430TimerControl" ref="0x2ac2c38f2a90" scoped=""/></from>
+          <to><interface-ref name="ControlB1" ref="0x2ac2c2f05060" scoped=""/></to>
+        </wire>
+        <wire loc="54:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420InterruptsC.nc">
+          <from><interface-ref name="Msp430Capture" ref="0x2ac2c392bd60" scoped=""/></from>
+          <to><interface-ref name="CaptureB1" ref="0x2ac2c2f16020" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420InterruptsC.nc">
+          <from><interface-ref name="GeneralIO" ref="0x2ac2c392ab48" scoped=""/></from>
+          <to><interface-ref name="Port41" ref="0x2ac2c30b1668" scoped=""/></to>
+        </wire>
+        <wire loc="60:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420InterruptsC.nc">
+          <from><interface-ref name="HplInterrupt" ref="0x2ac2c3923480" scoped=""/></from>
+          <to><interface-ref name="Port14" ref="0x2ac2c32c7b88" scoped=""/></to>
+        </wire>
+        <wire loc="61:/home/kasper/tinyos-main//tos/platforms/telosa/chips/cc2420/HplCC2420InterruptsC.nc">
+          <from><interface-ref name="HplInterrupt" ref="0x2ac2c39202e8" scoped=""/></from>
+          <to><interface-ref name="Port10" ref="0x2ac2c329bb78" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="52:/home/kasper/tinyos-main//tos/system/ActiveMessageAddressC.nc" nicename="ActiveMessageAddressC" qname="ActiveMessageAddressC" safe="">
+      <documentation loc="45:/home/kasper/tinyos-main//tos/system/ActiveMessageAddressC.nc">
+        <short>
+ Component that stores the node's active message address and group ID.</short>
+        <long>
+ Component that stores the node's active message address and group ID.
+
+ @author Philip Levis
+ @author David Moss
+</long>
+      </documentation>
+      <module/>
+    </component><component loc="39(CC2420ControlC.Spi):/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" nicename="CC2420ControlC.Spi" qname="CC2420ControlC.Spi">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+        <short>
+ Implementation of basic SPI primitives for the ChipCon CC2420 radio.</short>
+        <long>
+ Implementation of basic SPI primitives for the ChipCon CC2420 radio.
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.4 $ $Date: 2009-08-14 20:33:43 $
+</long>
+      </documentation>
+      <instance number="0">
+        <component-ref nicename="CC2420SpiC" qname="CC2420SpiC"/>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="139:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXCTRL1" ref="0x2ac2c3d43470" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:23">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="117:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="STXCAL" ref="0x2ac2c3d4e900" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:2">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="133:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MDMCTRL0" ref="0x2ac2c3d46470" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:17">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="142:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SECCTRL1" ref="0x2ac2c3d42d98" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:26">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="143:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="BATTMON" ref="0x2ac2c3d415c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:27">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="164:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXNONCE" ref="0x2ac2c3d36c10" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:272">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="160:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="KEY0" ref="0x2ac2c3d38c10" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:256">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="120:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="STXONCCA" ref="0x2ac2c3d4dc50" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:5">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="158:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="TXFIFO_RAM" ref="0x2ac2c3d3ac10" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="135:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RSSI" ref="0x2ac2c3d45470" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:19">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="137:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="TXCTRL" ref="0x2ac2c3d44470" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:21">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="149:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MANAND" ref="0x2ac2c3d3d470" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:33">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="144:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="IOCFG0" ref="0x2ac2c3d41d60" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:28">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="111:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="ChipSpiResource" ref="0x2ac2c3d4f2a8" scoped=""/></from>
+          <to><interface-ref name="ChipSpiResource" ref="0x2ac2c397a4c8" scoped=""/></to>
+        </wire>
+        <wire loc="124:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SFLUSHTX" ref="0x2ac2c3d4a638" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:9">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="125:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SACK" ref="0x2ac2c3d4ac50" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:10">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="126:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SACKPEND" ref="0x2ac2c3d493a0" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:11">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="159:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXFIFO_RAM" ref="0x2ac2c3d38470" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:128">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="122:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SXOSCOFF" ref="0x2ac2c3d4b900" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:7">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="136:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SYNCWORD" ref="0x2ac2c3d45c10" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:20">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="134:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MDMCTRL1" ref="0x2ac2c3d46c10" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:18">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="116:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SXOSCON" ref="0x2ac2c3d4e2e8" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="163:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="TXNONCE" ref="0x2ac2c3d36470" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:320">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="161:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="KEY1" ref="0x2ac2c3d37470" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:304">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="150:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MANOR" ref="0x2ac2c3d3dc10" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:34">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="157:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SHORTADR" ref="0x2ac2c3d3a470" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:362">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="146:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MANFIDL" ref="0x2ac2c3d3fcc8" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:30">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="167:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXFIFO" ref="0x2ac2c3d35470" scoped=""/></from>
+          <to><interface-ref name="Fifo" ref="0x2ac2c39793c8" scoped=""/>
+          <arguments>
+            <value cst="I:63">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="115:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SNOP" ref="0x2ac2c3d4fbd0" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="132:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MAIN" ref="0x2ac2c3d48c50" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:16">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="138:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXCTRL0" ref="0x2ac2c3d44c10" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:22">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="145:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="IOCFG1" ref="0x2ac2c3d3f528" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:29">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="140:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="FSCTRL" ref="0x2ac2c3d43e10" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:24">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="118:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SRXON" ref="0x2ac2c3d4d020" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:3">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="141:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SECCTRL0" ref="0x2ac2c3d425f8" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:25">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="112:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="Resource" ref="0x2ac2c3d50610" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c397d810" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="127:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SRXDEC" ref="0x2ac2c3d499b8" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:12">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="129:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SAES" ref="0x2ac2c3d48638" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:14">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="156:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="PANID" ref="0x2ac2c3d3bc10" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:360">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="155:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="IEEEADR" ref="0x2ac2c3d3b470" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:352">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="123:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SFLUSHRX" ref="0x2ac2c3d4a020" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:8">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="152:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXFIFO_REGISTER" ref="0x2ac2c3d3cc10" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:63">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="162:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SABUF" ref="0x2ac2c3d37c10" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:288">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="151:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="AGCCTRL" ref="0x2ac2c3d3c470" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:35">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="119:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="STXON" ref="0x2ac2c3d4d638" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:4">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="148:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="FSMTC" ref="0x2ac2c3d3ec90" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:32">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="121:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SRFOFF" ref="0x2ac2c3d4b2e8" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:6">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="147:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MANFIDH" ref="0x2ac2c3d3e4f0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:31">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="128:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="STXENC" ref="0x2ac2c3d48020" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:13">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="168:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="TXFIFO" ref="0x2ac2c3d345f8" scoped=""/></from>
+          <to><interface-ref name="Fifo" ref="0x2ac2c39793c8" scoped=""/>
+          <arguments>
+            <value cst="I:62">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+      </wiring>
+    </component><component loc="39(CC2420ControlC.SyncSpiC):/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc" nicename="CC2420ControlC.SyncSpiC" qname="CC2420ControlC.SyncSpiC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+        <short>
+ Implementation of basic SPI primitives for the ChipCon CC2420 radio.</short>
+        <long>
+ Implementation of basic SPI primitives for the ChipCon CC2420 radio.
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.4 $ $Date: 2009-08-14 20:33:43 $
+</long>
+      </documentation>
+      <instance number="1">
+        <component-ref nicename="CC2420SpiC" qname="CC2420SpiC"/>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="139:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXCTRL1" ref="0x2ac2c3d79c90" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:23">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="117:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="STXCAL" ref="0x2ac2c3d822e8" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:2">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="133:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MDMCTRL0" ref="0x2ac2c3d7cdd8" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:17">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="142:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SECCTRL1" ref="0x2ac2c3d767c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:26">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="143:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="BATTMON" ref="0x2ac2c3d75020" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:27">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="164:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXNONCE" ref="0x2ac2c3d6b7c0" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:272">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="160:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="KEY0" ref="0x2ac2c3d6d7c0" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:256">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="120:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="STXONCCA" ref="0x2ac2c3d81638" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:5">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="158:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="TXFIFO_RAM" ref="0x2ac2c3d6e7c0" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="135:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RSSI" ref="0x2ac2c3d7bd60" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:19">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="137:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="TXCTRL" ref="0x2ac2c3d7acc8" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:21">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="149:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MANAND" ref="0x2ac2c3d72020" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:33">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="144:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="IOCFG0" ref="0x2ac2c3d757c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:28">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="111:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="ChipSpiResource" ref="0x2ac2c3d85c18" scoped=""/></from>
+          <to><interface-ref name="ChipSpiResource" ref="0x2ac2c397a4c8" scoped=""/></to>
+        </wire>
+        <wire loc="124:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SFLUSHTX" ref="0x2ac2c3d7f020" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:9">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="125:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SACK" ref="0x2ac2c3d7f638" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:10">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="126:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SACKPEND" ref="0x2ac2c3d7fd50" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:11">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="159:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXFIFO_RAM" ref="0x2ac2c3d6d020" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:128">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="122:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SXOSCOFF" ref="0x2ac2c3d802e8" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:7">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="136:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SYNCWORD" ref="0x2ac2c3d7a528" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:20">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="134:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MDMCTRL1" ref="0x2ac2c3d7b5c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:18">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="116:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SXOSCON" ref="0x2ac2c3d83c10" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="163:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="TXNONCE" ref="0x2ac2c3d6b020" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:320">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="161:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="KEY1" ref="0x2ac2c3d6c020" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:304">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="150:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MANOR" ref="0x2ac2c3d727c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:34">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="157:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SHORTADR" ref="0x2ac2c3d6e020" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:362">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="146:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MANFIDL" ref="0x2ac2c3d747c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:30">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="167:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXFIFO" ref="0x2ac2c3d69020" scoped=""/></from>
+          <to><interface-ref name="Fifo" ref="0x2ac2c39793c8" scoped=""/>
+          <arguments>
+            <value cst="I:63">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="115:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SNOP" ref="0x2ac2c3d835f8" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="132:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MAIN" ref="0x2ac2c3d7c638" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:16">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="138:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXCTRL0" ref="0x2ac2c3d794f0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:22">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="145:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="IOCFG1" ref="0x2ac2c3d74020" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:29">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="140:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="FSCTRL" ref="0x2ac2c3d78838" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:24">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="118:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SRXON" ref="0x2ac2c3d82900" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:3">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="141:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SECCTRL0" ref="0x2ac2c3d76020" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:25">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="112:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="Resource" ref="0x2ac2c3d85020" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c397d810" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="127:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SRXDEC" ref="0x2ac2c3d7d3a0" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:12">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="129:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SAES" ref="0x2ac2c3d7c020" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:14">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="156:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="PANID" ref="0x2ac2c3d6f7c0" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:360">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="155:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="IEEEADR" ref="0x2ac2c3d6f020" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:352">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="123:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SFLUSHRX" ref="0x2ac2c3d80900" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:8">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="152:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="RXFIFO_REGISTER" ref="0x2ac2c3d717c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:63">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="162:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SABUF" ref="0x2ac2c3d6c7c0" scoped=""/></from>
+          <to><interface-ref name="Ram" ref="0x2ac2c39785e0" scoped=""/>
+          <arguments>
+            <value cst="I:288">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="151:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="AGCCTRL" ref="0x2ac2c3d71020" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:35">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="119:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="STXON" ref="0x2ac2c3d81020" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:4">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="148:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="FSMTC" ref="0x2ac2c3d737c0" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:32">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="121:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="SRFOFF" ref="0x2ac2c3d81c50" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:6">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="147:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="MANFIDH" ref="0x2ac2c3d73020" scoped=""/></from>
+          <to><interface-ref name="Reg" ref="0x2ac2c3976348" scoped=""/>
+          <arguments>
+            <value cst="I:31">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="128:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="STXENC" ref="0x2ac2c3d7d9b8" scoped=""/></from>
+          <to><interface-ref name="Strobe" ref="0x2ac2c39751c8" scoped=""/>
+          <arguments>
+            <value cst="I:13">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="168:/home/kasper/tinyos-main//tos/chips/cc2420/spi/CC2420SpiC.nc">
+          <from><interface-ref name="TXFIFO" ref="0x2ac2c3d680a0" scoped=""/></from>
+          <to><interface-ref name="Fifo" ref="0x2ac2c39793c8" scoped=""/>
+          <arguments>
+            <value cst="I:62">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+      </wiring>
+    </component><component loc="42:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc" nicename="CC2420ControlP" qname="CC2420ControlP" safe="">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/control/CC2420ControlP.nc">
+        <short>
+ </short>
+        <long>
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @author David Moss
+ @author Urs Hunkeler (ReadRssi implementation)
+ @version $Revision: 1.7 $ $Date: 2008/06/24 04:07:28 $
+</long>
+      </documentation>
+      <module/>
+    </component><component loc="26:/home/kasper/tinyos-main//tos/platforms/epic/chips/ds2411/LocalIeeeEui64C.nc" nicename="LocalIeeeEui64C" qname="LocalIeeeEui64C">
+      <configuration/>
+      <wiring>
+        <wire loc="33:/home/kasper/tinyos-main//tos/platforms/epic/chips/ds2411/LocalIeeeEui64C.nc">
+          <from><interface-ref name="LocalIeeeEui64" ref="0x2ac2c3d9ace0" scoped=""/></from>
+          <to><interface-ref name="LocalIeeeEui64" ref="0x2ac2c3e23020" scoped=""/></to>
+        </wire>
+        <wire loc="34:/home/kasper/tinyos-main//tos/platforms/epic/chips/ds2411/LocalIeeeEui64C.nc">
+          <from><interface-ref name="ReadId48" ref="0x2ac2c3e23650" scoped=""/></from>
+          <to><interface-ref name="ReadId48" ref="0x2ac2c3ddb998" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="56:/home/kasper/tinyos-main//tos/system/MainC.nc" nicename="MainC" qname="MainC">
+      <documentation loc="45:/home/kasper/tinyos-main//tos/system/MainC.nc">
+        <short>
+ MainC is the system interface the TinyOS boot sequence.</short>
+        <long>
+ MainC is the system interface the TinyOS boot sequence. It wires the
+ boot sequence implementation to the scheduler and hardware resources.
+
+ @author Philip Levis
+ @date   August 6 2005
+ @see    TEP 107: Boot Sequence
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="72:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="Boot" ref="0x2ac2c2e659c0" scoped=""/></from>
+          <to><interface-ref name="Boot" ref="0x2ac2c2e64c40" scoped=""/></to>
+        </wire>
+        <wire loc="67:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="Scheduler" ref="0x2ac2c3010308" scoped=""/></from>
+          <to><interface-ref name="Scheduler" ref="0x2ac2c29e8390" scoped=""/></to>
+        </wire>
+        <wire loc="68:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="PlatformInit" ref="0x2ac2c3010ce0" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c2e66d70" scoped=""/></to>
+        </wire>
+        <wire loc="71:/home/kasper/tinyos-main//tos/system/MainC.nc">
+          <from><interface-ref name="SoftwareInit" ref="0x2ac2c302a418" scoped=""/></from>
+          <to><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="43:/home/kasper/tinyos-main//tos/chips/cc2420/alarm/AlarmMultiplexC.nc" nicename="AlarmMultiplexC" qname="AlarmMultiplexC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/alarm/AlarmMultiplexC.nc">
+        <short>
+ A component that multiplexes the use of an alarm.</short>
+        <long>
+ A component that multiplexes the use of an alarm. The assumption is
+ that its use is mutually exclusive and users check whether the
+ events are for them.
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.1 $ $Date: 2007-07-04 00:37:14 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="54:/home/kasper/tinyos-main//tos/chips/cc2420/alarm/AlarmMultiplexC.nc">
+          <from><interface-ref name="Init" ref="0x2ac2c38a4bd8" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c389ce70" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/chips/cc2420/alarm/AlarmMultiplexC.nc">
+          <from><interface-ref name="Alarm32khz32" ref="0x2ac2c38a1648" scoped=""/></from>
+          <to><interface-ref name="Alarm32khz32" ref="0x2ac2c38ab6c0" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component></referenced></component>

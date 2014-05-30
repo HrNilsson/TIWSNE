@@ -1,0 +1,75 @@
+<?xml version="1.0" ?><component abstract="" loc="46:/home/kasper/tinyos-main//tos/lib/timer/AlarmToTimerC.nc" nicename="AlarmToTimerC" qname="AlarmToTimerC" safe="">
+      <documentation loc="36:/home/kasper/tinyos-main//tos/lib/timer/AlarmToTimerC.nc">
+        <short>
+ AlarmToTimerC converts a 32-bit Alarm to a Timer.</short>
+        <long>
+ AlarmToTimerC converts a 32-bit Alarm to a Timer.  
+
+ &lt;p&gt;See TEP102 for more details.
+ @param precision_tag A type indicating the precision of the Alarm and
+ Timer being converted.
+
+ @author Cory Sharp &lt;cssharp@eecs.berkeley.edu&gt;
+</long>
+      </documentation>
+      <parameters>
+        <typedef loc="46:/home/kasper/tinyos-main//tos/lib/timer/AlarmToTimerC.nc" name="precision_tag" ref="0x2ac2c34e2068">
+          <component-ref nicename="AlarmToTimerC" qname="AlarmToTimerC"/>
+          <type-var alignment="U:" size="U:"><typedef-ref name="precision_tag" ref="0x2ac2c34e2068" scoped=""/></type-var>
+        </typedef>
+      </parameters>
+      <module/>
+    <specification><interface loc="74:/home/kasper/tinyos-main//tos/lib/timer/AlarmToTimerC.nc" name="fired" provided="0" ref="0x2ac2c3507020">
+      <component-ref nicename="AlarmToTimerC" qname="AlarmToTimerC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="fired" ref="0x2ac2c3507020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c3507370" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c35074f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="49:/home/kasper/tinyos-main//tos/lib/timer/AlarmToTimerC.nc" name="Alarm" provided="0" ref="0x2ac2c3516d88">
+      <component-ref nicename="AlarmToTimerC" qname="AlarmToTimerC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Alarm" ref="0x2ac2c3516d88" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Alarm" qname="Alarm"/>
+        <arguments>
+          <type-var alignment="U:" size="U:"><typedef-ref name="precision_tag" ref="0x2ac2c34e2068" scoped=""/></type-var>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c3512410" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c35134a8" scoped=""/>
+        <function-ref name="startAt" ref="0x2ac2c3513db8" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c3513930" scoped=""/>
+        <function-ref name="getAlarm" ref="0x2ac2c3512898" scoped=""/>
+        <function-ref name="start" ref="0x2ac2c3514b10" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c3513020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/lib/timer/AlarmToTimerC.nc" name="Timer" provided="1" ref="0x2ac2c34e2a20">
+      <component-ref nicename="AlarmToTimerC" qname="AlarmToTimerC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Timer" ref="0x2ac2c34e2a20" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Timer" qname="Timer"/>
+        <arguments>
+          <type-var alignment="U:" size="U:"><typedef-ref name="precision_tag" ref="0x2ac2c34e2068" scoped=""/></type-var>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="getNow" ref="0x2ac2c34dfd60" scoped=""/>
+        <function-ref name="fired" ref="0x2ac2c34e0470" scoped=""/>
+        <function-ref name="startPeriodicAt" ref="0x2ac2c34df1c0" scoped=""/>
+        <function-ref name="isOneShot" ref="0x2ac2c34e0d10" scoped=""/>
+        <function-ref name="getdt" ref="0x2ac2c3516648" scoped=""/>
+        <function-ref name="gett0" ref="0x2ac2c35161f8" scoped=""/>
+        <function-ref name="isRunning" ref="0x2ac2c34e08c0" scoped=""/>
+        <function-ref name="startPeriodic" ref="0x2ac2c34e15a0" scoped=""/>
+        <function-ref name="startOneShotAt" ref="0x2ac2c34df790" scoped=""/>
+        <function-ref name="startOneShot" ref="0x2ac2c34e1a40" scoped=""/>
+        <function-ref name="stop" ref="0x2ac2c34e0020" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

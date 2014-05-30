@@ -1,0 +1,398 @@
+<?xml version="1.0" ?><component loc="37:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+        <short>
+ </short>
+        <long>
+ @author Jonathan Hui &lt;jhui@archedrock.com&gt;
+ @version $Revision: 1.5 $ $Date: 2008-05-21 22:11:57 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="56:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="ResourceRequested" ref="0x2ac2c3bb5660" scoped=""/></from>
+          <to><interface-ref name="ResourceRequested" ref="0x2ac2c3c7bd18" scoped=""/></to>
+        </wire>
+        <wire loc="51:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="Interrupts" ref="0x2ac2c3bbba48" scoped=""/></from>
+          <to><interface-ref name="Interrupts" ref="0x2ac2c3bb1480" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="Resource" ref="0x2ac2c3bb7498" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c3c7b020" scoped=""/></to>
+        </wire>
+        <wire loc="52:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="I2CInterrupts" ref="0x2ac2c3bb8940" scoped=""/></from>
+          <to><interface-ref name="I2CInterrupts" ref="0x2ac2c3bb1d60" scoped=""/></to>
+        </wire>
+        <wire loc="58:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="ArbiterInfo" ref="0x2ac2c3bb5e30" scoped=""/></from>
+          <to><interface-ref name="ArbiterInfo" ref="0x2ac2c3c790e0" scoped=""/></to>
+        </wire>
+        <wire loc="57:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="ResourceConfigure" ref="0x2ac2c3c79960" scoped=""/></from>
+          <to><interface-ref name="ResourceConfigure" ref="0x2ac2c3bb4b58" scoped=""/></to>
+        </wire>
+        <wire loc="59:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="ArbiterInfo" ref="0x2ac2c3bf22a8" scoped=""/></from>
+          <to><interface-ref name="ArbiterInfo" ref="0x2ac2c3c790e0" scoped=""/></to>
+        </wire>
+        <wire loc="62:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="RawInterrupts" ref="0x2ac2c3bf4438" scoped=""/></from>
+          <to><interface-ref name="HplMsp430UsartInterrupts" ref="0x2ac2c3af7020" scoped=""/></to>
+        </wire>
+        <wire loc="63:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc">
+          <from><interface-ref name="RawI2CInterrupts" ref="0x2ac2c3bf4bd8" scoped=""/></from>
+          <to><interface-ref name="HplMsp430I2CInterrupts" ref="0x2ac2c3af4470" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="42:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" name="ResourceRequested" provided="1" ref="0x2ac2c3bb5660">
+      <component-ref nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ResourceRequested" ref="0x2ac2c3bb5660" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ResourceRequested" qname="ResourceRequested"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="requested" ref="0x2ac2c3bb59b0" scoped=""/>
+        <function-ref name="immediateRequested" ref="0x2ac2c3bb5b38" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" name="ResourceConfigure" provided="0" ref="0x2ac2c3bb4b58">
+      <component-ref nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ResourceConfigure" ref="0x2ac2c3bb4b58" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ResourceConfigure" qname="ResourceConfigure"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="unconfigure" ref="0x2ac2c3bb3020" scoped=""/>
+        <function-ref name="configure" ref="0x2ac2c3bb31a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="39:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" name="Interrupts" provided="1" ref="0x2ac2c3bbba48">
+      <component-ref nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Interrupts" ref="0x2ac2c3bbba48" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430UsartInterrupts" qname="HplMsp430UsartInterrupts"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="rxDone" ref="0x2ac2c3bbbd98" scoped=""/>
+        <function-ref name="txDone" ref="0x2ac2c3bb8020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="41:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" name="Resource" provided="1" ref="0x2ac2c3bb7498">
+      <component-ref nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Resource" ref="0x2ac2c3bb7498" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c3bb77e8" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c3bb7970" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c3bb7af8" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c3bb7c80" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c3bb7e08" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="40:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" name="I2CInterrupts" provided="1" ref="0x2ac2c3bb8940">
+      <component-ref nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="I2CInterrupts" ref="0x2ac2c3bb8940" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430I2CInterrupts" qname="HplMsp430I2CInterrupts"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="fired" ref="0x2ac2c3bb8c90" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShare0P.nc" name="ArbiterInfo" provided="1" ref="0x2ac2c3bb5e30">
+      <component-ref nicename="Msp430UsartShare0P" qname="Msp430UsartShare0P"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ArbiterInfo" ref="0x2ac2c3bb5e30" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ArbiterInfo" qname="ArbiterInfo"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="inUse" ref="0x2ac2c3bb41a8" scoped=""/>
+        <function-ref name="userId" ref="0x2ac2c3bb4330" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="96:/home/kasper/tinyos-main//tos/system/FcfsArbiterC.nc" name="ResourceConfigure" provided="0" ref="0x2ac2c3c79960">
+      <component-ref nicename="Msp430UsartShare0P.ArbiterC" qname="Msp430UsartShare0P.ArbiterC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ResourceConfigure" ref="0x2ac2c3c79960" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ResourceConfigure" qname="ResourceConfigure"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="unconfigure" ref="0x2ac2c3c79cd0" scoped=""/>
+        <function-ref name="configure" ref="0x2ac2c3c79e58" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="42:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShareP.nc" name="RawI2CInterrupts" provided="0" ref="0x2ac2c3bf4bd8">
+      <component-ref nicename="Msp430UsartShare0P.UsartShareP" qname="Msp430UsartShare0P.UsartShareP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="RawI2CInterrupts" ref="0x2ac2c3bf4bd8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430I2CInterrupts" qname="HplMsp430I2CInterrupts"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="fired" ref="0x2ac2c3bf2020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="77:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc" name="HplMsp430UsartInterrupts" provided="1" ref="0x2ac2c3af7020">
+      <component-ref nicename="HplMsp430Usart0C" qname="HplMsp430Usart0C"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="HplMsp430UsartInterrupts" ref="0x2ac2c3af7020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430UsartInterrupts" qname="HplMsp430UsartInterrupts"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="rxDone" ref="0x2ac2c3af7370" scoped=""/>
+        <function-ref name="txDone" ref="0x2ac2c3af74f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="92:/home/kasper/tinyos-main//tos/system/FcfsArbiterC.nc" name="ResourceRequested" provided="1" ref="0x2ac2c3c7bd18">
+      <component-ref nicename="Msp430UsartShare0P.ArbiterC" qname="Msp430UsartShare0P.ArbiterC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ResourceRequested" ref="0x2ac2c3c7bd18" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ResourceRequested" qname="ResourceRequested"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="requested" ref="0x2ac2c3c7a0d8" scoped=""/>
+        <function-ref name="immediateRequested" ref="0x2ac2c3c7a260" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="41:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShareP.nc" name="RawInterrupts" provided="0" ref="0x2ac2c3bf4438">
+      <component-ref nicename="Msp430UsartShare0P.UsartShareP" qname="Msp430UsartShare0P.UsartShareP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="RawInterrupts" ref="0x2ac2c3bf4438" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430UsartInterrupts" qname="HplMsp430UsartInterrupts"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="rxDone" ref="0x2ac2c3bf4788" scoped=""/>
+        <function-ref name="txDone" ref="0x2ac2c3bf4910" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="40:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShareP.nc" name="I2CInterrupts" provided="1" ref="0x2ac2c3bb1d60">
+      <component-ref nicename="Msp430UsartShare0P.UsartShareP" qname="Msp430UsartShare0P.UsartShareP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="I2CInterrupts" ref="0x2ac2c3bb1d60" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430I2CInterrupts" qname="HplMsp430I2CInterrupts"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="fired" ref="0x2ac2c3bf4170" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="78:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc" name="HplMsp430I2CInterrupts" provided="1" ref="0x2ac2c3af4470">
+      <component-ref nicename="HplMsp430Usart0C" qname="HplMsp430Usart0C"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="HplMsp430I2CInterrupts" ref="0x2ac2c3af4470" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430I2CInterrupts" qname="HplMsp430I2CInterrupts"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="fired" ref="0x2ac2c3af47c0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="91:/home/kasper/tinyos-main//tos/system/FcfsArbiterC.nc" name="Resource" provided="1" ref="0x2ac2c3c7b020">
+      <component-ref nicename="Msp430UsartShare0P.ArbiterC" qname="Msp430UsartShare0P.ArbiterC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Resource" ref="0x2ac2c3c7b020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Resource" qname="Resource"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="release" ref="0x2ac2c3c7b390" scoped=""/>
+        <function-ref name="immediateRequest" ref="0x2ac2c3c7b518" scoped=""/>
+        <function-ref name="request" ref="0x2ac2c3c7b6a0" scoped=""/>
+        <function-ref name="granted" ref="0x2ac2c3c7b828" scoped=""/>
+        <function-ref name="isOwner" ref="0x2ac2c3c7b9b0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="94:/home/kasper/tinyos-main//tos/system/FcfsArbiterC.nc" name="ArbiterInfo" provided="1" ref="0x2ac2c3c790e0">
+      <component-ref nicename="Msp430UsartShare0P.ArbiterC" qname="Msp430UsartShare0P.ArbiterC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ArbiterInfo" ref="0x2ac2c3c790e0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ArbiterInfo" qname="ArbiterInfo"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="inUse" ref="0x2ac2c3c79430" scoped=""/>
+        <function-ref name="userId" ref="0x2ac2c3c795b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="39:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShareP.nc" name="Interrupts" provided="1" ref="0x2ac2c3bb1480">
+      <component-ref nicename="Msp430UsartShare0P.UsartShareP" qname="Msp430UsartShare0P.UsartShareP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Interrupts" ref="0x2ac2c3bb1480" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430UsartInterrupts" qname="HplMsp430UsartInterrupts"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="rxDone" ref="0x2ac2c3bb17f0" scoped=""/>
+        <function-ref name="txDone" ref="0x2ac2c3bb1978" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShareP.nc" name="ArbiterInfo" provided="0" ref="0x2ac2c3bf22a8">
+      <component-ref nicename="Msp430UsartShare0P.UsartShareP" qname="Msp430UsartShare0P.UsartShareP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="ArbiterInfo" ref="0x2ac2c3bf22a8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="ArbiterInfo" qname="ArbiterInfo"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="inUse" ref="0x2ac2c3bf25f8" scoped=""/>
+        <function-ref name="userId" ref="0x2ac2c3bf2780" scoped=""/>
+      </interface-functions>
+    </interface><component loc="89(Msp430UsartShare0P.ArbiterC):/home/kasper/tinyos-main//tos/system/FcfsArbiterC.nc" nicename="Msp430UsartShare0P.ArbiterC" qname="Msp430UsartShare0P.ArbiterC">
+      <documentation loc="69:/home/kasper/tinyos-main//tos/system/FcfsArbiterC.nc">
+        <short>
+ Please refer to TEP 108 for more information about this component and its
+ intended use.&lt;br&gt;&lt;br&gt;
+
+ This component provides the Resource, ArbiterInfo, and ResourceDefaultOwner
+ interfaces and uses the ResourceConfigure interface as
+ described in TEP 108.</short>
+        <long>
+ Please refer to TEP 108 for more information about this component and its
+ intended use.&lt;br&gt;&lt;br&gt;
+
+ This component provides the Resource, ArbiterInfo, and ResourceDefaultOwner
+ interfaces and uses the ResourceConfigure interface as
+ described in TEP 108.  It provides arbitration to a shared resource in
+ an FCFS fashion.  An array is used to keep track of which users have put
+ in requests for the resource.  Upon the release of the resource by one
+ of these users, the array is checked and the next user (in FCFS order)
+ that has a pending request will ge granted control of the resource.  If
+ there are no pending requests, then the resource is granted to the default 
+ user.  If a new request is made, the default user will release the resource, 
+ and it will be granted to the requesting cleint.
+
+ @param &lt;b&gt;resourceName&lt;/b&gt; -- The name of the Resource being shared
+ 
+ @author Kevin Klues (klues@tkn.tu-berlin.de)
+</long>
+      </documentation>
+      <instance number="0">
+        <component-ref nicename="FcfsArbiterC" qname="FcfsArbiterC"/>
+        <arguments>
+          <value cst="S:Msp430Usart0.Resource">
+            <type-pointer alignment="I:2" size="I:2">
+              <type-int alignment="I:1" cname="char" size="I:1"/>
+            </type-pointer>
+          </value>
+        </arguments>
+      </instance>
+      <configuration/>
+      <wiring>
+        <wire loc="106:/home/kasper/tinyos-main//tos/system/FcfsArbiterC.nc">
+          <from><interface-ref name="ResourceRequested" ref="0x2ac2c3c7bd18" scoped=""/></from>
+          <to><interface-ref name="ResourceRequested" ref="0x2ac2c4f0ee38" scoped=""/></to>
+        </wire>
+        <wire loc="107:/home/kasper/tinyos-main//tos/system/FcfsArbiterC.nc">
+          <from><interface-ref name="ResourceDefaultOwner" ref="0x2ac2c3c7a4a8" scoped=""/></from>
+          <to><interface-ref name="ResourceDefaultOwner" ref="0x2ac2c4faf5b8" scoped=""/></to>
+        </wire>
+        <wire loc="105:/home/kasper/tinyos-main//tos/system/FcfsArbiterC.nc">
+          <from><interface-ref name="Resource" ref="0x2ac2c3c7b020" scoped=""/></from>
+          <to><interface-ref name="Resource" ref="0x2ac2c4f0e140" scoped=""/></to>
+        </wire>
+        <wire loc="108:/home/kasper/tinyos-main//tos/system/FcfsArbiterC.nc">
+          <from><interface-ref name="ArbiterInfo" ref="0x2ac2c3c790e0" scoped=""/></from>
+          <to><interface-ref name="ArbiterInfo" ref="0x2ac2c4fae268" scoped=""/></to>
+        </wire>
+        <wire loc="103:/home/kasper/tinyos-main//tos/system/FcfsArbiterC.nc">
+          <from><interface-ref name="SoftwareInit" ref="0x2ac2c2e67e48" scoped=""/></from>
+          <to><interface-ref name="Init" ref="0x2ac2c4f11b18" scoped=""/></to>
+        </wire>
+        <wire loc="109:/home/kasper/tinyos-main//tos/system/FcfsArbiterC.nc">
+          <from><interface-ref name="ResourceConfigure" ref="0x2ac2c4faeb08" scoped=""/></from>
+          <to><interface-ref name="ResourceConfigure" ref="0x2ac2c3c79960" scoped=""/></to>
+        </wire>
+        <wire loc="111:/home/kasper/tinyos-main//tos/system/FcfsArbiterC.nc">
+          <from><interface-ref name="Queue" ref="0x2ac2c4fad2b8" scoped=""/></from>
+          <to><interface-ref name="FcfsQueue" ref="0x2ac2c4f10120" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="37(Msp430UsartShare0P.UsartShareP):/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShareP.nc" nicename="Msp430UsartShare0P.UsartShareP" qname="Msp430UsartShare0P.UsartShareP">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/msp430/usart/Msp430UsartShareP.nc">
+        <short>
+ </short>
+        <long>
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.5 $ $Date: 2008-06-26 04:39:08 $
+</long>
+      </documentation>
+      <instance number="0">
+        <component-ref nicename="Msp430UsartShareP" qname="Msp430UsartShareP"/>
+      </instance>
+      <module/>
+    </component><component loc="74:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc" nicename="HplMsp430Usart0C" qname="HplMsp430Usart0C">
+      <documentation loc="31:/home/kasper/tinyos-main//tos/chips/msp430/usart/msp430usart.h">
+        <short>
+ </short>
+        <long>
+ @author Vlado Handziski &lt;handzisk@tkn.tu-berlin.de&gt;
+ @author Philipp Huppertz &lt;huppertz@tkn.tu-berlin.de&gt;
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="87:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="HplMsp430I2CInterrupts" ref="0x2ac2c3af4470" scoped=""/></from>
+          <to><interface-ref name="I2CInterrupts" ref="0x2ac2c3aedd50" scoped=""/></to>
+        </wire>
+        <wire loc="86:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="HplMsp430UsartInterrupts" ref="0x2ac2c3af7020" scoped=""/></from>
+          <to><interface-ref name="Interrupts" ref="0x2ac2c3aed448" scoped=""/></to>
+        </wire>
+        <wire loc="85:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="HplMsp430Usart" ref="0x2ac2c3afe820" scoped=""/></from>
+          <to><interface-ref name="Usart" ref="0x2ac2c3af6a00" scoped=""/></to>
+        </wire>
+        <wire loc="90:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="SIMO" ref="0x2ac2c3b10020" scoped=""/></from>
+          <to><interface-ref name="SIMO0" ref="0x2ac2c30cd970" scoped=""/></to>
+        </wire>
+        <wire loc="91:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="SOMI" ref="0x2ac2c3b0fe00" scoped=""/></from>
+          <to><interface-ref name="SOMI0" ref="0x2ac2c30f0660" scoped=""/></to>
+        </wire>
+        <wire loc="92:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="UCLK" ref="0x2ac2c3b0dc78" scoped=""/></from>
+          <to><interface-ref name="UCLK0" ref="0x2ac2c30ee560" scoped=""/></to>
+        </wire>
+        <wire loc="93:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="URXD" ref="0x2ac2c3b0baf0" scoped=""/></from>
+          <to><interface-ref name="URXD0" ref="0x2ac2c30e8560" scoped=""/></to>
+        </wire>
+        <wire loc="94:/home/kasper/tinyos-main//tos/chips/msp430/usart/HplMsp430Usart0C.nc">
+          <from><interface-ref name="UTXD" ref="0x2ac2c3b09968" scoped=""/></from>
+          <to><interface-ref name="UTXD0" ref="0x2ac2c30ea560" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component></referenced></component>

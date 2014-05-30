@@ -1,0 +1,150 @@
+<?xml version="1.0" ?><component loc="43:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketP.nc" nicename="CC2420PacketP" qname="CC2420PacketP" safe="">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketP.nc">
+        <short>
+ </short>
+        <long>
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @author David Moss
+ @author Chad Metcalf
+</long>
+      </documentation>
+      <module/>
+    <specification><interface loc="49:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketP.nc" name="LinkPacketMetadata" provided="1" ref="0x2ac2c3f96630">
+      <component-ref nicename="CC2420PacketP" qname="CC2420PacketP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="LinkPacketMetadata" ref="0x2ac2c3f96630" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="LinkPacketMetadata" qname="LinkPacketMetadata"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="highChannelQuality" ref="0x2ac2c3f96980" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="46:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketP.nc" name="CC2420Packet" provided="1" ref="0x2ac2c3f982e8">
+      <component-ref nicename="CC2420PacketP" qname="CC2420PacketP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CC2420Packet" ref="0x2ac2c3f982e8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420Packet" qname="CC2420Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="setPower" ref="0x2ac2c3f98638" scoped=""/>
+        <function-ref name="setNetwork" ref="0x2ac2c3f987c0" scoped=""/>
+        <function-ref name="getRssi" ref="0x2ac2c3f98948" scoped=""/>
+        <function-ref name="getNetwork" ref="0x2ac2c3f98ad0" scoped=""/>
+        <function-ref name="getPower" ref="0x2ac2c3f98c58" scoped=""/>
+        <function-ref name="getLqi" ref="0x2ac2c3f98de0" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="56:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketP.nc" name="Packet" provided="0" ref="0x2ac2c3fef618">
+      <component-ref nicename="CC2420PacketP" qname="CC2420PacketP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Packet" ref="0x2ac2c3fef618" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Packet" qname="Packet"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c3fef968" scoped=""/>
+        <function-ref name="payloadLength" ref="0x2ac2c3fefaf0" scoped=""/>
+        <function-ref name="getPayload" ref="0x2ac2c3fefc78" scoped=""/>
+        <function-ref name="maxPayloadLength" ref="0x2ac2c3fefe00" scoped=""/>
+        <function-ref name="setPayloadLength" ref="0x2ac2c3fed020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="51:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketP.nc" name="PacketTimeStamp32khz" provided="1" ref="0x2ac2c3f94060">
+      <component-ref nicename="CC2420PacketP" qname="CC2420PacketP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PacketTimeStamp32khz" ref="0x2ac2c3f94060" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketTimeStamp" qname="PacketTimeStamp"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df788"/>
+            <typename><typedef-ref name="T32khz" ref="0x2ac2c33dfae0"/></typename>
+          </type-tag>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="timestamp" ref="0x2ac2c3f934b8" scoped=""/>
+        <function-ref name="clear" ref="0x2ac2c3f93b98" scoped=""/>
+        <function-ref name="isValid" ref="0x2ac2c3f94db0" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c3f922b8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="48:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketP.nc" name="CC2420PacketBody" provided="1" ref="0x2ac2c3f97b60">
+      <component-ref nicename="CC2420PacketP" qname="CC2420PacketP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CC2420PacketBody" ref="0x2ac2c3f97b60" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="CC2420PacketBody" qname="CC2420PacketBody"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="getPayload" ref="0x2ac2c3f96020" scoped=""/>
+        <function-ref name="getHeader" ref="0x2ac2c3f961a8" scoped=""/>
+        <function-ref name="getMetadata" ref="0x2ac2c3f96330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="53:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketP.nc" name="PacketTimeSyncOffset" provided="1" ref="0x2ac2c3ff0ac8">
+      <component-ref nicename="CC2420PacketP" qname="CC2420PacketP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PacketTimeSyncOffset" ref="0x2ac2c3ff0ac8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketTimeSyncOffset" qname="PacketTimeSyncOffset"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x2ac2c3ff0e18" scoped=""/>
+        <function-ref name="isSet" ref="0x2ac2c3fef020" scoped=""/>
+        <function-ref name="cancel" ref="0x2ac2c3fef1a8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c3fef330" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="57:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketP.nc" name="LocalTime32khz" provided="0" ref="0x2ac2c3fed520">
+      <component-ref nicename="CC2420PacketP" qname="CC2420PacketP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="LocalTime32khz" ref="0x2ac2c3fed520" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="LocalTime" qname="LocalTime"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df788"/>
+            <typename><typedef-ref name="T32khz" ref="0x2ac2c33dfae0"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x2ac2c3fec0f8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="58:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketP.nc" name="LocalTimeMilli" provided="0" ref="0x2ac2c3fec788">
+      <component-ref nicename="CC2420PacketP" qname="CC2420PacketP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="LocalTimeMilli" ref="0x2ac2c3fec788" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="LocalTime" qname="LocalTime"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df020"/>
+            <typename><typedef-ref name="TMilli" ref="0x2ac2c33df378"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x2ac2c3feb3a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="52:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketP.nc" name="PacketTimeStampMilli" provided="1" ref="0x2ac2c3f90020">
+      <component-ref nicename="CC2420PacketP" qname="CC2420PacketP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="PacketTimeStampMilli" ref="0x2ac2c3f90020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketTimeStamp" qname="PacketTimeStamp"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33df020"/>
+            <typename><typedef-ref name="TMilli" ref="0x2ac2c33df378"/></typename>
+          </type-tag>
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="uint32_t" ref="0x2ac2c209b020"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="timestamp" ref="0x2ac2c3ff1478" scoped=""/>
+        <function-ref name="clear" ref="0x2ac2c3ff1b58" scoped=""/>
+        <function-ref name="isValid" ref="0x2ac2c3f90d70" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c3ff0278" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/chips/cc2420/packet/CC2420PacketP.nc" name="Acks" provided="1" ref="0x2ac2c3f97210">
+      <component-ref nicename="CC2420PacketP" qname="CC2420PacketP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Acks" ref="0x2ac2c3f97210" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="PacketAcknowledgements" qname="PacketAcknowledgements"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="requestAck" ref="0x2ac2c3f97560" scoped=""/>
+        <function-ref name="noAck" ref="0x2ac2c3f976e8" scoped=""/>
+        <function-ref name="wasAcked" ref="0x2ac2c3f97870" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

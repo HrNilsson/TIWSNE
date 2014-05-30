@@ -1,0 +1,11 @@
+digraph "TinySchedulerC" {
+  n0x2ac2c29efca0 [shape=ellipse, style=filled, label="TaskBasic", fontsize=12];
+  "SchedulerBasicP" [fontsize=12, shape=box, URL="../chtml/SchedulerBasicP.html"];
+  n0x2ac2c29e8390 [shape=ellipse, style=filled, label="Scheduler", fontsize=12];
+  "SchedulerBasicP" [fontsize=12, shape=box, URL="../chtml/SchedulerBasicP.html"];
+  "SchedulerBasicP" [fontsize=12, shape=box, URL="../chtml/SchedulerBasicP.html"];
+  "McuSleepC" [fontsize=12, shape=box, URL="../chtml/McuSleepC.html"];
+  "n0x2ac2c29efca0" -> "SchedulerBasicP" [label="TaskBasic[uint8_t]", style=bold, URL="../ihtml/TaskBasic.html", fontsize=10];
+  "n0x2ac2c29e8390" -> "SchedulerBasicP" [label="Scheduler", URL="../ihtml/Scheduler.html", fontsize=10];
+  "SchedulerBasicP" -> "McuSleepC" [label="McuSleep", URL="../ihtml/McuSleep.html", fontsize=10];
+}

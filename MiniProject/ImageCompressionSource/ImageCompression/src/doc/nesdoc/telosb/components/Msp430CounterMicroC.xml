@@ -1,0 +1,440 @@
+<?xml version="1.0" ?><component loc="41:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430CounterMicroC.nc" nicename="Msp430CounterMicroC" qname="Msp430CounterMicroC">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430CounterMicroC.nc">
+        <short>
+ Msp430Counter32khC provides the standard 32khz counter for the MSP430.</short>
+        <long>
+ Msp430Counter32khC provides the standard 32khz counter for the MSP430.
+
+ @author Cory Sharp &lt;cssharp@eecs.berkeley.edu&gt;
+ @see  Please refer to TEP 102 for more information about this component and its
+          intended use.
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="51:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430CounterMicroC.nc">
+          <from><interface-ref name="Msp430CounterMicro" ref="0x2ac2c3e39e00" scoped=""/></from>
+          <to><interface-ref name="Counter" ref="0x2ac2c3e32370" scoped=""/></to>
+        </wire>
+        <wire loc="52:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430CounterMicroC.nc">
+          <from><interface-ref name="Msp430Timer" ref="0x2ac2c3e30438" scoped=""/></from>
+          <to><interface-ref name="TimerA" ref="0x2ac2c2ee1b88" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="43:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430CounterMicroC.nc" name="Msp430CounterMicro" provided="1" ref="0x2ac2c3e39e00">
+      <component-ref nicename="Msp430CounterMicroC" qname="Msp430CounterMicroC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Msp430CounterMicro" ref="0x2ac2c3e39e00" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Counter" qname="Counter"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33de020"/>
+            <typename><typedef-ref name="TMicro" ref="0x2ac2c33de378"/></typename>
+          </type-tag>
+          <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned="">
+            <typename><typedef-ref name="uint16_t" ref="0x2ac2c209ab20"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x2ac2c3e36be8" scoped=""/>
+        <function-ref name="clearOverflow" ref="0x2ac2c3e35548" scoped=""/>
+        <function-ref name="isOverflowPending" ref="0x2ac2c3e350c0" scoped=""/>
+        <function-ref name="overflow" ref="0x2ac2c3e359d0" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="44:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430CounterC.nc" name="Counter" provided="1" ref="0x2ac2c3e32370">
+      <component-ref nicename="Msp430CounterMicroC.Counter" qname="Msp430CounterMicroC.Counter"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Counter" ref="0x2ac2c3e32370" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Counter" qname="Counter"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33de020"/>
+            <typename><typedef-ref name="TMicro" ref="0x2ac2c33de378"/></typename>
+          </type-tag>
+          <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned="">
+            <typename><typedef-ref name="uint16_t" ref="0x2ac2c209ab20"/></typename>
+          </type-int>
+        </arguments>
+      </instance>
+      <interface-functions>
+        <function-ref name="get" ref="0x2ac2c3e310f8" scoped=""/>
+        <function-ref name="clearOverflow" ref="0x2ac2c3e31a08" scoped=""/>
+        <function-ref name="isOverflowPending" ref="0x2ac2c3e31580" scoped=""/>
+        <function-ref name="overflow" ref="0x2ac2c3e30020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="39:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc" name="TimerA" provided="1" ref="0x2ac2c2ee1b88">
+      <component-ref nicename="Msp430TimerC" qname="Msp430TimerC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="TimerA" ref="0x2ac2c2ee1b88" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Msp430Timer" qname="Msp430Timer"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c2ee9020" scoped=""/>
+        <function-ref name="setClockSource" ref="0x2ac2c2ee91a8" scoped=""/>
+        <function-ref name="enableEvents" ref="0x2ac2c2ee9330" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c2ee94b8" scoped=""/>
+        <function-ref name="disableEvents" ref="0x2ac2c2ee9640" scoped=""/>
+        <function-ref name="clearOverflow" ref="0x2ac2c2ee97c8" scoped=""/>
+        <function-ref name="getMode" ref="0x2ac2c2ee9950" scoped=""/>
+        <function-ref name="isOverflowPending" ref="0x2ac2c2ee9ad8" scoped=""/>
+        <function-ref name="overflow" ref="0x2ac2c2ee9c60" scoped=""/>
+        <function-ref name="setMode" ref="0x2ac2c2ee9de8" scoped=""/>
+        <function-ref name="setInputDivider" ref="0x2ac2c2ee7020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="45:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430CounterC.nc" name="Msp430Timer" provided="0" ref="0x2ac2c3e30438">
+      <component-ref nicename="Msp430CounterMicroC.Counter" qname="Msp430CounterMicroC.Counter"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Msp430Timer" ref="0x2ac2c3e30438" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Msp430Timer" qname="Msp430Timer"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="clear" ref="0x2ac2c3e30788" scoped=""/>
+        <function-ref name="setClockSource" ref="0x2ac2c3e30910" scoped=""/>
+        <function-ref name="enableEvents" ref="0x2ac2c3e30a98" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c3e30c20" scoped=""/>
+        <function-ref name="disableEvents" ref="0x2ac2c3e30da8" scoped=""/>
+        <function-ref name="clearOverflow" ref="0x2ac2c3e2f020" scoped=""/>
+        <function-ref name="getMode" ref="0x2ac2c3e2f1a8" scoped=""/>
+        <function-ref name="isOverflowPending" ref="0x2ac2c3e2f330" scoped=""/>
+        <function-ref name="overflow" ref="0x2ac2c3e2f4b8" scoped=""/>
+        <function-ref name="setMode" ref="0x2ac2c3e2f640" scoped=""/>
+        <function-ref name="setInputDivider" ref="0x2ac2c3e2f7c8" scoped=""/>
+      </interface-functions>
+    </interface><component loc="42(Msp430CounterMicroC.Counter):/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430CounterC.nc" nicename="Msp430CounterMicroC.Counter" qname="Msp430CounterMicroC.Counter">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430CounterC.nc">
+        <short>
+ Msp430Counter is a generic component that wraps the MSP430 HPL timers into a
+ TinyOS Counter.</short>
+        <long>
+ Msp430Counter is a generic component that wraps the MSP430 HPL timers into a
+ TinyOS Counter.
+
+ @author Cory Sharp &lt;cssharp@eecs.berkeley.edu&gt;
+ @see  Please refer to TEP 102 for more information about this component and its
+          intended use.
+</long>
+      </documentation>
+      <instance number="1">
+        <component-ref nicename="Msp430CounterC" qname="Msp430CounterC"/>
+        <arguments>
+          <type-tag alignment="I:2" size="I:2"><struct-ref ref="0x2ac2c33de020"/>
+            <typename><typedef-ref name="TMicro" ref="0x2ac2c33de378"/></typename>
+          </type-tag>
+        </arguments>
+      </instance>
+      <module/>
+    </component><component loc="37:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc" nicename="Msp430TimerC" qname="Msp430TimerC">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+        <short>
+ </short>
+        <long>
+ @author Cory Sharp &lt;cssharp@eecs.berkeley.edu&gt;
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="113:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="ControlA2" ref="0x2ac2c2edfa20" scoped=""/></from>
+          <to><interface-ref name="Control" ref="0x2ac2c2fa8c80" scoped=""/></to>
+        </wire>
+        <wire loc="126:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="ControlB0" ref="0x2ac2c2f07ba8" scoped=""/></from>
+          <to><interface-ref name="Control" ref="0x2ac2c2fc3c80" scoped=""/></to>
+        </wire>
+        <wire loc="108:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CaptureA1" ref="0x2ac2c2ef03d0" scoped=""/></from>
+          <to><interface-ref name="Capture" ref="0x2ac2c2faec58" scoped=""/></to>
+        </wire>
+        <wire loc="149:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CaptureB3" ref="0x2ac2c2f14020" scoped=""/></from>
+          <to><interface-ref name="Capture" ref="0x2ac2c2fccc58" scoped=""/></to>
+        </wire>
+        <wire loc="107:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CompareA1" ref="0x2ac2c2ef5d40" scoped=""/></from>
+          <to><interface-ref name="Compare" ref="0x2ac2c2fae020" scoped=""/></to>
+        </wire>
+        <wire loc="148:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CompareB3" ref="0x2ac2c2f1b6e0" scoped=""/></from>
+          <to><interface-ref name="Compare" ref="0x2ac2c2fcc020" scoped=""/></to>
+        </wire>
+        <wire loc="170:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CaptureB6" ref="0x2ac2c2f11020" scoped=""/></from>
+          <to><interface-ref name="Capture" ref="0x2ac2c2fd9c58" scoped=""/></to>
+        </wire>
+        <wire loc="154:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="ControlB4" ref="0x2ac2c2f01020" scoped=""/></from>
+          <to><interface-ref name="Control" ref="0x2ac2c2fc7c80" scoped=""/></to>
+        </wire>
+        <wire loc="99:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="ControlA0" ref="0x2ac2c2ef91b0" scoped=""/></from>
+          <to><interface-ref name="Control" ref="0x2ac2c2f50c80" scoped=""/></to>
+        </wire>
+        <wire loc="135:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CaptureB1" ref="0x2ac2c2f16020" scoped=""/></from>
+          <to><interface-ref name="Capture" ref="0x2ac2c2fb9c58" scoped=""/></to>
+        </wire>
+        <wire loc="134:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CompareB1" ref="0x2ac2c2efda70" scoped=""/></from>
+          <to><interface-ref name="Compare" ref="0x2ac2c2fb9020" scoped=""/></to>
+        </wire>
+        <wire loc="133:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="ControlB1" ref="0x2ac2c2f05060" scoped=""/></from>
+          <to><interface-ref name="Control" ref="0x2ac2c2fbbc80" scoped=""/></to>
+        </wire>
+        <wire loc="115:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CaptureA2" ref="0x2ac2c2eef3d0" scoped=""/></from>
+          <to><interface-ref name="Capture" ref="0x2ac2c2fa6c58" scoped=""/></to>
+        </wire>
+        <wire loc="156:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CaptureB4" ref="0x2ac2c2f13020" scoped=""/></from>
+          <to><interface-ref name="Capture" ref="0x2ac2c2fc5c58" scoped=""/></to>
+        </wire>
+        <wire loc="140:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="ControlB2" ref="0x2ac2c2f04588" scoped=""/></from>
+          <to><interface-ref name="Control" ref="0x2ac2c2fb4c80" scoped=""/></to>
+        </wire>
+        <wire loc="114:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CompareA2" ref="0x2ac2c2ef4aa8" scoped=""/></from>
+          <to><interface-ref name="Compare" ref="0x2ac2c2fa6020" scoped=""/></to>
+        </wire>
+        <wire loc="93:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="TimerA" ref="0x2ac2c2ee1b88" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c2f3d798" scoped=""/></to>
+        </wire>
+        <wire loc="155:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CompareB4" ref="0x2ac2c2f1a558" scoped=""/></from>
+          <to><interface-ref name="Compare" ref="0x2ac2c2fc5020" scoped=""/></to>
+        </wire>
+        <wire loc="106:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="ControlA1" ref="0x2ac2c2ee0588" scoped=""/></from>
+          <to><interface-ref name="Control" ref="0x2ac2c2fb0c80" scoped=""/></to>
+        </wire>
+        <wire loc="161:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="ControlB5" ref="0x2ac2c2f00400" scoped=""/></from>
+          <to><interface-ref name="Control" ref="0x2ac2c2fe2c80" scoped=""/></to>
+        </wire>
+        <wire loc="101:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CaptureA0" ref="0x2ac2c2f0a4e0" scoped=""/></from>
+          <to><interface-ref name="Capture" ref="0x2ac2c2f93c58" scoped=""/></to>
+        </wire>
+        <wire loc="142:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CaptureB2" ref="0x2ac2c2f15020" scoped=""/></from>
+          <to><interface-ref name="Capture" ref="0x2ac2c2fd4c58" scoped=""/></to>
+        </wire>
+        <wire loc="100:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CompareA0" ref="0x2ac2c2ef5020" scoped=""/></from>
+          <to><interface-ref name="Compare" ref="0x2ac2c2f93020" scoped=""/></to>
+        </wire>
+        <wire loc="141:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CompareB2" ref="0x2ac2c2f1c868" scoped=""/></from>
+          <to><interface-ref name="Compare" ref="0x2ac2c2fd4020" scoped=""/></to>
+        </wire>
+        <wire loc="163:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CaptureB5" ref="0x2ac2c2f12020" scoped=""/></from>
+          <to><interface-ref name="Capture" ref="0x2ac2c2fe0c58" scoped=""/></to>
+        </wire>
+        <wire loc="147:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="ControlB3" ref="0x2ac2c2f03a20" scoped=""/></from>
+          <to><interface-ref name="Control" ref="0x2ac2c2fcec80" scoped=""/></to>
+        </wire>
+        <wire loc="120:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="TimerB" ref="0x2ac2c2f09398" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c2f561e8" scoped=""/></to>
+        </wire>
+        <wire loc="162:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CompareB5" ref="0x2ac2c2f193d0" scoped=""/></from>
+          <to><interface-ref name="Compare" ref="0x2ac2c2fe0020" scoped=""/></to>
+        </wire>
+        <wire loc="128:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CaptureB0" ref="0x2ac2c2f17060" scoped=""/></from>
+          <to><interface-ref name="Capture" ref="0x2ac2c2fc1c58" scoped=""/></to>
+        </wire>
+        <wire loc="169:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CompareB6" ref="0x2ac2c2f18120" scoped=""/></from>
+          <to><interface-ref name="Compare" ref="0x2ac2c2fd9020" scoped=""/></to>
+        </wire>
+        <wire loc="127:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="CompareB0" ref="0x2ac2c2efed00" scoped=""/></from>
+          <to><interface-ref name="Compare" ref="0x2ac2c2fc1020" scoped=""/></to>
+        </wire>
+        <wire loc="168:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="ControlB6" ref="0x2ac2c2eff898" scoped=""/></from>
+          <to><interface-ref name="Control" ref="0x2ac2c2fdbc80" scoped=""/></to>
+        </wire>
+        <wire loc="94:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Overflow" ref="0x2ac2c2f5c658" scoped=""/></from>
+          <to><interface-ref name="Event" ref="0x2ac2c2f5c020" scoped=""/>
+          <arguments>
+            <value cst="I:5">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="95:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="VectorTimerX0" ref="0x2ac2c2f5cc70" scoped=""/></from>
+          <to><interface-ref name="VectorTimerA0" ref="0x2ac2c2ff5520" scoped=""/></to>
+        </wire>
+        <wire loc="96:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="VectorTimerX1" ref="0x2ac2c2f5a2e8" scoped=""/></from>
+          <to><interface-ref name="VectorTimerA1" ref="0x2ac2c2ff5c68" scoped=""/></to>
+        </wire>
+        <wire loc="102:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c2f92a90" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c2f3d798" scoped=""/></to>
+        </wire>
+        <wire loc="103:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Event" ref="0x2ac2c2fb2100" scoped=""/></from>
+          <to><interface-ref name="Event" ref="0x2ac2c2f5c020" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="109:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c2faca90" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c2f3d798" scoped=""/></to>
+        </wire>
+        <wire loc="110:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Event" ref="0x2ac2c2faa100" scoped=""/></from>
+          <to><interface-ref name="Event" ref="0x2ac2c2f5c020" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="116:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c2fa5a90" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c2f3d798" scoped=""/></to>
+        </wire>
+        <wire loc="117:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Event" ref="0x2ac2c2fa3100" scoped=""/></from>
+          <to><interface-ref name="Event" ref="0x2ac2c2f5c020" scoped=""/>
+          <arguments>
+            <value cst="I:2">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="121:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Overflow" ref="0x2ac2c2f54020" scoped=""/></from>
+          <to><interface-ref name="Event" ref="0x2ac2c2f558a0" scoped=""/>
+          <arguments>
+            <value cst="I:7">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="122:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="VectorTimerX0" ref="0x2ac2c2f54638" scoped=""/></from>
+          <to><interface-ref name="VectorTimerB0" ref="0x2ac2c2ff4418" scoped=""/></to>
+        </wire>
+        <wire loc="123:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="VectorTimerX1" ref="0x2ac2c2f54c50" scoped=""/></from>
+          <to><interface-ref name="VectorTimerB1" ref="0x2ac2c2ff4b60" scoped=""/></to>
+        </wire>
+        <wire loc="129:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c2fbfa90" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c2f561e8" scoped=""/></to>
+        </wire>
+        <wire loc="130:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Event" ref="0x2ac2c2fbd100" scoped=""/></from>
+          <to><interface-ref name="Event" ref="0x2ac2c2f558a0" scoped=""/>
+          <arguments>
+            <value cst="I:0">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="136:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c2fb8a90" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c2f561e8" scoped=""/></to>
+        </wire>
+        <wire loc="137:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Event" ref="0x2ac2c2fb6100" scoped=""/></from>
+          <to><interface-ref name="Event" ref="0x2ac2c2f558a0" scoped=""/>
+          <arguments>
+            <value cst="I:1">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="143:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c2fd2a90" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c2f561e8" scoped=""/></to>
+        </wire>
+        <wire loc="144:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Event" ref="0x2ac2c2fd0100" scoped=""/></from>
+          <to><interface-ref name="Event" ref="0x2ac2c2f558a0" scoped=""/>
+          <arguments>
+            <value cst="I:2">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="150:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c2fcba90" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c2f561e8" scoped=""/></to>
+        </wire>
+        <wire loc="151:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Event" ref="0x2ac2c2fc9100" scoped=""/></from>
+          <to><interface-ref name="Event" ref="0x2ac2c2f558a0" scoped=""/>
+          <arguments>
+            <value cst="I:3">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="157:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c2fc4a90" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c2f561e8" scoped=""/></to>
+        </wire>
+        <wire loc="158:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Event" ref="0x2ac2c2fe4100" scoped=""/></from>
+          <to><interface-ref name="Event" ref="0x2ac2c2f558a0" scoped=""/>
+          <arguments>
+            <value cst="I:4">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="164:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c2fdfa90" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c2f561e8" scoped=""/></to>
+        </wire>
+        <wire loc="165:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Event" ref="0x2ac2c2fdd100" scoped=""/></from>
+          <to><interface-ref name="Event" ref="0x2ac2c2f558a0" scoped=""/>
+          <arguments>
+            <value cst="I:5">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+        <wire loc="171:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Timer" ref="0x2ac2c2fd8a90" scoped=""/></from>
+          <to><interface-ref name="Timer" ref="0x2ac2c2f561e8" scoped=""/></to>
+        </wire>
+        <wire loc="172:/home/kasper/tinyos-main//tos/chips/msp430/timer/Msp430TimerC.nc">
+          <from><interface-ref name="Event" ref="0x2ac2c2fd5100" scoped=""/></from>
+          <to><interface-ref name="Event" ref="0x2ac2c2f558a0" scoped=""/>
+          <arguments>
+            <value cst="I:6">
+              <type-int alignment="I:2" cname="int" size="I:2"/>
+            </value>
+          </arguments>
+          </to>
+        </wire>
+      </wiring>
+    </component></referenced></component>

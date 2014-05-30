@@ -1,0 +1,501 @@
+<?xml version="1.0" ?><interfacedef loc="44:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" nicename="Stm25pSector" qname="Stm25pSector">
+      <documentation loc="1:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25p.h">
+        <short>
+ Copyright (c) 2005-2006 Arch Rock Corporation
+ All rights reserved.</short>
+        <long>
+ Copyright (c) 2005-2006 Arch Rock Corporation
+ All rights reserved.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ - Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the
+   distribution.
+ - Neither the name of the Arch Rock Corporation nor the names of
+   its contributors may be used to endorse or promote products derived
+   from this software without specific prior written permission.
+
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE
+ ARCHED ROCK OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ OF THE POSSIBILITY OF SUCH DAMAGE
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.4 $ $Date: 2006-12-12 18:23:12 $
+</long>
+      </documentation>
+      <function command="" loc="51:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="getPhysicalAddress" provided="0" ref="0x2ac2c467d020">
+        <documentation loc="46:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc">
+          <short>
+ Get the physical address of a volume address.</short>
+          <long>
+ Get the physical address of a volume address.
+
+ @return The physical address corresponding to the volume address.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="Stm25pSector" qname="Stm25pSector"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+            <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+          </type-int>
+          <function-parameters>
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="51:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="addr" ref="0x2ac2c467fc58">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="68:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="read" provided="0" ref="0x2ac2c467c940">
+        <documentation loc="58:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc">
+          <short>
+ Read data from the flash chip.</short>
+          <long>
+ Read data from the flash chip. On SUCCESS, the
+ &lt;code&gt;readDone&lt;/code&gt; event will be signalled when the operation
+ is complete.
+
+ @param addr within volume to read data from.
+ @param buf pointer to read buffer.
+ @param len number of bytes to read.
+ @return SUCCESS if request was accepted, FAIL otherwise.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="Stm25pSector" qname="Stm25pSector"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="error_t" ref="0x2ac2c29f3780"/></typename>
+          </type-int>
+          <function-parameters>
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+            <type-pointer alignment="I:2" size="I:2">
+              <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+                <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+              </type-int>
+            </type-pointer>
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_len_t" ref="0x2ac2c2e6f908"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="68:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="addr" ref="0x2ac2c467c020">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="68:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="buf" ref="0x2ac2c467c368">
+            <type-pointer alignment="I:2" size="I:2">
+              <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+                <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+              </type-int>
+            </type-pointer>
+          </variable>
+          <variable loc="68:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="len" ref="0x2ac2c467c6b0">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_len_t" ref="0x2ac2c2e6f908"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+      <function event="" loc="101:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="writeDone" provided="0" ref="0x2ac2c4677608">
+        <documentation loc="93:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc">
+          <short>
+ Signals when the write operation is complete.</short>
+          <long>
+ Signals when the write operation is complete.
+
+ @param addr within the volume that data was written to.
+ @param buf pointer to data buffer.
+ @param len number of bytes written.
+ @param error notification of how the operation went.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="Stm25pSector" qname="Stm25pSector"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+            <type-pointer alignment="I:2" size="I:2">
+              <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+                <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+              </type-int>
+            </type-pointer>
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_len_t" ref="0x2ac2c2e6f908"/></typename>
+            </type-int>
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="error_t" ref="0x2ac2c29f3780"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="101:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="addr" ref="0x2ac2c4678830">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="101:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="buf" ref="0x2ac2c4678b78">
+            <type-pointer alignment="I:2" size="I:2">
+              <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+                <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+              </type-int>
+            </type-pointer>
+          </variable>
+          <variable loc="101:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="len" ref="0x2ac2c4677020">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_len_t" ref="0x2ac2c2e6f908"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="102:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="error" ref="0x2ac2c4677368">
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="error_t" ref="0x2ac2c29f3780"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="112:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="erase" provided="0" ref="0x2ac2c46763f8">
+        <documentation loc="104:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc">
+          <short>
+ Erase a number of sectors.</short>
+          <long>
+ Erase a number of sectors. On SUCCESS, the &lt;code&gt;eraseDone&lt;/code&gt;
+ event will be signalled when the operation completes.
+
+ @param sector within volume to begin erasing.
+ @param num_sectors number of sectors to erase.
+ @return SUCCESS if request was accepted, FAIL otherwise.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="Stm25pSector" qname="Stm25pSector"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="error_t" ref="0x2ac2c29f3780"/></typename>
+          </type-int>
+          <function-parameters>
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="112:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="sector" ref="0x2ac2c4677dd0">
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="112:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="num_sectors" ref="0x2ac2c4676178">
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+      <function event="" loc="121:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="eraseDone" provided="0" ref="0x2ac2c46755d8">
+        <documentation loc="114:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc">
+          <short>
+ Signals when the erase operation is complete.</short>
+          <long>
+ Signals when the erase operation is complete.
+
+ @param sector within volume that erasing begain.
+ @param num_sectors number of sectors erased.
+ @param error notification of how the operation went.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="Stm25pSector" qname="Stm25pSector"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="error_t" ref="0x2ac2c29f3780"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="121:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="sector" ref="0x2ac2c4676bb8">
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="121:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="num_sectors" ref="0x2ac2c4675020">
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="121:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="error" ref="0x2ac2c4675348">
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="error_t" ref="0x2ac2c29f3780"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+      <function event="" loc="144:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="computeCrcDone" provided="0" ref="0x2ac2c4672c70">
+        <documentation loc="136:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc">
+          <short>
+ Signals when the crc computation is complete.</short>
+          <long>
+ Signals when the crc computation is complete.
+
+ @param addr within the volume that the crc computation began at.
+ @param len number of bytes that the crc was computed over.
+ @param crc the resulting crc value
+ @param error notification of how the operation went.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="Stm25pSector" qname="Stm25pSector"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_len_t" ref="0x2ac2c2e6f908"/></typename>
+            </type-int>
+            <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned="">
+              <typename><typedef-ref name="uint16_t" ref="0x2ac2c209ab20"/></typename>
+            </type-int>
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="error_t" ref="0x2ac2c29f3780"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="144:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="addr" ref="0x2ac2c4672020">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="144:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="len" ref="0x2ac2c4672368">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_len_t" ref="0x2ac2c2e6f908"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="145:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="crc" ref="0x2ac2c46726a8">
+            <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned="">
+              <typename><typedef-ref name="uint16_t" ref="0x2ac2c209ab20"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="145:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="error" ref="0x2ac2c46729d0">
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="error_t" ref="0x2ac2c29f3780"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="133:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="computeCrc" provided="0" ref="0x2ac2c4673730">
+        <documentation loc="123:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc">
+          <short>
+ Compute CRC for some contiguous data.</short>
+          <long>
+ Compute CRC for some contiguous data. On SUCCESS, the
+ &lt;code&gt;computeCrcDone&lt;/code&gt; event will be signalled when the
+ operation completes.
+
+ @param crc the crc value to start with.
+ @param addr within the volume to begin crc computation.
+ @param len number of bytes to compute crc over.
+ @return SUCCESS if the request was accepted, FAIL otherwise.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="Stm25pSector" qname="Stm25pSector"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="error_t" ref="0x2ac2c29f3780"/></typename>
+          </type-int>
+          <function-parameters>
+            <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned="">
+              <typename><typedef-ref name="uint16_t" ref="0x2ac2c209ab20"/></typename>
+            </type-int>
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_len_t" ref="0x2ac2c2e6f908"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="133:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="crc" ref="0x2ac2c4675d98">
+            <type-int alignment="I:2" cname="unsigned int" size="I:2" unsigned="">
+              <typename><typedef-ref name="uint16_t" ref="0x2ac2c209ab20"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="133:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="addr" ref="0x2ac2c4673138">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="134:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="len" ref="0x2ac2c46734a0">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_len_t" ref="0x2ac2c2e6f908"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="91:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="write" provided="0" ref="0x2ac2c4678020">
+        <documentation loc="81:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc">
+          <short>
+ Write data to the flash chip.</short>
+          <long>
+ Write data to the flash chip. On SUCCESS, the
+ &lt;code&gt;writeDone&lt;/code&gt; event will be signalled when the operation
+ is complete.
+
+ @param addr within volume to write data to.
+ @param buf pointer to data buffer.
+ @param len number of bytes to write.
+ @return SUCCESS if request was accepted, FAIL otherwise.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="Stm25pSector" qname="Stm25pSector"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="error_t" ref="0x2ac2c29f3780"/></typename>
+          </type-int>
+          <function-parameters>
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+            <type-pointer alignment="I:2" size="I:2">
+              <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+                <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+              </type-int>
+            </type-pointer>
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_len_t" ref="0x2ac2c2e6f908"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="91:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="addr" ref="0x2ac2c467a668">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="91:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="buf" ref="0x2ac2c467a9b0">
+            <type-pointer alignment="I:2" size="I:2">
+              <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+                <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+              </type-int>
+            </type-pointer>
+          </variable>
+          <variable loc="91:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="len" ref="0x2ac2c467acf8">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_len_t" ref="0x2ac2c2e6f908"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+      <function command="" loc="56:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="getNumSectors" provided="0" ref="0x2ac2c467d7d0">
+        <documentation loc="53:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc">
+          <short>
+ Get the number of sectors in the volume.</short>
+          <long>
+ Get the number of sectors in the volume.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="Stm25pSector" qname="Stm25pSector"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+            <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+          </type-int>
+          <function-parameters>
+          </function-parameters>
+        </type-function>
+        <parameters>
+        </parameters>
+      </function>
+      <function event="" loc="78:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="readDone" provided="0" ref="0x2ac2c467bde8">
+        <documentation loc="70:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc">
+          <short>
+ Signals when the read operation is complete.</short>
+          <long>
+ Signals when the read operation is complete.
+
+ @param addr within the volume that data was read from.
+ @param buf pointer to buffer that data was placed.
+ @param len number of bytes read.
+ @param error notification of how the operation went.
+</long>
+        </documentation>
+        <interfacedef-ref nicename="Stm25pSector" qname="Stm25pSector"/>
+        <type-function alignment="I:1" size="I:1">
+          <type-void alignment="I:1" size="I:1"/>
+          <function-parameters>
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+            <type-pointer alignment="I:2" size="I:2">
+              <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+                <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+              </type-int>
+            </type-pointer>
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_len_t" ref="0x2ac2c2e6f908"/></typename>
+            </type-int>
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="error_t" ref="0x2ac2c29f3780"/></typename>
+            </type-int>
+          </function-parameters>
+        </type-function>
+        <parameters>
+          <variable loc="78:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="addr" ref="0x2ac2c467b170">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_addr_t" ref="0x2ac2c2e71dc0"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="78:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="buf" ref="0x2ac2c467b4b8">
+            <type-pointer alignment="I:2" size="I:2">
+              <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+                <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+              </type-int>
+            </type-pointer>
+          </variable>
+          <variable loc="78:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="len" ref="0x2ac2c467b800">
+            <type-int alignment="I:2" cname="unsigned long" size="I:4" unsigned="">
+              <typename><typedef-ref name="stm25p_len_t" ref="0x2ac2c2e6f908"/></typename>
+            </type-int>
+          </variable>
+          <variable loc="79:/home/kasper/tinyos-main//tos/chips/stm25p/Stm25pSector.nc" name="error" ref="0x2ac2c467bb48">
+            <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+              <typename><typedef-ref name="error_t" ref="0x2ac2c29f3780"/></typename>
+            </type-int>
+          </variable>
+        </parameters>
+      </function>
+    </interfacedef>

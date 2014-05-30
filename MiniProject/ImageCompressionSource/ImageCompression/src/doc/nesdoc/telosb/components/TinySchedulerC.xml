@@ -1,0 +1,126 @@
+<?xml version="1.0" ?><component loc="46:/home/kasper/tinyos-main//tos/system/TinySchedulerC.nc" nicename="TinySchedulerC" qname="TinySchedulerC">
+      <documentation loc="34:/home/kasper/tinyos-main//tos/system/TinySchedulerC.nc">
+        <short>
+ The TinyOS scheduler.</short>
+        <long>
+ The TinyOS scheduler. It provides two interfaces: Scheduler,
+ for TinyOS to initialize and run tasks, and TaskBasic, the simplext
+ class of TinyOS tasks (reserved always at-most-once posting,
+ FIFO, parameter-free). For details and information on how to
+ replace the scheduler, refer to TEP 106.
+
+ @author  Phil Levis
+ @date    August 7 2005
+ @see     TEP 106: Tasks and Schedulers
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="54:/home/kasper/tinyos-main//tos/system/TinySchedulerC.nc">
+          <from><interface-ref name="TaskBasic" ref="0x2ac2c29efca0" scoped=""/></from>
+          <to><interface-ref name="TaskBasic" ref="0x2ac2c2e207f8" scoped=""/></to>
+        </wire>
+        <wire loc="53:/home/kasper/tinyos-main//tos/system/TinySchedulerC.nc">
+          <from><interface-ref name="Scheduler" ref="0x2ac2c29e8390" scoped=""/></from>
+          <to><interface-ref name="Scheduler" ref="0x2ac2c2e21940" scoped=""/></to>
+        </wire>
+        <wire loc="55:/home/kasper/tinyos-main//tos/system/TinySchedulerC.nc">
+          <from><interface-ref name="McuSleep" ref="0x2ac2c2e1ed30" scoped=""/></from>
+          <to><interface-ref name="McuSleep" ref="0x2ac2c29eaba0" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="48:/home/kasper/tinyos-main//tos/system/TinySchedulerC.nc" name="TaskBasic" provided="1" ref="0x2ac2c29efca0">
+      <component-ref nicename="TinySchedulerC" qname="TinySchedulerC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="TaskBasic" ref="0x2ac2c29efca0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c29b0020" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c29b01a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="47:/home/kasper/tinyos-main//tos/system/TinySchedulerC.nc" name="Scheduler" provided="1" ref="0x2ac2c29e8390">
+      <component-ref nicename="TinySchedulerC" qname="TinySchedulerC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Scheduler" ref="0x2ac2c29e8390" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Scheduler" qname="Scheduler"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c29e86e0" scoped=""/>
+        <function-ref name="taskLoop" ref="0x2ac2c29e8868" scoped=""/>
+        <function-ref name="runNextTask" ref="0x2ac2c29e89f0" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="57:/home/kasper/tinyos-main//tos/system/SchedulerBasicP.nc" name="McuSleep" provided="0" ref="0x2ac2c2e1ed30">
+      <component-ref nicename="SchedulerBasicP" qname="SchedulerBasicP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="McuSleep" ref="0x2ac2c2e1ed30" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="McuSleep" qname="McuSleep"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="sleep" ref="0x2ac2c2e1d0d8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="55:/home/kasper/tinyos-main//tos/system/SchedulerBasicP.nc" name="Scheduler" provided="1" ref="0x2ac2c2e21940">
+      <component-ref nicename="SchedulerBasicP" qname="SchedulerBasicP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Scheduler" ref="0x2ac2c2e21940" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="Scheduler" qname="Scheduler"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="init" ref="0x2ac2c2e21c90" scoped=""/>
+        <function-ref name="taskLoop" ref="0x2ac2c2e21e18" scoped=""/>
+        <function-ref name="runNextTask" ref="0x2ac2c2e20020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="51:/home/kasper/tinyos-main//tos/chips/msp430/McuSleepC.nc" name="McuSleep" provided="1" ref="0x2ac2c29eaba0">
+      <component-ref nicename="McuSleepC" qname="McuSleepC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="McuSleep" ref="0x2ac2c29eaba0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="McuSleep" qname="McuSleep"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="sleep" ref="0x2ac2c2b4a020" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="56:/home/kasper/tinyos-main//tos/system/SchedulerBasicP.nc" name="TaskBasic" provided="1" ref="0x2ac2c2e207f8">
+      <component-ref nicename="SchedulerBasicP" qname="SchedulerBasicP"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="TaskBasic" ref="0x2ac2c2e207f8" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="TaskBasic" qname="TaskBasic"/>
+      </instance>
+      <interface-parameters>
+        <type-int alignment="I:1" cname="unsigned char" size="I:1" unsigned="">
+          <typename><typedef-ref name="uint8_t" ref="0x2ac2c209a790"/></typename>
+        </type-int>
+      </interface-parameters>
+      <interface-functions>
+        <function-ref name="postTask" ref="0x2ac2c2e20b48" scoped=""/>
+        <function-ref name="runTask" ref="0x2ac2c2e20cd0" scoped=""/>
+      </interface-functions>
+    </interface><component loc="54:/home/kasper/tinyos-main//tos/system/SchedulerBasicP.nc" nicename="SchedulerBasicP" qname="SchedulerBasicP" safe="">
+      <module/>
+    </component><component loc="49:/home/kasper/tinyos-main//tos/chips/msp430/McuSleepC.nc" nicename="McuSleepC" qname="McuSleepC" safe="">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/chips/msp430/McuSleepC.nc">
+        <short>
+ Implementation of TEP 112 (Microcontroller Power Management) for
+ the MSP430.</short>
+        <long>
+ Implementation of TEP 112 (Microcontroller Power Management) for
+ the MSP430. Code for low power calculation copied from older
+ msp430hardware.h by Vlado Handziski, Joe Polastre, and Cory Sharp.
+
+
+ @author Philip Levis
+ @author Vlado Handziski
+ @author Joe Polastre
+ @author Cory Sharp
+ @date   October 26, 2005
+ @see  Please refer to TEP 112 for more information about this component and its
+          intended use.
+
+</long>
+      </documentation>
+      <module/>
+    </component></referenced></component>

@@ -1,0 +1,13 @@
+<?xml version="1.0" ?><component loc="2:QuantCompressC.nc" nicename="QuantCompressC" qname="QuantCompressC" safe="">
+      <module/>
+    <specification><interface loc="4:QuantCompressC.nc" name="QuantCompress" provided="1" ref="0x2ac2c45c32d0">
+      <component-ref nicename="QuantCompressC" qname="QuantCompressC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="QuantCompress" ref="0x2ac2c45c32d0" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="QuantCompress" qname="QuantCompress"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="deCompressVector" ref="0x2ac2c45c3620" scoped=""/>
+        <function-ref name="compressVector" ref="0x2ac2c45c37a8" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced/></component>

@@ -1,0 +1,538 @@
+<?xml version="1.0" ?><component loc="40:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pPinsC.nc" nicename="HplStm25pPinsC" qname="HplStm25pPinsC">
+      <documentation loc="32:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pPinsC.nc">
+        <short>
+ HPL implementation of general-purpose I/O for a ST M25P chip
+ connected to a TI MSP430.</short>
+        <long>
+ HPL implementation of general-purpose I/O for a ST M25P chip
+ connected to a TI MSP430.
+
+ @author Jonathan Hui &lt;jhui@archrock.com&gt;
+ @version $Revision: 1.4 $ $Date: 2006-12-12 18:23:45 $
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="56:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pPinsC.nc">
+          <from><interface-ref name="CSN" ref="0x2ac2c47e3c50" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x2ac2c47d5020" scoped=""/></to>
+        </wire>
+        <wire loc="57:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pPinsC.nc">
+          <from><interface-ref name="Hold" ref="0x2ac2c47d8e30" scoped=""/></from>
+          <to><interface-ref name="GeneralIO" ref="0x2ac2c47d0720" scoped=""/></to>
+        </wire>
+        <wire loc="53:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pPinsC.nc">
+          <from><interface-ref name="HplGeneralIO" ref="0x2ac2c47d4120" scoped=""/></from>
+          <to><interface-ref name="Port44" ref="0x2ac2c30aa568" scoped=""/></to>
+        </wire>
+        <wire loc="54:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pPinsC.nc">
+          <from><interface-ref name="HplGeneralIO" ref="0x2ac2c47cf908" scoped=""/></from>
+          <to><interface-ref name="Port47" ref="0x2ac2c30a4568" scoped=""/></to>
+        </wire>
+      </wiring>
+    <specification><interface loc="42:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pPinsC.nc" name="CSN" provided="1" ref="0x2ac2c47e3c50">
+      <component-ref nicename="HplStm25pPinsC" qname="HplStm25pPinsC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="CSN" ref="0x2ac2c47e3c50" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c47d8020" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c47d81a8" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c47d8330" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c47d84b8" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c47d8640" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c47d87c8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c47d8950" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c47d8ad8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/platforms/telosb/chips/stm25p/HplStm25pPinsC.nc" name="Hold" provided="1" ref="0x2ac2c47d8e30">
+      <component-ref nicename="HplStm25pPinsC" qname="HplStm25pPinsC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Hold" ref="0x2ac2c47d8e30" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c47d71a8" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c47d7330" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c47d74b8" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c47d7640" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c47d77c8" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c47d7950" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c47d7ad8" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c47d7c60" scoped=""/>
+      </interface-functions>
+    </interface></specification><referenced><interface loc="86:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc" name="Port44" provided="1" ref="0x2ac2c30aa568">
+      <component-ref nicename="HplMsp430GeneralIOC" qname="HplMsp430GeneralIOC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Port44" ref="0x2ac2c30aa568" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c30aa8b8" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c30aaa40" scoped=""/>
+        <function-ref name="setResistor" ref="0x2ac2c30aabc8" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c30aad50" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c30a9020" scoped=""/>
+        <function-ref name="getResistor" ref="0x2ac2c30a91a8" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c30a9330" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c30a94b8" scoped=""/>
+        <function-ref name="selectIOFunc" ref="0x2ac2c30a9640" scoped=""/>
+        <function-ref name="getRaw" ref="0x2ac2c30a97c8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c30a9950" scoped=""/>
+        <function-ref name="selectModuleFunc" ref="0x2ac2c30a9ad8" scoped=""/>
+        <function-ref name="isIOFunc" ref="0x2ac2c30a9c60" scoped=""/>
+        <function-ref name="isModuleFunc" ref="0x2ac2c30a8020" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c30a81a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="89:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc" name="Port47" provided="1" ref="0x2ac2c30a4568">
+      <component-ref nicename="HplMsp430GeneralIOC" qname="HplMsp430GeneralIOC"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="Port47" ref="0x2ac2c30a4568" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c30a48b8" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c30a4a40" scoped=""/>
+        <function-ref name="setResistor" ref="0x2ac2c30a4bc8" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c30a4d50" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c30c9020" scoped=""/>
+        <function-ref name="getResistor" ref="0x2ac2c30c91a8" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c30c9330" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c30c94b8" scoped=""/>
+        <function-ref name="selectIOFunc" ref="0x2ac2c30c9640" scoped=""/>
+        <function-ref name="getRaw" ref="0x2ac2c30c97c8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c30c9950" scoped=""/>
+        <function-ref name="selectModuleFunc" ref="0x2ac2c30c9ad8" scoped=""/>
+        <function-ref name="isIOFunc" ref="0x2ac2c30c9c60" scoped=""/>
+        <function-ref name="isModuleFunc" ref="0x2ac2c30c8020" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c30c81a8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/chips/msp430/pins/Msp430GpioC.nc" name="GeneralIO" provided="1" ref="0x2ac2c47d0720">
+      <component-ref nicename="HplStm25pPinsC.HoldM" qname="HplStm25pPinsC.HoldM"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="GeneralIO" ref="0x2ac2c47d0720" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c47d0a70" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c47d0bf8" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c47d0d80" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c47cf020" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c47cf1a8" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c47cf330" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c47cf4b8" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c47cf640" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="44:/home/kasper/tinyos-main//tos/chips/msp430/pins/Msp430GpioC.nc" name="HplGeneralIO" provided="0" ref="0x2ac2c47cf908">
+      <component-ref nicename="HplStm25pPinsC.HoldM" qname="HplStm25pPinsC.HoldM"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="HplGeneralIO" ref="0x2ac2c47cf908" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c47cfc58" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c47cfde0" scoped=""/>
+        <function-ref name="setResistor" ref="0x2ac2c47ce020" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c47ce1a8" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c47ce330" scoped=""/>
+        <function-ref name="getResistor" ref="0x2ac2c47ce4b8" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c47ce640" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c47ce7c8" scoped=""/>
+        <function-ref name="selectIOFunc" ref="0x2ac2c47ce950" scoped=""/>
+        <function-ref name="getRaw" ref="0x2ac2c47cead8" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c47cec60" scoped=""/>
+        <function-ref name="selectModuleFunc" ref="0x2ac2c47cede8" scoped=""/>
+        <function-ref name="isIOFunc" ref="0x2ac2c47cd020" scoped=""/>
+        <function-ref name="isModuleFunc" ref="0x2ac2c47cd2a8" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c47cd430" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="44:/home/kasper/tinyos-main//tos/chips/msp430/pins/Msp430GpioC.nc" name="HplGeneralIO" provided="0" ref="0x2ac2c47d4120">
+      <component-ref nicename="HplStm25pPinsC.CSNM" qname="HplStm25pPinsC.CSNM"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="HplGeneralIO" ref="0x2ac2c47d4120" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="HplMsp430GeneralIO" qname="HplMsp430GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c47d4470" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c47d45f8" scoped=""/>
+        <function-ref name="setResistor" ref="0x2ac2c47d4780" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c47d4908" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c47d4a90" scoped=""/>
+        <function-ref name="getResistor" ref="0x2ac2c47d4c18" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c47d4da0" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c47d3020" scoped=""/>
+        <function-ref name="selectIOFunc" ref="0x2ac2c47d31a8" scoped=""/>
+        <function-ref name="getRaw" ref="0x2ac2c47d3330" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c47d34b8" scoped=""/>
+        <function-ref name="selectModuleFunc" ref="0x2ac2c47d3640" scoped=""/>
+        <function-ref name="isIOFunc" ref="0x2ac2c47d37c8" scoped=""/>
+        <function-ref name="isModuleFunc" ref="0x2ac2c47d3a50" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c47d3bd8" scoped=""/>
+      </interface-functions>
+    </interface><interface loc="43:/home/kasper/tinyos-main//tos/chips/msp430/pins/Msp430GpioC.nc" name="GeneralIO" provided="1" ref="0x2ac2c47d5020">
+      <component-ref nicename="HplStm25pPinsC.CSNM" qname="HplStm25pPinsC.CSNM"/>
+      <type-interface alignment="I:2" size="I:2"><interface-ref name="GeneralIO" ref="0x2ac2c47d5020" scoped=""/></type-interface>
+      <instance>
+        <interfacedef-ref nicename="GeneralIO" qname="GeneralIO"/>
+      </instance>
+      <interface-functions>
+        <function-ref name="makeInput" ref="0x2ac2c47d5370" scoped=""/>
+        <function-ref name="isInput" ref="0x2ac2c47d54f8" scoped=""/>
+        <function-ref name="toggle" ref="0x2ac2c47d5680" scoped=""/>
+        <function-ref name="isOutput" ref="0x2ac2c47d5808" scoped=""/>
+        <function-ref name="get" ref="0x2ac2c47d5990" scoped=""/>
+        <function-ref name="makeOutput" ref="0x2ac2c47d5b18" scoped=""/>
+        <function-ref name="set" ref="0x2ac2c47d5ca0" scoped=""/>
+        <function-ref name="clr" ref="0x2ac2c47d5e28" scoped=""/>
+      </interface-functions>
+    </interface><component loc="42(HplStm25pPinsC.HoldM):/home/kasper/tinyos-main//tos/chips/msp430/pins/Msp430GpioC.nc" nicename="HplStm25pPinsC.HoldM" qname="HplStm25pPinsC.HoldM">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/chips/msp430/pins/Msp430GpioC.nc">
+        <short>
+ Implementation of the general-purpose I/O abstraction
+ for the TI MSP430 microcontroller.</short>
+        <long>
+ Implementation of the general-purpose I/O abstraction
+ for the TI MSP430 microcontroller.
+
+ @author Joe Polastre
+ @see  Please refer to TEP 117 for more information about this component and its
+          intended use.
+</long>
+      </documentation>
+      <instance number="14">
+        <component-ref nicename="Msp430GpioC" qname="Msp430GpioC"/>
+      </instance>
+      <module/>
+    </component><component loc="45:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc" nicename="HplMsp430GeneralIOC" qname="HplMsp430GeneralIOC">
+      <documentation loc="35:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+        <short>
+ HPL for the TI MSP430 family of microprocessors.</short>
+        <long>
+ HPL for the TI MSP430 family of microprocessors. This provides an
+ abstraction for general-purpose I/O.
+
+ @author Joe Polastre
+ @author Xavier Orduna &lt;xorduna@dexmatech.com&gt;
+ @author Peter A. Bigot &lt;pab@peoplepowerco.com&gt;
+ @author Eric B. Decker &lt;cire831@gmail.com&gt;
+</long>
+      </documentation>
+      <configuration/>
+      <wiring>
+        <wire loc="442:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port14" ref="0x2ac2c3090978" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c3150ca0" scoped=""/></to>
+        </wire>
+        <wire loc="455:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port26" ref="0x2ac2c30a1568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c3175ca0" scoped=""/></to>
+        </wire>
+        <wire loc="531:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="SDA" ref="0x2ac2c30cb7d0" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31903d8" scoped=""/></to>
+        </wire>
+        <wire loc="551:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="ADC6" ref="0x2ac2c30f6558" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c320bca0" scoped=""/></to>
+        </wire>
+        <wire loc="532:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="SOMI0" ref="0x2ac2c30f0660" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c318cca0" scoped=""/></to>
+        </wire>
+        <wire loc="460:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port30" ref="0x2ac2c309d568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c316bca0" scoped=""/></to>
+        </wire>
+        <wire loc="473:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port42" ref="0x2ac2c30af568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31bbca0" scoped=""/></to>
+        </wire>
+        <wire loc="486:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port54" ref="0x2ac2c30c0568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31e2ca0" scoped=""/></to>
+        </wire>
+        <wire loc="497:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port64" ref="0x2ac2c30d7568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c3215ca0" scoped=""/></to>
+        </wire>
+        <wire loc="535:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="UTXD0" ref="0x2ac2c30ea560" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c3183ca0" scoped=""/></to>
+        </wire>
+        <wire loc="545:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="ADC0" ref="0x2ac2c3102558" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31fbca0" scoped=""/></to>
+        </wire>
+        <wire loc="557:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="SVSIN" ref="0x2ac2c3116560" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c32063d8" scoped=""/></to>
+        </wire>
+        <wire loc="445:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port17" ref="0x2ac2c3089568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c316a3d8" scoped=""/></to>
+        </wire>
+        <wire loc="536:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="URXD0" ref="0x2ac2c30e8560" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31a83d8" scoped=""/></to>
+        </wire>
+        <wire loc="450:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port21" ref="0x2ac2c3085568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31613d8" scoped=""/></to>
+        </wire>
+        <wire loc="463:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port33" ref="0x2ac2c3097568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31873d8" scoped=""/></to>
+        </wire>
+        <wire loc="476:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port45" ref="0x2ac2c30a8568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31ad3d8" scoped=""/></to>
+        </wire>
+        <wire loc="489:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port57" ref="0x2ac2c30ba568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31ff3d8" scoped=""/></to>
+        </wire>
+        <wire loc="500:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port67" ref="0x2ac2c30d1568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c32063d8" scoped=""/></to>
+        </wire>
+        <wire loc="440:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port12" ref="0x2ac2c306ec88" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c3131ca0" scoped=""/></to>
+        </wire>
+        <wire loc="453:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port24" ref="0x2ac2c307f568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c317ed08" scoped=""/></to>
+        </wire>
+        <wire loc="466:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port36" ref="0x2ac2c3091568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31a3ca0" scoped=""/></to>
+        </wire>
+        <wire loc="530:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="SIMO0" ref="0x2ac2c30cd970" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31903d8" scoped=""/></to>
+        </wire>
+        <wire loc="548:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="ADC3" ref="0x2ac2c30fc558" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31ed3d8" scoped=""/></to>
+        </wire>
+        <wire loc="555:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="DAC1" ref="0x2ac2c3118558" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c32063d8" scoped=""/></to>
+        </wire>
+        <wire loc="541:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="UCLK1" ref="0x2ac2c30e0560" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31e63d8" scoped=""/></to>
+        </wire>
+        <wire loc="471:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port40" ref="0x2ac2c30b3568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c319add8" scoped=""/></to>
+        </wire>
+        <wire loc="484:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port52" ref="0x2ac2c30c4568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31c0ca0" scoped=""/></to>
+        </wire>
+        <wire loc="495:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port62" ref="0x2ac2c30db568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31f2ca0" scoped=""/></to>
+        </wire>
+        <wire loc="549:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="ADC4" ref="0x2ac2c30fa558" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c3215ca0" scoped=""/></to>
+        </wire>
+        <wire loc="538:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="STE1" ref="0x2ac2c30e6558" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31c9ca0" scoped=""/></to>
+        </wire>
+        <wire loc="443:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port15" ref="0x2ac2c308d7f0" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c314b3d8" scoped=""/></to>
+        </wire>
+        <wire loc="456:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port27" ref="0x2ac2c309f568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c316f3d8" scoped=""/></to>
+        </wire>
+        <wire loc="493:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port60" ref="0x2ac2c30b8568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31fbca0" scoped=""/></to>
+        </wire>
+        <wire loc="461:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port31" ref="0x2ac2c309b568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31903d8" scoped=""/></to>
+        </wire>
+        <wire loc="474:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port43" ref="0x2ac2c30ad568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31b63d8" scoped=""/></to>
+        </wire>
+        <wire loc="487:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port55" ref="0x2ac2c30be568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31dd3d8" scoped=""/></to>
+        </wire>
+        <wire loc="498:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port65" ref="0x2ac2c30d5568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c320f3d8" scoped=""/></to>
+        </wire>
+        <wire loc="540:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="SOMI1" ref="0x2ac2c30e2560" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31c0ca0" scoped=""/></to>
+        </wire>
+        <wire loc="438:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port10" ref="0x2ac2c307a020" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c310fe18" scoped=""/></to>
+        </wire>
+        <wire loc="451:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port22" ref="0x2ac2c3083568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c315dca0" scoped=""/></to>
+        </wire>
+        <wire loc="464:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port34" ref="0x2ac2c3095568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c3183ca0" scoped=""/></to>
+        </wire>
+        <wire loc="477:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port46" ref="0x2ac2c30a6568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31d2ca0" scoped=""/></to>
+        </wire>
+        <wire loc="542:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="UTXD1" ref="0x2ac2c30de560" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31a3ca0" scoped=""/></to>
+        </wire>
+        <wire loc="546:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="ADC1" ref="0x2ac2c3100558" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31f63d8" scoped=""/></to>
+        </wire>
+        <wire loc="552:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="ADC7" ref="0x2ac2c30f4558" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c32063d8" scoped=""/></to>
+        </wire>
+        <wire loc="482:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port50" ref="0x2ac2c30c8568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31c9ca0" scoped=""/></to>
+        </wire>
+        <wire loc="543:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="URXD1" ref="0x2ac2c3104560" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c319e3d8" scoped=""/></to>
+        </wire>
+        <wire loc="441:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port13" ref="0x2ac2c306cb00" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31543d8" scoped=""/></to>
+        </wire>
+        <wire loc="454:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port25" ref="0x2ac2c30a3568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31793d8" scoped=""/></to>
+        </wire>
+        <wire loc="467:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port37" ref="0x2ac2c30b5568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c319e3d8" scoped=""/></to>
+        </wire>
+        <wire loc="539:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="SIMO1" ref="0x2ac2c30e4560" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31c43d8" scoped=""/></to>
+        </wire>
+        <wire loc="550:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="ADC5" ref="0x2ac2c30f8558" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c320f3d8" scoped=""/></to>
+        </wire>
+        <wire loc="472:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port41" ref="0x2ac2c30b1668" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c3195478" scoped=""/></to>
+        </wire>
+        <wire loc="485:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port53" ref="0x2ac2c30c2568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31e63d8" scoped=""/></to>
+        </wire>
+        <wire loc="496:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port63" ref="0x2ac2c30d9568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31ed3d8" scoped=""/></to>
+        </wire>
+        <wire loc="444:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port16" ref="0x2ac2c308b668" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c3147ca0" scoped=""/></to>
+        </wire>
+        <wire loc="494:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port61" ref="0x2ac2c30dd568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31f63d8" scoped=""/></to>
+        </wire>
+        <wire loc="449:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port20" ref="0x2ac2c3087568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c3166ca0" scoped=""/></to>
+        </wire>
+        <wire loc="462:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port32" ref="0x2ac2c3099568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c318cca0" scoped=""/></to>
+        </wire>
+        <wire loc="475:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port44" ref="0x2ac2c30aa568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31b2ca0" scoped=""/></to>
+        </wire>
+        <wire loc="488:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port56" ref="0x2ac2c30bc568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31d8ca0" scoped=""/></to>
+        </wire>
+        <wire loc="499:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port66" ref="0x2ac2c30d3568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c320bca0" scoped=""/></to>
+        </wire>
+        <wire loc="439:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port11" ref="0x2ac2c3079e10" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c3135478" scoped=""/></to>
+        </wire>
+        <wire loc="452:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port23" ref="0x2ac2c3081568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31583d8" scoped=""/></to>
+        </wire>
+        <wire loc="465:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port35" ref="0x2ac2c3093568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31a83d8" scoped=""/></to>
+        </wire>
+        <wire loc="478:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port47" ref="0x2ac2c30a4568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31cd3d8" scoped=""/></to>
+        </wire>
+        <wire loc="534:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="SCL" ref="0x2ac2c30ec548" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31873d8" scoped=""/></to>
+        </wire>
+        <wire loc="547:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="ADC2" ref="0x2ac2c30fe558" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31f2ca0" scoped=""/></to>
+        </wire>
+        <wire loc="533:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="UCLK0" ref="0x2ac2c30ee560" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31873d8" scoped=""/></to>
+        </wire>
+        <wire loc="483:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="Port51" ref="0x2ac2c30c6568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31c43d8" scoped=""/></to>
+        </wire>
+        <wire loc="554:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="DAC0" ref="0x2ac2c30f2558" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c320bca0" scoped=""/></to>
+        </wire>
+        <wire loc="558:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="SVSOUT" ref="0x2ac2c3114568" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c31ff3d8" scoped=""/></to>
+        </wire>
+        <wire loc="529:/home/kasper/tinyos-main//tos/chips/msp430/pins/HplMsp430GeneralIOC.nc">
+          <from><interface-ref name="STE0" ref="0x2ac2c30cf5b8" scoped=""/></from>
+          <to><interface-ref name="IO" ref="0x2ac2c316bca0" scoped=""/></to>
+        </wire>
+      </wiring>
+    </component><component loc="42(HplStm25pPinsC.CSNM):/home/kasper/tinyos-main//tos/chips/msp430/pins/Msp430GpioC.nc" nicename="HplStm25pPinsC.CSNM" qname="HplStm25pPinsC.CSNM">
+      <documentation loc="33:/home/kasper/tinyos-main//tos/chips/msp430/pins/Msp430GpioC.nc">
+        <short>
+ Implementation of the general-purpose I/O abstraction
+ for the TI MSP430 microcontroller.</short>
+        <long>
+ Implementation of the general-purpose I/O abstraction
+ for the TI MSP430 microcontroller.
+
+ @author Joe Polastre
+ @see  Please refer to TEP 117 for more information about this component and its
+          intended use.
+</long>
+      </documentation>
+      <instance number="13">
+        <component-ref nicename="Msp430GpioC" qname="Msp430GpioC"/>
+      </instance>
+      <module/>
+    </component></referenced></component>
