@@ -25,6 +25,14 @@ Next is the challenge of compressing the truncated data into a smaller bitstream
 At this point every 6-bit truncated pixel is still stored in a 8-bit \texttt{unit8\_t}.
 The way this is handled is by utilizing so-called bitfields.
 
+
+
 \fxnote{Insæt exerpt med bitfield struct}
+\fxnote{Beskriv imageVector type}
+
+To handle compression and decompression a module has been implemented that provides an \texttt{interface} with \texttt{command}s for each action.
+These are then \texttt{call}ed from within the main state machine (See section \ref{sec:program_flow}).
+
+
 
 \fxnote{Mere om QuantCompressC, interface og metoder}
