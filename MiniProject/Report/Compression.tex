@@ -6,10 +6,10 @@ When compressing an image there are two overall strategies to follow:
 Lossless compression means encoding and repackaging data in order to remove as much redundant information as possible, while maintaining all information needed for a perfect reconstruction. 
 One method of doing this is called \emph{Huffman coding}.
 This involves building a code tree or "alphabet" with variable symbol length.
-Symbols, or our case pixel intensities, that occur more often and hemce contain less information, are encoded with a shorter bit length. 
-This increases that average information per symbol, or entropy, leading to a decrease in file size.
+Symbols, or in our case pixel intensities, that occur more often and hence contain less information, are encoded with a shorter bit length. 
+This increases the average information per symbol, or entropy, leading to a decrease in file size.
 
-The implementation og Huffman coding is rather processor and memory intensive compared to what is available on the TelosB.
+The implementation of Huffman coding is rather processor and memory intensive compared to what is available on the TelosB.
 Further, an implementation of Huffman coding is beyond the scope of this course.
 
 Instead, a lossy compression scheme has been implemented in this project.
@@ -22,8 +22,9 @@ In this project a simple compression scheme has been implemented, where the two 
 This effectively reduces the amount of data to $ \frac{3}{4} $ of the original. 
 
 Next is the challenge of compressing the truncated data into a smaller bitstream for transmission.
-At this point every 6-bit truncated pixel is still stored in a 8-bit \texttt{unit8\_t}.
+At this point every 6-bit truncated pixel is still stored in a 8-bit \texttt{nx\_unit8\_t}.
 The way this is handled is by utilizing so-called bitfields.
+
 
 \begin{lstlisting}[
 	style		= nesC, 
@@ -47,8 +48,8 @@ typedef nx_struct imageVectors {
 
 \end{lstlisting}
 
-A bitfield is a custom data type contains a struct, where the bit length of all the contained variables are customizable, as long as the total amount of bits are consistent with standard integer types.
-In this project 32-bit \texttt{uint32\_t}.
+A bitfield is a custom data type that contains a struct, where the bit length of all the contained variables are customizable, as long as the total amount of bits are consistent with standard integer types.
+In this project 32-bit \texttt{nx\_uint32\_t}.
 
 Listing \ref{lst:imageVector} shows the bitfield used to store pixels in this project.
 Because our compressed pixelsize of 6 bits does not divide neatly into 32 or 64 bit data types, there is some overhead in the bitfield.
@@ -62,16 +63,16 @@ R_{compression} =
 80\ \%
 \end{equation}
 
-The extra fill bits are then used for signalling when and end of file is reached and not all fields contain valid pixels.
+The extra fill bits are then used for signalling when an end of file is reached and not all fields contain valid pixels.
 This is used by the methods that handle compression/decompression. 
 
-To handle compression and decompression a module, \texttt{QuantCompressC} has been implemented that provides an \texttt{interface} (See listing \ref{lst:QC_interface}) with a \texttt{command} for each action.
+To handle compression and decompression, a module \texttt{QuantCompressC} has been implemented that provides an \texttt{interface} (See listing \ref{lst:QC_interface}) with a \texttt{command} for each action.
 These are then \texttt{call}ed from within the main state machine (See section \ref{sec:program_flow}).
 
 \begin{lstlisting}[
 	style		= nesC, 
 	captionpos	= b, 
-	caption		= \texttt{Interface} for QuantCompressC (See appendix for source code),
+	caption		= \texttt{Interface} for \texttt{QuantCompressC} (See appendix for source code),
 	label		= lst:QC_interface
 	]
 #include "ImageCompression.h"

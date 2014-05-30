@@ -17,7 +17,7 @@ The eight states reflects all the needed functionality in both the sender and re
 \item Sending compressed to PC
 \end{itemize}
 
-A simplified sequence diagram of the boot sequence and a key press is shown in Figure \ref{fig:BootAndState}. On boot, the used flash areas are erased, and the key is enabled. After boot, the idle state is entered. When the key is pressed the state is changed and everything needed is initialized and the radio is turn on or off, depending on the state. Finally a task is posted to start the transmissions.
+A simplified sequence diagram of the boot sequence and a key press is shown in Figure \ref{fig:BootAndState}. On boot, the used flash areas are erased, and the key is enabled. After boot, the idle state is entered. When the key is pressed the state is changed and everything needed is initialized and the radio is turn on or off, depending on the state. Finally a \texttt{task} is \texttt{post}ed to start the transmissions.
 
 \begin{figure}[H]
 \centering

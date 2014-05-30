@@ -15,7 +15,7 @@ Unfortunately we did not have the time to correct the design and prove the theor
 In the results, it was shown that transmitting all the uncompressed data took 26.8 seconds. 
 In the case with compression it took 28.8 seconds, even though 20\% fever packets where sent. 
 
-If the compression happened prior to the transmission, sending the compressed data would roughly take $26.8*0.80 = 21.44$ seconds. 
+If the compression happened prior to the transmission, sending the compressed data would roughly take $26.8*0.80 = 21.44$ seconds, since 20\% less packages is sent. 
 
 Compressing the data prior to the transmission might increase the time used, due to increased flash handling, but we will assume it takes 10 seconds.
 When the radio is turned of, the current draw from the mote is approx. 3 mA. When the radio is on it is 20 mA. 
