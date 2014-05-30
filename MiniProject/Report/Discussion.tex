@@ -29,4 +29,7 @@ Compression prior to transmission:
 From these calculations there is a clear power saving, by performing the compression. Even though these are all rough estimates, changing the parameters slightly to the worse, will not change the result.
 Note that this is only based on the sending mote, but the calculations for the receiving mote will be very similar, since transmitting and receiving uses almost the same power.
 
-The compressed image did visibly loose quality, thus harder compression (truncating more bits) would be possible while still maintaining an acceptable image quality - depending on the application requirements. \fxnote{elaborate/restructure ...}
+The compressed image did not visibly loose quality, thus harder compression (truncating more bits) would be possible while still maintaining an acceptable image quality - depending on the application requirements.
+Truncating 4 bits instead of two would effectively halve the data to be sent.
+Using 4 bits would also significantly reduce the complexity of the compression algorithm, as $4 \texttt{ bits} * 2= 1 \texttt{ octet}$ and the radio interface is octet based.
+The approach used in the project packs $5 * 6\texttt{ bits} = 30\texttt{ bits}$ in $32 \texttt{ bit}$ chunks thus wasting $2/32*100\% = 6.25\%$ of transmitted data. 
